@@ -5,6 +5,7 @@
 
 #include "Square.h"
 #include <iostream>
+
 using namespace std;
 
 /**
@@ -35,7 +36,7 @@ bool Square::isMyOwn(Color color) {
  * @return Piece
  */
 Piece Square::getPiece() {
-    return null;
+    return NULL;
 }
 
 /**

@@ -8,7 +8,19 @@
 #import "Color.h"
 #import "Position.h"
 
+using namespace std;
+using namespace PositionSpace;
+
+namespace PieceSpace
+{
+
 class Piece {
+
+private:
+    bool haveBall;
+    Position position;
+    Color color;
+
 public: 
     
 /**
@@ -19,10 +31,7 @@ Piece(Color color);
 bool canPassBall();
     
 void passBall();
-private: 
-    bool haveBall;
-    Position position;
-    Color color;
-};
 
+};
+}
 #endif //_PIECE_H

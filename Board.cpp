@@ -8,8 +8,9 @@
 #import "Position.h"
 #import "Piece.h"
 #include <iostream>
-using namespace std;
 
+using namespace std;
+using namespace BoardSpace;
 
 /**
  * Board implementation

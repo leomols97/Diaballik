@@ -5,7 +5,9 @@
 
 #include "Position.h"
 #include <iostream>
+
 using namespace std;
+using namespace PositionSpace;
 
 /**
  * Position implementation

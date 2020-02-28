@@ -10,7 +10,17 @@
 #import "Square.h"
 #import "Player.h"
 
+using namespace std;
+using namespace PieceSpace;
+using namespace PlayerSpace;
+using namespace PositionSpace;
+
+namespace BoardSpace {
+
+
 class Board {
+private:
+    vector<vector<Square>> squares;
 public:
 
 Board();
@@ -34,9 +44,9 @@ void put(Piece piece, Position position);
 /**
  * @param player
  */
-List<Position> getTakenSquare(Player player);
+vector<Position> getTakenSquare(Player player);
 
-Square [][] getSquares();
+vector<vector<Square>> getSquares();
 
 /**
  * @param position
@@ -47,8 +57,8 @@ void remove(Position position);
  * @param position
  */
 Piece getPiece(Position position);
-private:
-    Square [][] squares;
+
 };
+}
 
 #endif //_BOARD_H

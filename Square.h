@@ -8,7 +8,14 @@
 
 #import "Piece.h"
 
+using namespace std;
+using namespace PieceSpace;
+
 class Square {
+
+private:
+    Piece piece;
+
 public: 
     
 Square();
@@ -28,8 +35,7 @@ Piece getPiece();
 void put(Piece piece);
     
 void remove();
-private: 
-    Piece piece;
+
 };
 
 #endif //_SQUARE_H

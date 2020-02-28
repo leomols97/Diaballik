@@ -5,7 +5,9 @@
 
 #include "Game.h"
 #include <iostream>
+
 using namespace std;
+using namespace GameSpace;
 
 /**
  * Game implementation
@@ -65,7 +67,8 @@ void Game::start() {
  * @param selected 
  * @return List<Move>
  */
-List<Move> Game::getMoves(Position selected ) {
+
+vector<Move> Game::getMoves(Position selected ) {
     return null;
 }
 

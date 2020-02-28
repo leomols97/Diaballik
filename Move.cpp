@@ -7,7 +7,9 @@
 #import "Position.h"
 #import "Piece.h"
 #include <iostream>
+
 using namespace std;
+using namespace MoveSpace;
 
 /**
  * Move implementation

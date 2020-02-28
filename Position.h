@@ -7,7 +7,15 @@
 #define _POSITION_H
 #import "Direction.h"
 
+namespace PositionSpace
+{
+
 class Position {
+
+private:
+    int row;
+    int column;
+
 public:
 
 /**
@@ -24,9 +32,8 @@ Position next(Direction dir );
 int getRow();
 
 int getColumn();
-private:
-    int row;
-    int column;
+
 };
+}
 
 #endif //_POSITION_H
