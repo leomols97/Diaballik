@@ -7,6 +7,8 @@
 #include "Board.h"
 #import "Position.h"
 #import "Piece.h"
+#include <iostream>
+using namespace std;
 
 
 /**

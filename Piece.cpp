@@ -5,6 +5,8 @@
 
 #include "Piece.h"
 #import "Color.h"
+#include <iostream>
+using namespace std;
 
 /**
  * Piece implementation

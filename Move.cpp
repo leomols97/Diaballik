@@ -6,6 +6,8 @@
 #include "Move.h"
 #import "Position.h"
 #import "Piece.h"
+#include <iostream>
+using namespace std;
 
 /**
  * Move implementation

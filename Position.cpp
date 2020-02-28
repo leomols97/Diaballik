@@ -4,6 +4,8 @@
 
 
 #include "Position.h"
+#include <iostream>
+using namespace std;
 
 /**
  * Position implementation
