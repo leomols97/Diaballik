@@ -8,6 +8,8 @@
 
 using namespace std;
 using namespace SquareSpace;
+using namespace PieceSpace;
+using namespace ColorSpace;
 
 /**
  * Square implementation
@@ -30,7 +32,8 @@ bool Square::isFree() {
  * @param color
  * @return boolean
  */
-bool Square::isMyOwn(Color color) {
+bool Square::isMyOwn(Color color)
+{
     return false;
 }
 

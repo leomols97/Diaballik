@@ -4,11 +4,12 @@
 
 
 #include "Piece.h"
-#import "Color.h"
+#include "Color.h"
 #include <iostream>
 
 using namespace std;
 using namespace PieceSpace;
+using namespace ColorSpace;
 
 /**
  * Piece implementation
@@ -20,25 +21,8 @@ using namespace PieceSpace;
 Piece::Piece(Color color, bool hasBall, bool real)
 {
     this->color = color;
-    real = isReal();
+    real = true;
     hasBall = false;
-}
-
-/**
- * @brief Piece::isReal
- * @param color
- * @return
- */
-bool Piece::isReal()
-{
-    if (color == Black || color == White)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
 }
 
 /**

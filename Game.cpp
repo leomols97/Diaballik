@@ -9,6 +9,8 @@
 
 using namespace std;
 using namespace GameSpace;
+using namespace SquareSpace;
+using namespace BoardSpace;
 
 /**
  * Game implementation
@@ -17,7 +19,7 @@ using namespace GameSpace;
 
 Game::Game()
 {
-    Board board(vector<vector<Square>> squares);
+    Board board(vector<vector<Square>> board);
     Player current(White), oponent(Black);
     Position selected(int row, int column);
 }

@@ -15,6 +15,7 @@ using namespace std;
 using namespace BoardSpace;
 using namespace PlayerSpace;
 using namespace MoveSpace;
+using namespace PositionSpace;
 
 namespace GameSpace {
 
@@ -33,42 +34,6 @@ namespace GameSpace {
             Game();
 
             // ATTENTION IL NE FAUT PAS OUBLIER LES DESTRUCTEURS !!!!!!!!!
-
-            void initialize();
-
-            /**
-     * @param player
-     */
-            bool foulGame(Player player );
-
-            bool isOver();
-
-            /**
-     * @param row
-     * @param column
-     */
-            void select(int row , int column);
-
-            void swapPlayers();
-
-            void start();
-
-            /**
-     * @param selected
-     */
-            vector<Move> getMoves(Position selected );
-
-            /**
-     * @param move
-     */
-            void apply(Move move );
-
-            /**
-     * @param player
-     */
-            bool hasMoves(Player player);
-
-            Player getWinner();
 
             inline Board getBoard() const
             {
@@ -91,5 +56,41 @@ namespace GameSpace {
             }
 
     };
+
+    static void initialize();
+
+    /**
+* @param player
+*/
+    static bool foulGame(Player player );
+
+    static bool isOver();
+
+    /**
+* @param row
+* @param column
+*/
+    static void select(int row , int column);
+
+    static void swapPlayers();
+
+    static void start();
+
+    /**
+* @param selected
+*/
+    static vector<Move> getMoves(Position selected );
+
+    /**
+* @param move
+*/
+    static void apply(Move move );
+
+    /**
+* @param player
+*/
+    static bool hasMoves(Player player);
+
+    static Player getWinner();
 }
 #endif //_GAME_H

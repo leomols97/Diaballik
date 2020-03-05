@@ -14,59 +14,56 @@ using namespace std;
 using namespace PieceSpace;
 using namespace PlayerSpace;
 using namespace PositionSpace;
+using namespace SquareSpace;
 
-namespace BoardSpace {
-
+namespace BoardSpace
+{
     
-    class Board {
+    class Board
+    {
+
         private:
             vector<vector<Square>> board;
 
         public:
 
+            Board();
             Board(vector<vector<Square>> board);
-
-            /**
-     * @param position
-     */
-            bool isInside(Position position);
-
-            /**
-     * @param position
-     */
-            bool isFree(Position position);
-
-            /**
-     * @param piece
-     * @param position
-     */
-            void put(Piece piece, Position position);
-
-            /**
-     * @param player
-     */
-            vector<Position> getTakenSquare(Player player);
-
-            vector<vector<Square>> getSquares();
-
-            /**
-     * @param position
-     */
-            void remove(Position position);
-
-            /**
-     * @param position
-     */
-            inline Piece getPiece(Position position) const
-            {
-                if (!board.isInside(position))
-                {
-                    throw invalid_argument("La position n'est pas dans le plateau de jeu !");
-                }
-                return board[position.getRow()][position.getColumn()].getPiece();
-            }
-
     };
+
+
+    /**
+* @param position
+*/
+    static bool isInside(Position position);
+
+    /**
+* @param position
+*/
+    static bool isFree(Position position);
+
+    /**
+* @param piece
+* @param position
+*/
+    static void put(Piece piece, Position position);
+
+    /**
+* @param player
+*/
+    static vector<Position> getTakenSquare(Player player);
+
+    static vector<vector<Square>> getBoard();
+
+    /**
+* @param position
+*/
+    static void remove(Position position);
+
+    /**
+* @param position
+*/
+    static Piece getPiece(Position position);
 }
 
 #endif //_BOARD_H

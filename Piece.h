@@ -10,6 +10,7 @@
 
 using namespace std;
 using namespace PositionSpace;
+using namespace ColorSpace;
 
 namespace PieceSpace
 {
@@ -30,16 +31,15 @@ namespace PieceSpace
  * @param color
  */
             Piece(Color color, bool hasBall, bool real);
-
-            /**
- * @param color
- */
-            bool isReal();
-
-            bool canPassBall();
-
-            void passBall();
-
     };
+
+    /**
+* @param color
+*/
+    static bool isReal();
+
+    static bool canPassBall();
+
+    static void passBall();
 }
 #endif //_PIECE_H

@@ -14,6 +14,12 @@ using namespace PlayerSpace;
  */
 
 /**
+ * Default constructor needed by the constructor of Game
+ * @brief Player
+ */
+Player() {}
+
+/**
  * @param color
  */
 Player::Player(Color color) {
@@ -22,8 +28,25 @@ Player::Player(Color color) {
     vector<Piece> pieces{7};
     for (unsigned i = 0; i < sizeof(pieces); i++)
     {
-        Piece p(color);
+        Piece p(color, false, isReal());
         pieces.push_back(p);
+    }
+}
+
+/**
+ * @brief Piece::isReal
+ * @param color
+ * @return
+ */
+bool Player::isReal()
+{
+    if (color == Black || color == White)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
     }
 }
 
@@ -52,13 +75,15 @@ void Player::setNbMoves(int nbMoves) {
 /**
  * @return Color
  */
-Color Player::getColor() {
+/*Color Player::getColor() {
     return null;
 }
+*/
 
 /**
  * @return List<Piece>
  */
-vector<Piece> Player::getPieces() {
+/*vector<Piece> Player::getPieces() {
     return null;
 }
+*/

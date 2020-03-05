@@ -15,6 +15,12 @@ using namespace PositionSpace;
 
 
 /**
+ * Default constructor needed by the constructor of Game
+ * @brief Position
+ */
+Position::Position() {}
+
+/**
  * @param row
  * @param column
  */

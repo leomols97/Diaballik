@@ -20,16 +20,13 @@ namespace PositionSpace
 
         public:
 
+            Position();
+
             /**
  * @param row
  * @param column
  */
             Position(int row, int column);
-
-            /**
- * @param dir
- */
-            Position next(Direction Direction);
 
             inline int getRow() const
             {
@@ -40,8 +37,12 @@ namespace PositionSpace
             {
                 return this->column;
             }
-
     };
+
+    /**
+* @param dir
+*/
+    static Position next(Direction Direction);
 }
 
 #endif //_POSITION_H

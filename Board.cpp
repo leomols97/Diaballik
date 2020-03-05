@@ -5,35 +5,46 @@
 
 
 #include "Board.h"
-#import "Position.h"
-#import "Piece.h"
+#include "Position.h"
+#include "Piece.h"
 #include <iostream>
 
 using namespace std;
+using namespace SquareSpace;
 using namespace BoardSpace;
 
 /**
  * Board implementation
  */
 
-Board::Board(vector<vector<Square>> squares)
+/**
+ * Default constructor needed by the constructor of Game
+ * @brief Board::Board
+ */
+Board::Board() {}
+
+Board::Board(vector<vector<Square>> board)
 {
-    this->squares = squares;
+    this->board = board;
 }
 
 /**
  * @param position
  * @return boolean
  */
-bool Board::isInside(Position position) {
-    return false;
+bool isInside(Position position)
+{
+    return position.getRow() < 0
+            || position.getRow() > 6
+            || position.getColumn() < 0
+            || position.getColumn() > 6;
 }
 
 /**
  * @param position
  * @return boolean
  */
-bool Board::isFree(Position position) {
+bool isFree(Position position) {
     return false;
 }
 
@@ -42,7 +53,7 @@ bool Board::isFree(Position position) {
  * @param position
  * @return void
  */
-void Board::put(Piece piece, Position position) {
+void put(Piece piece, Position position) {
     return;
 }
 
@@ -50,14 +61,14 @@ void Board::put(Piece piece, Position position) {
  * @param player
  * @return List<Position>
  */
-vector<Position> Board::getTakenSquare(Player player) {
+vector<Position> getTakenSquare(Player player) {
     return null;
 }
 
 /**
  * @return Square [][]
  */
-vector<vector<Square>> Board::getSquares() {
+vector<vector<Square>> getBoard() {
     return null;
 }
 
@@ -66,7 +77,7 @@ vector<vector<Square>> Board::getSquares() {
  * @param position
  * @return void
  */
-void Board::remove(Position position) {
+void remove(Position position) {
     return;
 }
 
@@ -74,6 +85,11 @@ void Board::remove(Position position) {
  * @param position
  * @return Piece
  */
-Piece Board::getPiece(Position position) {
-    return null;
+Piece getPiece(Position position)
+{
+    if (!isInside(position))
+    {
+        throw invalid_argument("La position n'est pas dans le plateau de jeu !");
+    }
+    return getBoard()[position.getRow()][position.getColumn()].getPiece();
 }
