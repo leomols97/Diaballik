@@ -52,14 +52,14 @@ void Board::put(Piece piece, Position position) {
  * @param player
  * @return List<Position>
  */
-List<Position> Board::getTakenSquare(Player player) {
+vector<Position> Board::getTakenSquare(Player player) {
     return null;
 }
 
 /**
  * @return Square [][]
  */
-Square [][] Board::getSquares() {
+vector<vector<Square>> Board::getSquares() {
     return null;
 }
 

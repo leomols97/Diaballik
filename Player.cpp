@@ -53,6 +53,6 @@ Color Player::getColor() {
 /**
  * @return List<Piece>
  */
-List<Piece> Player::getPieces() {
+vector<Piece> Player::getPieces() {
     return null;
 }

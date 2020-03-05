@@ -27,7 +27,7 @@ Position::Position(int row, int column) {
  * @return Position
  */
 Position Position::next(Direction dir ) {
-    return null;
+    return NULL;
 }
 
 /**
