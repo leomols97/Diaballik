@@ -13,12 +13,18 @@ using namespace PlayerSpace;
  * Player implementation
  */
 
-
 /**
  * @param color
  */
 Player::Player(Color color) {
-
+    this->color = color;
+    this->nbMoves = 2;
+    vector<Piece> pieces{7};
+    for (unsigned i = 0; i < sizeof(pieces); i++)
+    {
+        Piece p(color);
+        pieces.push_back(p);
+    }
 }
 
 /**

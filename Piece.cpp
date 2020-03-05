@@ -18,8 +18,28 @@ using namespace PieceSpace;
 /**
  * @param color
  */
-Piece::Piece(Color color) {
+Piece::Piece(Color color, bool hasBall, bool real) {
+    this->color = color;
+    real = isReal();
+    hasBall = false;
 
+}
+
+/**
+ * @brief Piece::isReal
+ * @param color
+ * @return
+ */
+bool Piece::isReal()
+{
+    if (color == Black || color == White)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 /**

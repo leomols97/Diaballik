@@ -18,8 +18,10 @@ using namespace PositionSpace;
  * @param row
  * @param column
  */
-Position::Position(int row, int column) {
-
+Position::Position(int row, int column)
+{
+    this->row = row;
+    this->column = column;
 }
 
 /**

@@ -16,11 +16,9 @@ using namespace BoardSpace;
  * Board implementation
  */
 
-
-
-
-Board::Board() {
-
+Board::Board(vector<vector<Square>> squares)
+{
+    this->squares = squares;
 }
 
 /**

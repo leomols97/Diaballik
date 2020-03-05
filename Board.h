@@ -17,48 +17,48 @@ using namespace PositionSpace;
 
 namespace BoardSpace {
 
+    
+    class Board {
+    private:
+        vector<vector<Square>> squares;
+    public:
 
-class Board {
-private:
-    vector<vector<Square>> squares;
-public:
+        Board(vector<vector<Square>> squares);
 
-Board();
+        /**
+     * @param position
+     */
+        bool isInside(Position position);
 
-/**
- * @param position
- */
-bool isInside(Position position);
+        /**
+     * @param position
+     */
+        bool isFree(Position position);
 
-/**
- * @param position
- */
-bool isFree(Position position);
+        /**
+     * @param piece
+     * @param position
+     */
+        void put(Piece piece, Position position);
 
-/**
- * @param piece
- * @param position
- */
-void put(Piece piece, Position position);
+        /**
+     * @param player
+     */
+        vector<Position> getTakenSquare(Player player);
 
-/**
- * @param player
- */
-vector<Position> getTakenSquare(Player player);
+        vector<vector<Square>> getSquares();
 
-vector<vector<Square>> getSquares();
+        /**
+     * @param position
+     */
+        void remove(Position position);
 
-/**
- * @param position
- */
-void remove(Position position);
+        /**
+     * @param position
+     */
+        Piece getPiece(Position position);
 
-/**
- * @param position
- */
-Piece getPiece(Position position);
-
-};
+    };
 }
 
 #endif //_BOARD_H

@@ -14,14 +14,18 @@ using namespace GameSpace;
  */
 
 
- Game::Game() {
-
+Game::Game()
+{
+    Board board(vector<vector<Square>> squares);
+    Player current(White), oponent(Black);
+    Position position(int row, int column);
 }
 
 /**
  * @return void
  */
-void Game::initialize() {
+void Game::initialize()
+{
     return;
 }
 
@@ -29,7 +33,8 @@ void Game::initialize() {
  * @param player 
  * @return boolean
  */
-bool Game::foulGame(Player player ) {
+bool Game::foulGame(Player player)
+{
     return false;
 }
 
@@ -92,7 +97,7 @@ bool Game::hasMoves(Player player) {
  * @return Player
  */
 Player Game::getWinner() {
-    return null;
+    return current;
 }
 
 /**
