@@ -13,10 +13,12 @@
 using namespace std;
 using namespace PieceSpace;
 
-namespace PlayerSpace {
+namespace PlayerSpace
+{
 
 
-    class Player {
+    class Player
+    {
 
         private:
             Color color;
@@ -39,9 +41,15 @@ namespace PlayerSpace {
  */
             void setNbMoves(int nbMoves);
 
-            Color getColor();
+            inline Color getColor() const
+            {
+                return color;
+            }
 
-            vector<Piece> getPieces();
+            inline vector<Piece> getPieces() const
+            {
+                return pieces;
+            }
 
     };
 }

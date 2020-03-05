@@ -11,31 +11,39 @@
 using namespace std;
 using namespace PieceSpace;
 
-class Square {
+namespace SquareSpace
+{
 
-    private:
-        Piece piece;
+    class Square
+    {
 
-    public:
+        private:
+            Piece piece;
 
-        Square(Piece piece);
+        public:
 
-        bool isFree();
+            Square(Piece piece);
 
-        /**
+            bool isFree();
+
+            /**
  * @param color
  */
-        bool isMyOwn(Color color);
+            bool isMyOwn(Color color);
 
-        Piece getPiece();
+            inline Piece getPiece() const
+            {
+                return this->piece;
+            }
 
-        /**
+            /**
  * @param piece
  */
-        void put(Piece piece);
+            void put(Piece piece);
 
-        void remove();
+            void remove();
 
-};
+    };
+}
 
 #endif //_SQUARE_H

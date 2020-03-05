@@ -14,15 +14,14 @@ using namespace PieceSpace;
  * Piece implementation
  */
 
-
 /**
  * @param color
  */
-Piece::Piece(Color color, bool hasBall, bool real) {
+Piece::Piece(Color color, bool hasBall, bool real)
+{
     this->color = color;
     real = isReal();
     hasBall = false;
-
 }
 
 /**

@@ -7,6 +7,8 @@
 #define _POSITION_H
 #import "Direction.h"
 
+using namespace DirectionSpace;
+
 namespace PositionSpace
 {
 
@@ -27,11 +29,17 @@ namespace PositionSpace
             /**
  * @param dir
  */
-            Position next(Direction dir );
+            Position next(Direction Direction);
 
-            int getRow();
+            inline int getRow() const
+            {
+                return this->row;
+            }
 
-            int getColumn();
+            inline int getColumn() const
+            {
+                return this->column;
+            }
 
     };
 }

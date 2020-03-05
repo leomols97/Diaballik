@@ -7,15 +7,16 @@
 #include <iostream>
 
 using namespace std;
+using namespace SquareSpace;
 
 /**
  * Square implementation
  */
 
 
-Square::Square()
+Square::Square(Piece piece)
 {
-    Piece p();
+    this->piece = piece;
 }
 
 /**
@@ -31,13 +32,6 @@ bool Square::isFree() {
  */
 bool Square::isMyOwn(Color color) {
     return false;
-}
-
-/**
- * @return Piece
- */
-Piece Square::getPiece() {
-    return NULL;
 }
 
 /**

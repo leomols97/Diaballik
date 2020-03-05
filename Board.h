@@ -20,10 +20,11 @@ namespace BoardSpace {
     
     class Board {
         private:
-            vector<vector<Square>> squares;
+            vector<vector<Square>> board;
+
         public:
 
-            Board(vector<vector<Square>> squares);
+            Board(vector<vector<Square>> board);
 
             /**
      * @param position
@@ -56,7 +57,14 @@ namespace BoardSpace {
             /**
      * @param position
      */
-            Piece getPiece(Position position);
+            inline Piece getPiece(Position position) const
+            {
+                if (!board.isInside(position))
+                {
+                    throw invalid_argument("La position n'est pas dans le plateau de jeu !");
+                }
+                return board[position.getRow()][position.getColumn()].getPiece();
+            }
 
     };
 }

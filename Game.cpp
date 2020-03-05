@@ -4,6 +4,7 @@
 
 
 #include "Game.h"
+#include "Direction.h"
 #include <iostream>
 
 using namespace std;
@@ -18,7 +19,7 @@ Game::Game()
 {
     Board board(vector<vector<Square>> squares);
     Player current(White), oponent(Black);
-    Position position(int row, int column);
+    Position selected(int row, int column);
 }
 
 /**

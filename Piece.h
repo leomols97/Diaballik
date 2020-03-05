@@ -14,7 +14,8 @@ using namespace PositionSpace;
 namespace PieceSpace
 {
 
-    class Piece {
+    class Piece
+    {
 
         private:
             Color color; // La couleur de la pièce

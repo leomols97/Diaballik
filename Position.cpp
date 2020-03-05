@@ -28,7 +28,7 @@ Position::Position(int row, int column)
  * @param dir
  * @return Position
  */
-Position Position::next(Direction dir ) {
+Position Position::next(Direction direction) {
     return NULL;
 }
 
@@ -45,3 +45,4 @@ int Position::getRow() {
 int Position::getColumn() {
     return 0;
 }
+

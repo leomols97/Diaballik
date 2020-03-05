@@ -13,10 +13,12 @@ using namespace std;
 using namespace PieceSpace;
 using namespace PositionSpace;
 
-namespace MoveSpace {
+namespace MoveSpace
+{
 
 
-    class Move {
+    class Move
+    {
 
         private:
             Piece piece;
@@ -32,11 +34,20 @@ namespace MoveSpace {
  */
             Move(Piece piece, Position start, Position end);
 
-            Piece getPiece();
+            inline Piece getPiece() const
+            {
+                return piece;
+            }
 
-            Position getStart();
+            inline Position getStart() const
+            {
+                return start;
+            }
 
-            Position getEnd();
+            inline Position getEnd() const
+            {
+                return end;
+            }
 
     };
 }

@@ -22,6 +22,7 @@ namespace GameSpace {
     class Game: public Model {
 
         private:
+
             Board board;
             Player current;
             Player opponent;
@@ -69,13 +70,25 @@ namespace GameSpace {
 
             Player getWinner();
 
-            Board getBoard();
+            inline Board getBoard() const
+            {
+                return board;
+            }
 
-            Position getSelected();
+            inline Position getSelected() const
+            {
+                return selected;
+            }
 
-            Player getCurrent();
+            inline Player getCurrent() const
+            {
+                return current;
+            }
 
-            Player getOpponent();
+            inline Player getOpponent() const
+            {
+                return opponent;
+            }
 
     };
 }
