@@ -15,7 +15,7 @@ using namespace std;
 
 Square::Square()
 {
-    Piece p(color);
+    Piece p();
 }
 
 /**

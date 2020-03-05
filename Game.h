@@ -21,59 +21,61 @@ namespace GameSpace {
 
     class Game: public Model {
 
-    private:
-        Board board;
-        Player current;
-        Player opponent;
-        Position selected;
+        private:
+            Board board;
+            Player current;
+            Player opponent;
+            Position selected;
 
-    public:
+        public:
 
-    Game();
+            Game();
 
-    void initialize();
+            // ATTENTION IL NE FAUT PAS OUBLIER LES DESTRUCTEURS !!!!!!!!!
 
-    /**
+            void initialize();
+
+            /**
      * @param player
      */
-    bool foulGame(Player player );
+            bool foulGame(Player player );
 
-    bool isOver();
+            bool isOver();
 
-    /**
+            /**
      * @param row
      * @param column
      */
-    void select(int row , int column);
+            void select(int row , int column);
 
-    void swapPlayers();
+            void swapPlayers();
 
-    void start();
+            void start();
 
-    /**
+            /**
      * @param selected
      */
-    vector<Move> getMoves(Position selected );
+            vector<Move> getMoves(Position selected );
 
-    /**
+            /**
      * @param move
      */
-    void apply(Move move );
+            void apply(Move move );
 
-    /**
+            /**
      * @param player
      */
-    bool hasMoves(Player player);
+            bool hasMoves(Player player);
 
-    Player getWinner();
+            Player getWinner();
 
-    Board getBoard();
+            Board getBoard();
 
-    Position getSelected();
+            Position getSelected();
 
-    Player getCurrent();
+            Player getCurrent();
 
-    Player getOpponent();
+            Player getOpponent();
 
     };
 }

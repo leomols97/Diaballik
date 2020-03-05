@@ -10,6 +10,7 @@
 
 using namespace std;
 using namespace MoveSpace;
+using namespace DirectionSpace;
 
 /**
  * Move implementation

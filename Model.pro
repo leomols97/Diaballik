@@ -5,6 +5,7 @@ CONFIG -= qt
 
 SOURCES += \
         Board.cpp \
+        Direction.cpp \
         Game.cpp \
         Move.cpp \
         Piece.cpp \

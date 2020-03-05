@@ -16,28 +16,28 @@ using namespace PositionSpace;
 namespace MoveSpace {
 
 
-class Move {
+    class Move {
 
-private:
-    Piece piece;
-    Position start;
-    Position end;
+        private:
+            Piece piece;
+            Position start;
+            Position end;
 
-public: 
-    
-/**
+        public:
+
+            /**
  * @param piece
  * @param start
  * @param end
  */
-Move(Piece piece, Position start, Position end);
-    
-Piece getPiece();
-    
-Position getStart();
-    
-Position getEnd();
+            Move(Piece piece, Position start, Position end);
 
-};
+            Piece getPiece();
+
+            Position getStart();
+
+            Position getEnd();
+
+    };
 }
 #endif //_MOVE_H

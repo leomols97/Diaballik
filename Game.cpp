@@ -30,7 +30,7 @@ void Game::initialize()
 }
 
 /**
- * @param player 
+ * @param player
  * @return boolean
  */
 bool Game::foulGame(Player player)
@@ -46,7 +46,7 @@ bool Game::isOver() {
 }
 
 /**
- * @param row 
+ * @param row
  * @param column
  * @return void
  */
@@ -69,7 +69,7 @@ void Game::start() {
 }
 
 /**
- * @param selected 
+ * @param selected
  * @return List<Move>
  */
 
@@ -78,7 +78,7 @@ vector<Move> Game::getMoves(Position selected ) {
 }
 
 /**
- * @param move 
+ * @param move
  * @return void
  */
 void Game::apply(Move move ) {

@@ -10,30 +10,30 @@
 namespace PositionSpace
 {
 
-class Position {
+    class Position {
 
-private:
-    int row;
-    int column;
+        private:
+            int row;
+            int column;
 
-public:
+        public:
 
-/**
+            /**
  * @param row
  * @param column
  */
-Position(int row, int column);
+            Position(int row, int column);
 
-/**
+            /**
  * @param dir
  */
-Position next(Direction dir );
+            Position next(Direction dir );
 
-int getRow();
+            int getRow();
 
-int getColumn();
+            int getColumn();
 
-};
+    };
 }
 
 #endif //_POSITION_H

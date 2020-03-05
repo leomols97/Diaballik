@@ -13,28 +13,28 @@ using namespace PieceSpace;
 
 class Square {
 
-private:
-    Piece piece;
+    private:
+        Piece piece;
 
-public: 
-    
-Square();
-    
-bool isFree();
-    
-/**
+    public:
+
+        Square(Piece piece);
+
+        bool isFree();
+
+        /**
  * @param color
  */
-bool isMyOwn(Color color);
-    
-Piece getPiece();
-    
-/**
+        bool isMyOwn(Color color);
+
+        Piece getPiece();
+
+        /**
  * @param piece
  */
-void put(Piece piece);
-    
-void remove();
+        void put(Piece piece);
+
+        void remove();
 
 };
 
