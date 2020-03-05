@@ -38,3 +38,13 @@ bool Piece::canPassBall() {
 void Piece::passBall() {
     return;
 }
+
+Color getColor()
+{
+    return this
+}
+
+bool getHasBall()
+{
+    return
+}

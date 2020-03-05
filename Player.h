@@ -54,7 +54,7 @@ namespace PlayerSpace
 */
     static void setNbMoves(int nbMoves);
 
-    static bool isReal();
+    static bool isReal(Color color);
 }
 
 #endif //_PLAYER_H

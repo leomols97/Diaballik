@@ -31,6 +31,8 @@ namespace PieceSpace
  * @param color
  */
             Piece(Color color, bool hasBall, bool real);
+
+            Color getColor();
     };
 
     /**
@@ -41,5 +43,9 @@ namespace PieceSpace
     static bool canPassBall();
 
     static void passBall();
+
+    static bool getHasBall();
+
+    static bool getReal();
 }
 #endif //_PIECE_H

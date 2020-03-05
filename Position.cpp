@@ -34,21 +34,21 @@ Position::Position(int row, int column)
  * @param dir
  * @return Position
  */
-Position Position::next(Direction direction) {
+Position next(Direction direction) {
     return NULL;
 }
 
 /**
  * @return int
  */
-int Position::getRow() {
+int getRow() {
     return 0;
 }
 
 /**
  * @return int
  */
-int Position::getColumn() {
+int getColumn() {
     return 0;
 }
 

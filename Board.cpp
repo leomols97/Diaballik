@@ -32,7 +32,7 @@ Board::Board(vector<vector<Square>> board)
  * @param position
  * @return boolean
  */
-bool isInside(Position position)
+bool BoardSpace::isInside(Position position)
 {
     return position.getRow() < 0
             || position.getRow() > 6
@@ -53,7 +53,8 @@ bool isFree(Position position) {
  * @param position
  * @return void
  */
-void put(Piece piece, Position position) {
+void put(Piece piece, Position position)
+{
     return;
 }
 
@@ -61,15 +62,43 @@ void put(Piece piece, Position position) {
  * @param player
  * @return List<Position>
  */
-vector<Position> getTakenSquare(Player player) {
-    return null;
+vector<Position> getTakenSquare(Player player)
+{
+    Position pos(0,0);
+    vector<Position> positions;
+    for (unsigned i = 0; i < sizeof(getBoard()); i++)
+    {
+        for (unsigned j = 0; j < sizeof (getBoard()); j++)
+        {
+            if (getBoard()[i][j].getPiece().getColor() == player.getColor())
+            {
+                pos.setRow(i);
+                pos.setColumn(j);
+                positions.push_back(pos);
+            }
+            pos.setRow(0);
+            pos.setColumn(0);
+        }
+    }
+    return positions;
 }
 
 /**
- * @return Square [][]
+ * @return vector<vector<Square>>
  */
-vector<vector<Square>> getBoard() {
-    return null;
+vector<vector<Square>> BoardSpace::getBoard()
+{
+    vector<vector<Square>> copyBoard;
+    for (unsigned i = 0; i < sizeof (getBoard()); i++)
+    {
+        for (unsigned j = 0; j < sizeof (getBoard()); j++)
+        {
+            Piece p(getBoard()[i][j].getPiece().getColor(), getBoard()[i][j].getPiece().);
+            Square sq();
+            copyBoard.push_back(Square)
+        }
+    }
+    return copyBoard;
 }
 
 

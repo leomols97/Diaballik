@@ -48,12 +48,12 @@ namespace BoardSpace
 */
     static void put(Piece piece, Position position);
 
+    static vector<vector<Square>> getBoard();
+
     /**
 * @param player
 */
     static vector<Position> getTakenSquare(Player player);
-
-    static vector<vector<Square>> getBoard();
 
     /**
 * @param position

@@ -37,6 +37,16 @@ namespace PositionSpace
             {
                 return this->column;
             }
+
+            inline void setRow(int row)
+            {
+                this->row = row;
+            }
+
+            inline void setColumn(int column)
+            {
+                this->column = column;
+            }
     };
 
     /**
