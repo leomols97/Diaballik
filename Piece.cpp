@@ -17,12 +17,14 @@ using namespace PieceSpace;
 /**
  * @param color
  */
-Piece::Piece(Color color, bool hasBall, bool real)
+Piece::Piece(Color color)
 {
     this->color = color;
     real = isReal();
     hasBall = false;
 }
+
+
 
 /**
  * @brief Piece::isReal

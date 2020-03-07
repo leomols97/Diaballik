@@ -29,7 +29,7 @@ namespace PieceSpace
             /**
  * @param color
  */
-            Piece(Color color, bool hasBall, bool real);
+            Piece(Color color);
 
             /**
  * @param color
