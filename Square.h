@@ -9,10 +9,8 @@
 #import "Piece.h"
 
 using namespace std;
-using namespace PieceSpace;
-using namespace ColorSpace;
 
-namespace SquareSpace
+namespace Diaballik
 {
 
     class Square

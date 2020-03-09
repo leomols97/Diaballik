@@ -7,8 +7,7 @@
 #include <iostream>
 
 using namespace std;
-using namespace PlayerSpace;
-using namespace ColorSpace;
+using namespace Diaballik;
 
 /**
  * Player implementation

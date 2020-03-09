@@ -11,26 +11,22 @@
 #include "Player.h"
 
 using namespace std;
-using namespace PieceSpace;
-using namespace PlayerSpace;
-using namespace PositionSpace;
-using namespace SquareSpace;
 
-namespace Diaballik {
-
-namespace BoardSpace
+namespace Diaballik
 {
-    
+
     class Board
     {
 
         private:
+
             vector<vector<Square>> board;
 
         public:
 
             Board();
             Board(vector<vector<Square>> board);
+
             /**
         * @param position
         */
@@ -66,5 +62,5 @@ namespace BoardSpace
     static Piece getPiece(Position position);
 }
 
-}
+
 #endif //_BOARD_H

@@ -6,7 +6,6 @@
 #include "Direction.h"
 
 using namespace std;
-using namespace DirectionSpace;
 using namespace Diaballik;
 
 /**

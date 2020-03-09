@@ -9,10 +9,9 @@
 #import "Position.h"
 
 using namespace std;
-using namespace PositionSpace;
-using namespace ColorSpace;
+using namespace Diaballik;
 
-namespace PieceSpace
+namespace Diaballik
 {
 
     class Piece
@@ -30,7 +29,7 @@ namespace PieceSpace
             /**
  * @param color
  */
-            Piece(Color color, bool hasBall, bool real);
+            Piece(Color color);
 
             Color getColor();
     };
@@ -47,5 +46,7 @@ namespace PieceSpace
     static bool getHasBall();
 
     static bool getReal();
+
+    static void setColor(Color color);
 }
 #endif //_PIECE_H

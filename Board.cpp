@@ -10,8 +10,7 @@
 #include <iostream>
 
 using namespace std;
-using namespace SquareSpace;
-using namespace BoardSpace;
+using namespace Diaballik;
 
 /**
  * Board implementation
@@ -32,19 +31,20 @@ Board::Board(vector<vector<Square>> board)
  * @param position
  * @return boolean
  */
-bool BoardSpace::isInside(Position position)
+bool isInside(Position position)
 {
-    return position.getRow() < 0
-            || position.getRow() > 6
-            || position.getColumn() < 0
-            || position.getColumn() > 6;
+    return position.getRow() > 0
+            || position.getRow() < 6
+            || position.getColumn() > 0
+            || position.getColumn() < 6;
 }
 
 /**
  * @param position
  * @return boolean
  */
-bool isFree(Position position) {
+bool isFree(Position position)
+{
     return false;
 }
 
@@ -86,14 +86,14 @@ vector<Position> getTakenSquare(Player player)
 /**
  * @return vector<vector<Square>>
  */
-vector<vector<Square>> BoardSpace::getBoard()
+vector<vector<Square>> getBoard()
 {
     vector<vector<Square>> copyBoard;
-    for (unsigned i = 0; i < sizeof (getBoard()); i++)
+    for (unsigned i = 0; i < sizeof (Diaballik::getBoard()); i++)
     {
-        for (unsigned j = 0; j < sizeof (getBoard()); j++)
+        for (unsigned j = 0; j < sizeof (Diaballik::getBoard()); j++)
         {
-            Piece p(getBoard()[i][j].getPiece().getColor(), getBoard()[i][j].getPiece().);
+            Piece p(Diaballik::getBoard()[i][j].getPiece().getColor(), Diaballik::getBoard()[i][j].getPiece().);
             Square sq();
             copyBoard.push_back(Square)
         }
@@ -106,7 +106,8 @@ vector<vector<Square>> BoardSpace::getBoard()
  * @param position
  * @return void
  */
-void remove(Position position) {
+void remove(Position position)
+{
     return;
 }
 
@@ -120,5 +121,5 @@ Piece getPiece(Position position)
     {
         throw invalid_argument("La position n'est pas dans le plateau de jeu !");
     }
-    return getBoard()[position.getRow()][position.getColumn()].getPiece();
+    return Diaballik::getBoard()[position.getRow()][position.getColumn()].getPiece();
 }

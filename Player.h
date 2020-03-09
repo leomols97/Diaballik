@@ -11,11 +11,10 @@
 #include "vector"
 
 using namespace std;
-using namespace PieceSpace;
+using namespace Diaballik;
 
-namespace PlayerSpace
+namespace Diaballik
 {
-
 
     class Player
     {

@@ -15,7 +15,7 @@ enum Dir
     LEFT = (0, -1)
 };
 
-namespace DirectionSpace
+namespace Diaballik
 {
     class Direction
     {

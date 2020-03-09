@@ -6,7 +6,8 @@
 #ifndef _COLOR_H
 #define _COLOR_H
 
-namespace ColorSpace {
+namespace Diaballik
+{
 
     enum Color
     {

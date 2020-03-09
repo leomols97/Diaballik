@@ -7,9 +7,7 @@
 #include <iostream>
 
 using namespace std;
-using namespace SquareSpace;
-using namespace PieceSpace;
-using namespace ColorSpace;
+using namespace Diaballik;
 
 /**
  * Square implementation
@@ -24,7 +22,7 @@ Square::Square(Piece piece)
 /**
  * @return boolean
  */
-bool Square::isFree() {
+bool isFree() {
     return false;
 }
 
@@ -32,7 +30,7 @@ bool Square::isFree() {
  * @param color
  * @return boolean
  */
-bool Square::isMyOwn(Color color)
+bool isMyOwn(Color color)
 {
     return false;
 }
@@ -41,13 +39,15 @@ bool Square::isMyOwn(Color color)
  * @param piece
  * @return void
  */
-void Square::put(Piece piece) {
+void put(Piece piece)
+{
     return;
 }
 
 /**
  * @return void
  */
-void Square::remove() {
+void remove()
+{
     return;
 }

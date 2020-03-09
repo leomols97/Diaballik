@@ -21,27 +21,31 @@ using namespace Diaballik;
  * @param start
  * @param end
  */
-Move::Move(Piece piece, Position start, Position end) {
+Move(Piece piece, Position start, Position end)
+{
 
 }
 
 /**
  * @return Piece
  */
-Piece Move::getPiece() {
+Piece getPiece()
+{
     return null;
 }
 
 /**
  * @return position
  */
-Position Move::getStart() {
+Position getStart()
+{
     return null;
 }
 
 /**
  * @return Position
  */
-Position Move::getEnd() {
+Position getEnd()
+{
     return null;
 }

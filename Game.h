@@ -12,15 +12,13 @@
 #import "Board.h"
 
 using namespace std;
-using namespace BoardSpace;
-using namespace PlayerSpace;
-using namespace MoveSpace;
-using namespace PositionSpace;
+using namespace Diaballik;
 
-namespace GameSpace {
+namespace Diaballik
+{
 
-
-    class Game: public Model {
+    class Game: public Model
+    {
 
         private:
 
