@@ -11,15 +11,9 @@
 #include "Player.h"
 
 using namespace std;
-using namespace PieceSpace;
-using namespace PlayerSpace;
-using namespace PositionSpace;
-using namespace SquareSpace;
 
 namespace Diaballik {
     
-    namespace BoardSpace
-    {
         
         class Board
         {

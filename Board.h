@@ -17,54 +17,55 @@ using namespace PositionSpace;
 using namespace SquareSpace;
 
 namespace Diaballik {
-
-namespace BoardSpace
-{
     
-    class Board
     {
-
-        private:
-            vector<vector<Square>> board;
-
-        public:
-
-            Board();
-            Board(vector<vector<Square>> board);
-            /**
+        
+        class Board
+        {
+                
+            private:
+                
+                vector<vector<Square>> board;
+                
+            public:
+                
+                Board();
+                Board(vector<vector<Square>> board);
+                
+                /**
         * @param position
         */
-            static bool isInside(Position position);
-    };
-
-    /**
+                static bool isInside(Position position);
+        };
+        
+        /**
 * @param position
 */
-    static bool isFree(Position position);
-
-    /**
+        static bool isFree(Position position);
+        
+        /**
 * @param piece
 * @param position
 */
-    static void put(Piece piece, Position position);
-
-    static vector<vector<Square>> getBoard();
-
-    /**
+        static void put(Piece piece, Position position);
+        
+        static vector<vector<Square>> getBoard();
+        
+        /**
 * @param player
 */
-    static vector<Position> getTakenSquare(Player player);
-
-    /**
+        static vector<Position> getTakenSquare(Player player);
+        
+        /**
 * @param position
 */
-    static void remove(Position position);
-
-    /**
+        static void remove(Position position);
+        
+        /**
 * @param position
 */
-    static Piece getPiece(Position position);
-}
-
+        static Piece getPiece(Position position);
+    }
+    
 }
 #endif //_BOARD_H

@@ -18,7 +18,7 @@ using namespace Diaballik;
 
 /**
  * Default constructor needed by the constructor of Game
- * @brief Board::Board
+ * @brief Board
  */
 Board::Board() {}
 
@@ -31,7 +31,7 @@ Board::Board(vector<vector<Square>> board)
  * @param position
  * @return boolean
  */
-bool Board::isInside(Position position)
+bool isInside(Position position)
 {
     return position.getRow() < 0
             || position.getRow() > 6
