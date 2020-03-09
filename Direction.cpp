@@ -7,23 +7,24 @@
 
 using namespace std;
 using namespace DirectionSpace;
+using namespace Diaballik;
 
 /**
  * Direction implementation
  */
 
-Direction::Direction(int row, int column)
-{
-    this->row = row;
-    this->column = column;
-}
+    Direction::Direction(int row, int column)
+    {
+        this->row = row;
+        this->column = column;
+    }
 
-int Direction::getRow()
-{
-    return this->row;
-}
+    int Direction::getRow()
+    {
+        return this->row;
+    }
 
-int Direction::getColumn()
-{
-    return this->column;
-}
+    int Direction::getColumn()
+    {
+        return this->column;
+    }

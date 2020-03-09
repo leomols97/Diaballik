@@ -5,16 +5,18 @@
 
 #ifndef _BOARD_H
 #define _BOARD_H
-#import "Position.h"
-#import "Piece.h"
-#import "Square.h"
-#import "Player.h"
+#include "Position.h"
+#include "Piece.h"
+#include "Square.h"
+#include "Player.h"
 
 using namespace std;
 using namespace PieceSpace;
 using namespace PlayerSpace;
 using namespace PositionSpace;
 using namespace SquareSpace;
+
+namespace Diaballik {
 
 namespace BoardSpace
 {
@@ -29,13 +31,11 @@ namespace BoardSpace
 
             Board();
             Board(vector<vector<Square>> board);
+            /**
+        * @param position
+        */
+            static bool isInside(Position position);
     };
-
-
-    /**
-* @param position
-*/
-    static bool isInside(Position position);
 
     /**
 * @param position
@@ -66,4 +66,5 @@ namespace BoardSpace
     static Piece getPiece(Position position);
 }
 
+}
 #endif //_BOARD_H
