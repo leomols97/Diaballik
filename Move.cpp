@@ -26,23 +26,23 @@ Move::Move(Piece piece, Position start, Position end) {
 
 }
 
-/**
- * @return Piece
- */
-Piece Move::getPiece() {
-    return null;
-}
+///**
+// * @return Piece
+// */
+//Piece Move::getPiece() {
+//    return null;
+//}
 
-/**
- * @return position
- */
-Position Move::getStart() {
-    return null;
-}
+///**
+// * @return position
+// */
+//Position Move::getStart() {
+//    return null;
+//}
 
-/**
- * @return Position
- */
-Position Move::getEnd() {
-    return null;
-}
+///**
+// * @return Position
+// */
+//Position Move::getEnd() {
+//    return null;
+//}

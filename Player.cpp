@@ -8,10 +8,17 @@
 
 using namespace std;
 using namespace PlayerSpace;
+using namespace ColorSpace;
 
 /**
  * Player implementation
  */
+
+/**
+ * Default constructor needed by the constructor of Game
+ * @brief Player
+ */
+Player::Player() {}
 
 /**
  * @param color
@@ -28,16 +35,33 @@ Player::Player(Color color) {
 }
 
 /**
+ * @brief Piece::isReal
+ * @param color
+ * @return
+ */
+bool isReal(Color color)
+{
+    if (color == Black || color == White)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+/**
  * @return boolean
  */
-bool Player::canPass() {
+bool canPass() {
     return false;
 }
 
 /**
  * @return int
  */
-int Player::getNbMoves() {
+int getNbMoves() {
     return 0;
 }
 
@@ -45,20 +69,22 @@ int Player::getNbMoves() {
  * @param nbMoves
  * @return void
  */
-void Player::setNbMoves(int nbMoves) {
+void setNbMoves(int nbMoves) {
     return;
 }
 
 /**
  * @return Color
  */
-Color Player::getColor() {
+/*Color Player::getColor() {
     return null;
 }
+*/
 
 /**
  * @return List<Piece>
  */
-vector<Piece> Player::getPieces() {
+/*vector<Piece> Player::getPieces() {
     return null;
 }
+*/

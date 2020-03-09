@@ -32,7 +32,7 @@ namespace MoveSpace
  * @param start
  * @param end
  */
-            Move(Piece piece, Position start, Position end);
+            Move(Piece piece(Color color), Position start, Position end);
 
             inline Piece getPiece() const
             {

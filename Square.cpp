@@ -14,9 +14,9 @@ using namespace SquareSpace;
  */
 
 
-Square::Square(Piece piece(Color color))
+Square::Square(Piece piece)
 {
-    this->piece = piece;
+    this->piece(White) = piece(White);
 }
 
 /**

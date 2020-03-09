@@ -27,19 +27,11 @@ namespace PlayerSpace
 
         public:
 
+            Player();
             /**
  * @param color
  */
             Player(Color color);
-
-            bool canPass();
-
-            int getNbMoves();
-
-            /**
- * @param nbMoves
- */
-            void setNbMoves(int nbMoves);
 
             inline Color getColor() const
             {
@@ -52,6 +44,17 @@ namespace PlayerSpace
             }
 
     };
+
+    static bool canPass();
+
+    static int getNbMoves();
+
+    /**
+* @param nbMoves
+*/
+    static void setNbMoves(int nbMoves);
+
+    static bool isReal(Color color);
 }
 
 #endif //_PLAYER_H

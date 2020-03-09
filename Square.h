@@ -10,6 +10,7 @@
 
 using namespace std;
 using namespace PieceSpace;
+using namespace ColorSpace;
 
 namespace SquareSpace
 {
@@ -24,26 +25,20 @@ namespace SquareSpace
 
             Square(Piece piece);
 
-            bool isFree();
-
-            /**
- * @param color
- */
-            bool isMyOwn(Color color);
-
             inline Piece getPiece() const
             {
                 return this->piece;
             }
 
-            /**
- * @param piece
- */
-            void put(Piece piece);
+            static void put(Piece piece);
 
-            void remove();
+            static void remove();
 
+            static bool isFree();
+
+            static bool isMyOwn(Color color);
     };
+
 }
 
 #endif //_SQUARE_H

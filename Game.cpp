@@ -9,6 +9,8 @@
 
 using namespace std;
 using namespace GameSpace;
+using namespace SquareSpace;
+using namespace BoardSpace;
 
 /**
  * Game implementation
@@ -17,7 +19,7 @@ using namespace GameSpace;
 
 Game::Game()
 {
-    Board board(vector<vector<Square>> squares);
+    Board board(vector<vector<Square>> board);
     Player current(White), oponent(Black);
     Position selected(int row, int column);
 }
@@ -25,8 +27,9 @@ Game::Game()
 /**
  * @return void
  */
-void Game::initialize()
+void initialize()
 {
+    Game game();
     return;
 }
 
@@ -34,7 +37,7 @@ void Game::initialize()
  * @param player
  * @return boolean
  */
-bool Game::foulGame(Player player)
+bool foulGame(Player player)
 {
     return false;
 }
@@ -42,7 +45,7 @@ bool Game::foulGame(Player player)
 /**
  * @return boolean
  */
-bool Game::isOver() {
+bool isOver() {
     return false;
 }
 
@@ -51,21 +54,21 @@ bool Game::isOver() {
  * @param column
  * @return void
  */
-void Game::select(int row , int column) {
+void select(int row , int column) {
     return;
 }
 
 /**
  * @return void
  */
-void Game::swapPlayers() {
+void swapPlayers() {
     return;
 }
 
 /**
  * @return void
  */
-void Game::start() {
+void start() {
     return;
 }
 
@@ -74,7 +77,7 @@ void Game::start() {
  * @return List<Move>
  */
 
-vector<Move> Game::getMoves(Position selected ) {
+vector<Move> getMoves(Position selected ) {
     return null;
 }
 
@@ -82,7 +85,7 @@ vector<Move> Game::getMoves(Position selected ) {
  * @param move
  * @return void
  */
-void Game::apply(Move move ) {
+void apply(Move move ) {
     return;
 }
 
@@ -90,41 +93,41 @@ void Game::apply(Move move ) {
  * @param player
  * @return boolean
  */
-bool Game::hasMoves(Player player) {
+bool hasMoves(Player player) {
     return false;
 }
 
 /**
  * @return Player
  */
-Player Game::getWinner() {
+Player getWinner() {
     return current;
 }
 
 /**
  * @return Board
  */
-Board Game::getBoard() {
+Board getBoard() {
     return null;
 }
 
 /**
  * @return Position
  */
-Position Game::getSelected() {
+Position getSelected() {
     return null;
 }
 
 /**
  * @return Player
  */
-Player Game::getCurrent() {
+Player getCurrent() {
     return null;
 }
 
 /**
  * @return Player
  */
-Player Game::getOpponent() {
+Player getOpponent() {
     return null;
 }

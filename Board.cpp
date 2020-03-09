@@ -5,19 +5,27 @@
 
 
 #include "Board.h"
-#import "Position.h"
-#import "Piece.h"
+#include "Position.h"
+#include "Piece.h"
 #include <iostream>
 
 using namespace std;
+using namespace SquareSpace;
 using namespace BoardSpace;
 
 /**
  * Board implementation
  */
 
-Board::Board(vector<vector<Square>> squares)
+/**
+ * Default constructor needed by the constructor of Game
+ * @brief Board::Board
+ */
+Board::Board() {}
+
+Board::Board(vector<vector<Square>> board)
 {
+//<<<<<<< HEAD
 
     /*Square square(piece);
     for (unsigned i = 0; i < 7; i++)
@@ -28,22 +36,27 @@ Board::Board(vector<vector<Square>> squares)
         }
     }*/
 
-    this->squares = squares;
+    this->board = board;
+//>>>>>>> 2f5bc847de569ce366e2bc42d507824ece4a7f7e
 }
 
 /**
  * @param position
  * @return boolean
  */
-bool Board::isInside(Position position) {
-    return false;
+bool BoardSpace::isInside(Position position)
+{
+    return position.getRow() < 0
+            || position.getRow() > 6
+            || position.getColumn() < 0
+            || position.getColumn() > 6;
 }
 
 /**
  * @param position
  * @return boolean
  */
-bool Board::isFree(Position position) {
+bool isFree(Position position) {
     return false;
 }
 
@@ -52,7 +65,8 @@ bool Board::isFree(Position position) {
  * @param position
  * @return void
  */
-void Board::put(Piece piece, Position position) {
+void put(Piece piece, Position position)
+{
     return;
 }
 
@@ -60,15 +74,48 @@ void Board::put(Piece piece, Position position) {
  * @param player
  * @return List<Position>
  */
-vector<Position>* Board::getTakenSquare(Player player) {
-    return nullptr;
+//<<<<<<< HEAD
+vector<Position> getTakenSquare(Player player)
+{
+    Position pos(0,0);
+    vector<Position> positions;
+    for (unsigned i = 0; i < sizeof(getBoard()); i++)
+    {
+        for (unsigned j = 0; j < sizeof (getBoard()); j++)
+        {
+            if (getBoard()[i][j].getPiece().getColor() == player.getColor())
+            {
+                pos.setRow(i);
+                pos.setColumn(j);
+                positions.push_back(pos);
+            }
+            pos.setRow(0);
+            pos.setColumn(0);
+        }
+    }
+    return positions;
+//>>>>>>> 2f5bc847de569ce366e2bc42d507824ece4a7f7e
 }
 
 /**
- * @return Square [][]
+ * @return vector<vector<Square>>
  */
-vector<vector<Square>>* Board::getSquares() {
-    return nullptr;
+//<<<<<<< HEAD
+
+vector<vector<Square>> BoardSpace::getBoard()
+{
+    vector<vector<Square>> copyBoard;
+    for (unsigned i = 0; i < sizeof (getBoard()); i++)
+    {
+        for (unsigned j = 0; j < sizeof (getBoard()); j++)
+        {
+            Piece p(getBoard()[i][j].getPiece().getColor(), getBoard()[i][j].getPiece().);
+            Square sq();
+            copyBoard.push_back(Square);
+        }
+    }
+    return copyBoard;
+//>>>>>>> 2f5bc847de569ce366e2bc42d507824ece4a7f7e
 }
 
 
@@ -76,7 +123,7 @@ vector<vector<Square>>* Board::getSquares() {
  * @param position
  * @return void
  */
-void Board::remove(Position position) {
+void remove(Position position) {
     return;
 }
 
@@ -84,6 +131,14 @@ void Board::remove(Position position) {
  * @param position
  * @return Piece
  */
-Piece* Board::getPiece(Position position) {
-    return nullptr;
+//<<<<<<< HEAD
+
+Piece getPiece(Position position)
+{
+    if (!isInside(position))
+    {
+        throw invalid_argument("La position n'est pas dans le plateau de jeu !");
+    }
+    return getBoard()[position.getRow()][position.getColumn()].getPiece();
+//>>>>>>> 2f5bc847de569ce366e2bc42d507824ece4a7f7e
 }

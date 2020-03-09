@@ -6,10 +6,13 @@
 #ifndef _COLOR_H
 #define _COLOR_H
 
-enum Color
-{
-    Black,
-    White
-};
+namespace ColorSpace {
+
+    enum Color
+    {
+        Black,
+        White
+    };
+}
 
 #endif //_COLOR_H
