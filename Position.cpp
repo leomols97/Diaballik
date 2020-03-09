@@ -1,0 +1,54 @@
+/**
+ * Project Diaballik
+ */
+
+
+#include "Position.h"
+#include <iostream>
+
+using namespace std;
+using namespace PositionSpace;
+
+/**
+ * Position implementation
+ */
+
+
+/**
+ * Default constructor needed by the constructor of Game
+ * @brief Position
+ */
+Position::Position() {}
+
+/**
+ * @param row
+ * @param column
+ */
+Position::Position(int row, int column)
+{
+    this->row = row;
+    this->column = column;
+}
+
+/**
+ * @param dir
+ * @return Position
+ */
+Position next(Direction direction) {
+    return NULL;
+}
+
+/**
+ * @return int
+ */
+int getRow() {
+    return 0;
+}
+
+/**
+ * @return int
+ */
+int getColumn() {
+    return 0;
+}
+
