@@ -10,10 +10,9 @@
 #import "Piece.h"
 
 using namespace std;
-using namespace PieceSpace;
-using namespace PositionSpace;
+using namespace Diaballik;
 
-namespace MoveSpace
+namespace Diaballik
 {
 
 

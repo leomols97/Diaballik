@@ -7,12 +7,13 @@
 #define _POSITION_H
 #import "Direction.h"
 
-using namespace DirectionSpace;
+using namespace Diaballik;
 
-namespace PositionSpace
+namespace Diaballik
 {
 
-    class Position {
+    class Position
+    {
 
         private:
             int row;
@@ -52,7 +53,7 @@ namespace PositionSpace
     /**
 * @param dir
 */
-    static Position next(Direction Direction);
+     Position next(Direction Direction);
 }
 
 #endif //_POSITION_H

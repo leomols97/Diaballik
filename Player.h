@@ -11,21 +11,20 @@
 #include "vector"
 
 using namespace std;
-using namespace PieceSpace;
+using namespace Diaballik;
 
-namespace PlayerSpace
+namespace Diaballik
 {
-
 
     class Player
     {
 
         private:
             Color color;
-            int nbMoves;
             vector<Piece> pieces;
 
         public:
+            int nbMoves;
 
             Player();
             /**
@@ -45,16 +44,16 @@ namespace PlayerSpace
 
     };
 
-    static bool canPass();
+     bool canPass();
 
-    static int getNbMoves();
+     int getNbMoves();
 
     /**
 * @param nbMoves
 */
-    static void setNbMoves(int nbMoves);
+     void setNbMoves(int nbMoves);
 
-    static bool isReal(Color color);
+     bool isReal(Color color);
 }
 
 #endif //_PLAYER_H

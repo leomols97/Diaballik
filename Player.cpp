@@ -7,8 +7,7 @@
 #include <iostream>
 
 using namespace std;
-using namespace PlayerSpace;
-using namespace ColorSpace;
+using namespace Diaballik;
 
 /**
  * Player implementation
@@ -29,7 +28,7 @@ Player::Player(Color color) {
     vector<Piece> pieces{7};
     for (unsigned i = 0; i < sizeof(pieces); i++)
     {
-        Piece p(color, false, isReal(color));
+        Piece p(color);
         pieces.push_back(p);
     }
 }
@@ -70,21 +69,5 @@ int getNbMoves() {
  * @return void
  */
 void setNbMoves(int nbMoves) {
-    return;
+    Diaballik::Player().nbMoves;
 }
-
-/**
- * @return Color
- */
-/*Color Player::getColor() {
-    return null;
-}
-*/
-
-/**
- * @return List<Piece>
- */
-/*vector<Piece> Player::getPieces() {
-    return null;
-}
-*/

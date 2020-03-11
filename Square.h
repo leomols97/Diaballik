@@ -9,19 +9,21 @@
 #import "Piece.h"
 
 using namespace std;
-using namespace PieceSpace;
-using namespace ColorSpace;
 
-namespace SquareSpace
+namespace Diaballik
 {
 
     class Square
     {
 
         private:
-            Piece piece;
+
 
         public:
+
+            Piece piece;
+
+            Square();
 
             Square(Piece piece);
 
@@ -34,16 +36,16 @@ namespace SquareSpace
     /**
 * @param piece
 */
-    static void put(Piece piece);
+     void put(Piece piece);
 
-    static void remove();
+     void remove();
 
-    static bool isFree();
+     bool isFree();
 
     /**
 * @param color
 */
-    static bool isMyOwn(Color color);
+     bool isMyOwn(Color color);
 }
 
 #endif //_SQUARE_H

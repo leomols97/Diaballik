@@ -1,4 +1,4 @@
-
+﻿
 /**
  * Project Diaballik
  */
@@ -31,20 +31,22 @@ Board::Board(vector<vector<Square>> board)
  * @param position
  * @return boolean
  */
-bool Board::isInside(Position position)
+
+bool isInside(Position position)
 {
-    return position.getRow() < 0
-            || position.getRow() > 6
-            || position.getColumn() < 0
-            || position.getColumn() > 6;
+    return position.getRow() > 0
+            || position.getRow() < 6
+            || position.getColumn() > 0
+            || position.getColumn() < 6;
 }
 
 /**
  * @param position
  * @return boolean
  */
-bool isFree(Position position) {
-    return false;
+bool isFree(Position position)
+{
+    return Board().getPiece(position) == nullptr;
 }
 
 /**
@@ -54,7 +56,7 @@ bool isFree(Position position) {
  */
 void put(Piece piece, Position position)
 {
-    return;
+    Board().getSquare(position).put(piece);
 }
 
 /**
@@ -65,11 +67,11 @@ vector<Position> getTakenSquare(Player player)
 {
     Position pos(0,0);
     vector<Position> positions;
-    for (unsigned i = 0; i < sizeof(getBoard()); i++)
+    for (unsigned i = 0; i < sizeof(Board().getBoard()); i++)
     {
-        for (unsigned j = 0; j < sizeof (getBoard()); j++)
+        for (unsigned j = 0; j < sizeof (Board().getBoard()); j++)
         {
-            if (getBoard()[i][j].getPiece().getColor() == player.getColor())
+            if (Board().getBoard()[i][j].getPiece().getColor() == player.getColor())
             {
                 pos.setRow(i);
                 pos.setColumn(j);
@@ -82,19 +84,24 @@ vector<Position> getTakenSquare(Player player)
     return positions;
 }
 
+Square getSquare(Position position)
+{
+    return Board().board[position.getRow()][position.getColumn()];
+}
+
 /**
  * @return vector<vector<Square>>
  */
-vector<vector<Square>> BoardSpace::getBoard()
+vector<vector<Square>> getBoard()
 {
     vector<vector<Square>> copyBoard;
-    for (unsigned i = 0; i < sizeof (getBoard()); i++)
+    for (unsigned i = 0; i < sizeof (Board().getBoard()); i++)
     {
-        for (unsigned j = 0; j < sizeof (getBoard()); j++)
+        for (unsigned j = 0; j < sizeof (Board().getBoard()); j++)
         {
-            Piece p(getBoard()[i][j].getPiece().getColor(), getBoard()[i][j].getPiece().);
-            Square sq();
-            copyBoard.push_back(Square)
+            Piece p(Board().getBoard()[i][j].getPiece().getColor());
+            Square sq(p);
+            copyBoard.push_back(Square);
         }
     }
     return copyBoard;
@@ -105,7 +112,8 @@ vector<vector<Square>> BoardSpace::getBoard()
  * @param position
  * @return void
  */
-void remove(Position position) {
+void remove(Position position)
+{
     return;
 }
 
@@ -119,5 +127,5 @@ Piece getPiece(Position position)
     {
         throw invalid_argument("La position n'est pas dans le plateau de jeu !");
     }
-    return getBoard()[position.getRow()][position.getColumn()].getPiece();
+    return Board().getSquare(position).getPiece();
 }

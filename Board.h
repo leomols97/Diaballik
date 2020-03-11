@@ -11,61 +11,59 @@
 #include "Player.h"
 
 using namespace std;
-using namespace PieceSpace;
-using namespace PlayerSpace;
-using namespace PositionSpace;
-using namespace SquareSpace;
 
-namespace Diaballik {
-    
-    {
+namespace Diaballik
+{
         
         class Board
         {
                 
             private:
                 
-                vector<vector<Square>> board;
+
                 
             public:
-                
+                vector<vector<Square>> board;
                 Board();
                 Board(vector<vector<Square>> board);
                 
-                /**
-        * @param position
-        */
-                static bool isInside(Position position);
-        };
-        
         /**
 * @param position
 */
-        static bool isFree(Position position);
+        bool isInside(Position position);
+
+        /**
+* @param position
+*/
+        bool isFree(Position position);
         
         /**
 * @param piece
 * @param position
 */
-        static void put(Piece piece, Position position);
+        void put(Piece piece, Position position);
         
-        static vector<vector<Square>> getBoard();
+        vector<vector<Square>> getBoard();
+
+        Square getSquare(Position position);
         
         /**
 * @param player
 */
-        static vector<Position> getTakenSquare(Player player);
+         vector<Position> getTakenSquare(Player player);
         
         /**
 * @param position
 */
-        static void remove(Position position);
+         void remove(Position position);
         
         /**
 * @param position
 */
-        static Piece getPiece(Position position);
-    }
+         Piece getPiece(Position position);
     
+};
 }
+
+
 #endif //_BOARD_H

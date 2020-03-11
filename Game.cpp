@@ -8,9 +8,7 @@
 #include <iostream>
 
 using namespace std;
-using namespace GameSpace;
-using namespace SquareSpace;
-using namespace BoardSpace;
+using namespace Diaballik;
 
 /**
  * Game implementation
@@ -29,8 +27,7 @@ Game::Game()
  */
 void initialize()
 {
-    Game game();
-    return;
+    Game game;
 }
 
 /**
@@ -45,7 +42,8 @@ bool foulGame(Player player)
 /**
  * @return boolean
  */
-bool isOver() {
+bool isOver()
+{
     return false;
 }
 
@@ -54,21 +52,24 @@ bool isOver() {
  * @param column
  * @return void
  */
-void select(int row , int column) {
+void select(int row , int column)
+{
     return;
 }
 
 /**
  * @return void
  */
-void swapPlayers() {
+void swapPlayers()
+{
     return;
 }
 
 /**
  * @return void
  */
-void start() {
+void start()
+{
     return;
 }
 
@@ -77,7 +78,8 @@ void start() {
  * @return List<Move>
  */
 
-vector<Move> getMoves(Position selected ) {
+vector<Move> getMoves(Position selected )
+{
     return null;
 }
 
@@ -85,7 +87,8 @@ vector<Move> getMoves(Position selected ) {
  * @param move
  * @return void
  */
-void apply(Move move ) {
+void apply(Move move )
+{
     return;
 }
 
@@ -93,41 +96,47 @@ void apply(Move move ) {
  * @param player
  * @return boolean
  */
-bool hasMoves(Player player) {
+bool hasMoves(Player player)
+{
     return false;
 }
 
 /**
  * @return Player
  */
-Player getWinner() {
-    return current;
+Player getWinner()
+{
+    return Game().current;
 }
 
 /**
  * @return Board
  */
-Board getBoard() {
-    return null;
+Board getBoard()
+{
+    return Board().board;
 }
 
 /**
  * @return Position
  */
-Position getSelected() {
+Position getSelected()
+{
     return null;
 }
 
 /**
  * @return Player
  */
-Player getCurrent() {
+Player getCurrent()
+{
     return null;
 }
 
 /**
  * @return Player
  */
-Player getOpponent() {
+Player getOpponent()
+{
     return null;
 }

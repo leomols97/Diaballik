@@ -12,24 +12,24 @@
 #import "Board.h"
 
 using namespace std;
-using namespace BoardSpace;
-using namespace PlayerSpace;
-using namespace MoveSpace;
-using namespace PositionSpace;
+using namespace Diaballik;
 
-namespace GameSpace {
+namespace Diaballik
+{
+
+    class Game: public Model
+    {
+
+        protected:
 
 
-    class Game: public Model {
 
-        private:
+        public:
 
             Board board;
             Player current;
             Player opponent;
             Position selected;
-
-        public:
 
             Game();
 
@@ -57,40 +57,41 @@ namespace GameSpace {
 
     };
 
-    static void initialize();
+
+    void initialize();
 
     /**
 * @param player
 */
-    static bool foulGame(Player player );
+    bool foulGame(Player player );
 
-    static bool isOver();
+    bool isOver();
 
     /**
 * @param row
 * @param column
 */
-    static void select(int row , int column);
+    void select(int row , int column);
 
-    static void swapPlayers();
+    void swapPlayers();
 
-    static void start();
+    void start();
 
     /**
 * @param selected
 */
-    static vector<Move> getMoves(Position selected );
+    vector<Move> getMoves(Position selected );
 
     /**
 * @param move
 */
-    static void apply(Move move );
+    void apply(Move move );
 
     /**
 * @param player
 */
-    static bool hasMoves(Player player);
+    bool hasMoves(Player player);
 
-    static Player getWinner();
+    Player getWinner();
 }
 #endif //_GAME_H

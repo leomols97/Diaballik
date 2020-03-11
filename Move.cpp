@@ -9,8 +9,7 @@
 #include <iostream>
 
 using namespace std;
-using namespace MoveSpace;
-using namespace DirectionSpace;
+using namespace Diaballik;
 
 /**
  * Move implementation
@@ -23,26 +22,8 @@ using namespace DirectionSpace;
  * @param end
  */
 Move::Move(Piece piece, Position start, Position end) {
-
+    this->piece = piece;
+    this->end = end;
+    this->start = start;
 }
 
-/**
- * @return Piece
- */
-Piece Move::getPiece() {
-    return null;
-}
-
-/**
- * @return position
- */
-Position Move::getStart() {
-    return null;
-}
-
-/**
- * @return Position
- */
-Position Move::getEnd() {
-    return null;
-}

@@ -8,17 +8,18 @@
 #include <iostream>
 
 using namespace std;
-using namespace PieceSpace;
-using namespace ColorSpace;
+using namespace Diaballik;
 
 /**
  * Piece implementation
  */
 
+Piece::Piece(){}
+
 /**
  * @param color
  */
-Piece::Piece(Color color, bool hasBall, bool real)
+Piece::Piece(Color color)
 {
     this->color = color;
     real = true;
@@ -28,23 +29,28 @@ Piece::Piece(Color color, bool hasBall, bool real)
 /**
  * @return boolean
  */
-bool Piece::canPassBall() {
+bool canPassBall() {
     return false;
 }
 
 /**
  * @return void
  */
-void Piece::passBall() {
+void passBall() {
     return;
 }
 
 Color getColor()
 {
-    return this
+    return this->color;
 }
 
 bool getHasBall()
 {
-    return
+    return true;
+}
+
+void Diaballik::setColor(Color color)
+{
+    color = color;
 }

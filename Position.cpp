@@ -7,7 +7,7 @@
 #include <iostream>
 
 using namespace std;
-using namespace PositionSpace;
+using namespace Diaballik;
 
 /**
  * Position implementation
@@ -35,20 +35,20 @@ Position::Position(int row, int column)
  * @return Position
  */
 Position next(Direction direction) {
-    return NULL;
+    return null;
 }
 
 /**
  * @return int
  */
 int getRow() {
-    return 0;
+    return this.row;
 }
 
 /**
  * @return int
  */
 int getColumn() {
-    return 0;
+    return this.column;
 }
 
