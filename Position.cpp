@@ -34,14 +34,8 @@ Position::Position(int row, int column)
  * @param dir
  * @return Position
  */
-<<<<<<< HEAD
-Position next(Direction direction)
-{
-    return NULL;
-=======
 Position next(Direction direction) {
     return null;
->>>>>>> 464b33679382e25399a8e076f2ccf3baa5df2c5a
 }
 
 /**

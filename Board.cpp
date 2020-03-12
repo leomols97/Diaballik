@@ -24,13 +24,6 @@ Board::Board() {}
 
 Board::Board(vector<vector<Square>> board)
 {
-    for (unsigned i = 0; i < 7; i++)
-    {
-        for (unsigned i = 0; i < 7; i++)
-        {
-            Square
-        }
-    }
     this->board = board;
 }
 
