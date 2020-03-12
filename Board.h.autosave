@@ -20,10 +20,10 @@ namespace Diaballik
                 
             private:
                 
-
+                vector<vector<Square>> board;
                 
             public:
-                vector<vector<Square>> board;
+                
                 Board();
                 Board(vector<vector<Square>> board);
                 

@@ -25,7 +25,7 @@ namespace Diaballik
             // Cela permet de gérer des objets
 
         public:
-
+            
             /**
  * @param color
  */

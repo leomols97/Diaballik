@@ -2,7 +2,6 @@
  * Project Diaballik
  */
 
-
 #include "Piece.h"
 #include "Color.h"
 #include <iostream>
@@ -40,7 +39,7 @@ void passBall() {
     return;
 }
 
-Color getColor()
+Color Piece::getColor()
 {
     return this->color;
 }

@@ -104,13 +104,9 @@ bool hasMoves(Player player)
 /**
  * @return Player
  */
-Player getWinner()
+Player Game::getWinner()
 {
-<<<<<<< HEAD
     return this->current;
-=======
-    return Game().current;
->>>>>>> 464b33679382e25399a8e076f2ccf3baa5df2c5a
 }
 
 /**
@@ -126,7 +122,7 @@ Board getBoard()
  */
 Position getSelected()
 {
-    return null;
+    return Game().selected;
 }
 
 /**
@@ -134,7 +130,7 @@ Position getSelected()
  */
 Player getCurrent()
 {
-    return null;
+    return Game().current;
 }
 
 /**
@@ -142,5 +138,5 @@ Player getCurrent()
  */
 Player getOpponent()
 {
-    return null;
+    return Game().opponent;
 }

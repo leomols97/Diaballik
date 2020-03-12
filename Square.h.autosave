@@ -17,11 +17,12 @@ namespace Diaballik
     {
 
         private:
-
+            
+             Piece piece;
 
         public:
 
-            Piece piece;
+           
 
             Square();
 
@@ -31,21 +32,22 @@ namespace Diaballik
             {
                 return this->piece;
             }
+            
+            /**
+        * @param piece
+        */
+            void put(Piece piece);
+       
+            void remove();
+       
+            bool isFree();
+            
+            /**
+        * @param color
+        */
+            bool isMyOwn(Color color);
     };
-
-    /**
-* @param piece
-*/
-     void put(Piece piece);
-
-     void remove();
-
-     bool isFree();
-
-    /**
-* @param color
-*/
-     bool isMyOwn(Color color);
+    
 }
 
 #endif //_SQUARE_H

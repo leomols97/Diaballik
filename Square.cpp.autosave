@@ -40,9 +40,12 @@ bool isMyOwn(Color color)
  * @param piece
  * @return void
  */
-void put(Piece piece)
+void Square::put(Piece piece)
 {
-    Square().piece = piece;
+    if(isFree()){
+        this->piece = piece;
+    }
+    
 }
 
 /**
