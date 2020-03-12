@@ -33,6 +33,7 @@ namespace Diaballik
             Piece(Color color);
 
             Color getColor();
+            void setColor(Color color);
     };
 
     /**
@@ -48,6 +49,6 @@ namespace Diaballik
 
      bool getReal();
 
-     void setColor(Color color);
+     
 }
 #endif //_PIECE_H

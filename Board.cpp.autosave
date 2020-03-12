@@ -24,7 +24,6 @@ Board::Board() {}
 
 Board::Board(vector<vector<Square>> board)
 {
-    vector<vector<Square>> copyBoard;
     for (unsigned i = 0; i < sizeof (Board().getBoard()); i++)
     {
         vector<Square> lign;
@@ -34,7 +33,7 @@ Board::Board(vector<vector<Square>> board)
             Square sq(p);
             lign.push_back(sq);
         }
-        copyBoard.push_back(lign);
+        board.push_back(lign);
     }
 }
 
@@ -105,7 +104,7 @@ Square Board::getSquare(Position position)
  */
 vector<vector<Square>> Board::getBoard()
 {
-    return this->
+    return this->board;
 }
 
 

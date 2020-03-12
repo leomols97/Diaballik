@@ -49,7 +49,7 @@ bool getHasBall()
     return true;
 }
 
-void Diaballik::setColor(Color color)
+void Piece::setColor(Color color)
 {
-    color = color;
+    this->color = color;
 }

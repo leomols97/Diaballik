@@ -98,7 +98,7 @@ void apply(Move move )
  */
 bool hasMoves(Player player)
 {
-    return false;
+    return player.getNbMoves() > 0;
 }
 
 /**
