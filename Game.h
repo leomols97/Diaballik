@@ -20,16 +20,16 @@ namespace Diaballik
     class Game: public Model
     {
 
-        protected:
-
-
-
-        public:
+        private:
 
             Board board;
             Player current;
             Player opponent;
             Position selected;
+
+        public:
+
+            
 
             Game();
 
@@ -55,6 +55,7 @@ namespace Diaballik
                 return opponent;
             }
 
+            Player getWinner();
     };
 
 
@@ -91,7 +92,5 @@ namespace Diaballik
 * @param player
 */
     bool hasMoves(Player player);
-
-    Player getWinner();
 }
 #endif //_GAME_H

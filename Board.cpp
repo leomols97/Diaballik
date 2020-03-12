@@ -24,7 +24,17 @@ Board::Board() {}
 
 Board::Board(vector<vector<Square>> board)
 {
-    this->board = board;
+    for (unsigned i = 0; i < sizeof (Board().getBoard()); i++)
+    {
+        vector<Square> lign;
+        for (unsigned j = 0; j < sizeof (Board().getBoard()); j++)
+        {
+            Piece p(Board().getBoard()[i][j].getPiece().getColor());
+            Square sq(p);
+            lign.push_back(sq);
+        }
+        board.push_back(lign);
+    }
 }
 
 /**
@@ -46,7 +56,7 @@ bool isInside(Position position)
  */
 bool isFree(Position position)
 {
-    return Board().getPiece(position) == nullptr;
+    return Board().getPiece(position) == nullptr;  //il faut transformer Piece en pointeur
 }
 
 /**
@@ -84,27 +94,17 @@ vector<Position> getTakenSquare(Player player)
     return positions;
 }
 
-Square getSquare(Position position)
+Square Board::getSquare(Position position)
 {
-    return Board().board[position.getRow()][position.getColumn()];
+    return this->board[position.getRow()][position.getColumn()];
 }
 
 /**
  * @return vector<vector<Square>>
  */
-vector<vector<Square>> getBoard()
+vector<vector<Square>> Board::getBoard()
 {
-    vector<vector<Square>> copyBoard;
-    for (unsigned i = 0; i < sizeof (Board().getBoard()); i++)
-    {
-        for (unsigned j = 0; j < sizeof (Board().getBoard()); j++)
-        {
-            Piece p(Board().getBoard()[i][j].getPiece().getColor());
-            Square sq(p);
-            copyBoard.push_back(Square);
-        }
-    }
-    return copyBoard;
+    return this->board;
 }
 
 
@@ -114,7 +114,7 @@ vector<vector<Square>> getBoard()
  */
 void remove(Position position)
 {
-    return;
+    return;//il faut transformer Piece en pointeur
 }
 
 /**

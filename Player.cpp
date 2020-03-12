@@ -60,8 +60,8 @@ bool canPass() {
 /**
  * @return int
  */
-int getNbMoves() {
-    return 0;
+int Player::getNbMoves() {
+    return this->nbMoves;
 }
 
 /**
@@ -69,5 +69,5 @@ int getNbMoves() {
  * @return void
  */
 void setNbMoves(int nbMoves) {
-    Diaballik::Player().nbMoves;
+    
 }

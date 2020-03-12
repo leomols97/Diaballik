@@ -98,15 +98,15 @@ void apply(Move move )
  */
 bool hasMoves(Player player)
 {
-    return false;
+    return player.getNbMoves() > 0;
 }
 
 /**
  * @return Player
  */
-Player getWinner()
+Player Game::getWinner()
 {
-    return Game().current;
+    return this->current;
 }
 
 /**
@@ -122,7 +122,7 @@ Board getBoard()
  */
 Position getSelected()
 {
-    return null;
+    return Game().selected;
 }
 
 /**
@@ -130,7 +130,7 @@ Position getSelected()
  */
 Player getCurrent()
 {
-    return null;
+    return Game().current;
 }
 
 /**
@@ -138,5 +138,5 @@ Player getCurrent()
  */
 Player getOpponent()
 {
-    return null;
+    return Game().opponent;
 }
