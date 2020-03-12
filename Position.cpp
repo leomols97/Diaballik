@@ -34,7 +34,8 @@ Position::Position(int row, int column)
  * @param dir
  * @return Position
  */
-Position next(Direction direction) {
+Position next(Direction direction)
+{
     return NULL;
 }
 

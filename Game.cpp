@@ -107,7 +107,7 @@ bool hasMoves(Player player)
  */
 Player getWinner()
 {
-    return current;
+    return this->current;
 }
 
 /**
