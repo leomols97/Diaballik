@@ -106,7 +106,11 @@ bool hasMoves(Player player)
  */
 Player getWinner()
 {
+<<<<<<< HEAD
+    return this->current;
+=======
     return Game().current;
+>>>>>>> 464b33679382e25399a8e076f2ccf3baa5df2c5a
 }
 
 /**
