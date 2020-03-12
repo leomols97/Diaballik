@@ -18,34 +18,34 @@ namespace Diaballik
 
         private:
 
+            Piece * piece;
+
 
         public:
-
-            Piece piece;
 
             Square();
 
             Square(Piece piece);
 
-            inline Piece getPiece() const
+            inline Piece * getPiece()
             {
-                return this->piece;
+                return piece;
             }
+
+            /**
+        * @param piece
+        */
+             void put(Piece piece);
+
+             void remove();
+
+             /**
+         * @param color
+         */
+              bool isMyOwn(Color color);
+
+              bool isFree();
     };
-
-    /**
-* @param piece
-*/
-     void put(Piece piece);
-
-     void remove();
-
-     bool isFree();
-
-    /**
-* @param color
-*/
-     bool isMyOwn(Color color);
 }
 
 #endif //_SQUARE_H

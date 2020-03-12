@@ -20,11 +20,13 @@ namespace Diaballik
     {
 
         private:
-            Color color;
+
+            Color * color;
             vector<Piece> pieces;
+            int nbMoves;
+
 
         public:
-            int nbMoves;
 
             Player();
             /**
@@ -32,7 +34,7 @@ namespace Diaballik
  */
             Player(Color color);
 
-            inline Color getColor() const
+            inline Color * getColor() const
             {
                 return color;
             }

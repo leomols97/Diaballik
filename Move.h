@@ -20,14 +20,16 @@ namespace Diaballik
     {
 
         private:
+
             Piece piece;
             Position start;
             Position end;
 
+
         public:
 
             /**
- * @param piece
+    * @param piece
  * @param start
  * @param end
  */

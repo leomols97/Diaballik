@@ -61,7 +61,7 @@ bool canPass() {
  * @return int
  */
 int getNbMoves() {
-    return 0;
+    return BLABLA;
 }
 
 /**

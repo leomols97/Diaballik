@@ -2,7 +2,6 @@
  * Project Diaballik
  */
 
-
 #include "Piece.h"
 #include "Color.h"
 #include <iostream>
@@ -21,7 +20,7 @@ Piece::Piece(){}
  */
 Piece::Piece(Color color)
 {
-    this->color = color;
+    this->color = &color;
     real = true;
     hasBall = false;
 }
@@ -36,13 +35,9 @@ bool canPassBall() {
 /**
  * @return void
  */
-void passBall() {
-    return;
-}
-
-Color getColor()
+void passBall()
 {
-    return this->color;
+    return BLABLA;
 }
 
 bool getHasBall()
@@ -50,7 +45,7 @@ bool getHasBall()
     return true;
 }
 
-void Diaballik::setColor(Color color)
+void Piece::setColor(Color color)
 {
-    color = color;
+    this->color = &color;
 }

@@ -16,11 +16,14 @@ namespace Diaballik
     {
 
         private:
+
             int row;
             int column;
 
+
         public:
 
+            
             Position();
 
             /**

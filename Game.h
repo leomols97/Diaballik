@@ -20,40 +20,56 @@ namespace Diaballik
     class Game: public Model
     {
 
-        protected:
-
-
-
-        public:
+        private:
 
             Board board;
             Player current;
             Player opponent;
             Position selected;
 
+
+        public:
+
             Game();
 
             // ATTENTION IL NE FAUT PAS OUBLIER LES DESTRUCTEURS !!!!!!!!!
 
+            /**
+             * @return Board
+             */
             inline Board getBoard() const
             {
                 return board;
             }
 
+            /**
+             * @brief getSelected
+             * @return
+             */
             inline Position getSelected() const
             {
                 return selected;
             }
 
+            /**
+             * @brief getCurrent
+             * @return
+             */
             inline Player getCurrent() const
             {
                 return current;
             }
 
+            /**
+             * @brief getOpponent
+             * @return
+             */
             inline Player getOpponent() const
             {
                 return opponent;
             }
+
+            Player getWinner();
 
     };
 
@@ -92,6 +108,5 @@ namespace Diaballik
 */
     bool hasMoves(Player player);
 
-    Player getWinner();
 }
 #endif //_GAME_H

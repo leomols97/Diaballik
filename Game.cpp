@@ -54,7 +54,7 @@ bool isOver()
  */
 void select(int row , int column)
 {
-    return;
+    return BLABLA;
 }
 
 /**
@@ -62,7 +62,7 @@ void select(int row , int column)
  */
 void swapPlayers()
 {
-    return;
+    return BLABLA;
 }
 
 /**
@@ -70,7 +70,7 @@ void swapPlayers()
  */
 void start()
 {
-    return;
+    return BLABLA;
 }
 
 /**
@@ -78,7 +78,7 @@ void start()
  * @return List<Move>
  */
 
-vector<Move> getMoves(Position selected )
+vector<Move> getMoves(Position selected)
 {
     return null;
 }
@@ -87,9 +87,9 @@ vector<Move> getMoves(Position selected )
  * @param move
  * @return void
  */
-void apply(Move move )
+void apply(Move move)
 {
-    return;
+    return BLABLA;
 }
 
 /**
@@ -98,45 +98,14 @@ void apply(Move move )
  */
 bool hasMoves(Player player)
 {
-    return false;
+    return BLABLA;
 }
 
 /**
  * @return Player
  */
-Player getWinner()
+Player Game::getWinner()
 {
-    return Game().current;
+    return this->current;
 }
 
-/**
- * @return Board
- */
-Board getBoard()
-{
-    return Board().board;
-}
-
-/**
- * @return Position
- */
-Position getSelected()
-{
-    return null;
-}
-
-/**
- * @return Player
- */
-Player getCurrent()
-{
-    return null;
-}
-
-/**
- * @return Player
- */
-Player getOpponent()
-{
-    return null;
-}
