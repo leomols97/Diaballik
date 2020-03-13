@@ -21,7 +21,8 @@ using namespace Diaballik;
  * @param start
  * @param end
  */
-Move::Move(Piece piece, Position start, Position end) {
+Move::Move(Piece piece, Position start, Position end)
+{
     this->piece = piece;
     this->end = end;
     this->start = start;

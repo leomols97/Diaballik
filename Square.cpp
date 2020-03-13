@@ -17,7 +17,7 @@ Square::Square(){}
 
 Square::Square(Piece piece)
 {
-    this->piece = piece;
+    this->piece = &piece;
 }
 
 /**
@@ -31,9 +31,9 @@ bool isFree() {
  * @param color
  * @return boolean
  */
-bool isMyOwn(Color color)
+bool Square::isMyOwn(Color color)
 {
-    return Square().getPiece().getColor()==color;
+    return this->getPiece()->getColor() == &color;
 }
 
 /**
@@ -43,15 +43,15 @@ bool isMyOwn(Color color)
 void Square::put(Piece piece)
 {
     if(isFree()){
-        this->piece = piece;
+        this->piece = &piece;
     }
-    
+    //this->piece = &piece;
 }
 
 /**
  * @return void
  */
-void remove()
+void Square::remove()
 {
-    return;
+    this->piece = nullptr;
 }

@@ -26,6 +26,13 @@ namespace Diaballik
                 
                 Board();
                 Board(vector<vector<Square>> board);
+
+                /**
+        * @param position
+        */
+                 Piece * getPiece(Position position);
+                 Square getSquare(Position position);
+                 vector<vector<Square>> getBoard();
                 
         /**
 * @param position
@@ -43,10 +50,6 @@ namespace Diaballik
 */
         void put(Piece piece, Position position);
         
-        vector<vector<Square>> getBoard();
-
-        Square getSquare(Position position);
-        
         /**
 * @param player
 */
@@ -56,11 +59,6 @@ namespace Diaballik
 * @param position
 */
          void remove(Position position);
-        
-        /**
-* @param position
-*/
-         Piece getPiece(Position position);
     
 };
 }

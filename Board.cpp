@@ -24,12 +24,15 @@ Board::Board() {}
 
 Board::Board(vector<vector<Square>> board)
 {
+    Position pos(0,0);
     for (unsigned i = 0; i < sizeof (Board().getBoard()); i++)
     {
         vector<Square> lign;
         for (unsigned j = 0; j < sizeof (Board().getBoard()); j++)
         {
-            Piece p(Board().getBoard()[i][j].getPiece().getColor());
+            pos.setRow(i);
+            pos.setColumn(j);
+            Piece p(Board().getSquare(pos).getPiece()->getColor());
             Square sq(p);
             lign.push_back(sq);
         }
@@ -45,9 +48,9 @@ Board::Board(vector<vector<Square>> board)
 bool isInside(Position position)
 {
     return position.getRow() > 0
-            || position.getRow() < 6
-            || position.getColumn() > 0
-            || position.getColumn() < 6;
+            && position.getRow() < 6
+            && position.getColumn() > 0
+            && position.getColumn() < 6;
 }
 
 /**
@@ -79,12 +82,12 @@ vector<Position> getTakenSquare(Player player)
     vector<Position> positions;
     for (unsigned i = 0; i < sizeof(Board().getBoard()); i++)
     {
-        for (unsigned j = 0; j < sizeof (Board().getBoard()); j++)
+        for (unsigned j = 0; j < sizeof (sizeof(Board().getBoard())); j++)
         {
-            if (Board().getBoard()[i][j].getPiece().getColor() == player.getColor())
+            pos.setRow(i);
+            pos.setColumn(j);
+            if (Board().getSquare(pos).getPiece()->getColor() == player.getColor())
             {
-                pos.setRow(i);
-                pos.setColumn(j);
                 positions.push_back(pos);
             }
             pos.setRow(0);
@@ -114,14 +117,14 @@ vector<vector<Square>> Board::getBoard()
  */
 void remove(Position position)
 {
-    return;//il faut transformer Piece en pointeur
+    Board().getSquare(position).remove();
 }
 
 /**
  * @param position
  * @return Piece
  */
-Piece getPiece(Position position)
+Piece * getPiece(Position position)
 {
     if (!isInside(position))
     {

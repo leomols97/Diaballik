@@ -20,9 +20,9 @@ Piece::Piece(){}
  */
 Piece::Piece(Color *color)
 {
-    this->color = color;
-    real = true;
-    hasBall = false;
+    p.colorptr = color;
+    p.real = true;
+    p.hasBall = false;
 }
 
 /**
@@ -48,5 +48,5 @@ bool getHasBall()
 
 void Piece::setColor(Color color)
 {
-    this->color = &color;
+    p.color = color;
 }

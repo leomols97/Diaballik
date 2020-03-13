@@ -52,17 +52,22 @@ bool isOver()
  * @param column
  * @return void
  */
-void select(int row , int column)
+void Game::select(int row , int column)
 {
-    return BLABLA;
+    //exceptions à rajouter
+    this->selected = Position(row, column);
 }
 
 /**
  * @return void
  */
-void swapPlayers()
+void Game::swapPlayers()
 {
-    return BLABLA;
+    if (!hasMoves(current)/*autre condition à rajouter s'il décide de ne pas utiliser tous ses mouvements*/) {
+        Player provisoire = current;
+        current = opponent;
+        opponent = provisoire;
+    }
 }
 
 /**
@@ -87,17 +92,23 @@ vector<Move> getMoves(Position selected)
  * @param move
  * @return void
  */
-void apply(Move move)
+void Game::apply(Move move)
 {
-    return BLABLA;
+    // créer 2 méthodes getPiece(move) (une qui retourne un pointeur de piece et l'autre une piece)
+    Piece piece = board.getPiece(move.getStart());
+    if (board.isFree(move.getEnd())) {
+        board.remove(move.getStart());
+        board.put(piece, move.getEnd());
+    }
+         
 }
-
 /**
  * @param player
  * @return boolean
  */
 bool hasMoves(Player player)
 {
+    
     return player.getNbMoves() > 0;
     //return BLABLA;
 }
@@ -107,5 +118,6 @@ bool hasMoves(Player player)
  */
 Player Game::getWinner()
 {
+    //rajouter condition de anti-jeu
     return this->current;
 }

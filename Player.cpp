@@ -23,7 +23,7 @@ Player::Player() {}
  * @param color
  */
 Player::Player(Color color) {
-    this->color = color;
+    this->color = &color;
     this->nbMoves = 2;
     vector<Piece> pieces{7};
     for (unsigned i = 0; i < sizeof(pieces); i++)
@@ -60,8 +60,9 @@ bool canPass() {
 /**
  * @return int
  */
-int Player::getNbMoves() {
-    return this->nbMoves;
+
+int getNbMoves() {
+    return BLABLA;
 }
 
 /**
