@@ -71,9 +71,20 @@ namespace Diaballik
 
             Player getWinner();
 
+<<<<<<< HEAD
             void select(int row , int column);
 
             void swapPlayers();
+=======
+            /**
+        * @param row
+        * @param column
+        */
+            void select(int row , int column);
+
+            void swapPlayers();
+    };
+>>>>>>> f1cfbaca4fb4ad9cce51408e3d570aae2000e877
 
             void start();
 
@@ -86,6 +97,7 @@ namespace Diaballik
 
             bool isOver();
 
+<<<<<<< HEAD
             /**
         * @param row
         * @param column
@@ -100,6 +112,9 @@ namespace Diaballik
         * @param move
         */
             void apply(Move move );
+=======
+    void start();
+>>>>>>> f1cfbaca4fb4ad9cce51408e3d570aae2000e877
 
             /**
         * @param player

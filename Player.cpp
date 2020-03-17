@@ -28,7 +28,7 @@ Player::Player(Color color) {
     vector<Piece> pieces{7};
     for (unsigned i = 0; i < sizeof(pieces); i++)
     {
-        Piece p(color);
+        Piece p(&color);
         pieces.push_back(p);
     }
 }

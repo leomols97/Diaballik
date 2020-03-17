@@ -100,7 +100,11 @@ void Game::apply(Move move)
         board.remove(move.getStart());
         board.put(piece, move.getEnd());
     }
+<<<<<<< HEAD
 
+=======
+         
+>>>>>>> f1cfbaca4fb4ad9cce51408e3d570aae2000e877
 }
 /**
  * @param player
@@ -110,7 +114,6 @@ bool hasMoves(Player player)
 {
 
     return player.getNbMoves() > 0;
-    //return BLABLA;
 }
 
 /**

@@ -32,9 +32,26 @@ Board::Board(vector<vector<Square>> board)
         {
             pos.setRow(i);
             pos.setColumn(j);
-            Piece p(Board().getSquare(pos).getPiece()->getColor());
-            Square sq(p);
-            lign.push_back(sq);
+            if (i == 0 || i == 1)
+            {
+                Color c(Black);
+                Piece p(&c);
+                Square sq(&p);
+                lign.push_back(sq);
+            }
+            else if (i == 5 || i == 6)
+            {
+                Color c(White);
+                Piece p(&c);
+                Square sq(&p);
+                lign.push_back(sq);
+            }
+            else
+            {
+                Piece p;
+                Square sq(&p);
+                lign.push_back(sq);
+            }
         }
         board.push_back(lign);
     }
@@ -59,7 +76,7 @@ bool isInside(Position position)
  */
 bool isFree(Position position)
 {
-    return Board().getPiece(position) == nullptr;  //il faut transformer Piece en pointeur
+    return Board().getPiece(&position) == nullptr;  //il faut transformer Piece en pointeur
 }
 
 /**
@@ -69,14 +86,14 @@ bool isFree(Position position)
  */
 void put(Piece piece, Position position)
 {
-    Board().getSquare(position).put(piece);
+    Board().getSquare(&position).put(&piece);
 }
 
 /**
  * @param player
  * @return List<Position>
  */
-vector<Position> getTakenSquare(Player player)
+vector<Position> getTakenSquare(Player *player)
 {
     Position pos(0,0);
     vector<Position> positions;
@@ -86,7 +103,7 @@ vector<Position> getTakenSquare(Player player)
         {
             pos.setRow(i);
             pos.setColumn(j);
-            if (Board().getSquare(pos).getPiece()->getColor() == player.getColor())
+            if (Board().isMyOwn(pos, player->getColor()))
             {
                 positions.push_back(pos);
             }
@@ -97,9 +114,9 @@ vector<Position> getTakenSquare(Player player)
     return positions;
 }
 
-Square Board::getSquare(Position position)
+Square Board::getSquare(Position *position)
 {
-    return this->board[position.getRow()][position.getColumn()];
+    return this->board[position->getRow()][position->getColumn()];
 }
 
 /**
@@ -117,7 +134,7 @@ vector<vector<Square>> Board::getBoard()
  */
 void remove(Position position)
 {
-    Board().getSquare(position).remove();
+    Board().getSquare(&position).remove();
 }
 
 /**
@@ -130,5 +147,10 @@ Piece * getPiece(Position position)
     {
         throw invalid_argument("La position n'est pas dans le plateau de jeu !");
     }
-    return Board().getSquare(position).getPiece();
+    return Board().getSquare(&position).getPiece();
+}
+
+bool isMyOwn(Position position, Color color)
+{
+    return Board().getPiece(&position)->getColor() == color;
 }
