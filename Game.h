@@ -78,34 +78,33 @@ namespace Diaballik
             void select(int row , int column);
 
             void swapPlayers();
+
+
+            void initialize();
+
+            /**
+        * @param player
+        */
+            bool foulGame(Player player );
+
+            bool isOver();
+
+            void start();
+
+            /**
+        * @param selected
+        */
+            vector<Move> getMoves(Position *selected);
+
+            /**
+        * @param move
+        */
+            void apply(Move move );
+
+            /**
+        * @param player
+        */
+            bool hasMoves(Player player);
     };
-
-
-    void initialize();
-
-    /**
-* @param player
-*/
-    bool foulGame(Player player );
-
-    bool isOver();
-
-    void start();
-
-    /**
-* @param selected
-*/
-    vector<Move> getMoves(Position selected );
-
-    /**
-* @param move
-*/
-    void apply(Move move );
-
-    /**
-* @param player
-*/
-    bool hasMoves(Player player);
-
 }
 #endif //_GAME_H

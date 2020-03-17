@@ -42,7 +42,7 @@ namespace Diaballik
              /**
          * @param color
          */
-              bool isMyOwn(Color color);
+              bool isMyOwn(Color *color);
 
               bool isFree();
     };

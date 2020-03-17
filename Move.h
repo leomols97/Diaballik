@@ -21,35 +21,34 @@ namespace Diaballik
 
         private:
 
-            Piece piece;
-            Position start;
-            Position end;
+            Piece *piece;
+            Position *start;
+            Position *end;
 
 
         public:
 
             /**
-    * @param piece
- * @param start
- * @param end
- */
+            * @param piece
+            * @param start
+            * @param end
+            */
             Move(Piece piece, Position start, Position end);
 
-            inline Piece getPiece() const
+            inline Piece * getPiece() const
             {
                 return piece;
             }
 
-            inline Position getStart() const
+            inline Position * getStart() const
             {
                 return start;
             }
 
-            inline Position getEnd() const
+            inline Position * getEnd() const
             {
                 return end;
             }
-
     };
 }
 #endif //_MOVE_H

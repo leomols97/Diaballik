@@ -20,7 +20,7 @@ Piece::Piece(){}
  */
 Piece::Piece(Color *color)
 {
-    this->color = *color;
+    this->color = color;
     this->real = true;
     this->hasBall = false;
 }
@@ -46,7 +46,7 @@ bool getHasBall()
     return true;
 }
 
-void Piece::setColor(Color color)
+void Piece::setColor(Color *color)
 {
     this->color = color;
 }

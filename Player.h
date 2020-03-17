@@ -33,7 +33,7 @@ namespace Diaballik
  */
             Player(Color color);
 
-            Color getColor()
+            Color *getColor()
             {
                 return color;
             }

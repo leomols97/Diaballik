@@ -36,6 +36,9 @@ void initialize()
  */
 bool foulGame(Player player)
 {
+    /**
+      Si toutes les pièces collées à une pièce adverse ne peuvent pas faire de mouvemùent vers l'avant, c'est foulGame
+      */
     return false;
 }
 
@@ -54,7 +57,15 @@ bool isOver()
  */
 void Game::select(int row , int column)
 {
-    //exceptions à rajouter
+    Position p(row, column);
+    try
+    {
+        Board().isInside(&p);
+    }
+    catch (const exception &e)
+    {
+        cout << "La position que vous essayez de sélectionner n'est pas sur le plateau de jeu";
+    }
     this->selected = Position(row, column);
 }
 
@@ -82,9 +93,13 @@ void start()
  * @param selected
  * @return List<Move>
  */
-
-vector<Move> getMoves(Position selected)
+vector<Move> getMoves(Position *selected)
 {
+    if (Board().getSquare(selected).isMyOwn(Game().getCurrent().getColor()))
+    {
+
+    }
+
     return null;
 }
 
@@ -94,14 +109,14 @@ vector<Move> getMoves(Position selected)
  */
 void Game::apply(Move move)
 {
-    // créer 2 méthodes getPiece(move) (une qui retourne un pointeur de piece et l'autre une piece)
-    Piece piece = board.getPiece(move.getStart());
+    Piece piece(Board().getPiece(move.getEnd())->getColor());
     if (board.isFree(move.getEnd())) {
         board.remove(move.getStart());
-        board.put(piece, move.getEnd());
+        board.put(&piece, move.getEnd());
     }
          
 }
+
 /**
  * @param player
  * @return boolean
