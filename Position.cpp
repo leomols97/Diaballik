@@ -34,7 +34,10 @@ Position::Position(int row, int column)
  * @param dir
  * @return Position
  */
-Position next(Direction direction) {
-    return null;
+Position Position::next(Direction direction) {
+    Position p(this->row, this->column);
+    p.row = p.getRow() + direction.getRow();
+    p.column = p.getColumn() + direction.getColumn();
+    return p;
 }
 

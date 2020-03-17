@@ -20,15 +20,11 @@ Piece::Piece(){}
  */
 Piece::Piece(Color *color)
 {
-<<<<<<< HEAD
-    p.colorptr = color;
-    p.real = true;
-    p.hasBall = false;
-=======
+
     this->color = *color;
+    this->color = color;
     this->real = true;
     this->hasBall = false;
->>>>>>> f1cfbaca4fb4ad9cce51408e3d570aae2000e877
 }
 
 /**
@@ -52,11 +48,7 @@ bool getHasBall()
     return true;
 }
 
-void Piece::setColor(Color color)
+void Piece::setColor(Color *color)
 {
-<<<<<<< HEAD
-    p.color = color;
-=======
     this->color = color;
->>>>>>> f1cfbaca4fb4ad9cce51408e3d570aae2000e877
 }

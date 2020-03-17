@@ -37,18 +37,18 @@ namespace Diaballik
             /**
 * @param position
 */
-            bool isInside(Position position);
+            bool isInside(Position *position);
 
             /**
 * @param position
 */
-            bool isFree(Position position);
+            bool isFree(Position *position);
 
             /**
 * @param piece
 * @param position
 */
-            void put(Piece piece, Position position);
+            void put(Piece *piece, Position *position);
 
             /**
 * @param player
@@ -58,9 +58,9 @@ namespace Diaballik
             /**
 * @param position
 */
-            void remove(Position position);
+            void remove(Position *position);
 
-            bool isMyOwn(Position position, Color color);
+            bool isMyOwn(Position *position, Color *color);
 
     };
 }
