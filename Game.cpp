@@ -62,7 +62,7 @@ void Game::select(int row , int column)
     {
         Board().isInside(&p);
     }
-    catch (const exception &e)
+    catch (const exception e)
     {
         cout << "La position que vous essayez de sélectionner n'est pas sur le plateau de jeu";
     }
@@ -95,10 +95,28 @@ void start()
  */
 vector<Move> getMoves(Position *selected)
 {
-    if (Board().getSquare(selected).isMyOwn(Game().getCurrent().getColor()))
+    try
     {
-
+        Board().isInside(selected);
     }
+    catch (const exception e)
+    {
+        cerr << "La La position sélectionnée ne fait pas patie du plateau de jeu. Réessayez : ";
+    }
+    if (selected == nullptr)
+    {
+        cerr << "La position selectionnée ne contient pas de pièce. Réessayez : ";
+    }
+    try
+    {
+        Board().getSquare(selected).isMyOwn(Game().getCurrent().getColor());
+    }
+    catch (const exception e)
+    {
+        cerr << "La pièce que vous avez sélectionnée ne vous appartient pas. Sélectionnez-en une autre :";
+    }
+
+    Piece piece(Board().getPiece(selected)->getColor());
 
     return null;
 }
