@@ -18,11 +18,17 @@ namespace Diaballik
     {
 
         private:
-            Color * color; // La couleur de la pièce
-            bool hasBall;
-            bool real; // Chaque case du plateau de jeu contient une pièce.
-            // Mais ce booléen nous permet de savoir si la case contient une vraie pièce ou non.
-            // Cela permet de gérer des objets
+
+            struct piece
+            {
+                Color * colorptr; // La couleur de la pièce
+                Color color;
+                bool hasBall;
+                bool real; // Chaque case du plateau de jeu contient une pièce.
+                // Mais ce booléen nous permet de savoir si la case contient une vraie pièce ou non.
+                // Cela permet de gérer des objets
+            }p;
+
 
         public:
             
@@ -30,12 +36,12 @@ namespace Diaballik
  * @param color
  */
             Piece();
-            Piece(Color* color);
+            Piece(Color* colorptr);
 
 
-            inline Color * getColor()
+            inline Color  getColor()
             {
-                return color;
+                return p.color;
             }
             void setColor(Color color);
 
