@@ -38,17 +38,3 @@ Position next(Direction direction) {
     return null;
 }
 
-/**
- * @return int
- */
-int getRow() {
-    return this.row;
-}
-
-/**
- * @return int
- */
-int getColumn() {
-    return this.column;
-}
-

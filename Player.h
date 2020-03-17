@@ -25,7 +25,6 @@ namespace Diaballik
             vector<Piece> pieces;
             int nbMoves;
 
-
         public:
 
             Player();
@@ -34,7 +33,7 @@ namespace Diaballik
  */
             Player(Color color);
 
-            inline Color * getColor() const
+            Color getColor()
             {
                 return color;
             }
@@ -43,12 +42,14 @@ namespace Diaballik
             {
                 return pieces;
             }
+            
+            int getNbMoves();
 
     };
 
      bool canPass();
 
-     int getNbMoves();
+     
 
     /**
 * @param nbMoves

@@ -71,6 +71,13 @@ namespace Diaballik
 
             Player getWinner();
 
+            /**
+        * @param row
+        * @param column
+        */
+            void select(int row , int column);
+
+            void swapPlayers();
     };
 
 
@@ -82,14 +89,6 @@ namespace Diaballik
     bool foulGame(Player player );
 
     bool isOver();
-
-    /**
-* @param row
-* @param column
-*/
-    void select(int row , int column);
-
-    void swapPlayers();
 
     void start();
 

@@ -18,38 +18,41 @@ namespace Diaballik
     {
 
         private:
-            Color * color; // La couleur de la pièce
+
+            Color color; // La couleur de la pièce
             bool hasBall;
             bool real; // Chaque case du plateau de jeu contient une pièce.
             // Mais ce booléen nous permet de savoir si la case contient une vraie pièce ou non.
             // Cela permet de gérer des objets
 
+            
         public:
             
             /**
  * @param color
  */
             Piece();
-            Piece(Color color);
+            Piece(Color *color);
 
-            inline Color * getColor()
+            inline Color getColor()
             {
-                return color;
+                return this->color;
             }
+
             void setColor(Color color);
 
             /**
         * @param color
         */
-             bool isReal();
+            bool isReal();
 
-             bool canPassBall();
+            bool canPassBall();
 
-             void passBall();
+            void passBall();
 
-             bool getHasBall();
+            bool getHasBall();
 
-             bool getReal();
+            bool getReal();
     };
 }
 #endif //_PIECE_H

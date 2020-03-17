@@ -22,7 +22,6 @@ namespace Diaballik
 
 
         public:
-
             
             Position();
 

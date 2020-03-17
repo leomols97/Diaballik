@@ -23,9 +23,9 @@ namespace Diaballik
 
         public:
 
-            Square();
+            //Square();
 
-            Square(Piece piece);
+            Square(Piece *piece);
 
             inline Piece * getPiece()
             {
@@ -35,7 +35,7 @@ namespace Diaballik
             /**
         * @param piece
         */
-             void put(Piece piece);
+             void put(Piece *piece);
 
              void remove();
 

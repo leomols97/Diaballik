@@ -23,12 +23,12 @@ Player::Player() {}
  * @param color
  */
 Player::Player(Color color) {
-    this->color = color;
+    this->color = &color;
     this->nbMoves = 2;
     vector<Piece> pieces{7};
     for (unsigned i = 0; i < sizeof(pieces); i++)
     {
-        Piece p(color);
+        Piece p(&color);
         pieces.push_back(p);
     }
 }
@@ -60,6 +60,7 @@ bool canPass() {
 /**
  * @return int
  */
+
 int getNbMoves() {
     return BLABLA;
 }
@@ -69,5 +70,5 @@ int getNbMoves() {
  * @return void
  */
 void setNbMoves(int nbMoves) {
-    Diaballik::Player().nbMoves;
+    
 }

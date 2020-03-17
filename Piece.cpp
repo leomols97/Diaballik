@@ -18,11 +18,11 @@ Piece::Piece(){}
 /**
  * @param color
  */
-Piece::Piece(Color color)
+Piece::Piece(Color *color)
 {
-    this->color = &color;
-    real = true;
-    hasBall = false;
+    this->color = *color;
+    this->real = true;
+    this->hasBall = false;
 }
 
 /**
@@ -35,6 +35,7 @@ bool canPassBall() {
 /**
  * @return void
  */
+
 void passBall()
 {
     return BLABLA;
@@ -47,5 +48,5 @@ bool getHasBall()
 
 void Piece::setColor(Color color)
 {
-    this->color = &color;
+    this->color = color;
 }
