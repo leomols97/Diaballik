@@ -35,7 +35,7 @@ namespace Diaballik
 
             inline Color getColor() const
             {
-                return *color;
+                return *this->color;
             }
 
             inline vector<Piece> getPieces() const

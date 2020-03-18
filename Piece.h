@@ -38,7 +38,7 @@ namespace Diaballik
 
             inline Color getColor()
             {
-                return *color;
+                return *this->color;
             }
 
             void setColor(Color *color);

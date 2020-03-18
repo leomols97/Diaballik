@@ -30,7 +30,9 @@ namespace Diaballik
  * @param row
  * @param column
  */
-            Position(int *row, int *column);
+            Position(int row, int column);
+
+            Position next(Position position, Direction direction);
 
             inline int getRow()
             {
@@ -44,20 +46,15 @@ namespace Diaballik
 
             inline void setRow(int row)
             {
-                this->row = &row;
+                *this->row = row;
             }
 
             inline void setColumn(int column)
             {
-                this->column = &column;
+                *this->column = column;
             }
 
-            Position whichDirection(Direction &direction);
-
-            /**
-        * @param dir
-        */
-            Position next(Direction direction);
+            static Position whichDirection(Position position, Direction &direction);
     };
 }
 

@@ -28,7 +28,7 @@ Game::Game()
  */
 void initialize()
 {
-    Game game;
+    Board board();
 }
 
 /**

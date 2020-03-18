@@ -12,8 +12,8 @@ using namespace Diaballik;
  * Direction implementation
  */
 
-Direction::Direction(int row, int column)
+/*Direction::Direction(int row, int column)
 {
     this->row = &row;
     this->column = &column;
-}
+}*/
