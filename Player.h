@@ -21,7 +21,7 @@ namespace Diaballik
 
         private:
 
-            Color * color;
+            Color *color;
             vector<Piece> pieces;
             int nbMoves;
 
@@ -33,30 +33,27 @@ namespace Diaballik
  */
             Player(Color color);
 
-            Color *getColor()
+            inline Color getColor() const
             {
-                return color;
+                return *color;
             }
 
             inline vector<Piece> getPieces() const
             {
-                return pieces;
+                return this->pieces;
             }
             
             int getNbMoves();
 
+            bool canPass();
+
+           /**
+       * @param nbMoves
+       */
+            void setNbMoves(int nbMoves);
+
+            bool isReal(Color color);
     };
-
-     bool canPass();
-
-     
-
-    /**
-* @param nbMoves
-*/
-     void setNbMoves(int nbMoves);
-
-     bool isReal(Color color);
 }
 
 #endif //_PLAYER_H

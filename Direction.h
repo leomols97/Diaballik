@@ -7,32 +7,42 @@
 #define _DIRECTION_H
 #include <iostream>
 
-enum Dir
-{
-    UP = (-1, 0),
-    DOWN = (1, 0),
-    RIGHT = (0, 1),
-    LEFT = (0, -1)
-};
+using namespace std;
 
 namespace Diaballik
 {
+    enum class Direction
+    {
+        UP = (-1, 0),
+        DOWN = (1, 0),
+        RIGHT = (0, 1),
+        LEFT = (0, -1)
+    };
+
+    /*const Dir DirVector[] = {UP, DOWN, RIGHT, LEFT};
+
+
     class Direction
     {
-
         private:
 
-            int row;
-            int column;
+            int *row;
+            int *column;
 
         public:
 
             Direction(int row, int column);
 
-            int getColumn();
+            inline int * getColumn() const
+            {
+                return this->row;
+            }
 
-            int getRow();
-    };
+            inline int * getRow() const
+            {
+                return this->column;
+            }
+    };*/
 }
 
 #endif //_DIRECTION_H

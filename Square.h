@@ -27,9 +27,9 @@ namespace Diaballik
 
             Square(Piece *piece);
 
-            inline Piece * getPiece()
+            inline Piece getPiece()
             {
-                return piece;
+                return *piece;
             }
 
             /**
@@ -42,7 +42,7 @@ namespace Diaballik
              /**
          * @param color
          */
-              bool isMyOwn(Color *color);
+              bool isMyOwn(Color color);
 
               bool isFree();
     };

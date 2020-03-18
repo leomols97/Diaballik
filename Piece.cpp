@@ -18,9 +18,10 @@ Piece::Piece(){}
 /**
  * @param color
  */
-Piece::Piece(Color *color)
+Piece::Piece(Color color)
 {
-    this->color = color;
+
+    this->color = &color;
     this->real = true;
     this->hasBall = false;
 }

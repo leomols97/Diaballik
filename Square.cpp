@@ -31,9 +31,9 @@ bool isFree() {
  * @param color
  * @return boolean
  */
-bool Square::isMyOwn(Color *color)
+bool Square::isMyOwn(Color color)
 {
-    return this->getPiece()->getColor() == color;
+    return this->getPiece().getColor() == color;
 }
 
 /**

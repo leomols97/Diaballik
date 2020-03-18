@@ -71,6 +71,7 @@ namespace Diaballik
 
             Player getWinner();
 
+
             /**
         * @param row
         * @param column
@@ -80,6 +81,8 @@ namespace Diaballik
             void swapPlayers();
 
 
+            void start();
+
             void initialize();
 
             /**
@@ -88,8 +91,6 @@ namespace Diaballik
             bool foulGame(Player player );
 
             bool isOver();
-
-            void start();
 
             /**
         * @param selected

@@ -14,16 +14,6 @@ using namespace Diaballik;
 
 Direction::Direction(int row, int column)
 {
-    this->row = row;
-    this->column = column;
-}
-
-int Direction::getRow()
-{
-    return this->row;
-}
-
-int Direction::getColumn()
-{
-    return this->column;
+    this->row = &row;
+    this->column = &column;
 }

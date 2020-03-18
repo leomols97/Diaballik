@@ -74,7 +74,7 @@ bool isInside(Position position)
  * @param position
  * @return Piece
  */
-Piece * getPiece(Position position)
+Piece getPiece(Position position)
 {
     if (!isInside(position))
     {

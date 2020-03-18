@@ -5,8 +5,9 @@
 
 #ifndef _POSITION_H
 #define _POSITION_H
-#import "Direction.h"
+#include "Direction.h"
 
+using namespace std;
 using namespace Diaballik;
 
 namespace Diaballik
@@ -17,8 +18,8 @@ namespace Diaballik
 
         private:
 
-            int row;
-            int column;
+            int *row;
+            int *column;
 
 
         public:
@@ -29,33 +30,35 @@ namespace Diaballik
  * @param row
  * @param column
  */
-            Position(int row, int column);
+            Position(int *row, int *column);
 
-            inline int getRow() const
+            inline int getRow()
             {
-                return this->row;
+                return *this->row;
             }
 
-            inline int getColumn() const
+            inline int getColumn()
             {
-                return this->column;
+                return *this->column;
             }
 
             inline void setRow(int row)
             {
-                this->row = row;
+                this->row = &row;
             }
 
             inline void setColumn(int column)
             {
-                this->column = column;
+                this->column = &column;
             }
-    };
 
-    /**
-* @param dir
-*/
-     Position next(Direction Direction);
+            Position whichDirection(Direction &direction);
+
+            /**
+        * @param dir
+        */
+            Position next(Direction direction);
+    };
 }
 
 #endif //_POSITION_H

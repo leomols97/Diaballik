@@ -19,6 +19,7 @@ namespace Diaballik
 
         private:
 
+
             Color *color; // La couleur de la pièce
             bool hasBall;
             bool real; // Chaque case du plateau de jeu contient une pièce.
@@ -32,11 +33,12 @@ namespace Diaballik
  * @param color
  */
             Piece();
-            Piece(Color *color);
 
-            inline Color * getColor()
+            Piece(Color color);
+
+            inline Color getColor()
             {
-                return color;
+                return *color;
             }
 
             void setColor(Color *color);

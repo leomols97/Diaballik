@@ -35,19 +35,19 @@ namespace Diaballik
             */
             Move(Piece piece, Position start, Position end);
 
-            inline Piece * getPiece() const
+            inline Piece getPiece() const
             {
-                return piece;
+                return *piece;
             }
 
-            inline Position * getStart() const
+            inline Position getStart() const
             {
-                return start;
+                return *start;
             }
 
-            inline Position * getEnd() const
+            inline Position getEnd() const
             {
-                return end;
+                return *end;
             }
     };
 }
