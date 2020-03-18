@@ -31,6 +31,8 @@ namespace Diaballik
  */
             Position(int row, int column);
 
+            Position next(Direction direction);
+
             inline int getRow()
             {
                 return this->row;
@@ -51,10 +53,7 @@ namespace Diaballik
                 this->column = column;
             }
 
-            /**
-        * @param dir
-        */
-            Position next(Dir direction);
+
 
     };
 }

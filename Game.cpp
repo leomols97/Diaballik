@@ -103,7 +103,15 @@ vector<Move> getMoves(Position *selected)
     {
         cerr << "La position sélectionnée ne fait pas partie du plateau de jeu. Réessayez : ";
     }
-    if (selected == nullptr)
+    /*if (selected == nullptr)
+    {
+        cerr << "La position selectionnée ne contient pas de pièce. Réessayez : ";
+    }*/
+    try
+    {
+        Board().isFree(selected);
+    }
+    catch (const exception e)
     {
         cerr << "La position selectionnée ne contient pas de pièce. Réessayez : ";
     }
@@ -120,9 +128,32 @@ vector<Move> getMoves(Position *selected)
     vector<Move> moves;
     if(Game().getCurrent().getNbMoves() == 1)
     {
-        for(Dir dir )
+        for(Direction dir )
         {
-            if(Board().isInside(selected.next(dir)))
+            if(Board().isInside(selected->next(dir)) && Board().isFree(selected->next(dir)))
+            {
+
+            }
+        }
+    }
+    else if(Game().getCurrent().getNbMoves() == 2)
+    {
+        for(Direction dir )
+        {
+            if(Board().isInside(selected->next(dir)) && Board().isFree(selected->next(dir)))
+            {
+
+            }
+        }
+        for(Direction dir )
+        {
+            for(Direction dir2 ...)
+            {
+                if(Board().isInside(selected->next(dir)->next(dir2)) && Board().isFree(selected->next(dir)->next(dir2)))
+                {
+
+                }
+            }
         }
     }
     return moves;
