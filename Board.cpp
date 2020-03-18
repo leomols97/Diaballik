@@ -35,14 +35,14 @@ Board::Board(vector<vector<Square>> board)
             if (i == 0 || i == 1)
             {
                 Color c(Black);
-                Piece p(&c);
+                Piece p(c);
                 Square sq(&p);
                 lign.push_back(sq);
             }
             else if (i == 5 || i == 6)
             {
                 Color c(White);
-                Piece p(&c);
+                Piece p(c);
                 Square sq(&p);
                 lign.push_back(sq);
             }
@@ -74,7 +74,7 @@ bool isInside(Position position)
  * @param position
  * @return Piece
  */
-Piece * getPiece(Position position)
+Piece getPiece(Position position)
 {
     if (!isInside(position))
     {
@@ -104,7 +104,7 @@ void put(Piece piece, Position position)
 
 bool isMyOwn(Position position, Color color)
 {
-    return Board().getPiece(&position)->getColor() == &color;
+    return Board().getPiece(&position).getColor() == &color;
 }
 
 /**

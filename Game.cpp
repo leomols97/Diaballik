@@ -6,6 +6,7 @@
 #include "Game.h"
 #include "Direction.h"
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 using namespace Diaballik;
@@ -103,15 +104,11 @@ vector<Move> getMoves(Position *selected)
     {
         cerr << "La position sélectionnée ne fait pas partie du plateau de jeu. Réessayez : ";
     }
-    /*if (selected == nullptr)
-    {
-        cerr << "La position selectionnée ne contient pas de pièce. Réessayez : ";
-    }*/
-    try
+    try 
     {
         Board().isFree(selected);
-    }
-    catch (const exception e)
+    } 
+    catch (const exception e) 
     {
         cerr << "La position selectionnée ne contient pas de pièce. Réessayez : ";
     }
@@ -124,15 +121,31 @@ vector<Move> getMoves(Position *selected)
         cerr << "La pièce que vous avez sélectionnée ne vous appartient pas. Sélectionnez-en une autre :";
     }
 
-    Piece piece(Board().getPiece(selected)->getColor());
+    Piece piece(Board().getPiece(selected).getColor());
     vector<Move> moves;
     if(Game().getCurrent().getNbMoves() == 1)
     {
-        for(Direction dir )
+        for (Dir d : DirVector)
         {
-            if(Board().isInside(selected->next(dir)) && Board().isFree(selected->next(dir)))
+            if(Board().isInside(selected->next(d)) && Board().isFree(selected->next(d)))
             {
 
+            }
+        }
+        for (auto i : allDirs)
+        {
+            if(Board().isInside(selected->next(i)) && Board().isFree(selected->next(i)))
+            {
+
+            }
+        }
+
+        int i;
+        for(i = UP; i <= LEFT; i++)
+        {
+            if(Board().isInside(selected->next(i)) && Board().isFree(selected->next(i)))
+            {
+                
             }
         }
     }
@@ -142,10 +155,10 @@ vector<Move> getMoves(Position *selected)
         {
             if(Board().isInside(selected->next(dir)) && Board().isFree(selected->next(dir)))
             {
-
+                
             }
         }
-        for(Direction dir )
+        for(Direction dir ...)
         {
             for(Direction dir2 ...)
             {

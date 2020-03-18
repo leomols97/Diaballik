@@ -11,7 +11,8 @@ SOURCES += \
         Piece.cpp \
         Player.cpp \
         Position.cpp \
-        Square.cpp
+        Square.cpp \
+        View.cpp
 
 HEADERS += \
     Board.h \
@@ -25,4 +26,5 @@ HEADERS += \
     Piece.h \
     Player.h \
     Position.h \
-    Square.h
+    Square.h \
+    View.h

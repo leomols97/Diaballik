@@ -5,8 +5,9 @@
 
 #ifndef _POSITION_H
 #define _POSITION_H
-#import "Direction.h"
+#include "Direction.h"
 
+using namespace std;
 using namespace Diaballik;
 
 namespace Diaballik
@@ -53,7 +54,7 @@ namespace Diaballik
                 this->column = column;
             }
 
-
+            Position whichDirection(Direction &direction);
 
     };
 }
