@@ -165,11 +165,32 @@ void initialize()
     {
         for (unsigned j = 0; j < sizeof (Board().getBoard()[i]); j++)
         {
-            if (i == 0 && j == 2)
+            if (i == 0 && j == 3)
             {
                 Piece p(Black);
-                p.hasBall() = true;
-                Board().getBoard()[0][i].put(p);
+                Piece().changeHasBall(&p);
+                Board().getBoard()[0][3].put(&p);
+            }
+            else if (i == 6 && j == 3)
+            {
+                Piece p(White);
+                Piece().changeHasBall(&p);
+                Board().getBoard()[6][3].put(&p);
+            }
+            else if (i == 0)
+            {
+                Piece p(Black);
+                Board().getBoard()[0][j].put(&p);
+            }
+            else if (i == 6)
+            {
+                Piece p(White);
+                Board().getBoard()[6][j].put(&p);
+            }
+            else
+            {
+                Piece p;
+                Board().getBoard()[i][j].put(&p);
             }
         }
     }

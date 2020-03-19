@@ -28,7 +28,9 @@ Game::Game()
  */
 void initialize()
 {
-    Game game;
+    vector<vector<Square>> b;
+    Board board(b);
+    board.initialize();
 }
 
 /**

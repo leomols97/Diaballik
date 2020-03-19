@@ -32,6 +32,7 @@ Position::Position(int row, int column)
 
 Position whichDirection(Position position, Direction direction)
 {
+
     switch (direction)
     {
         case Direction::UP :
