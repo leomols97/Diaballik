@@ -26,45 +26,42 @@ Position::Position() {}
  */
 Position::Position(int row, int column)
 {
-    this->row = row;
-    this->column = column;
+    this->row = &row;
+    this->column = &column;
 }
 
-Position Position::whichDirection(Direction &direction)
+Position whichDirection(Position position, Direction direction)
 {
-    Position p(this->row, this->column);
+
     switch (direction)
     {
         case Direction::UP :
-            p.setRow(p.getRow()-1);
-        break;
+            position.setRow(position.getRow()-1);
+            break;
         case Direction::DOWN :
-            p.setRow(p.getRow()+1);
-        break;
+            position.setRow(position.getRow()+1);
+            break;
         case Direction::LEFT :
-            p.setColumn(p.getColumn()-1);
-        break;
+            position.setColumn(position.getColumn()-1);
+            break;
         case Direction::RIGHT :
-            p.setColumn(p.getColumn()+1);
-        break;
+            position.setColumn(position.getColumn()+1);
+            break;
         default :
             cout << "Direction inexistante !";
             break;
     }
-    return p;
+    return position;
 }
 
 /**
  * @param dir
  * @return Position
  */
-Position Position::next(Direction direction)
+Position next(Position position, Direction direction)
 {
-    Position p(this->row, this->column);
-    whichDirection(direction);
-    p.row = p.getRow() + whichDirection(direction).getRow();
-    p.column = p.getColumn() + whichDirection(direction).getColumn();
-    //p.setRow(p.getRow() + dir.getRow());
-    //p.setColumn(p.getColumn() + dir.getColumn());
-    return p;
+    whichDirection(position, direction);
+    position.setRow(position.getRow() + whichDirection(position, direction).getRow());
+    position.setColumn(position.getColumn() + whichDirection(position, direction).getColumn());
+    return position;
 }

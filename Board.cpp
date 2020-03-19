@@ -32,26 +32,9 @@ Board::Board(vector<vector<Square>> board)
         vector<Square> lign;
         for (unsigned j = 0; j < board[i].size(); j++)
         {
-            pos.setRow(i);
-            pos.setColumn(j);
-            if (i == 0)
-            {
-                Piece p(Black);
-                Square sq(&p);
-                lign.push_back(sq);
-            }
-            else if (i == 6)
-            {
-                Piece p(White);
-                Square sq(&p);
-                lign.push_back(sq);
-            }
-            else
-            {
-                Piece p;
-                Square sq(&p);
-                lign.push_back(sq);
-            }
+            Piece p;
+            Square sq(&p);
+            lign.push_back(sq);
         }
         board.push_back(lign);
     }
@@ -62,34 +45,38 @@ Board::Board(vector<vector<Square>> board)
  * @return boolean
  */
 
-bool isInside(Position position)
+bool isInside(Position *position)
 {
-    return position.getRow() > 0
-            && position.getRow() < 6
-            && position.getColumn() > 0
-            && position.getColumn() < 6;
+    return position->getRow() > 0
+            && position->getRow() < 6
+            && position->getColumn() > 0
+            && position->getColumn() < 6;
 }
 
 /**
  * @param position
  * @return Piece
  */
-Piece getPiece(Position position)
+Piece getPiece(Position *position)
 {
     if (!isInside(position))
     {
         throw invalid_argument("La position n'est pas dans le plateau de jeu !");
     }
-    return Board().getSquare(&position).getPiece();
+    return Board().getSquare(position).getPiece();
 }
 
 /**
  * @param position
  * @return boolean
  */
-bool isFree(Position position)
+bool isFree(Position *position)
 {
-    return Board().getPiece(&position) == nullptr;  //il faut transformer Piece en pointeur
+    if (!isInside(position))
+    {
+        throw invalid_argument("La position n'est pas dans le plateau de jeu !");
+    }
+    return Board().getPiece(position).isReal();
 }
 
 /**
@@ -97,14 +84,14 @@ bool isFree(Position position)
  * @param position
  * @return void
  */
-void put(Piece piece, Position position)
+void put(Piece *piece, Position *position)
 {
-    Board().getSquare(&position).put(&piece);
+    Board().getSquare(position).put(piece);
 }
 
-bool isMyOwn(Position position, Color color)
+bool isMyOwn(Position *position, Color color)
 {
-    return Board().getPiece(&position).getColor() == &color;
+    return Board().getPiece(position).getColor() == color;
 }
 
 /**
@@ -117,7 +104,7 @@ vector<Position> getTakenSquare(Player *player)
     vector<Position> positions;
     for (unsigned i = 0; i < sizeof(Board().getBoard()); i++)
     {
-        for (unsigned j = 0; j < sizeof (sizeof(Board().getBoard())); j++)
+        for (unsigned j = 0; j < sizeof (Board().getBoard()[i]); j++)
         {
             pos.setRow(i);
             pos.setColumn(j);
@@ -154,3 +141,42 @@ void remove(Position position)
 {
     Board().getSquare(&position).remove();
 }
+
+/*void Board::initialize()
+{
+    //board.reserve(7);
+    for (unsigned i = 0; i < board.size(); i++)
+    {
+        //board[i].reserve(7);
+        for (unsigned j = 0; j < sizeof (board[i].size()); j++)
+        {
+            if (i == 0 && j == 3)
+            {
+                Piece p(Black);
+                Piece().changeHasBall(&p);
+                board[i][j].put(&p);
+            }
+            else if (i == 6 && j == 3)
+            {
+                Piece p(White);
+                Piece().changeHasBall(&p);
+                board[i][j].put(&p);
+            }
+            else if (i == 0)
+            {
+                Piece p(Black);
+                board[i][j].put(&p);
+            }
+            else if (i == 6)
+            {
+                Piece p(White);
+                board[i][j].put(&p);
+            }
+            else
+            {
+                Piece p;
+                board[i][j].put(&p);
+            }
+        }
+    }
+}*/

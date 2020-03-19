@@ -37,17 +37,17 @@ namespace Diaballik
 
             inline Piece getPiece() const
             {
-                return *piece;
+                return *this->piece;
             }
 
-            inline Position getStart() const
+            inline Position * getStart() const
             {
-                return *start;
+                return this->start;
             }
 
-            inline Position getEnd() const
+            inline Position * getEnd() const
             {
-                return *end;
+                return this->end;
             }
     };
 }

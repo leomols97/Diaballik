@@ -13,7 +13,10 @@ using namespace Diaballik;
  * Piece implementation
  */
 
-Piece::Piece(){}
+Piece::Piece()
+{
+    this->real = false;
+}
 
 /**
  * @param color
@@ -50,4 +53,16 @@ bool getHasBall()
 void Piece::setColor(Color *color)
 {
     this->color = color;
+}
+
+bool changeHasBall(Piece *piece)
+{
+    if (piece->getHasBall() ==  true)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
 }

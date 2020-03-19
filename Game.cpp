@@ -26,9 +26,43 @@ Game::Game()
 /**
  * @return void
  */
-void initialize()
+void Game::initialize()
 {
-    Game game;
+    //board.reserve(7);
+    for (unsigned i = 0; i < Board().getBoard().size(); i++)
+    {
+        //board[i].reserve(7);
+        for (unsigned j = 0; j < sizeof (Board().getBoard()[i].size()); j++)
+        {
+            if (i == 0 && j == 3)
+            {
+                Piece p(Black);
+                Piece().changeHasBall(&p);
+                Board().getBoard()[i][j].put(&p);
+            }
+            else if (i == 6 && j == 3)
+            {
+                Piece p(White);
+                Piece().changeHasBall(&p);
+                Board().getBoard()[i][j].put(&p);
+            }
+            else if (i == 0)
+            {
+                Piece p(Black);
+                Board().getBoard()[i][j].put(&p);
+            }
+            else if (i == 6)
+            {
+                Piece p(White);
+                Board().getBoard()[i][j].put(&p);
+            }
+            else
+            {
+                Piece p;
+                Board().getBoard()[i][j].put(&p);
+            }
+        }
+    }
 }
 
 /**
@@ -48,6 +82,14 @@ bool foulGame(Player player)
  */
 bool isOver()
 {
+    for (unsigned i = 0; i < sizeof (Board().getBoard()); i++)
+    {
+        if (Board().getBoard()[0][i].getPiece().getColor() == White
+                || Board().getBoard()[6][i].getPiece().getColor() == Black)
+        {
+            return true;
+        }
+    }
     return false;
 }
 
@@ -75,7 +117,10 @@ void Game::select(int row , int column)
  */
 void Game::swapPlayers()
 {
-    if (!hasMoves(current)/*autre condition à rajouter s'il décide de ne pas utiliser tous ses mouvements*/) {
+    if (!hasMoves(current))
+        /*autre condition à rajouter s'il décide de ne pas utiliser tous ses mouvements*/
+        // ->Il "suffit", dans le controleur, de recevoir une commande "tour fini"
+    {
         Player provisoire = current;
         current = opponent;
         opponent = provisoire;
@@ -94,11 +139,11 @@ void start()
  * @param selected
  * @return List<Move>
  */
-vector<Move> getMoves(Position *selected)
+vector<Move> getMoves(Position selected)
 {
     try
     {
-        Board().isInside(selected);
+        Board().isInside(&selected);
     }
     catch (const exception e)
     {
@@ -106,7 +151,7 @@ vector<Move> getMoves(Position *selected)
     }
     try 
     {
-        Board().isFree(selected);
+        Board().isFree(&selected);
     } 
     catch (const exception e) 
     {
@@ -114,20 +159,20 @@ vector<Move> getMoves(Position *selected)
     }
     try
     {
-        Board().getSquare(selected).isMyOwn(Game().getCurrent().getColor());
+        Board().getSquare(&selected).isMyOwn(Game().getCurrent().getColor());
     }
     catch (const exception e)
     {
         cerr << "La pièce que vous avez sélectionnée ne vous appartient pas. Sélectionnez-en une autre :";
     }
 
-    Piece piece(Board().getPiece(selected).getColor());
+    Piece piece(Board().getPiece(&selected).getColor());
     vector<Move> moves;
     if(Game().getCurrent().getNbMoves() == 1)
     {
         for (Dir d : DirVector)
         {
-            if(Board().isInside(selected->next(d)) && Board().isFree(selected->next(d)))
+            if(Board().isInside(selected.next(d)) && Board().isFree(selected.next(d)))
             {
 
             }
@@ -179,7 +224,7 @@ vector<Move> getMoves(Position *selected)
  */
 void Game::apply(Move move)
 {
-    Piece piece(Board().getPiece(move.getEnd())->getColor());
+    Piece piece(Board().getPiece(move.getEnd()).getColor());
     if (board.isFree(move.getEnd())) {
         board.remove(move.getStart());
         board.put(&piece, move.getEnd());
@@ -192,7 +237,6 @@ void Game::apply(Move move)
  */
 bool hasMoves(Player player)
 {
-
     return player.getNbMoves() > 0;
 }
 

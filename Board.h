@@ -60,7 +60,9 @@ namespace Diaballik
 */
             void remove(Position *position);
 
-            bool isMyOwn(Position *position, Color *color);
+            bool isMyOwn(Position *position, Color color);
+
+            void initialize();
     };
 }
 

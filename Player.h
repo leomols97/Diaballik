@@ -33,9 +33,9 @@ namespace Diaballik
  */
             Player(Color color);
 
-            inline Color* getColor() const
+            inline Color getColor() const
             {
-                return color;
+                return *this->color;
             }
 
             inline vector<Piece> getPieces() const

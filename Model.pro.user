@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
+<<<<<<< HEAD
 <!-- Written by QtCreator 4.11.1, 2020-03-18T15:24:24. -->
+=======
+<!-- Written by QtCreator 4.11.0, 2020-03-19T01:52:33. -->
+>>>>>>> 90b0c7e96b789f05abd2303f080190b89dca6678
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -56,7 +60,8 @@
   <variable>ProjectExplorer.Project.PluginSettings</variable>
   <valuemap type="QVariantMap">
    <valuelist type="QVariantList" key="ClangCodeModel.CustomCommandLineKey"/>
-   <value type="bool" key="ClangCodeModel.UseGlobalConfig">true</value>
+   <value type="bool" key="ClangCodeModel.UseGlobalConfig">false</value>
+   <value type="QString" key="ClangCodeModel.WarningConfigId">{f030f515-1b41-4b7f-8e10-4298826d1392}</value>
   </valuemap>
  </data>
  <data>
