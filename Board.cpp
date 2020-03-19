@@ -142,7 +142,7 @@ void remove(Position position)
     Board().getSquare(&position).remove();
 }
 
-/*void Board::initialize()
+void Board::initialize()
 {
     //board.reserve(7);
     for (unsigned i = 0; i < board.size(); i++)
@@ -179,4 +179,4 @@ void remove(Position position)
             }
         }
     }
-}*/
+}
