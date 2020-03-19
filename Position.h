@@ -54,7 +54,7 @@ namespace Diaballik
                 *this->column = column;
             }
 
-            static Position whichDirection(Position position, Direction &direction);
+            static Position whichEndingPosition(Position position, Direction &direction);
     };
 }
 

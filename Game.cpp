@@ -23,6 +23,11 @@ Game::Game()
     Position selected(int row, int column);
 }
 
+auto get(unsigned i)
+{
+
+}
+
 /**
  * @return void
  */
@@ -135,6 +140,23 @@ void start()
     return BLABLA;
 }
 
+vector<Direction> allDirections ()
+{
+    vector<Direction> dirs;
+    for (unsigned i = 0; i < 4; i++)
+    {
+         dirs.push_back(Direction());
+    }
+    /*
+     * OU (à la place du for, si le for ne fonctionne pas)
+     * dirs.push_back(Direction::UP);
+     * dirs.push_back(Direction::DOWN);
+     * dirs.push_back(Direction::RIGHT);
+     * dirs.push_back(Direction::LEFT);
+     */
+    return dirs;
+}
+
 /**
  * @param selected
  * @return List<Move>
@@ -168,8 +190,29 @@ vector<Move> getMoves(Position selected)
 
     Piece piece(Board().getPiece(&selected).getColor());
     vector<Move> moves;
+    vector<Direction> directions;
+    for (unsigned i  = 0; i < allDirections().size(); i++)
+    {
+        directions.push_back(allDirections()[i]);
+    }
     if(Game().getCurrent().getNbMoves() == 1)
     {
+
+
+
+        for (vector<Direction>::iterator i = directions.begin(); i != directions.end(); i++)
+        {
+            if (Board().isInside(&selected.next(selected, directions[i]))) {
+
+            }
+        }
+
+
+
+        if (selected.getRow() == 0 && selected.getColumn() == 0)
+        {
+            moves.push_back(selected.whichEndingPosition(selected, Direction().));
+        }
         for (Dir d : DirVector)
         {
             if(Board().isInside(selected.next(d)) && Board().isFree(selected.next(d)))

@@ -30,9 +30,8 @@ Position::Position(int row, int column)
     this->column = &column;
 }
 
-Position whichDirection(Position position, Direction direction)
+Position whichEndingPosition(Position position, Direction direction)
 {
-
     switch (direction)
     {
         case Direction::UP :
@@ -60,8 +59,8 @@ Position whichDirection(Position position, Direction direction)
  */
 Position next(Position position, Direction direction)
 {
-    whichDirection(position, direction);
-    position.setRow(position.getRow() + whichDirection(position, direction).getRow());
-    position.setColumn(position.getColumn() + whichDirection(position, direction).getColumn());
+    whichEndingPosition(position, direction);
+    position.setRow(position.getRow() + whichEndingPosition(position, direction).getRow());
+    position.setColumn(position.getColumn() + whichEndingPosition(position, direction).getColumn());
     return position;
 }
