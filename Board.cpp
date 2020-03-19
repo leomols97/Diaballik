@@ -24,25 +24,25 @@ Board::Board() {}
 
 Board::Board(vector<vector<Square>> board)
 {
+    board.reserve(7);
     Position pos(0,0);
-    for (unsigned i = 0; i < sizeof (Board().getBoard()); i++)
+    for (unsigned i = 0; i < board.size(); i++)
     {
+        board[i].reserve(7);
         vector<Square> lign;
-        for (unsigned j = 0; j < sizeof (Board().getBoard()); j++)
+        for (unsigned j = 0; j < board[i].size(); j++)
         {
             pos.setRow(i);
             pos.setColumn(j);
-            if (i == 0 || i == 1)
+            if (i == 0)
             {
-                Color c(Black);
-                Piece p(c);
+                Piece p(Black);
                 Square sq(&p);
                 lign.push_back(sq);
             }
-            else if (i == 5 || i == 6)
+            else if (i == 6)
             {
-                Color c(White);
-                Piece p(c);
+                Piece p(White);
                 Square sq(&p);
                 lign.push_back(sq);
             }
