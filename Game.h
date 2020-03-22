@@ -95,7 +95,7 @@ namespace Diaballik
             /**
         * @param selected
         */
-            vector<Move> getMoves(Position selected);
+            vector<Position> getMoves(Position selected);
 
             /**
         * @param move

@@ -44,14 +44,14 @@ namespace Diaballik
                 return *this->column;
             }
 
-            inline void setRow(int row)
+            inline void * setRow(int row)
             {
-                *this->row = row;
+                this->row = &row;
             }
 
-            inline void setColumn(int column)
+            inline void * setColumn(int column)
             {
-                *this->column = column;
+                this->column = &column;
             }
 
             static Position whichEndingPosition(Position position, Direction &direction);

@@ -45,32 +45,32 @@ Board::Board(vector<vector<Square>> board)
  * @return boolean
  */
 
-bool isInside(Position *position)
+bool isInside(Position position)
 {
-    return position->getRow() > 0
-            && position->getRow() < 6
-            && position->getColumn() > 0
-            && position->getColumn() < 6;
+    return position.getRow() > 0
+            && position.getRow() < 6
+            && position.getColumn() > 0
+            && position.getColumn() < 6;
 }
 
 /**
  * @param position
  * @return Piece
  */
-Piece getPiece(Position *position)
+Piece getPiece(Position position)
 {
     if (!isInside(position))
     {
         throw invalid_argument("La position n'est pas dans le plateau de jeu !");
     }
-    return Board().getSquare(position).getPiece();
+    return Board().getSquare(&position).getPiece();
 }
 
 /**
  * @param position
  * @return boolean
  */
-bool isFree(Position *position)
+bool isFree(Position position)
 {
     if (!isInside(position))
     {
@@ -84,12 +84,12 @@ bool isFree(Position *position)
  * @param position
  * @return void
  */
-void put(Piece *piece, Position *position)
+void put(Piece *piece, Position position)
 {
-    Board().getSquare(position).put(piece);
+    Board().getSquare(&position).put(piece);
 }
 
-bool isMyOwn(Position *position, Color color)
+bool isMyOwn(Position position, Color color)
 {
     return Board().getPiece(position).getColor() == color;
 }
@@ -108,7 +108,7 @@ vector<Position> getTakenSquare(Player *player)
         {
             pos.setRow(i);
             pos.setColumn(j);
-            if (Board().isMyOwn(&pos, player->getColor()))
+            if (Board().isMyOwn(pos, player->getColor()))
             {
                 positions.push_back(pos);
             }
