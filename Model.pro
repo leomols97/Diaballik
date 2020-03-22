@@ -5,6 +5,7 @@ CONFIG -= qt
 
 SOURCES += \
         Board.cpp \
+        Controller.cpp \
         Direction.cpp \
         Game.cpp \
         Move.cpp \
@@ -17,6 +18,7 @@ SOURCES += \
 HEADERS += \
     Board.h \
     Color.h \
+    Controller.h \
     Direction.h \
     Game.h \
     Model.h \
