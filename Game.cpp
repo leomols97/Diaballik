@@ -200,10 +200,11 @@ vector<Move> getMoves(Position selected)
 
 
 
-        for (vector<Direction>::iterator i = directions.begin(); i != directions.end(); i++)
+        for (unsigned i = 0; i < 4; i++)
         {
-            if (Board().isInside(&selected.next(selected, directions[i]))) {
-
+            if (Board().isInside(selected.next(selected, directions[i]))) {
+                Move move;
+                moves.push_back(move);
             }
         }
 
