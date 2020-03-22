@@ -40,14 +40,14 @@ namespace Diaballik
                 return *this->piece;
             }
 
-            inline Position * getStart() const
+            inline Position getStart() const
             {
-                return this->start;
+                return *this->start;
             }
 
-            inline Position * getEnd() const
+            inline Position getEnd() const
             {
-                return this->end;
+                return *this->end;
             }
     };
 }

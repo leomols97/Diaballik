@@ -108,7 +108,7 @@ void Game::select(int row , int column)
     Position p(row, column);
     try
     {
-        Board().isInside(&p);
+        Board().isInside(p);
     }
     catch (const exception e)
     {
@@ -135,9 +135,12 @@ void Game::swapPlayers()
 /**
  * @return void
  */
-void start()
+void Game::start()
 {
-    return BLABLA;
+    if (!isOver() && board.isEmpty())
+    {
+        throw invalid_argument("il y a déjà une parti en cours");
+    }
 }
 
 vector<Direction> allDirections ()
@@ -161,11 +164,11 @@ vector<Direction> allDirections ()
  * @param selected
  * @return List<Move>
  */
-vector<Move> getMoves(Position selected)
+vector<Position> getMoves(Position selected)
 {
     try
     {
-        Board().isInside(&selected);
+        Board().isInside(selected);
     }
     catch (const exception e)
     {
@@ -173,7 +176,7 @@ vector<Move> getMoves(Position selected)
     }
     try 
     {
-        Board().isFree(&selected);
+        Board().isFree(selected);
     } 
     catch (const exception e) 
     {
@@ -188,8 +191,8 @@ vector<Move> getMoves(Position selected)
         cerr << "La pièce que vous avez sélectionnée ne vous appartient pas. Sélectionnez-en une autre :";
     }
 
-    Piece piece(Board().getPiece(&selected).getColor());
-    vector<Move> moves;
+    Piece piece(Board().getPiece(selected).getColor());
+    vector<Position> possibleEndingPositions;
     vector<Direction> directions;
     for (unsigned i  = 0; i < allDirections().size(); i++)
     {
@@ -197,68 +200,28 @@ vector<Move> getMoves(Position selected)
     }
     if(Game().getCurrent().getNbMoves() == 1)
     {
-
-
-
         for (unsigned i = 0; i < 4; i++)
         {
-            if (Board().isInside(selected.next(selected, directions[i]))) {
-                Move move;
-                moves.push_back(move);
-            }
-        }
-
-
-
-        if (selected.getRow() == 0 && selected.getColumn() == 0)
-        {
-            moves.push_back(selected.whichEndingPosition(selected, Direction().));
-        }
-        for (Dir d : DirVector)
-        {
-            if(Board().isInside(selected.next(d)) && Board().isFree(selected.next(d)))
+            if (Board().isInside(selected.next(selected, directions.at(i))))
             {
-
-            }
-        }
-        for (auto i : allDirs)
-        {
-            if(Board().isInside(selected->next(i)) && Board().isFree(selected->next(i)))
-            {
-
-            }
-        }
-
-        int i;
-        for(i = UP; i <= LEFT; i++)
-        {
-            if(Board().isInside(selected->next(i)) && Board().isFree(selected->next(i)))
-            {
-                
+                possibleEndingPositions.push_back(selected.next(selected, directions.at(i)));
             }
         }
     }
     else if(Game().getCurrent().getNbMoves() == 2)
     {
-        for(Direction dir )
+        for (unsigned i = 0; i < 4; i++)
         {
-            if(Board().isInside(selected->next(dir)) && Board().isFree(selected->next(dir)))
+            for (unsigned i = 0; i < 4; i++)
             {
-                
-            }
-        }
-        for(Direction dir ...)
-        {
-            for(Direction dir2 ...)
-            {
-                if(Board().isInside(selected->next(dir)->next(dir2)) && Board().isFree(selected->next(dir)->next(dir2)))
+                if (Board().isInside(selected.next(selected, directions.at(i))))
                 {
-
+                    possibleEndingPositions.push_back(selected.next(selected, directions.at(i)));
                 }
             }
         }
     }
-    return moves;
+    return possibleEndingPositions;
 
 }
 

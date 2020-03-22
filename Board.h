@@ -30,25 +30,27 @@ namespace Diaballik
             /**
         * @param position
         */
-            Piece getPiece(Position *position);
+            Piece getPiece(Position position);
             Square getSquare(Position *position);
             vector<vector<Square>> getBoard();
 
             /**
 * @param position
 */
-            bool isInside(Position *position);
+            bool isInside(Position position);
 
             /**
 * @param position
 */
-            bool isFree(Position *position);
+            bool isFree(Position position);
+
+            bool isEmpty();
 
             /**
 * @param piece
 * @param position
 */
-            void put(Piece *piece, Position *position);
+            void put(Piece *piece, Position position);
 
             /**
 * @param player
@@ -58,9 +60,9 @@ namespace Diaballik
             /**
 * @param position
 */
-            void remove(Position *position);
+            void remove(Position position);
 
-            bool isMyOwn(Position *position, Color color);
+            bool isMyOwn(Position position, Color color);
 
             void initialize();
     };
