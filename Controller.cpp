@@ -32,14 +32,16 @@ void startGame()
     }
 }
 
-int stringToInteger(int index, stringstream com)
+int stringToInteger(stringstream com, vector<int> list)
 {
+    int index;
     try
     {
         string token;
         while(getline(com, token, ' '))
         {
             stringstream(token) << index;
+            list.push_back(index);
         }
     }
     catch (const exception e)

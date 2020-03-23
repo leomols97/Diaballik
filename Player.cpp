@@ -108,12 +108,3 @@ int getNbMoves(Player player)
     }
     return 2;
 }
-
-/**
- * @param nbMoves
- * @return void
- */
-void setNbMoves(int nbMoves)
-{
-    
-}
