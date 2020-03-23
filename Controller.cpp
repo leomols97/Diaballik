@@ -27,7 +27,8 @@ void startGame()
     Game().start();
     View().displayHelpInit();
     View().displayBoard(Game().getBoard().getBoard());
-    while (!Game().isOver()) {
+    while (!Game().isOver())
+    {
         BLABLA;
     }
 }
