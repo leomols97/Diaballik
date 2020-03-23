@@ -72,16 +72,33 @@ void displayBoard(vector<vector<Square>> board)
 
 void displayPiece(Square square)
 {
-    if (square.getPiece().getColor() == White)
+    if(square.getPiece().getHasBall())
     {
-        cout << "W" << endl;
+        if (square.getPiece().getColor() == White)
+        {
+            cout << "_W_" << endl;
+        }
+        else if (square.getPiece().getColor() == Black)
+        {
+            cout << "_B_" << endl;
+        }
+        else if (square.isFree()){
+            cout << "   " << endl;
+        }
     }
-    else if (square.getPiece().getColor() == Black)
+    else
     {
-        cout << "B" << endl;
-    }
-    else if (square.isFree()){
-        cout << " " << endl;
+        if (square.getPiece().getColor() == White)
+        {
+            cout << " W " << endl;
+        }
+        else if (square.getPiece().getColor() == Black)
+        {
+            cout << " B " << endl;
+        }
+        else if (square.isFree()){
+            cout << "   " << endl;
+        }
     }
 }
 

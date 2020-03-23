@@ -33,21 +33,21 @@ void startGame()
     }
 }
 
-int stringToInteger(stringstream com, vector<int> list)
+int stringToInteger(int index, stringstream com, vector<int> list)
 {
-    int index;
+    int number;
     try
     {
         string token;
         while(getline(com, token, ' '))
         {
-            stringstream(token) << index;
-            list.push_back(index);
+            stringstream(token) << number;
+            list.push_back(number);
         }
     }
     catch (const exception e)
     {
         cout << "ce n'est pas un entier";
     }
-    return index;
+    return list[index];
 }

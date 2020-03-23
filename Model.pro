@@ -13,7 +13,8 @@ SOURCES += \
         Player.cpp \
         Position.cpp \
         Square.cpp \
-        View.cpp
+        View.cpp \
+        main.cpp
 
 HEADERS += \
     Board.h \
