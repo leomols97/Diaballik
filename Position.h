@@ -32,7 +32,7 @@ namespace Diaballik
  */
             Position(int row, int column);
 
-            Position next(Position position, Direction direction);
+            Position* next(Position position, Direction direction);
 
             inline int getRow()
             {

@@ -135,9 +135,12 @@ void Game::swapPlayers()
 /**
  * @return void
  */
-void start()
+void Game::start()
 {
-    return BLABLA;
+    if (!isOver() && board.isEmpty())
+    {
+        throw invalid_argument("il y a déjà une parti en cours");
+    }
 }
 
 vector<Direction> allDirections ()

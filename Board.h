@@ -44,6 +44,8 @@ namespace Diaballik
 */
             bool isFree(Position position);
 
+            bool isEmpty();
+
             /**
 * @param piece
 * @param position

@@ -57,10 +57,11 @@ Position whichEndingPosition(Position position, Direction direction)
  * @param dir
  * @return Position
  */
-Position next(Position position, Direction direction)
+Position* next(Position position, Direction direction)
 {
     whichEndingPosition(position, direction);
     position.setRow(position.getRow() + whichEndingPosition(position, direction).getRow());
     position.setColumn(position.getColumn() + whichEndingPosition(position, direction).getColumn());
-    return position;
+    Position* pos = &position;
+    return pos;
 }

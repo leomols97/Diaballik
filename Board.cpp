@@ -79,6 +79,24 @@ bool isFree(Position position)
     return Board().getPiece(position).isReal();
 }
 
+bool Board::isEmpty(){
+    for (unsigned i = 0; i < board.size(); i++)
+    {
+        for (unsigned j = 0; j < sizeof (board[i].size()); j++)
+        {
+            Position pos(i, j);
+            if(!isFree(pos))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+    }
+}
+
 /**
  * @param piece
  * @param position

@@ -9,7 +9,9 @@ namespace Vue {
 
     class View
     {
+
     public:
+
         View();
 
         void Initialize();
@@ -26,13 +28,9 @@ namespace Vue {
 
         string askCommand();
 
-        void displayBoard(vector<vector<Square>>, Player player);
+        void displayBoard(vector<vector<Square>>);
 
-        void displayBoardHint(vector<vector<Square>>, Player player) ;
-
-        void displayPieceHint(Square square, string a, string b, string c, Color color, Color color2) ;
-
-        void displayPiece(Square square, string a, string b, Color color1, Color color2) ;
+        void displayPiece(Square square) ;
 
         void displayOver(vector<Player> winners) ;
 
