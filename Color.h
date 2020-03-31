@@ -8,11 +8,11 @@
 
 namespace Diaballik
 {
-
     enum Color
     {
         Black,
-        White
+        White,
+        None
     };
 }
 

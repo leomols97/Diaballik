@@ -15,7 +15,7 @@ using namespace Diaballik;
  * Move implementation
  */
 
-
+Move::Move(){}
 /**
  * @param piece
  * @param start
@@ -23,8 +23,8 @@ using namespace Diaballik;
  */
 Move::Move(Piece piece, Position start, Position end)
 {
-    this->piece = &piece;
-    this->end = &end;
-    this->start = &start;
+    this->piece_ = piece;
+    this->start_ = start;
+    this->end_ = end;
 }
 

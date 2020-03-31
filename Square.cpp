@@ -12,19 +12,17 @@ using namespace Diaballik;
 /**
  * Square implementation
  */
-
-//Square::Square(){}
-
-Square::Square(Piece *piece)
+Square::Square(Piece piece)
 {
-    this->piece = piece;
+    this->piece_ = piece;
 }
 
 /**
  * @return boolean
  */
-bool isFree() {
-    return false;
+bool isFree()
+{
+    return Piece().getColor() == None;
 }
 
 /**
@@ -40,12 +38,12 @@ bool Square::isMyOwn(Color color)
  * @param piece
  * @return void
  */
-void Square::put(Piece *piece)
+void Square::put(Piece piece)
 {
-    if(isFree()){
-        this->piece = piece;
+    if(isFree())
+    {
+        this->piece_ = piece;
     }
-    //this->piece = &piece;
 }
 
 /**
@@ -53,5 +51,5 @@ void Square::put(Piece *piece)
  */
 void Square::remove()
 {
-    this->piece = nullptr;
+    this->piece_.setColor(None);
 }

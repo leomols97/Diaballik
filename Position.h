@@ -18,8 +18,8 @@ namespace Diaballik
 
         private:
 
-            int *row;
-            int *column;
+            int row_;
+            int column_;
 
 
         public:
@@ -30,28 +30,28 @@ namespace Diaballik
  * @param row
  * @param column
  */
-            Position(int row, int column);
+            Position(int row_, int column_);
 
-            Position* next(Position position, Direction direction);
+            Position next(Position position, Direction direction);
 
             inline int getRow()
             {
-                return *this->row;
+                return this->row_;
             }
 
             inline int getColumn()
             {
-                return *this->column;
+                return this->column_;
             }
 
-            inline void * setRow(int row)
+            inline void setRow(int row)
             {
-                this->row = &row;
+                this->row_ = row;
             }
 
-            inline void * setColumn(int column)
+            inline void setColumn(int column)
             {
-                this->column = &column;
+                this->column_ = column;
             }
 
             static Position whichEndingPosition(Position position, Direction &direction);

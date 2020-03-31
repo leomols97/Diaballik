@@ -88,23 +88,14 @@ void Controller::startGame()
             case 'quit' :
                 endCom = true;
                 break;
-            case 'pass':
-
-
-
-
-
-
-
-
-                //action de la passe
-
-
-
-
-
-                break;
             case 'moves' :
+                
+                
+                
+                //faire le cas où la piece est celle qui a la balle
+                
+                
+                
                 vector<Move> positions = this->game_.getMoves(position);
                 view_.displayMoves(positions);
                 command = this->view_.askCommand();

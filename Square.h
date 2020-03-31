@@ -18,24 +18,24 @@ namespace Diaballik
 
         private:
 
-            Piece * piece;
+            Piece piece_;
 
 
         public:
 
             //Square();
 
-            Square(Piece *piece);
+            Square(Piece piece_);
 
             inline Piece getPiece()
             {
-                return *piece;
+                return this->piece_;
             }
 
             /**
         * @param piece
         */
-             void put(Piece *piece);
+             void put(Piece piece_);
 
              void remove();
 

@@ -6,26 +6,26 @@
 
 using namespace std;
 
-namespace Controlleur
+namespace Diaballik
 {
 
     class Controller
     {
 
 
-        Game game;
-        Vue::View view;
+        Game game_;
+        View view_;
 
         public:
             Controller();
 
-            Controller(Game game, Vue::View view);
+            Controller(Game game_, View view_);
 
             void initialize();
 
             void startGame();
 
-            int stringToInteger(int index, stringstream com);
+            int stringToInteger(int index, stringstream com, vector<int> list);
     };
 }
 

@@ -22,10 +22,10 @@ namespace Diaballik
 
         private:
 
-            Board board;
-            Player current;
-            Player opponent;
-            Position selected;
+            Board board_;
+            Player current_;
+            Player opponent_;
+            Position selected_;
 
 
         public:
@@ -39,7 +39,7 @@ namespace Diaballik
              */
             inline Board getBoard() const
             {
-                return board;
+                return board_;
             }
 
             /**
@@ -48,7 +48,7 @@ namespace Diaballik
              */
             inline Position getSelected() const
             {
-                return selected;
+                return selected_;
             }
 
             /**
@@ -57,7 +57,7 @@ namespace Diaballik
              */
             inline Player getCurrent() const
             {
-                return current;
+                return current_;
             }
 
             /**
@@ -66,7 +66,7 @@ namespace Diaballik
              */
             inline Player getOpponent() const
             {
-                return opponent;
+                return opponent_;
             }
 
             Player getWinner();
@@ -85,6 +85,10 @@ namespace Diaballik
 
             void initialize();
 
+            bool fairPlay();
+
+            Piece getSelected(int row, int column);
+
             /**
         * @param player
         */
@@ -92,10 +96,14 @@ namespace Diaballik
 
             bool isOver();
 
+            vector<Move> getMoves();
+
             /**
         * @param selected
         */
-            vector<Position> getMoves(Position selected);
+            vector<Move> getMoves(Position selected_);
+
+            int getNbMoves(Player player);
 
             /**
         * @param move

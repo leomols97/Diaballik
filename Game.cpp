@@ -18,14 +18,9 @@ using namespace Diaballik;
 
 Game::Game()
 {
-    Board board(vector<vector<Square>> board);
-    Player current(White), oponent(Black);
-    Position selected(int row, int column);
-}
-
-auto get(unsigned i)
-{
-
+    Board board_(vector<vector<Square>> board_);
+    Player current_(White), oponent(Black);
+    Position selected_(int row, int column);
 }
 
 /**
@@ -33,63 +28,126 @@ auto get(unsigned i)
  */
 void Game::initialize()
 {
+    this->board_.doSomeStuff();
     //board.reserve(7);
-    for (unsigned i = 0; i < Board().getBoard().size(); i++)
+    for (unsigned i = 0; i < this->board_.getBoard().size(); i++)
     {
         //board[i].reserve(7);
-        for (unsigned j = 0; j < sizeof (Board().getBoard()[i].size()); j++)
+        for (unsigned j = 0; j < sizeof (this->board_.getBoard()[i].size()); j++)
         {
             if (i == 0 && j == 3)
             {
                 Piece p(Black);
-                Piece().changeHasBall(&p);
-                Board().getBoard()[i][j].put(&p);
+                p.changeHasBall(true);
+                this->board_.getBoard()[i][j].put(p);
             }
             else if (i == 6 && j == 3)
             {
                 Piece p(White);
-                Piece().changeHasBall(&p);
-                Board().getBoard()[i][j].put(&p);
+                p.changeHasBall(true);
+                this->board_.getBoard()[i][j].put(p);
             }
             else if (i == 0)
             {
                 Piece p(Black);
-                Board().getBoard()[i][j].put(&p);
+                this->board_.getBoard()[i][j].put(p);
             }
             else if (i == 6)
             {
                 Piece p(White);
-                Board().getBoard()[i][j].put(&p);
+                this->board_.getBoard()[i][j].put(p);
             }
             else
             {
                 Piece p;
-                Board().getBoard()[i][j].put(&p);
+                this->board_.getBoard()[i][j].put(p);
             }
         }
     }
+}
+
+bool Game::fairPlay()
+{
+    Position pos;
+    bool foulGame = false;
+    bool found = false;
+    int count = 0;
+    for(unsigned i = 0; i<board_.getBoard().size() && !found; i++)
+    {
+        if(board_.getBoard()[static_cast<int>(i)][0].isMyOwn(opponent_.getColor()))
+        {
+            pos = {static_cast<int>(i), 0};
+            found = true;
+            if(board_.isInside({static_cast<int>(i)+1, 0})
+                    && board_.isMyOwn({static_cast<int>(i)+1, 0}, current_.getColor()))
+            {
+                count++;
+            }
+            if(board_.isInside({static_cast<int>(i)-1, 0})
+                    && board_.isMyOwn({static_cast<int>(i)-1, 0}, current_.getColor()))
+            {
+                count++;
+            }
+        }
+    }
+
+    for(unsigned i = 1; i<board_.getBoard().size() && found; i++)
+    {
+        found = false;
+        for(unsigned j = 0; j<board_.getBoard().size(); j++)
+        {
+            if(board_.getBoard()[static_cast<int>(j)][static_cast<int>(i)].isMyOwn(opponent_.getColor()))
+            {
+                if(pos.getColumn()!=static_cast<int>(i)
+                        && (pos.getRow()==static_cast<int>(j)
+                            || pos.getRow()==static_cast<int>(j)+1
+                            || pos.getRow()==static_cast<int>(j)-1))
+                {
+                    pos = {static_cast<int>(j),static_cast<int>(i)};
+                    found = true;
+                    if(board_.isInside({static_cast<int>(j)+1,static_cast<int>(i)})
+                            && board_.isMyOwn({static_cast<int>(j)+1, static_cast<int>(i)}, current_.getColor()))
+                    {
+                        count++;
+                    }
+                    if(board_.isInside({static_cast<int>(j)-1, static_cast<int>(i)})
+                            && board_.isMyOwn({static_cast<int>(j)-1, static_cast<int>(i)}, current_.getColor()))
+                    {
+                        count++;
+                    }
+                }
+                if(i==board_.getBoard().size()-1
+                        && found
+                        && count>=3)
+                {
+                    foulGame=true;
+                }
+            }
+        }
+    }
+    return foulGame;
 }
 
 /**
  * @param player
  * @return boolean
  */
-bool foulGame(Player player)
+/*bool foulGame(Player player)
 {
-    /**
+    /*
       Si toutes les pièces collées à une pièce adverse ne peuvent pas faire de mouvement vers l'avant, c'est foulGame
       */
-    return false;
-}
+    /*return false;
+}*/
 
 /**
  * @return boolean
  */
-bool isOver()
+bool Game::isOver()
 {
     for (unsigned i = 0; i < sizeof (Board().getBoard()); i++)
     {
-        if (Board().getBoard()[0][i].getPiece().getColor() == White
+        if (board_.getBoard()[0][i].getPiece().getColor() == White
                 || Board().getBoard()[6][i].getPiece().getColor() == Black)
         {
             return true;
@@ -108,13 +166,13 @@ void Game::select(int row , int column)
     Position p(row, column);
     try
     {
-        Board().isInside(p);
+        board_.isInside(p);
     }
     catch (const exception e)
     {
         cout << "La position que vous essayez de sélectionner n'est pas sur le plateau de jeu";
     }
-    this->selected = Position(row, column);
+    this->selected_ = Position(row, column);
 }
 
 /**
@@ -122,13 +180,13 @@ void Game::select(int row , int column)
  */
 void Game::swapPlayers()
 {
-    if (!hasMoves(current))
+    if (!hasMoves(current_))
         /*autre condition à rajouter s'il décide de ne pas utiliser tous ses mouvements*/
         // ->Il "suffit", dans le controleur, de recevoir une commande "tour fini"
     {
-        Player provisoire = current;
-        current = opponent;
-        opponent = provisoire;
+        Player provisoire = current_;
+        current_ = opponent_;
+        opponent_ = provisoire;
     }
 }
 
@@ -137,7 +195,7 @@ void Game::swapPlayers()
  */
 void Game::start()
 {
-    if (!isOver() && board.isEmpty())
+    if (!isOver() && board_.isEmpty())
     {
         throw invalid_argument("il y a déjà une parti en cours");
     }
@@ -148,7 +206,7 @@ vector<Direction> allDirections ()
     vector<Direction> dirs;
     for (unsigned i = 0; i < 4; i++)
     {
-         dirs.push_back(Direction());
+        dirs.push_back(Direction());
     }
     /*
      * OU (à la place du for, si le for ne fonctionne pas)
@@ -159,32 +217,34 @@ vector<Direction> allDirections ()
      */
     return dirs;
 }
-
+vector<Move> Game::getMoves(){
+    getMoves(selected_);
+}
 /**
  * @param selected
  * @return List<Move>
  */
-vector<Position> getMoves(Position selected)
+vector<Move> Game::getMoves(Position selected)
 {
     try
     {
-        Board().isInside(selected);
+        board_.isInside(selected);
     }
     catch (const exception e)
     {
         cerr << "La position sélectionnée ne fait pas partie du plateau de jeu. Réessayez : ";
     }
-    try 
+    try
     {
-        Board().isFree(selected);
-    } 
-    catch (const exception e) 
+        board_.isFree(selected);
+    }
+    catch (const exception e)
     {
         cerr << "La position selectionnée ne contient pas de pièce. Réessayez : ";
     }
     try
     {
-        Board().getSquare(&selected).isMyOwn(Game().getCurrent().getColor());
+        board_.getSquare(selected).isMyOwn(getCurrent().getColor());
     }
     catch (const exception e)
     {
@@ -192,31 +252,33 @@ vector<Position> getMoves(Position selected)
     }
 
     Piece piece(Board().getPiece(selected).getColor());
-    vector<Position> possibleEndingPositions;
+    vector<Move> possibleEndingPositions;
     vector<Direction> directions;
     for (unsigned i  = 0; i < allDirections().size(); i++)
     {
         directions.push_back(allDirections()[i]);
     }
-    if(Game().getCurrent().getNbMoves() == 1)
+    if(getNbMoves(getCurrent()) == 1)
     {
         for (unsigned i = 0; i < 4; i++)
         {
-            if (Board().isInside(selected.next(selected, directions.at(i))))
+            if (board_.isInside(selected.next(selected, directions.at(i))))
             {
-                possibleEndingPositions.push_back(selected.next(selected, directions.at(i)));
+                Move move(board_.getPiece(selected), selected, selected.next(selected, directions.at(i)));
+                possibleEndingPositions.push_back(move);
             }
         }
     }
-    else if(Game().getCurrent().getNbMoves() == 2)
+    else if(getNbMoves(getCurrent()) == 2)
     {
         for (unsigned i = 0; i < 4; i++)
         {
             for (unsigned i = 0; i < 4; i++)
             {
-                if (Board().isInside(selected.next(selected, directions.at(i))))
+                if (board_.isInside(selected.next(selected, directions.at(i))))
                 {
-                    possibleEndingPositions.push_back(selected.next(selected, directions.at(i)));
+                    Move move(board_.getPiece(selected), selected, selected.next(selected, directions.at(i)));
+                    possibleEndingPositions.push_back(move);
                 }
             }
         }
@@ -226,25 +288,66 @@ vector<Position> getMoves(Position selected)
 }
 
 /**
+ * @return int
+ */
+int Game::getNbMoves(Player player)
+{
+    int nbMoves = 0;
+    Position selected;
+    vector<Direction> directions;
+    for (unsigned i  = 0; i < allDirections().size(); i++)
+    {
+        directions.push_back(allDirections()[i]);
+    }
+    for (unsigned i = 0; i < board_.getBoard().size(); i++)
+    {
+        for (unsigned i = 0; i < Board().getBoard()[i].size(); i++)
+        {
+            for (unsigned i = 0; i < 4; i++)
+            {
+                if (Board().isInside(selected.next(selected, directions.at(i)))
+                        && Board().isFree(selected.next(selected, directions.at(i))))
+                {
+                    nbMoves++;
+                }
+                if (Board().isInside(selected.next(selected.next(selected, directions.at(i)), directions.at(i)))
+                        && Board().isFree(selected.next(selected.next(selected, directions.at(i)), directions.at(i))))
+                {
+                    nbMoves++;
+                }
+            }
+        }
+    }
+    return nbMoves;
+}
+
+/**
  * @param move
  * @return void
  */
 void Game::apply(Move move)
 {
     Piece piece(Board().getPiece(move.getEnd()).getColor());
-    if (board.isFree(move.getEnd())) {
-        board.remove(move.getStart());
-        board.put(&piece, move.getEnd());
+    if (board_.isFree(move.getEnd()))
+    {
+        board_.remove(move.getStart());
+        board_.put(piece, move.getEnd());
     }
+}
+
+Piece Game::getSelected(int row, int column)
+{
+    select(row, column);
+    return board_.getPiece(selected_);
 }
 
 /**
  * @param player
  * @return boolean
  */
-bool hasMoves(Player player)
+bool Game::hasMoves(Player player)
 {
-    return player.getNbMoves() > 0;
+    return getNbMoves(player) > 0;
 }
 
 /**
@@ -253,5 +356,17 @@ bool hasMoves(Player player)
 Player Game::getWinner()
 {
     //rajouter condition de anti-jeu
-    return this->current;
+    Player winner;
+    for (unsigned i = 0; i < sizeof (Board().getBoard()); i++)
+    {
+        if (board_.getBoard()[0][i].getPiece().getColor() == White)
+        {
+            winner.setColor(White);
+        }
+        if (board_.getBoard()[0][i].getPiece().getColor() == Black)
+        {
+            winner.setColor(Black);
+        }
+    }
+    return winner;
 }

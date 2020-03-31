@@ -2,7 +2,6 @@
 #include "Player.h"
 
 using namespace std;
-using namespace Vue;
 
 
 View::View(){}
@@ -14,40 +13,28 @@ void Initialize()
     cout << "" << endl;
 }
 
-void Quit()
+void displayQuit()
 {
     cout << "Au Revoir" << endl;
     cout << "" << endl;
 }
 
-void displayError(string e)
+void displayError(string message)
 {
-    cout << e << endl;
+    cout << message << endl;
     cout << "" << endl;
 }
 
-void displayHelpInit()
+void displayHelp()
 {
     cout << "Liste de commandes : " << endl;
     cout << " * select <ligne> <colonne> : permet de séléctionner la pièce à la position mentionnée : " << endl;
-    cout << " * quit : permet de quitter le jeu" << endl;
-}
-
-void displayHelpWhenSelected()
-{
-    cout << "Liste de commandes : " << endl;
-    cout << " * moves : affiche la liste des mouvements possibles de la piece à la position selectionée" << endl;
-    cout << " * quit : permet de quitter le jeu" << endl;
-}
-
-void displayHelpWhenMoves()
-{
-    cout << "Liste de commandes : " << endl;
+    cout << " * moves <ligne> <colonne>: affiche la liste des mouvements possibles avec chacune des pièces" << endl;
     cout << " * apply <numéro du déplacement>: permet de déplacer une pièce sélectionnée" << endl;
     cout << " * quit : permet de quitter le jeu" << endl;
 }
 
-string askCommand()
+vector<char> askCommand()
 {
     string commande;
     cout << "Entrez votre commande : " << endl;
@@ -102,7 +89,7 @@ void displayPiece(Square square)
     }
 }
 
-void displayOver(vector<Player> winners)
+/*void displayOver()
 {
     for (Player winner : winners)
     {
@@ -117,7 +104,7 @@ void displayOver(vector<Player> winners)
     }
     cout << endl;
     Quit();
-}
+}*/
 
 void displayMoves(vector<Move> moves)
 {

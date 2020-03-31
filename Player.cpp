@@ -24,8 +24,8 @@ Player::Player() {}
  * @param color
  */
 Player::Player(Color color) {
-    this->color = &color;
-    this->nbMoves = 2;
+    this->color_ = color;
+    this->nbMoves_ = 2;
     vector<Piece> pieces{7};
     for (unsigned i = 0; i < sizeof(pieces); i++)
     {
@@ -39,7 +39,7 @@ Player::Player(Color color) {
  * @param color
  * @return
  */
-bool isReal(Color color)
+bool Player::isReal(Color color)
 {
     if (color == Black || color == White)
     {
@@ -51,14 +51,7 @@ bool isReal(Color color)
     }
 }
 
-/**
- * @return boolean
- */
-bool canPass() {
-    return false;
-}
-
-vector<Direction> allDirections ()
+vector<Direction> Player::allDirections ()
 {
     vector<Direction> dirs;
     for (unsigned i = 0; i < 4; i++)
@@ -75,36 +68,12 @@ vector<Direction> allDirections ()
     return dirs;
 }
 
-/**
- * @return int
- */
-int getNbMoves(Player player)
+void Player::setNbMoves(int nbMoves)
 {
-    int nbMoves = 0;
-    Position selected;
-    vector<Direction> directions;
-    for (unsigned i  = 0; i < allDirections().size(); i++)
-    {
-        directions.push_back(allDirections()[i]);
-    }
-    for (unsigned i = 0; i < Board().getBoard().size(); i++)
-    {
-        for (unsigned i = 0; i < Board().getBoard()[i].size(); i++)
-        {
-            for (unsigned i = 0; i < 4; i++)
-            {
-                if (Board().isInside(selected.next(selected, directions.at(i)))
-                        && Board().isFree(selected.next(selected, directions.at(i))))
-                {
-                    nbMoves++;
-                }
-                if (Board().isInside(selected.next(selected.next(selected, directions.at(i)), directions.at(i)))
-                        && Board().isFree(selected.next(selected.next(selected, directions.at(i)), directions.at(i))))
-                {
-                    nbMoves++;
-                }
-            }
-        }
-    }
-    return 2;
+    this->nbMoves_ = nbMoves;
+}
+
+void Player::setColor(Color color)
+{
+    this->color_ = color;
 }
