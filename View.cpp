@@ -25,12 +25,24 @@ void displayError(string message)
     cout << "" << endl;
 }
 
-void displayHelp()
+void displayHelpInit()
 {
     cout << "Liste de commandes : " << endl;
-    cout << " * select <ligne> <colonne> : permet de séléctionner la pièce à la position mentionnée : " << endl;
-    cout << " * moves <ligne> <colonne>: affiche la liste des mouvements possibles avec chacune des pièces" << endl;
-    cout << " * apply <numéro du déplacement>: permet de déplacer une pièce sélectionnée" << endl;
+    cout << " * move <ligne> <colonne> : permet de sélectionner la pièce à la position mentionnée et affiche la liste des mouvements possibles avec chacune des pièces" << endl;
+    cout << " * quit : permet de quitter le jeu" << endl;
+}
+
+void displayHelpMove()
+{
+    cout << "Liste de commandes : " << endl;
+    cout << " * apply <numéro du déplacement> : permet de déplacer la pièce sélectionnée" << endl;
+    cout << " * quit : permet de quitter le jeu" << endl;
+}
+
+void displayHelpPass()
+{
+    cout << "Liste de commandes : " << endl;
+    cout << " * pass <numéro de passes> : permet d'éffectuer une passe avec la pièce sélectionnée" << endl;
     cout << " * quit : permet de quitter le jeu" << endl;
 }
 

@@ -103,12 +103,16 @@ namespace Diaballik
         */
             vector<Move> getMoves(Position selected_);
 
+            vector<Move> getPasses(Position selected_);
+
             int getNbMoves(Player player);
 
             /**
         * @param move
         */
             void apply(Move move );
+
+            void applyPass(Move move);
 
             /**
         * @param player

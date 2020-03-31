@@ -24,6 +24,7 @@ namespace Diaballik
             Color color_;
             vector<Piece> pieces_;
             int nbMoves_;
+            bool hasPass_;
 
         public:
 
@@ -32,6 +33,16 @@ namespace Diaballik
  * @param color
  */
             Player(Color color_);
+
+            inline bool getHasPass()
+            {
+                return this->hasPass_;
+            }
+
+            inline void setHasPass(bool hasPass)
+            {
+                this->hasPass_ = hasPass;
+            }
 
             inline Color getColor() const
             {

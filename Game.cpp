@@ -218,7 +218,7 @@ vector<Direction> allDirections ()
     return dirs;
 }
 vector<Move> Game::getMoves(){
-    getMoves(selected_);
+    return getMoves(selected_);
 }
 /**
  * @param selected
@@ -226,7 +226,7 @@ vector<Move> Game::getMoves(){
  */
 vector<Move> Game::getMoves(Position selected)
 {
-    try
+    /*try
     {
         board_.isInside(selected);
     }
@@ -249,7 +249,7 @@ vector<Move> Game::getMoves(Position selected)
     catch (const exception e)
     {
         cerr << "La pièce que vous avez sélectionnée ne vous appartient pas. Sélectionnez-en une autre :";
-    }
+    }*/
 
     Piece piece(Board().getPiece(selected).getColor());
     vector<Move> possibleEndingPositions;
@@ -286,6 +286,69 @@ vector<Move> Game::getMoves(Position selected)
     return possibleEndingPositions;
 
 }
+
+vector<Move> Game::getPasses(Position selected)
+{
+    /*try
+    {
+        board_.isInside(selected);
+    }
+    catch (const exception e)
+    {
+        cerr << "La position sélectionnée ne fait pas partie du plateau de jeu. Réessayez : ";
+    }
+    try
+    {
+        board_.isFree(selected);
+    }
+    catch (const exception e)
+    {
+        cerr << "La position selectionnée ne contient pas de pièce. Réessayez : ";
+    }
+    try
+    {
+        board_.getSquare(selected).isMyOwn(getCurrent().getColor());
+    }
+    catch (const exception e)
+    {
+        cerr << "La pièce que vous avez sélectionnée ne vous appartient pas. Sélectionnez-en une autre :";
+    }*/
+
+    Piece piece(Board().getPiece(selected).getColor());
+    vector<Move> possibleEndingPositions;
+    vector<Direction> directions;
+    for (unsigned i  = 0; i < allDirections().size(); i++)
+    {
+        directions.push_back(allDirections()[i]);
+    }
+    if(board_.getPiece(selected).canPassBall(selected))
+    {
+        for (unsigned i = 0; i < 4; i++)
+        {
+            if (board_.isInside(selected.next(selected, directions.at(i))))
+            {
+                Move move(board_.getPiece(selected), selected, selected.next(selected, directions.at(i)));
+                possibleEndingPositions.push_back(move);
+            }
+        }
+    }
+    else if(getNbMoves(getCurrent()) == 2)
+    {
+        for (unsigned i = 0; i < 4; i++)
+        {
+            for (unsigned i = 0; i < 4; i++)
+            {
+                if (board_.isInside(selected.next(selected, directions.at(i))))
+                {
+                    Move move(board_.getPiece(selected), selected, selected.next(selected, directions.at(i)));
+                    possibleEndingPositions.push_back(move);
+                }
+            }
+        }
+    }
+    return possibleEndingPositions;
+}
+
 
 /**
  * @return int
@@ -327,11 +390,25 @@ int Game::getNbMoves(Player player)
  */
 void Game::apply(Move move)
 {
-    Piece piece(Board().getPiece(move.getEnd()).getColor());
+    Piece piece(Board().getPiece(move.getStart()).getColor());
     if (board_.isFree(move.getEnd()))
     {
         board_.remove(move.getStart());
         board_.put(piece, move.getEnd());
+    }
+}
+
+/**
+ * @param move
+ * @return void
+ */
+void Game::applyPass(Move move)
+{
+    Piece piece(Board().getPiece(move.getStart()).getColor());
+    if (piece.canPassBall(move.getStart()))
+    {
+        board_.getPiece(move.getStart()).changeHasBall(false);
+        board_.getPiece(move.getEnd()).changeHasBall(true);
     }
 }
 

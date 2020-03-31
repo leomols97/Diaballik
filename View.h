@@ -21,7 +21,11 @@ namespace Diaballik
 
         void displayError(string message);
 
-        void displayHelp();
+        void displayHelpInit();
+
+        void displayHelpMove();
+
+        void displayHelpPass();
 
         vector<char> askCommand();
 

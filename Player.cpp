@@ -27,6 +27,7 @@ Player::Player(Color color) {
     this->color_ = color;
     this->nbMoves_ = 2;
     vector<Piece> pieces{7};
+    hasPass_=true;
     for (unsigned i = 0; i < sizeof(pieces); i++)
     {
         Piece p(color);

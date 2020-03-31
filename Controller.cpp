@@ -42,22 +42,19 @@ void Controller::startGame()
             this->game_.getWinner();
             this->view_.displayQuit();
         }
-        if (newTurn)
+        /*if (newTurn)
         {
-
-
             Position pos; // position de la piece qui a la balle
-
-
-
-
-
-            if (game_.getNbMoves(game_.getCurrent()) == 0 && !game_.getBoard().getPiece(pos).canPassBall(pos))
+            int row = pos.getRow();
+            int col = pos.getColumn();
+            if (!game_.hasMoves(game_.getCurrent()))
             {
                 this->view_.displayError("Ce joueur ne peut pas jouer lors de ce tour.");
+                game_.swapPlayers();
             }
-        }
-        this->view_.displayHelp();
+        }*/
+        view_.displayCurrentPlayer(game_.getCurrent());
+        this->view_.displayHelpInit();
         vector<char> command = this->view_.askCommand();
         unsigned int i = 0;
         char c;
@@ -78,45 +75,44 @@ void Controller::startGame()
         case 'quit' :
             endCom = true;
             break;
-        case 'select' :
+        case 'move' :
             int row = command[1];
             int col = command[2];
             Position position(row, col);
-            view_.displaySelected(game_.getSelected(row, col));
-            command = this->view_.askCommand();
-            switch (command[0]) {
-            case 'quit' :
-                endCom = true;
-                break;
-            case 'pass':
-
-
-
-
-
-
-
-
-                //action de la passe
-
-
-
-
-
-                break;
-            case 'moves' :
-                vector<Move> positions = this->game_.getMoves(position);
-                view_.displayMoves(positions);
+            if(game_.getCurrent().getHasPass() && game_.getSelected(row, col).getHasBall())
+            {
+                //affiche la liste de passes possibles
+                view_.displayHelpPass();
                 command = this->view_.askCommand();
                 switch (command[0]) {
                 case 'quit' :
                     endCom = true;
                     break;
-                case 'apply' : // il faut obliger à d'abord faire la commande moves ou select avant de faire apply
-                    int num = command[1];
-                    game_.apply(game_.getMoves()[num]);
+                case 'pass':
+                    game_.applyPass(game_.getMoves()[command[1]]);
+                    game_.getCurrent().setHasPass(false);
                     break;
                 }
+            }
+            else if(game_.hasMoves(game_.getCurrent()) && !game_.getSelected(row, col).getHasBall())
+            {
+                vector<Move> moves = this->game_.getMoves(position);
+                view_.displayMoves(moves);
+                view_.displayHelpMove();
+                command = this->view_.askCommand();
+                switch (command[0]) {
+                case 'quit' :
+                    endCom = true;
+                    break;
+                case 'apply' :
+                    game_.apply(moves[command[1]]);
+                    break;
+                }
+            }
+            if(!game_.hasMoves(game_.getCurrent()) && !game_.getCurrent().getHasPass())
+            {
+                view_.displayError("Le joueur n'a plus de mouvement ou de passes possible");
+                game_.swapPlayers();
                 break;
             }
             break;
