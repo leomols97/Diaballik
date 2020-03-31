@@ -42,14 +42,11 @@ namespace Diaballik
 
             void setColor(Color color_);
 
-            /**
-        * @param color
-        */
             bool isReal();
 
-            bool canPassBall(Position pos);
+            //bool canPassBall(Board board, Position pos);
 
-            void passBall(Piece pieceThatGives, Position pos);
+            //void passBall(Board board, Piece pieceThatGives, Position pos);
 
             bool getHasBall();
 

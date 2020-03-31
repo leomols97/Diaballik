@@ -6,11 +6,11 @@
 #ifndef BOARD_H
 #define BOARD_H
 #include "Position.h"
-#include "Piece.h"
 #include "Square.h"
 #include "Player.h"
 
 using namespace std;
+using namespace Diaballik;
 
 namespace Diaballik
 {

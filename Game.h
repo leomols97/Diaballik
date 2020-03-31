@@ -120,6 +120,14 @@ namespace Diaballik
             bool hasMoves(Player player);
 
             vector<Direction> allDirections ();
+
+            //bool canPassBall(const Position &position) const;
+
+            bool canPassBall(Piece pieceThatGives, Position pos);
+
+            void passBall(Piece pieceThatReceive, Position pos);
+
+            void passList(vector<Position> &list) const;
     };
 }
 #endif //_GAME_H

@@ -9,6 +9,8 @@
 using namespace std;
 using namespace Diaballik;
 
+Square::Square() {}
+
 /**
  * Square implementation
  */

@@ -5,6 +5,7 @@
 #include "View.h"
 
 using namespace std;
+using namespace Diaballik;
 
 namespace Diaballik
 {
