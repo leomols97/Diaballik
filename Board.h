@@ -20,18 +20,18 @@ namespace Diaballik
 
         private:
 
-            vector<vector<Square>> board;
+            vector<vector<Square>> board_;
 
         public:
 
             Board();
-            Board(vector<vector<Square>> board);
+            Board(vector<vector<Square>> board_);
 
             /**
         * @param position
         */
             Piece getPiece(Position position);
-            Square getSquare(Position *position);
+            Square getSquare(Position position);
             vector<vector<Square>> getBoard();
 
             /**
@@ -50,12 +50,12 @@ namespace Diaballik
 * @param piece
 * @param position
 */
-            void put(Piece *piece, Position position);
+            void put(Piece piece, Position position);
 
             /**
 * @param player
 */
-            vector<Position> getTakenSquare(Player *player);
+            vector<Position> getTakenSquares(Player player);
 
             /**
 * @param position

@@ -4,8 +4,7 @@
 #include "Controller.h"
 
 using namespace std;
-using namespace Vue;
-using namespace Controlleur;
+using namespace Diaballik;
 
 int main()
 {

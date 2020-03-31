@@ -5,7 +5,8 @@
 using namespace std;
 
 
-namespace Vue {
+namespace Diaballik
+{
 
     class View
     {
@@ -16,23 +17,19 @@ namespace Vue {
 
         void Initialize();
 
-        void Quit();
+        void displayQuit();
 
-        void displayError();
+        void displayError(string message);
 
-        void displayHelpInit();
+        void displayHelp();
 
-        void displayHelpWhenSelected();
-
-        void displayHelpWhenMoves();
-
-        string askCommand();
+        vector<char> askCommand();
 
         void displayBoard(vector<vector<Square>>);
 
         void displayPiece(Square square) ;
 
-        void displayOver(vector<Player> winners) ;
+        //void displayOver(vector<Player> winners) ;
 
         void displaySelected(Piece piece) ;
 

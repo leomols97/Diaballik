@@ -26,8 +26,8 @@ Position::Position() {}
  */
 Position::Position(int row, int column)
 {
-    this->row = &row;
-    this->column = &column;
+    this->row_ = row;
+    this->column_ = column;
 }
 
 Position whichEndingPosition(Position position, Direction direction)
@@ -57,11 +57,11 @@ Position whichEndingPosition(Position position, Direction direction)
  * @param dir
  * @return Position
  */
-Position* next(Position position, Direction direction)
+Position next(Position position, Direction direction)
 {
     whichEndingPosition(position, direction);
     position.setRow(position.getRow() + whichEndingPosition(position, direction).getRow());
     position.setColumn(position.getColumn() + whichEndingPosition(position, direction).getColumn());
-    Position* pos = &position;
+    Position pos = position;
     return pos;
 }

@@ -17,7 +17,7 @@ using namespace Diaballik;
 
 Piece::Piece()
 {
-    this->real = false;
+    this->real_ = false;
 }
 
 /**
@@ -26,15 +26,16 @@ Piece::Piece()
 Piece::Piece(Color color)
 {
 
-    this->color = &color;
-    this->real = true;
-    this->hasBall = false;
+    this->color_ = color;
+    this->real_ = true;
+    this->hasBall_ = false;
 }
 
 /**
  * @return boolean
  */
-bool Piece::canPassBall(Position pos) {
+bool Piece::canPassBall(Position pos)
+{
     bool canPass = false;
     Position posHD(pos.getRow(), pos.getColumn());
     Position posHG(pos.getRow(), pos.getColumn());
@@ -82,37 +83,33 @@ bool Piece::canPassBall(Position pos) {
  * @return void
  */
 
-void Piece::passBall(Piece *piece, Position pos)
+void Piece::passBall(Piece pieceThatGives, Position pos)
 {
-    if(canPassBall(pos))
+    if(pieceThatGives.canPassBall(pos))
     {
-        changeHasBall(piece);
+        pieceThatGives.changeHasBall(false);
+        Board().getPiece(pos).changeHasBall(true);
+        //pieceThatReceive.changeHasBall(true);
     }
 }
 
-bool getHasBall()
+bool Piece::getHasBall()
 {
-    return true;
+    return hasBall_;
 }
 
-void Piece::setColor(Color *color)
+void Piece::setColor(Color color)
 {
-    this->color = color;
+    this->color_ = color;
 }
 
-bool changeHasBall(Piece *piece)
+void Piece::changeHasBall(bool hasBall)
 {
-    if (piece->getHasBall() ==  true)
-    {
-        return false;
-    }
-    else
-    {
-        return true;
-    }
+    this->hasBall_ = hasBall;
 }
 
-bool Piece::isReal(){
+bool Piece::isReal()
+{
     Player player;
-    return player.isReal(color);
+    return player.isReal(color_);
 }
