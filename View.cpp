@@ -61,10 +61,11 @@ void View::displayBoard(vector<vector<Square>> board)
 {
     cout << " col#\t||  | 00 |  | 01 |  | 02 |  | 03 |  | 04 |  | 05 |  | 06 |" << endl;
     cout << "==================================================================" << endl;
+    cout << board.size() << endl;
     for (unsigned i = 0; i < board.size(); i++)
     {
         cout << "row#0" << i << "\t|| " << endl;
-        for (Square square : board[i])
+        for (Square square : board.at(i))
         {
             cout << " | " << endl;
             View().displayPiece(square);

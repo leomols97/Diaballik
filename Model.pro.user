@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
+<<<<<<< HEAD
 <!-- Written by QtCreator 4.11.1, 2020-03-31T21:40:23. -->
+=======
+<<<<<<< HEAD
+<!-- Written by QtCreator 4.11.1, 2020-03-31T20:41:04. -->
+=======
+<!-- Written by QtCreator 4.11.1, 2020-03-31T20:12:27. -->
+>>>>>>> 0ef5f352eb1fec9c22be2668d09abaa9ecfed9fe
+>>>>>>> e566f0dfa02e61bc07d3a207b5d12bdcd6ae1eab
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -547,8 +555,14 @@
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+<<<<<<< HEAD
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Model2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/Users/simon/Diaballik/Diaballik/Model.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/Users/simon/Diaballik/Diaballik/Model.pro</value>
+=======
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/Users/leopoldmols/Documents/QTCreator/ESI/2eme/Quadri2/Model/Model.pro</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/Users/leopoldmols/Documents/QTCreator/ESI/2eme/Quadri2/Model/Model.pro</value>
+>>>>>>> 0ef5f352eb1fec9c22be2668d09abaa9ecfed9fe
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>

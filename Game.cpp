@@ -62,7 +62,8 @@ void Game::initialize()
                 Piece p;
                 this->board_.getBoard()[i][j].put(p);
             }
-        }*/
+        }
+    }*/
 }
 
 bool Game::fairPlay()
@@ -133,9 +134,15 @@ bool Game::fairPlay()
  */
 /*bool foulGame(Player player)
 {
+<<<<<<< HEAD
       //Si toutes les pièces collées à une pièce adverse ne peuvent pas faire de mouvement vers l'avant, c'est foulGame
 
 return false;
+=======
+      Si toutes les pièces collées à une pièce adverse ne peuvent pas faire de mouvement vers l'avant, c'est foulGame
+      */
+/*return false;
+>>>>>>> e566f0dfa02e61bc07d3a207b5d12bdcd6ae1eab
 }*/
 
 /**

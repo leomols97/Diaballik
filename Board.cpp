@@ -79,9 +79,14 @@ bool Board::isFree(Position position)
     return getPiece(position).isReal();
 }
 
+<<<<<<< HEAD
 bool Board::isEmpty()
 {
     bool empty = false;
+=======
+bool Board::isEmpty(){
+    bool empty;
+>>>>>>> e566f0dfa02e61bc07d3a207b5d12bdcd6ae1eab
     for (unsigned i = 0; i < board_.size(); i++)
     {
         for (unsigned j = 0; j < sizeof (board_[i].size()); j++)
@@ -165,10 +170,10 @@ void Board::remove(Position position)
 
 void Board::initialize()
 {
-    //board.reserve(7);
+    board_.reserve(7);
     for (unsigned i = 0; i < board_.size(); i++)
     {
-        //board[i].reserve(7);
+        board_[i].reserve(7);
         for (unsigned j = 0; j < sizeof (board_[i].size()); j++)
         {
             if (i == 0 && j == 3)
@@ -183,12 +188,12 @@ void Board::initialize()
                 Piece().changeHasBall(true);
                 board_[i][j].put(p);
             }
-            else if (i == 0)
+            else if (i == 0 && j != 3)
             {
                 Piece p(Black);
                 board_[i][j].put(p);
             }
-            else if (i == 6)
+            else if (i == 6 && j != 3)
             {
                 Piece p(White);
                 board_[i][j].put(p);

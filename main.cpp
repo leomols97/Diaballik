@@ -12,5 +12,6 @@ int main()
     View view;
     Controller controller(game, view);
     controller.startGame();
+    cout << "simon" << endl;
     return 0;
 }

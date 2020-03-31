@@ -230,4 +230,5 @@ void Controller::startGame()
 void Controller::initialize()
 {
     this->game_.initialize();
+    this->view_.Initialize();
 }
