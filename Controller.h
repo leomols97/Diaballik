@@ -24,10 +24,6 @@ namespace Diaballik
             void initialize();
 
             void startGame();
-
-            int stringToInteger(int index, stringstream com, vector<int> list);
-
-            constexpr int str2int(char* str, int h = 0);
     };
 }
 

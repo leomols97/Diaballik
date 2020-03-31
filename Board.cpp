@@ -79,7 +79,9 @@ bool Board::isFree(Position position)
     return getPiece(position).isReal();
 }
 
-bool Board::isEmpty(){
+bool Board::isEmpty()
+{
+    bool empty = false;
     for (unsigned i = 0; i < board_.size(); i++)
     {
         for (unsigned j = 0; j < sizeof (board_[i].size()); j++)
@@ -87,14 +89,15 @@ bool Board::isEmpty(){
             Position pos(i, j);
             if(!isFree(pos))
             {
-                return false;
+                empty = false;
             }
             else
             {
-                return true;
+                empty = true;
             }
         }
     }
+    return empty;
 }
 
 /**
@@ -122,7 +125,7 @@ vector<Position> Board::getTakenSquares(Player player)
     vector<Position> positions;
     for (unsigned i = 0; i < sizeof(getBoard()); i++)
     {
-        for (unsigned j = 0; j < sizeof (getBoard()[i]); j++)
+        for (unsigned j = 0; j < sizeof(getBoard()[i]); j++)
         {
             pos.setRow(i);
             pos.setColumn(j);
@@ -171,13 +174,13 @@ void Board::initialize()
             if (i == 0 && j == 3)
             {
                 Piece p(Black);
-                Piece().changeHasBall(&p);
+                Piece().changeHasBall(true);
                 board_[i][j].put(p);
             }
             else if (i == 6 && j == 3)
             {
                 Piece p(White);
-                Piece().changeHasBall(&p);
+                Piece().changeHasBall(true);
                 board_[i][j].put(p);
             }
             else if (i == 0)

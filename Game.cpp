@@ -73,7 +73,7 @@ bool Game::fairPlay()
     int count = 0;
     for(unsigned i = 0; i<board_.getBoard().size() && !found; i++)
     {
-        if(board_.getBoard()[static_cast<int>(i)][0].isMyOwn(opponent_.getColor()))
+        if(board_.getBoard()[(i)][0].isMyOwn(opponent_.getColor()))
         {
             pos = {static_cast<int>(i), 0};
             found = true;
@@ -95,7 +95,7 @@ bool Game::fairPlay()
         found = false;
         for(unsigned j = 0; j<board_.getBoard().size(); j++)
         {
-            if(board_.getBoard()[static_cast<int>(j)][static_cast<int>(i)].isMyOwn(opponent_.getColor()))
+            if(board_.getBoard()[(j)][(i)].isMyOwn(opponent_.getColor()))
             {
                 if(pos.getColumn()!=static_cast<int>(i)
                         && (pos.getRow()==static_cast<int>(j)
@@ -133,10 +133,9 @@ bool Game::fairPlay()
  */
 /*bool foulGame(Player player)
 {
-    /*
-      Si toutes les pièces collées à une pièce adverse ne peuvent pas faire de mouvement vers l'avant, c'est foulGame
-      */
-/*return false;
+      //Si toutes les pièces collées à une pièce adverse ne peuvent pas faire de mouvement vers l'avant, c'est foulGame
+
+return false;
 }*/
 
 /**

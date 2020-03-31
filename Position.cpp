@@ -46,9 +46,9 @@ Position Position::whichEndingPosition(Position position, Direction direction)
         case Direction::RIGHT :
             position.setColumn(position.getColumn()+1);
             break;
-        default :
+        /*default :
             cout << "Direction inexistante !";
-            break;
+            break;*/
     }
     return position;
 }

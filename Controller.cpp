@@ -24,7 +24,7 @@ void Controller::startGame()
     initialize();
     bool endCom = false;
     //bool newTurn = false;
-    game_.start();
+    //game_.start();
     view_.displayBoard(game_.getBoard().getBoard());
     while (!this->game_.isOver())
     {
@@ -226,26 +226,6 @@ void Controller::startGame()
         this->view_.displayQuit();
     }
 }
-
-
-/*int Controller::stringToInteger(int index, stringstream com, vector<int> list)
-{
-    int number;
-    try
-    {
-        string token;
-        while(getline(com, token, ' '))
-        {
-            stringstream(token) << number;
-            list.push_back(number);
-        }
-    }
-    catch (const exception e)
-    {
-        cout << "ce n'est pas un entier";
-    }
-   return list[index];
-}*/
 
 void Controller::initialize()
 {
