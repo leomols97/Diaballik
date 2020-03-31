@@ -31,7 +31,7 @@ void Controller::startGame()
 {
     initialize();
     bool endCom = false;
-    bool newTurn = false;
+    //bool newTurn = false;
     game_.start();
     view_.displayBoard(game_.getBoard().getBoard());
     while (!this->game_.isOver())
