@@ -66,7 +66,8 @@ void Game::initialize()
 }
 
 /**
- * @return boolean
+ * Verifies if a piece can pass the ball to
+ * @return bool
  */
 bool Game::canPassBall(Piece pieceThatGives, Position pos)
 {

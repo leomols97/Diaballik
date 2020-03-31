@@ -3,14 +3,12 @@
  */
 
 
-#ifndef SQUARE_H
-#define SQUARE_H
+#ifndef _SQUARE_H
+#define _SQUARE_H
 
-#include "Piece.h"
-#include "vector"
+#import "Piece.h"
 
 using namespace std;
-using namespace Diaballik;
 
 namespace Diaballik
 {
@@ -25,7 +23,7 @@ namespace Diaballik
 
         public:
 
-            Square();
+            //Square();
 
             Square(Piece piece_);
 

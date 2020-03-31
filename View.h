@@ -1,9 +1,9 @@
 #ifndef VIEW_H
 #define VIEW_H
-#include "Game.h"
+#import "Game.h"
 
 using namespace std;
-using namespace Diaballik;
+
 
 namespace Diaballik
 {
@@ -27,7 +27,7 @@ namespace Diaballik
 
         void displayHelpPass();
 
-        string askCommand();
+        vector<char> askCommand();
 
         void displayBoard(vector<vector<Square>>);
 

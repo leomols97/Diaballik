@@ -78,6 +78,7 @@ bool Board::isFree(Position position)
     }
     return getPiece(position).isReal();
 }
+
 bool Board::isEmpty()
 {
     bool empty = false;
