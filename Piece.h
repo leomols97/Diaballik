@@ -3,10 +3,10 @@
  */
 
 
-#ifndef _PIECE_H
-#define _PIECE_H
-#import "Color.h"
-#import "Position.h"
+#ifndef PIECE_H
+#define PIECE_H
+#include "Color.h"
+#include "Position.h"
 
 using namespace std;
 using namespace Diaballik;

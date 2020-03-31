@@ -28,9 +28,9 @@ Game::Game()
  */
 void Game::initialize()
 {
-    this->board_.doSomeStuff();
+    this->board_.initialize();
     //board.reserve(7);
-    for (unsigned i = 0; i < this->board_.getBoard().size(); i++)
+    /*for (unsigned i = 0; i < this->board_.getBoard().size(); i++)
     {
         //board[i].reserve(7);
         for (unsigned j = 0; j < sizeof (this->board_.getBoard()[i].size()); j++)
@@ -62,8 +62,7 @@ void Game::initialize()
                 Piece p;
                 this->board_.getBoard()[i][j].put(p);
             }
-        }
-    }
+        }*/
 }
 
 bool Game::fairPlay()
@@ -137,7 +136,7 @@ bool Game::fairPlay()
     /*
       Si toutes les pièces collées à une pièce adverse ne peuvent pas faire de mouvement vers l'avant, c'est foulGame
       */
-    /*return false;
+/*return false;
 }*/
 
 /**
@@ -201,7 +200,7 @@ void Game::start()
     }
 }
 
-vector<Direction> allDirections ()
+vector<Direction> Game::allDirections ()
 {
     vector<Direction> dirs;
     for (unsigned i = 0; i < 4; i++)
@@ -217,6 +216,7 @@ vector<Direction> allDirections ()
      */
     return dirs;
 }
+
 vector<Move> Game::getMoves(){
     return getMoves(selected_);
 }
@@ -287,7 +287,7 @@ vector<Move> Game::getMoves(Position selected)
 
 }
 
-vector<Move> Game::getPasses(Position selected)
+vector<Piece> Game::getPossiblePasses(Position selected)
 {
     /*try
     {
@@ -314,39 +314,42 @@ vector<Move> Game::getPasses(Position selected)
         cerr << "La pièce que vous avez sélectionnée ne vous appartient pas. Sélectionnez-en une autre :";
     }*/
 
-    Piece piece(Board().getPiece(selected).getColor());
-    vector<Move> possibleEndingPositions;
-    vector<Direction> directions;
-    for (unsigned i  = 0; i < allDirections().size(); i++)
+    Piece startingPiece(board_.getPiece(selected).getColor());
+    vector<Piece> possiblePasses;
+    if (startingPiece.getHasBall())
     {
-        directions.push_back(allDirections()[i]);
-    }
-    if(board_.getPiece(selected).canPassBall(selected))
-    {
-        for (unsigned i = 0; i < 4; i++)
+        vector<Direction> directions;
+        for (unsigned i  = 0; i < allDirections().size(); i++)
         {
-            if (board_.isInside(selected.next(selected, directions.at(i))))
-            {
-                Move move(board_.getPiece(selected), selected, selected.next(selected, directions.at(i)));
-                possibleEndingPositions.push_back(move);
-            }
+            directions.push_back(allDirections()[i]);
         }
-    }
-    else if(getNbMoves(getCurrent()) == 2)
-    {
-        for (unsigned i = 0; i < 4; i++)
+        if(board_.getPiece(selected).canPassBall(selected))
         {
+            Position endingPos = selected;
             for (unsigned i = 0; i < 4; i++)
             {
                 if (board_.isInside(selected.next(selected, directions.at(i))))
                 {
-                    Move move(board_.getPiece(selected), selected, selected.next(selected, directions.at(i)));
-                    possibleEndingPositions.push_back(move);
+                    Piece endingPiece(board_.getPiece(selected.next(selected, directions.at(i))).getColor());
+                    for (unsigned i = 0; i < board_.getBoard().size(); i++)
+                    {
+                        for (unsigned j = 0; i < board_.getBoard()[i].size(); j++)
+                        {
+                            if (startingPiece.getColor() == endingPiece.getColor())
+                            {
+                                endingPos = endingPos.next(endingPos, directions.at(i));
+                                if (startingPiece.canPassBall(endingPos))
+                                {
+                                    possiblePasses.push_back(endingPiece);
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
     }
-    return possibleEndingPositions;
+    return possiblePasses;
 }
 
 
@@ -364,17 +367,19 @@ int Game::getNbMoves(Player player)
     }
     for (unsigned i = 0; i < board_.getBoard().size(); i++)
     {
-        for (unsigned i = 0; i < Board().getBoard()[i].size(); i++)
+        for (unsigned i = 0; i < board_.getBoard()[i].size(); i++)
         {
             for (unsigned i = 0; i < 4; i++)
             {
-                if (Board().isInside(selected.next(selected, directions.at(i)))
-                        && Board().isFree(selected.next(selected, directions.at(i))))
+                if (board_.isInside(selected.next(selected, directions.at(i)))
+                        && board_.isFree(selected.next(selected, directions.at(i)))
+                        && board_.isMyOwn(selected.next(selected, directions.at(i)), player.getColor()))
                 {
                     nbMoves++;
                 }
-                if (Board().isInside(selected.next(selected.next(selected, directions.at(i)), directions.at(i)))
-                        && Board().isFree(selected.next(selected.next(selected, directions.at(i)), directions.at(i))))
+                if (board_.isInside(selected.next(selected.next(selected, directions.at(i)), directions.at(i)))
+                        && board_.isFree(selected.next(selected.next(selected, directions.at(i)), directions.at(i)))
+                        && board_.isMyOwn(selected.next(selected.next(selected, directions.at(i)), directions.at(i)), player.getColor()))
                 {
                     nbMoves++;
                 }
@@ -404,7 +409,7 @@ void Game::apply(Move move)
  */
 void Game::applyPass(Move move)
 {
-    Piece piece(Board().getPiece(move.getStart()).getColor());
+    Piece piece(board_.getPiece(move.getStart()).getColor());
     if (piece.canPassBall(move.getStart()))
     {
         board_.getPiece(move.getStart()).changeHasBall(false);
@@ -434,15 +439,18 @@ Player Game::getWinner()
 {
     //rajouter condition de anti-jeu
     Player winner;
-    for (unsigned i = 0; i < sizeof (Board().getBoard()); i++)
+    if (!fairPlay())
     {
-        if (board_.getBoard()[0][i].getPiece().getColor() == White)
+        for (unsigned i = 0; i < sizeof (Board().getBoard()); i++)
         {
-            winner.setColor(White);
-        }
-        if (board_.getBoard()[0][i].getPiece().getColor() == Black)
-        {
-            winner.setColor(Black);
+            if (board_.getBoard()[0][i].getPiece().getColor() == White)
+            {
+                winner.setColor(White);
+            }
+            if (board_.getBoard()[0][i].getPiece().getColor() == Black)
+            {
+                winner.setColor(Black);
+            }
         }
     }
     return winner;

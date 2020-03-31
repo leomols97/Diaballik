@@ -3,8 +3,8 @@
  */
 
 
-#ifndef _BOARD_H
-#define _BOARD_H
+#ifndef BOARD_H
+#define BOARD_H
 #include "Position.h"
 #include "Piece.h"
 #include "Square.h"
@@ -36,7 +36,6 @@ namespace Diaballik
 
             vector<vector<Square>> getBoard();
 
-            void doSomeStuff();
             /**
 * @param position
 */

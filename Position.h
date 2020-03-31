@@ -3,8 +3,8 @@
  */
 
 
-#ifndef _POSITION_H
-#define _POSITION_H
+#ifndef POSITION_H
+#define POSITION_H
 #include "Direction.h"
 
 using namespace std;
@@ -54,7 +54,7 @@ namespace Diaballik
                 this->column_ = column;
             }
 
-            static Position whichEndingPosition(Position position, Direction &direction);
+            Position whichEndingPosition(Position position, Direction direction);
     };
 }
 

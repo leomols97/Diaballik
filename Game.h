@@ -3,13 +3,13 @@
  */
 
 
-#ifndef _GAME_H
-#define _GAME_H
+#ifndef GAME_H
+#define GAME_H
 
 #include "Model.h"
-#import "Player.h"
-#import "Move.h"
-#import "Board.h"
+#include "Player.h"
+#include "Move.h"
+#include "Board.h"
 
 using namespace std;
 using namespace Diaballik;
@@ -103,7 +103,7 @@ namespace Diaballik
         */
             vector<Move> getMoves(Position selected_);
 
-            vector<Move> getPasses(Position selected_);
+            vector<Piece> getPossiblePasses(Position selected_);
 
             int getNbMoves(Player player);
 
@@ -118,6 +118,8 @@ namespace Diaballik
         * @param player
         */
             bool hasMoves(Player player);
+
+            vector<Direction> allDirections ();
     };
 }
 #endif //_GAME_H

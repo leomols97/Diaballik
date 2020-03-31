@@ -1,59 +1,63 @@
 #include "View.h"
 #include "Player.h"
+#include <string>
+#include <sstream>
 
 using namespace std;
+using namespace Diaballik;
 
 
 View::View(){}
 
-void Initialize()
+void View::Initialize()
 {
     cout << "" << endl;
     cout << "Bonjour et Bienvenue dans le jeu de Diaballik" << endl;
     cout << "" << endl;
 }
 
-void displayQuit()
+void View::displayQuit()
 {
     cout << "Au Revoir" << endl;
     cout << "" << endl;
 }
 
-void displayError(string message)
+void View::displayError(string message)
 {
     cout << message << endl;
     cout << "" << endl;
 }
 
-void displayHelpInit()
+void View::displayHelpInit()
 {
     cout << "Liste de commandes : " << endl;
     cout << " * move <ligne> <colonne> : permet de sélectionner la pièce à la position mentionnée et affiche la liste des mouvements possibles avec chacune des pièces" << endl;
     cout << " * quit : permet de quitter le jeu" << endl;
 }
 
-void displayHelpMove()
+void View::displayHelpMove()
 {
     cout << "Liste de commandes : " << endl;
     cout << " * apply <numéro du déplacement> : permet de déplacer la pièce sélectionnée" << endl;
     cout << " * quit : permet de quitter le jeu" << endl;
 }
 
-void displayHelpPass()
+void View::displayHelpPass()
 {
     cout << "Liste de commandes : " << endl;
     cout << " * pass <numéro de passes> : permet d'éffectuer une passe avec la pièce sélectionnée" << endl;
     cout << " * quit : permet de quitter le jeu" << endl;
 }
 
-vector<char> askCommand()
+string View::askCommand()
 {
-    string commande;
+    string command;
     cout << "Entrez votre commande : " << endl;
-    getline(cin, commande);
+    getline(cin, command);
+    return command;
 }
 
-void displayBoard(vector<vector<Square>> board)
+void View::displayBoard(vector<vector<Square>> board)
 {
     cout << " col#\t||  | 00 |  | 01 |  | 02 |  | 03 |  | 04 |  | 05 |  | 06 |" << endl;
     cout << "==================================================================" << endl;
@@ -69,7 +73,7 @@ void displayBoard(vector<vector<Square>> board)
     }
 }
 
-void displayPiece(Square square)
+void View::displayPiece(Square square)
 {
     if(square.getPiece().getHasBall())
     {
@@ -115,10 +119,10 @@ void displayPiece(Square square)
         }
     }
     cout << endl;
-    Quit();
+    displayQuit();
 }*/
 
-void displayMoves(vector<Move> moves)
+void View::displayMoves(vector<Move> moves)
 {
     cout << moves.size() << " mouvement(s) possible(s)" << endl;
     for (unsigned i = 0; i < moves.size(); i++)
@@ -127,7 +131,7 @@ void displayMoves(vector<Move> moves)
     }
 }
 
-void displayCurrentPlayer(Player player)
+void View::displayCurrentPlayer(Player player)
 {
     if(player.getColor() == White)
         cout << "Au tour des Blancs" << endl;

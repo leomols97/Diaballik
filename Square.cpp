@@ -20,7 +20,7 @@ Square::Square(Piece piece)
 /**
  * @return boolean
  */
-bool isFree()
+bool Square::isFree()
 {
     return Piece().getColor() == None;
 }

@@ -3,11 +3,11 @@
  */
 
 
-#ifndef _PLAYER_H
-#define _PLAYER_H
+#ifndef PLAYER_H
+#define PLAYER_H
 
-#import "Color.h"
-#import "Piece.h"
+#include "Color.h"
+#include "Piece.h"
 #include "vector"
 
 using namespace std;

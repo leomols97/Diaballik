@@ -6,6 +6,7 @@
 #include <sstream>
 #include <algorithm>
 #include <iterator>
+#include <map>
 
 using namespace std;
 using namespace Diaballik;
@@ -18,14 +19,10 @@ Controller::Controller(Game game, View view)
     this->view_ = view;
 }
 
-template <class Container>
-void split(string& str, Container& cont)
+/*constexpr unsigned int str2int(char* str, int h = 0)
 {
-    istringstream iss(str);
-    copy(istream_iterator<string>(iss),
-         istream_iterator<string>(),
-         back_inserter(cont));
-}
+    return !str[h] ? 5381 : (str2int(str, h+1) * 33) ^ str[h];
+}*/
 
 void Controller::startGame()
 {
@@ -55,27 +52,39 @@ void Controller::startGame()
         }*/
         view_.displayCurrentPlayer(game_.getCurrent());
         this->view_.displayHelpInit();
-        vector<char> command = this->view_.askCommand();
+        string command = this->view_.askCommand();
+        vector<string> commandStrings;
         unsigned int i = 0;
         char c;
         string com = "";
-        while (command[i])
+        while (i < command.size())
         {
             c=command[i];
             putchar (tolower(c));
             com += c;
+            if (command[i] == ' ')
+            {
+                commandStrings.push_back(com);
+                com.erase();
+            }
             i++;
         }
-        vector<string> words;
-        split(com, words);
-        copy(words.begin(), words.end(), ostream_iterator<string>(cout, "\n"));
+        //split(com, words);
+        //copy(words.begin(), words.end(), ostream_iterator<string>(cout, "\n"));
         //string separate[] = command.toLower().split(" ");
-        switch(command[0])
+        if (commandStrings.at(0) == "quit")
         {
-        case 'quit' :
             endCom = true;
             break;
-        case 'move' :
+        }
+        else if(commandStrings.at(0) == "move")
+        {
+            if(!game_.hasMoves(game_.getCurrent()) && !game_.getCurrent().getHasPass())
+            {
+                view_.displayError("Le joueur n'a plus de mouvement ou de passes possible");
+                game_.swapPlayers();
+                break;
+            }
             int row = command[1];
             int col = command[2];
             Position position(row, col);
@@ -84,15 +93,30 @@ void Controller::startGame()
                 //affiche la liste de passes possibles
                 view_.displayHelpPass();
                 command = this->view_.askCommand();
-                switch (command[0]) {
-                case 'quit' :
-                    endCom = true;
-                    break;
-                case 'pass':
-                    game_.applyPass(game_.getMoves()[command[1]]);
-                    game_.getCurrent().setHasPass(false);
-                    break;
+                while (i < command.size())
+                {
+                    c=command[i];
+                    putchar (tolower(c));
+                    com += c;
+                    if (command[i] == ' ')
+                    {
+                        commandStrings.push_back(com);
+                        com.erase();
+                    }
+                    i++;
                 }
+
+                if(commandStrings.at(0) == "quit")
+                {
+                    endCom = true;
+                }
+                else if (commandStrings.at(0) == "pass")
+                {
+                    //game_.applyPass(game_.getMoves().at(stoi(commandStrings.at(1))));
+                    game_.getCurrent().setHasPass(false);
+                }
+
+
             }
             else if(game_.hasMoves(game_.getCurrent()) && !game_.getSelected(row, col).getHasBall())
             {
@@ -100,24 +124,80 @@ void Controller::startGame()
                 view_.displayMoves(moves);
                 view_.displayHelpMove();
                 command = this->view_.askCommand();
-                switch (command[0]) {
-                case 'quit' :
-                    endCom = true;
-                    break;
-                case 'apply' :
-                    game_.apply(moves[command[1]]);
-                    break;
+                while (i < command.size())
+                {
+                    c=command[i];
+                    putchar (tolower(c));
+                    com += c;
+                    if (command[i] == ' ')
+                    {
+                        commandStrings.push_back(com);
+                        com.erase();
+                    }
+                    i++;
                 }
-            }
-            if(!game_.hasMoves(game_.getCurrent()) && !game_.getCurrent().getHasPass())
-            {
-                view_.displayError("Le joueur n'a plus de mouvement ou de passes possible");
-                game_.swapPlayers();
-                break;
+
+                if(commandStrings.at(0) == "quit")
+                {
+                    endCom = true;
+                }
+                else if(commandStrings.at(0) == "apply")
+                {
+                    //game_.apply(moves.at(stoi(commandStrings.at(1))));
+                }
             }
             break;
 
-                /*case '' :
+        }
+        /*string commmmmmm = commandStrings.at(0);
+        switch(str2int(commmmmmm))
+        {
+            case "quit" :
+                endCom = true;
+                break;
+            case "move" :
+                if(!game_.hasMoves(game_.getCurrent()) && !game_.getCurrent().getHasPass())
+                {
+                    view_.displayError("Le joueur n'a plus de mouvement ou de passes possible");
+                    game_.swapPlayers();
+                    break;
+                }
+                int row = command[1];
+                int col = command[2];
+                Position position(row, col);
+                if(game_.getCurrent().getHasPass() && game_.getSelected(row, col).getHasBall())
+                {
+                    //affiche la liste de passes possibles
+                    view_.displayHelpPass();
+                    command = this->view_.askCommand();
+                    switch (command[0]) {
+                        case 'quit' :
+                            endCom = true;
+                            break;
+                        case 'pass':
+                            game_.applyPass(game_.getMoves()[command[1]]);
+                            game_.getCurrent().setHasPass(false);
+                            break;
+                    }
+                }
+                else if(game_.hasMoves(game_.getCurrent()) && !game_.getSelected(row, col).getHasBall())
+                {
+                    vector<Move> moves = this->game_.getMoves(position);
+                    view_.displayMoves(moves);
+                    view_.displayHelpMove();
+                    command = this->view_.askCommand();
+                    switch (command[0]) {
+                        case 'quit' :
+                            endCom = true;
+                            break;
+                        case 'apply' :
+                            game_.apply(moves[command[1]]);
+                            break;
+                    }
+                }
+                break;*/
+
+        /*case '' :
                 Position pos;
                 try
             {
@@ -141,20 +221,19 @@ void Controller::startGame()
                 break;
             case 'show' :
                 this.view.displayBoard(this.game.getBoard());
-                break;
-            default :
-                System.out.println("zut");
-                System.out.println("La commande n'est pas correctement entrée");*/
-        }
-        if (endCom == true)
-        {
-            this->view_.displayQuit();
-        }
+                break;*/
+        /*default :
+                cout << "zut" << endl;
+                cout <<"La commande n'est pas correctement entrée" << endl;*/
+    }
+    if (endCom == true)
+    {
+        this->view_.displayQuit();
     }
 }
 
 
-int Controller::stringToInteger(int index, stringstream com, vector<int> list)
+/*int Controller::stringToInteger(int index, stringstream com, vector<int> list)
 {
     int number;
     try
@@ -170,8 +249,8 @@ int Controller::stringToInteger(int index, stringstream com, vector<int> list)
     {
         cout << "ce n'est pas un entier";
     }
-    return list[index];
-}
+   return list[index];
+}*/
 
 void Controller::initialize()
 {
