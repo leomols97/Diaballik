@@ -7,8 +7,10 @@
 #define SQUARE_H
 
 #include "Piece.h"
+#include "vector"
 
 using namespace std;
+using namespace Diaballik;
 
 namespace Diaballik
 {
@@ -23,7 +25,7 @@ namespace Diaballik
 
         public:
 
-            //Square();
+            Square();
 
             Square(Piece piece_);
 

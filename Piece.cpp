@@ -4,7 +4,6 @@
 
 #include "Piece.h"
 #include "Player.h"
-#include "Board.h"
 #include "Color.h"
 #include <iostream>
 
@@ -34,7 +33,7 @@ Piece::Piece(Color color)
 /**
  * @return boolean
  */
-bool Piece::canPassBall(Position pos)
+/*bool Piece::canPassBall(Position pos)
 {
     Player player(color_);
     bool canPass = false;
@@ -52,10 +51,10 @@ bool Piece::canPassBall(Position pos)
         {
             for (unsigned i = 0; i < 7; i++)
             {
-                if(Board().isInside(posD) && Board().isInside(posG) &&
-                        Board().isInside(posB) && Board().isInside(posH) &&
-                        Board().isInside(posHD) && Board().isInside(posHG) &&
-                        Board().isInside(posBD) && Board().isInside(posBG))
+                if(board.isInside(posD) && board.isInside(posG) &&
+                        board.isInside(posB) && board.isInside(posH) &&
+                        board.isInside(posHD) && board.isInside(posHG) &&
+                        board.isInside(posBD) && board.isInside(posBG))
                 {
                     posHD.setRow(posHD.getRow()+i);
                     posHD.setColumn(posHD.getColumn()+i);
@@ -69,10 +68,10 @@ bool Piece::canPassBall(Position pos)
                     posB.setColumn(posH.getColumn()-i);
                     posD.setRow(posD.getRow()+i);
                     posG.setRow(posD.getRow()-i);
-                    if(Board().isMyOwn(posD, getColor()) || Board().isMyOwn(posG, getColor()) ||
-                            Board().isMyOwn(posB, getColor()) || Board().isMyOwn(posH, getColor()) ||
-                            Board().isMyOwn(posHD, getColor()) || Board().isMyOwn(posHG, getColor()) ||
-                            Board().isMyOwn(posBD, getColor()) || Board().isMyOwn(posBG, getColor()))
+                    if(board.isMyOwn(posD, getColor()) || board.isMyOwn(posG, getColor()) ||
+                            board.isMyOwn(posB, getColor()) || board.isMyOwn(posH, getColor()) ||
+                            board.isMyOwn(posHD, getColor()) || board.isMyOwn(posHG, getColor()) ||
+                            board.isMyOwn(posBD, getColor()) || board.isMyOwn(posBG, getColor()))
                     {
                         canPass = true;
                     }
@@ -81,21 +80,17 @@ bool Piece::canPassBall(Position pos)
         }
     }
     return canPass;
-}
+}*/
 
-/**
- * @return void
- */
-
-void Piece::passBall(Piece pieceThatGives, Position pos)
+/*void Piece::passBall(Board board, Piece pieceThatGives, Position pos)
 {
-    if(pieceThatGives.canPassBall(pos))
+    if(pieceThatGives.canPassBall(board, pos))
     {
         pieceThatGives.changeHasBall(false);
-        Board().getPiece(pos).changeHasBall(true);
+        board.getPiece(pos).changeHasBall(true);
         //pieceThatReceive.changeHasBall(true);
     }
-}
+}*/
 
 bool Piece::getHasBall()
 {

@@ -49,7 +49,7 @@ namespace Diaballik
                 return this->color_;
             }
 
-            inline vector<Piece> getPieces() const
+            inline vector<Piece> getPieces()
             {
                 return this->pieces_;
             }

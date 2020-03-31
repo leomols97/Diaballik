@@ -6,7 +6,8 @@
 #include "Game.h"
 #include "Direction.h"
 #include <iostream>
-#include <algorithm>
+#include <stdio.h>
+#include <stdexcept>
 
 using namespace std;
 using namespace Diaballik;
@@ -14,8 +15,6 @@ using namespace Diaballik;
 /**
  * Game implementation
  */
-
-
 Game::Game()
 {
     Board board_(vector<vector<Square>> board_);
@@ -24,7 +23,7 @@ Game::Game()
 }
 
 /**
- * @return void
+ * This initializes a Game by initializing a board
  */
 void Game::initialize()
 {
@@ -64,6 +63,68 @@ void Game::initialize()
             }
         }
     }*/
+}
+
+/**
+ * @return boolean
+ */
+bool Game::canPassBall(Piece pieceThatGives, Position pos)
+{
+    //Piece piece(board_.getPiece(pos));
+    Player player(pieceThatGives.getColor());
+    bool canPass = false;
+    if(player.getHasPass())
+    {
+        Position posHD(pos.getRow(), pos.getColumn());
+        Position posHG(pos.getRow(), pos.getColumn());
+        Position posBD(pos.getRow(), pos.getColumn());
+        Position posBG(pos.getRow(), pos.getColumn());
+        Position posB(pos.getRow(), pos.getColumn());
+        Position posH(pos.getRow(), pos.getColumn());
+        Position posD(pos.getRow(), pos.getColumn());
+        Position posG(pos.getRow(), pos.getColumn());
+        if(pieceThatGives.getHasBall())
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                if(board_.isInside(posD) && board_.isInside(posG) &&
+                        board_.isInside(posB) && board_.isInside(posH) &&
+                        board_.isInside(posHD) && board_.isInside(posHG) &&
+                        board_.isInside(posBD) && board_.isInside(posBG))
+                {
+                    posHD.setRow(posHD.getRow()+i);
+                    posHD.setColumn(posHD.getColumn()+i);
+                    posHG.setRow(posHG.getRow()+i);
+                    posHG.setColumn(posHG.getColumn()-i);
+                    posBD.setRow(posBG.getRow()-i);
+                    posBD.setColumn(posBD.getColumn()+i);
+                    posBG.setRow(posBG.getRow()-i);
+                    posBG.setColumn(posBG.getColumn()-i);
+                    posH.setColumn(posH.getColumn()+i);
+                    posB.setColumn(posH.getColumn()-i);
+                    posD.setRow(posD.getRow()+i);
+                    posG.setRow(posD.getRow()-i);
+                    if(board_.isMyOwn(posD, pieceThatGives.getColor()) || board_.isMyOwn(posG, pieceThatGives.getColor()) ||
+                            board_.isMyOwn(posB, pieceThatGives.getColor()) || board_.isMyOwn(posH, pieceThatGives.getColor()) ||
+                            board_.isMyOwn(posHD, pieceThatGives.getColor()) || board_.isMyOwn(posHG, pieceThatGives.getColor()) ||
+                            board_.isMyOwn(posBD, pieceThatGives.getColor()) || board_.isMyOwn(posBG, pieceThatGives.getColor()))
+                    {
+                        canPass = true;
+                    }
+                }
+            }
+        }
+    }
+    return canPass;
+}
+
+void Game::passBall(Piece pieceThatReceive, Position pos)
+{
+    if(canPassBall(pieceThatReceive, pos))
+    {
+        board_.getPiece(pos).changeHasBall(false);
+        pieceThatReceive.changeHasBall(true);
+    }
 }
 
 bool Game::fairPlay()
@@ -232,7 +293,7 @@ vector<Move> Game::getMoves(){
  */
 vector<Move> Game::getMoves(Position selected)
 {
-    /*try
+    try
     {
         board_.isInside(selected);
     }
@@ -255,7 +316,7 @@ vector<Move> Game::getMoves(Position selected)
     catch (const exception e)
     {
         cerr << "La pièce que vous avez sélectionnée ne vous appartient pas. Sélectionnez-en une autre :";
-    }*/
+    }
 
     Piece piece(Board().getPiece(selected).getColor());
     vector<Move> possibleEndingPositions;
@@ -295,7 +356,7 @@ vector<Move> Game::getMoves(Position selected)
 
 vector<Piece> Game::getPossiblePasses(Position selected)
 {
-    /*try
+    try
     {
         board_.isInside(selected);
     }
@@ -318,7 +379,7 @@ vector<Piece> Game::getPossiblePasses(Position selected)
     catch (const exception e)
     {
         cerr << "La pièce que vous avez sélectionnée ne vous appartient pas. Sélectionnez-en une autre :";
-    }*/
+    }
 
     Piece startingPiece(board_.getPiece(selected).getColor());
     vector<Piece> possiblePasses;
@@ -329,7 +390,9 @@ vector<Piece> Game::getPossiblePasses(Position selected)
         {
             directions.push_back(allDirections()[i]);
         }
-        if(board_.getPiece(selected).canPassBall(selected))
+        /*if(board_.getPiece(selected).canPassBall(selected))
+        {*/
+        if (canPassBall(startingPiece, selected))
         {
             Position endingPos = selected;
             for (unsigned i = 0; i < 4; i++)
@@ -344,7 +407,7 @@ vector<Piece> Game::getPossiblePasses(Position selected)
                             if (startingPiece.getColor() == endingPiece.getColor())
                             {
                                 endingPos = endingPos.next(endingPos, directions.at(i));
-                                if (startingPiece.canPassBall(endingPos))
+                                if (canPassBall(startingPiece, endingPos))
                                 {
                                     possiblePasses.push_back(endingPiece);
                                 }
@@ -416,7 +479,7 @@ void Game::apply(Move move)
 void Game::applyPass(Move move)
 {
     Piece piece(board_.getPiece(move.getStart()).getColor());
-    if (piece.canPassBall(move.getStart()))
+    if (canPassBall(board_.getPiece(move.getStart()), move.getEnd()))
     {
         board_.getPiece(move.getStart()).changeHasBall(false);
         board_.getPiece(move.getEnd()).changeHasBall(true);

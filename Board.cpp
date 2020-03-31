@@ -15,24 +15,24 @@ using namespace Diaballik;
 /**
  * Board implementation
  */
+Board::Board() {}
 
 /**
  * Default constructor needed by the constructor of Game
  * @brief Board::Board
  */
-Board::Board() {}
 
 Board::Board(vector<vector<Square>> board)
 {
-    board.reserve(7);
+    //board.reserve(7);
     Position pos(0,0);
     for (unsigned i = 0; i < board.size(); i++)
     {
-        board[i].reserve(7);
+        //board[i].reserve(7);
         vector<Square> lign;
         for (unsigned j = 0; j < board[i].size(); j++)
         {
-            Piece p;
+            Piece p(None);
             Square sq(p);
             lign.push_back(sq);
         }
@@ -78,15 +78,9 @@ bool Board::isFree(Position position)
     }
     return getPiece(position).isReal();
 }
-
-<<<<<<< HEAD
 bool Board::isEmpty()
 {
     bool empty = false;
-=======
-bool Board::isEmpty(){
-    bool empty;
->>>>>>> e566f0dfa02e61bc07d3a207b5d12bdcd6ae1eab
     for (unsigned i = 0; i < board_.size(); i++)
     {
         for (unsigned j = 0; j < sizeof (board_[i].size()); j++)
@@ -170,7 +164,6 @@ void Board::remove(Position position)
 
 void Board::initialize()
 {
-    board_.reserve(7);
     for (unsigned i = 0; i < board_.size(); i++)
     {
         board_[i].reserve(7);
@@ -200,7 +193,7 @@ void Board::initialize()
             }
             else
             {
-                Piece p;
+                Piece p(None);
                 board_[i][j].put(p);
             }
         }
