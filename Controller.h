@@ -24,8 +24,6 @@ namespace Diaballik
             void initialize();
 
             void startGame();
-
-            int stringToInteger(int index, stringstream com, vector<int> list);
     };
 }
 

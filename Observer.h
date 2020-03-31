@@ -3,8 +3,8 @@
  */
 
 
-#ifndef _OBSERVER_H
-#define _OBSERVER_H
+#ifndef OBSERVER_H
+#define OBSERVER_H
 
 class Observer {
 };

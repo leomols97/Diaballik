@@ -3,8 +3,8 @@
  */
 
 
-#ifndef _DIRECTION_H
-#define _DIRECTION_H
+#ifndef DIRECTION_H
+#define DIRECTION_H
 #include <iostream>
 
 using namespace std;

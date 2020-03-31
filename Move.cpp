@@ -4,8 +4,8 @@
 
 
 #include "Move.h"
-#import "Position.h"
-#import "Piece.h"
+#include "Position.h"
+#include "Piece.h"
 #include <iostream>
 
 using namespace std;

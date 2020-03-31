@@ -1,20 +1,9 @@
 TEMPLATE = app
-CONFIG += console c++17
+CONFIG += console
 CONFIG -= app_bundle
 CONFIG -= qt
-
-SOURCES += \
-        Board.cpp \
-        Controller.cpp \
-        Direction.cpp \
-        Game.cpp \
-        Move.cpp \
-        Piece.cpp \
-        Player.cpp \
-        Position.cpp \
-        Square.cpp \
-        View.cpp \
-        main.cpp
+QMAKE_CXXFLAGS += -pedantic-errors\
+-std=c++17
 
 HEADERS += \
     Board.h \
@@ -31,3 +20,16 @@ HEADERS += \
     Position.h \
     Square.h \
     View.h
+
+SOURCES += \
+        Board.cpp \
+        Controller.cpp \
+        Direction.cpp \
+        Game.cpp \
+        Move.cpp \
+        Piece.cpp \
+        Player.cpp \
+        Position.cpp \
+        Square.cpp \
+        View.cpp \
+        main.cpp

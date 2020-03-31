@@ -30,7 +30,7 @@ Position::Position(int row, int column)
     this->column_ = column;
 }
 
-Position whichEndingPosition(Position position, Direction direction)
+Position Position::whichEndingPosition(Position position, Direction direction)
 {
     switch (direction)
     {
@@ -46,9 +46,6 @@ Position whichEndingPosition(Position position, Direction direction)
         case Direction::RIGHT :
             position.setColumn(position.getColumn()+1);
             break;
-        default :
-            cout << "Direction inexistante !";
-            break;
     }
     return position;
 }
@@ -57,7 +54,7 @@ Position whichEndingPosition(Position position, Direction direction)
  * @param dir
  * @return Position
  */
-Position next(Position position, Direction direction)
+Position Position::next(Position position, Direction direction)
 {
     whichEndingPosition(position, direction);
     position.setRow(position.getRow() + whichEndingPosition(position, direction).getRow());

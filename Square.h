@@ -3,10 +3,10 @@
  */
 
 
-#ifndef _SQUARE_H
-#define _SQUARE_H
+#ifndef SQUARE_H
+#define SQUARE_H
 
-#import "Piece.h"
+#include "Piece.h"
 
 using namespace std;
 

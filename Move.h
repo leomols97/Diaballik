@@ -3,11 +3,11 @@
  */
 
 
-#ifndef _MOVE_H
-#define _MOVE_H
+#ifndef MOVE_H
+#define MOVE_H
 
-#import "Position.h"
-#import "Piece.h"
+#include "Position.h"
+#include "Piece.h"
 
 using namespace std;
 using namespace Diaballik;
