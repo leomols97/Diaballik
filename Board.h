@@ -31,9 +31,12 @@ namespace Diaballik
         * @param position
         */
             Piece getPiece(Position position);
+
             Square getSquare(Position position);
+
             vector<vector<Square>> getBoard();
 
+            void doSomeStuff();
             /**
 * @param position
 */

@@ -28,6 +28,7 @@ Game::Game()
  */
 void Game::initialize()
 {
+    this->board_.doSomeStuff();
     //board.reserve(7);
     for (unsigned i = 0; i < this->board_.getBoard().size(); i++)
     {
@@ -285,7 +286,7 @@ vector<Position> Game::getMoves(Position selected)
 /**
  * @return int
  */
-/*int Game::getNbMoves(Player player)
+int Game::getNbMoves(Player player)
 {
     int nbMoves = 0;
     Position selected;
@@ -314,7 +315,7 @@ vector<Position> Game::getMoves(Position selected)
         }
     }
     return nbMoves;
-}*/
+}
 
 /**
  * @param move
