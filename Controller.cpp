@@ -19,11 +19,6 @@ Controller::Controller(Game game, View view)
     this->view_ = view;
 }
 
-/*constexpr unsigned int str2int(char* str, int h = 0)
-{
-    return !str[h] ? 5381 : (str2int(str, h+1) * 33) ^ str[h];
-}*/
-
 void Controller::startGame()
 {
     initialize();
