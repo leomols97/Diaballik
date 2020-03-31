@@ -24,20 +24,7 @@ Board::Board() {}
 
 Board::Board(vector<vector<Square>> board)
 {
-    board.reserve(7);
-    Position pos(0,0);
-    for (unsigned i = 0; i < board.size(); i++)
-    {
-        board[i].reserve(7);
-        vector<Square> lign;
-        for (unsigned j = 0; j < board[i].size(); j++)
-        {
-            Piece p;
-            Square sq(p);
-            lign.push_back(sq);
-        }
-        board.push_back(lign);
-    }
+    this->board_ = board;
 }
 
 /**
