@@ -3,14 +3,12 @@
  */
 
 
-#ifndef SQUARE_H
-#define SQUARE_H
+#ifndef _SQUARE_H
+#define _SQUARE_H
 
 #include "Piece.h"
-#include "vector"
 
 using namespace std;
-using namespace Diaballik;
 
 namespace Diaballik
 {
@@ -41,7 +39,7 @@ namespace Diaballik
 
             /**
              * @brief getPiece
-             * @return
+             * @return the piece on the square
              */
             inline Piece getPiece()
             {
@@ -50,23 +48,26 @@ namespace Diaballik
 
             /**
               * @brief put
-              * @param piece_
+              * puts a piece on the square by changing it's color to the color of the piece
+              * @param piece_ the piece to put on the square
               */
              void put(Piece piece_);
 
              /**
               * @brief remove
+              * removes a piece by changing its "color" to none
               */
              void remove();
 
              /**
               * @param color
+              * @return true if the color given is the same as the color of the piece on the square. false otherwise
               */
               bool isMyOwn(Color color);
 
               /**
                * @brief isFree
-               * @return
+               * @return true if the square has no piece on it
                */
               bool isFree();
     };

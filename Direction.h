@@ -13,10 +13,14 @@ namespace Diaballik
 {
     enum class Direction
     {
-        UP,
-        DOWN,
-        RIGHT,
-        LEFT
+        N,
+        S,
+        O,
+        E,
+        NO,
+        NE,
+        SO,
+        SE
     };
 
     /*const Dir DirVector[] = {UP, DOWN, RIGHT, LEFT};

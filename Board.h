@@ -20,52 +20,95 @@ namespace Diaballik
 
         private:
 
+            /**
+             * @brief board_ the board is a vector of vector of squares that contains the pieces
+             */
             vector<vector<Square>> board_;
 
         public:
 
+            /**
+             * @brief Board the default board to let the classes that need them use it
+             */
             Board();
+
+            /**
+             * @brief Board the contructor that constructs a board belonging a vector of vector
+             * @param board_
+             */
             Board(vector<vector<Square>> board_);
 
             /**
-        * @param position
-        */
-            Piece getPiece(Position position);
+             * @brief getPiece Gets the piece thats stands on a certain position
+             * @param position the position where to find a piece
+             * @return the piece found of there's one on it
+             */
+            Piece getPiece(Position position) const;
 
-            Square getSquare(Position position);
+            /**
+             * @brief getSquare Gets a square at a certain position to find what it contains
+             * @param position the position where to look
+             * @return the square found
+             */
+            Square getSquare(Position position) const;
 
+            /**
+             * @brief getBoard Gets the vector of vector
+             * @return the vector of vector board
+             */
             vector<vector<Square>> getBoard();
 
             /**
-* @param position
-*/
-            bool isInside(Position position);
+             * @brief isInside Verifies if a position is inside the board
+             * @param position the position to verify
+             * @return true if the position is inside and false else
+             */
+            bool isInside(Position position) const;
 
             /**
-* @param position
-*/
-            bool isFree(Position position);
+             * @brief isFree Verifies if a position contains a piece or not
+             * @param position the position to verify
+             * @return true if there's a piece on it and false else
+             */
+            bool isFree(Position position) const;
 
+            /**
+             * @brief isEmpty Verifies if the board is empty or not (for the initialization of the board)
+             * @return true if the board is empty and false else
+             */
             bool isEmpty();
 
             /**
-* @param piece
-* @param position
-*/
+             * @brief put Put a piece at a certain position
+             * @param piece the piece to put
+             * @param position the location where to put the piece
+             */
             void put(Piece piece, Position position);
 
             /**
-* @param player
-*/
+             * @brief getTakenSquares Gets all the squares taken by a player
+             * @param player the player for whom look for the piece
+             * @return a vector of position where his pieces stand
+             */
             vector<Position> getTakenSquares(Player player);
 
             /**
-* @param position
-*/
+             * @brief remove remove a piece at a certain position
+             * @param position the position where to remove off a piece
+             */
             void remove(Position position);
 
-            bool isMyOwn(Position position, Color color);
+            /**
+             * @brief isMyOwn Verifies if a piece at a position belongs to the current player or not
+             * @param position the position where a piece should stand
+             * @param color the color of the current player
+             * @return true if it the piece belongs to him and false else
+             */
+            bool isMyOwn(Position position, Color color) const;
 
+            /**
+             * @brief initialize initializes the board by putting on it the initial pieces
+             */
             void initialize();
     };
 }

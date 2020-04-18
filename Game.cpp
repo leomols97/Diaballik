@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdexcept>
 
+
 using namespace std;
 using namespace Diaballik;
 
@@ -66,9 +67,10 @@ void Game::initialize()
 }
 
 /**
- * @return boolean
+ * Verifies if a piece can pass the ball to
+ * @return bool
  */
-bool Game::canPassBall(Piece pieceThatGives, Position pos)
+/*bool Game::canPassBall(Piece pieceThatGives, Position pos)
 {
     //Piece piece(board_.getPiece(pos));
     Player player(pieceThatGives.getColor());
@@ -125,7 +127,60 @@ void Game::passBall(Piece pieceThatReceive, Position pos)
         board_.getPiece(pos).changeHasBall(false);
         pieceThatReceive.changeHasBall(true);
     }
+}*/
+
+/*void Game::passBall(Piece pieceThatGives, Position pos)
+{
+    if(pieceThatGives.canPassBall(pos))
+    {
+        pieceThatGives.changeHasBall(false);
+        Board().getPiece(pos).changeHasBall(true);
+        //pieceThatReceive.changeHasBall(true);
+    }
+}*/
+
+void Game::getPasses(vector<Position> list) const
+{
+    for (int dirInt = 1; dirInt <= 8; dirInt++)
+    {
+        bool ok = true;
+        const Direction dir = static_cast<Direction>(dirInt);
+        Position posNext = selected_.next(selected_, dir);
+
+        while (ok)
+        {
+            ok = board_.isInside(posNext) && !board_.isMyOwn(posNext, opponent_.getColor());
+
+            if (ok && board_.isMyOwn(posNext, current_.getColor()))
+            {
+                list.push_back(Position(posNext.getRow(), posNext.getColumn()));
+                posNext = posNext.next(posNext, dir);
+                ok = board_.isInside(posNext) && !board_.isMyOwn(posNext, opponent_.getColor());
+            }
+
+            if (ok && board_.isFree(posNext))
+            {
+                posNext = posNext.next(posNext, dir);
+            }
+        }
+    }
 }
+
+bool Game::canPassBall(Position pos)
+{
+    bool found = false;
+    vector<Position> passPositions;
+    getPasses(passPositions);
+    for (size_t i {0}; i < (passPositions.size()) && !found; i++)
+    {
+        if (pos.getRow() == passPositions.at(i).getRow()  && pos.getColumn() == passPositions.at(i).getColumn())
+        {
+            found = true;
+        }
+    }
+    return found && Player().getHasPass();
+}
+
 
 bool Game::fairPlay()
 {
@@ -133,7 +188,7 @@ bool Game::fairPlay()
     bool foulGame = false;
     bool found = false;
     int count = 0;
-    for(unsigned i = 0; i<board_.getBoard().size() && !found; i++)
+    for(unsigned i = 0; i < board_.getBoard().size() && !found; i++)
     {
         if(board_.getBoard()[(i)][0].isMyOwn(opponent_.getColor()))
         {
@@ -152,10 +207,10 @@ bool Game::fairPlay()
         }
     }
 
-    for(unsigned i = 1; i<board_.getBoard().size() && found; i++)
+    for(unsigned i = 1; i < board_.getBoard().size() && found; i++)
     {
         found = false;
-        for(unsigned j = 0; j<board_.getBoard().size(); j++)
+        for(unsigned j = 0; j < board_.getBoard().size(); j++)
         {
             if(board_.getBoard()[(j)][(i)].isMyOwn(opponent_.getColor()))
             {
@@ -188,23 +243,6 @@ bool Game::fairPlay()
     }
     return foulGame;
 }
-
-/**
- * @param player
- * @return boolean
- */
-/*bool foulGame(Player player)
-{
-<<<<<<< HEAD
-      //Si toutes les pièces collées à une pièce adverse ne peuvent pas faire de mouvement vers l'avant, c'est foulGame
-
-return false;
-=======
-      Si toutes les pièces collées à une pièce adverse ne peuvent pas faire de mouvement vers l'avant, c'est foulGame
-      */
-/*return false;
->>>>>>> e566f0dfa02e61bc07d3a207b5d12bdcd6ae1eab
-}*/
 
 /**
  * @return boolean
@@ -270,7 +308,7 @@ void Game::start()
 vector<Direction> Game::allDirections ()
 {
     vector<Direction> dirs;
-    for (unsigned i = 0; i < 4; i++)
+    for (unsigned i = 0; i < 8; i++)
     {
         dirs.push_back(Direction());
     }
@@ -354,7 +392,7 @@ vector<Move> Game::getMoves(Position selected)
 
 }
 
-vector<Piece> Game::getPossiblePasses(Position selected)
+vector<Position> Game::getPossiblePasses(Position selected)
 {
     try
     {
@@ -382,7 +420,7 @@ vector<Piece> Game::getPossiblePasses(Position selected)
     }
 
     Piece startingPiece(board_.getPiece(selected).getColor());
-    vector<Piece> possiblePasses;
+    vector<Position> possiblePasses;
     if (startingPiece.getHasBall())
     {
         vector<Direction> directions;
@@ -392,7 +430,7 @@ vector<Piece> Game::getPossiblePasses(Position selected)
         }
         /*if(board_.getPiece(selected).canPassBall(selected))
         {*/
-        if (canPassBall(startingPiece, selected))
+        if (canPassBall(selected))
         {
             Position endingPos = selected;
             for (unsigned i = 0; i < 4; i++)
@@ -407,9 +445,9 @@ vector<Piece> Game::getPossiblePasses(Position selected)
                             if (startingPiece.getColor() == endingPiece.getColor())
                             {
                                 endingPos = endingPos.next(endingPos, directions.at(i));
-                                if (canPassBall(startingPiece, endingPos))
+                                if (canPassBall(endingPos))
                                 {
-                                    possiblePasses.push_back(endingPiece);
+                                    possiblePasses.push_back(endingPos);
                                 }
                             }
                         }
@@ -479,7 +517,7 @@ void Game::apply(Move move)
 void Game::applyPass(Move move)
 {
     Piece piece(board_.getPiece(move.getStart()).getColor());
-    if (canPassBall(board_.getPiece(move.getStart()), move.getEnd()))
+    if (canPassBall(move.getEnd()))
     {
         board_.getPiece(move.getStart()).changeHasBall(false);
         board_.getPiece(move.getEnd()).changeHasBall(true);

@@ -45,7 +45,7 @@ Board::Board(vector<vector<Square>> board)
  * @return boolean
  */
 
-bool Board::isInside(Position position)
+bool Board::isInside(Position position) const
 {
     return position.getRow() > 0
             && position.getRow() < 6
@@ -57,7 +57,7 @@ bool Board::isInside(Position position)
  * @param position
  * @return Piece
  */
-Piece Board::getPiece(Position position)
+Piece Board::getPiece(Position position) const
 {
     if (!isInside(position))
     {
@@ -70,7 +70,7 @@ Piece Board::getPiece(Position position)
  * @param position
  * @return boolean
  */
-bool Board::isFree(Position position)
+bool Board::isFree(Position position) const
 {
     if (!isInside(position))
     {
@@ -78,6 +78,7 @@ bool Board::isFree(Position position)
     }
     return getPiece(position).isReal();
 }
+
 bool Board::isEmpty()
 {
     bool empty = false;
@@ -109,7 +110,7 @@ void Board::put(Piece piece, Position position)
     getSquare(position).put(piece);
 }
 
-bool Board::isMyOwn(Position position, Color color)
+bool Board::isMyOwn(Position position, Color color) const
 {
     return getPiece(position).getColor() == color;
 }
@@ -139,7 +140,7 @@ vector<Position> Board::getTakenSquares(Player player)
     return positions;
 }
 
-Square Board::getSquare(Position position)
+Square Board::getSquare(Position position) const
 {
     return this->board_[position.getRow()][position.getColumn()];
 }

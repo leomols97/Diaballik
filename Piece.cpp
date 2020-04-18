@@ -5,6 +5,9 @@
 #include "Piece.h"
 #include "Player.h"
 #include "Color.h"
+#include "Game.h"
+#include <stdio.h>
+#include <stdexcept>
 #include <iostream>
 
 using namespace std;
@@ -82,15 +85,58 @@ Piece::Piece(Color color)
     return canPass;
 }*/
 
-/*void Piece::passBall(Board board, Piece pieceThatGives, Position pos)
+/*void Piece::passBall(Piece pieceThatGives, Position pos)
 {
-    if(pieceThatGives.canPassBall(board, pos))
+    if(pieceThatGives.canPassBall(pos))
     {
         pieceThatGives.changeHasBall(false);
-        board.getPiece(pos).changeHasBall(true);
+        Board().getPiece(pos).changeHasBall(true);
         //pieceThatReceive.changeHasBall(true);
     }
-}*/
+}
+
+void Piece::passeList(vector<Position> &list) const
+{
+    for (int dirInt = 1; dirInt <= 8; dirInt++) {
+        bool ok = true;
+        const Direction dir = static_cast<Direction>(dirInt);
+        Position posNext = Game().getSelected().next(Game().getSelected(), dir);
+
+        while (ok)
+        {
+            ok = Board().isInside(posNext) && !Board().isMyOwn(posNext, Game().getOpponent().getColor());
+
+            if (ok && Board().isMyOwn(posNext, Game().getCurrent().getColor()))
+            {
+                list.push_back(Position(posNext.getRow(), posNext.getColumn()));
+                posNext = posNext.next(posNext, dir);
+                ok = Board().isInside(posNext) && !Board().isMyOwn(posNext, Game().getOpponent().getColor());
+            }
+
+            if (ok && Board().isFree(posNext))
+            {
+                posNext = posNext.next(posNext, dir);
+            }
+        }
+    }
+}
+
+bool Piece::canPassBall(Position pos)
+{
+    vector<Position> listOfPositions;
+    passeList(listOfPositions);
+    bool found = false;
+
+    for (size_t i {0}; i < (listOfPositions.size()) && !found; i++)
+    {
+        if (pos == listOfPositions.at(i))
+        {
+            found = true;
+        }
+    }
+    return found && Player().getHasPass();
+}
+*/
 
 bool Piece::getHasBall()
 {

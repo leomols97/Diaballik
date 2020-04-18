@@ -21,31 +21,59 @@ namespace Diaballik
 
         private:
 
+            /**
+             * @brief piece_ the piece we have to move
+             */
             Piece piece_;
+
+            /**
+             * @brief start_ the starting position
+             */
             Position start_;
+
+            /**
+             * @brief end_ the ending position
+             */
             Position end_;
 
 
         public:
+
+            /**
+             * @brief Move constructs an empty Move
+             */
             Move();
 
             /**
-            * @param piece
-            * @param start
-            * @param end
-            */
+             * @brief Move constructs a move characterised by a piece and 2 positions
+             * @param piece_ the piece we have to move
+             * @param start_ the starting position
+             * @param end_ the ending position
+             */
             Move(Piece piece_, Position start_, Position end_);
 
+            /**
+             * @brief getPiece
+             * @return the piece we have to move
+             */
             inline Piece getPiece() const
             {
                 return this->piece_;
             }
 
+            /**
+             * @brief getStart
+             * @return the starting position
+             */
             inline Position getStart() const
             {
                 return this->start_;
             }
 
+            /**
+             * @brief getEnd
+             * @return the ending position
+             */
             inline Position getEnd() const
             {
                 return this->end_;
