@@ -37,6 +37,8 @@ namespace Diaballik
              */
             Controller(Game game_, View view_);
 
+            ~Controller();
+
             /**
              * @brief initialize initializes all that is necessary to launch a game
              */

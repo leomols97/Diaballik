@@ -38,6 +38,10 @@ namespace Diaballik
              */
             Board(vector<vector<Square>> board_);
 
+            Board(int length);
+
+            ~Board();
+
             /**
              * @brief getPiece Gets the piece thats stands on a certain position
              * @param position the position where to find a piece
@@ -56,7 +60,7 @@ namespace Diaballik
              * @brief getBoard Gets the vector of vector
              * @return the vector of vector board
              */
-            vector<vector<Square>> getBoard();
+            vector<vector<Square>> getBoard() const;
 
             /**
              * @brief isInside Verifies if a position is inside the board
@@ -105,11 +109,6 @@ namespace Diaballik
              * @return true if it the piece belongs to him and false else
              */
             bool isMyOwn(Position position, Color color) const;
-
-            /**
-             * @brief initialize initializes the board by putting on it the initial pieces
-             */
-            void initialize();
     };
 }
 

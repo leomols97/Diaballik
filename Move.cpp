@@ -27,4 +27,3 @@ Move::Move(Piece piece, Position start, Position end)
     this->start_ = start;
     this->end_ = end;
 }
-

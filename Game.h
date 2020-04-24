@@ -50,6 +50,8 @@ namespace Diaballik
              */
             Game();
 
+            ~Game();
+
             // ATTENTION IL NE FAUT PAS OUBLIER LES DESTRUCTEURS !!!!!!!!!
 
             /**
@@ -203,7 +205,7 @@ namespace Diaballik
 
             //void passBall(Position pos);
 
-            //void getPasses(vector<Position> list) const;
+            void getPasses(vector<Position> list) const;
     };
 }
 #endif //_GAME_H
