@@ -1,5 +1,5 @@
 #include "View.h"
-#include "Player.h"
+#include "Model/Player.h"
 #include <string>
 #include <sstream>
 

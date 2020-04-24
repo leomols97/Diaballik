@@ -1,6 +1,6 @@
 #include "Controller.h"
-#include "Game.h"
-#include "View.h"
+#include "Model/Game.h"
+#include "View/View.h"
 #include "sstream"
 #include <string>
 #include <sstream>

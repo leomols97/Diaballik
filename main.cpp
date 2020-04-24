@@ -1,7 +1,7 @@
  #include <iostream>
-#include "Game.h"
-#include "View.h"
-#include "Controller.h"
+#include "Model/Game.h"
+#include "View/View.h"
+#include "Controller/Controller.h"
 
 using namespace std;
 using namespace Diaballik;

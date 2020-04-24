@@ -1,8 +1,8 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-#include "Game.h"
-#include "View.h"
+#include "Model/Game.h"
+#include "View/View.h"
 
 using namespace std;
 using namespace Diaballik;
