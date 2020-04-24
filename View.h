@@ -21,7 +21,7 @@ namespace Diaballik
         /**
          * @brief Initialize prints a welcoming sentence
          */
-        void Initialize();
+        void initialize();
 
         /**
          * @brief displayQuit prints a goodbye sentence
@@ -58,7 +58,7 @@ namespace Diaballik
         /**
          * @brief displayBoard prints the board
          */
-        void displayBoard(vector<vector<Square>>);
+        void displayBoard(Board board);
 
         /**
          * @brief displayPiece prints the piece

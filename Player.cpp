@@ -29,7 +29,7 @@ Player::Player(Color color) {
     this->nbMoves_ = 2;
     vector<Piece> pieces{7};
     hasPass_=true;
-    for (unsigned i = 0; i < sizeof(pieces); i++)
+    for (unsigned i = 0; i < pieces.size(); i++)
     {
         Piece p(color);
         pieces.push_back(p);

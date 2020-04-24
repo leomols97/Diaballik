@@ -15,7 +15,24 @@ using namespace Diaballik;
 /**
  * Board implementation
  */
-Board::Board() {}
+Board::Board()
+{
+    cout << "Board default " << endl;
+    //board.reserve(7);
+    Position pos(0,0);
+    for (unsigned i = 0; i < this->board_.size(); i++)
+    {
+        //board[i].reserve(7);
+        vector<Square> lign;
+        for (unsigned j = 0; j < this->board_[i].size(); j++)
+        {
+            Piece p(None);
+            Square sq(p);
+            lign.push_back(sq);
+        }
+        this->board_.push_back(lign);
+    }
+}
 
 /**
  * Default constructor needed by the constructor of Game
@@ -24,6 +41,7 @@ Board::Board() {}
 
 Board::Board(vector<vector<Square>> board)
 {
+    cout << "Good board " << board.size() << endl;
     //board.reserve(7);
     Position pos(0,0);
     for (unsigned i = 0; i < board.size(); i++)
@@ -84,7 +102,7 @@ bool Board::isEmpty()
     bool empty = false;
     for (unsigned i = 0; i < board_.size(); i++)
     {
-        for (unsigned j = 0; j < sizeof (board_[i].size()); j++)
+        for (unsigned j = 0; j < board_[i].size(); j++)
         {
             Position pos(i, j);
             if(!isFree(pos))
@@ -123,9 +141,9 @@ vector<Position> Board::getTakenSquares(Player player)
 {
     Position pos(0,0);
     vector<Position> positions;
-    for (unsigned i = 0; i < sizeof(getBoard()); i++)
+    for (unsigned i = 0; i < getBoard().size(); i++)
     {
-        for (unsigned j = 0; j < sizeof(getBoard()[i]); j++)
+        for (unsigned j = 0; j < getBoard()[i].size(); j++)
         {
             pos.setRow(i);
             pos.setColumn(j);
@@ -148,7 +166,7 @@ Square Board::getSquare(Position position) const
 /**
  * @return vector<vector<Square>>
  */
-vector<vector<Square>> Board::getBoard()
+vector<vector<Square>> Board::getBoard() const
 {
     return this->board_;
 }
@@ -161,42 +179,4 @@ vector<vector<Square>> Board::getBoard()
 void Board::remove(Position position)
 {
     getSquare(position).remove();
-}
-
-void Board::initialize()
-{
-    for (unsigned i = 0; i < board_.size(); i++)
-    {
-        board_[i].reserve(7);
-        for (unsigned j = 0; j < sizeof (board_[i].size()); j++)
-        {
-            if (i == 0 && j == 3)
-            {
-                Piece p(Black);
-                Piece().changeHasBall(true);
-                board_[i][j].put(p);
-            }
-            else if (i == 6 && j == 3)
-            {
-                Piece p(White);
-                Piece().changeHasBall(true);
-                board_[i][j].put(p);
-            }
-            else if (i == 0 && j != 3)
-            {
-                Piece p(Black);
-                board_[i][j].put(p);
-            }
-            else if (i == 6 && j != 3)
-            {
-                Piece p(White);
-                board_[i][j].put(p);
-            }
-            else
-            {
-                Piece p(None);
-                board_[i][j].put(p);
-            }
-        }
-    }
 }

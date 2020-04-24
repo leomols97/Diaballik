@@ -19,13 +19,17 @@ Controller::Controller(Game game, View view)
     this->view_ = view;
 }
 
+void Controller::initialize()
+{
+    this->view_.initialize();
+    this->game_.initialize();
+}
+
 void Controller::startGame()
 {
-    initialize();
+    //initialize();
     bool endCom = false;
-    //bool newTurn = false;
-    //game_.start();
-    view_.displayBoard(game_.getBoard().getBoard());
+    this->view_.displayBoard(this->game_.getBoard());
     while (!this->game_.isOver())
     {
         if (this->game_.isOver())
@@ -45,7 +49,7 @@ void Controller::startGame()
                 game_.swapPlayers();
             }
         }*/
-        view_.displayCurrentPlayer(game_.getCurrent());
+        this->view_.displayCurrentPlayer(game_.getCurrent());
         this->view_.displayHelpInit();
         string command = this->view_.askCommand();
         vector<string> commandStrings;
@@ -225,10 +229,4 @@ void Controller::startGame()
     {
         this->view_.displayQuit();
     }
-}
-
-void Controller::initialize()
-{
-    this->game_.initialize();
-    this->view_.Initialize();
 }

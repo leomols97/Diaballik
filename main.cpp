@@ -1,4 +1,4 @@
-#include <iostream>
+ #include <iostream>
 #include "Game.h"
 #include "View.h"
 #include "Controller.h"
@@ -11,6 +11,7 @@ int main()
     Game game;
     View view;
     Controller controller(game, view);
+    //controller.initialize();
     controller.startGame();
     cout << "simon" << endl;
     return 0;

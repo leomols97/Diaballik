@@ -203,7 +203,7 @@ namespace Diaballik
 
             //void passBall(Position pos);
 
-            //void getPasses(vector<Position> list) const;
+            void getPasses(vector<Position> list) const;
     };
 }
 #endif //_GAME_H
