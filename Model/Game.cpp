@@ -38,10 +38,10 @@ void Game::initialize()
     Player current_(White), oponent(Black);
     Position selected_(int row, int column);
 
-    for (unsigned i = 0; i < board.getBoard().size(); i++)
+    for (unsigned int i = 0; i < board.getBoard().size(); i++)
     {
         board.getBoard()[i].reserve(7);
-        for (unsigned j = 0; j < sizeof (board.getBoard()[i].size()); j++)
+        for (unsigned int j = 0; j < sizeof (board.getBoard()[i].size()); j++)
         {
             if (i == 0 && j == 3)
             {
@@ -74,10 +74,10 @@ void Game::initialize()
     }
 
     //board.reserve(7);
-    /*for (unsigned i = 0; i < this->this->board_.getBoard().size(); i++)
+    /*for (unsigned int i = 0; i < this->this->board_.getBoard().size(); i++)
     {
         //board[i].reserve(7);
-        for (unsigned j = 0; j < this->this->board_.getBoard()[i].size(); j++)
+        for (unsigned int j = 0; j < this->this->board_.getBoard()[i].size(); j++)
         {
             if (i == 0 && j == 3)
             {
@@ -232,7 +232,7 @@ bool Game::fairPlay()
     bool foulGame = false;
     bool found = false;
     int count = 0;
-    for(unsigned i = 0; i < this->board_.getBoard().size() && !found; i++)
+    for(unsigned int i = 0; i < this->board_.getBoard().size() && !found; i++)
     {
         if(this->board_.getBoard()[(i)][0].isMyOwn(opponent_.getColor()))
         {
@@ -251,10 +251,10 @@ bool Game::fairPlay()
         }
     }
 
-    for(unsigned i = 1; i < this->board_.getBoard().size() && found; i++)
+    for(unsigned int i = 1; i < this->board_.getBoard().size() && found; i++)
     {
         found = false;
-        for(unsigned j = 0; j < this->board_.getBoard().size(); j++)
+        for(unsigned int j = 0; j < this->board_.getBoard().size(); j++)
         {
             if(this->board_.getBoard()[(j)][(i)].isMyOwn(opponent_.getColor()))
             {
@@ -293,7 +293,7 @@ bool Game::fairPlay()
  */
 bool Game::isOver()
 {
-    for (unsigned i = 0; i < this->board_.getBoard().size(); i++)
+    for (unsigned int i = 0; i < this->board_.getBoard().size(); i++)
     {
         if (this->board_.getBoard()[0][i].getPiece().getColor() == White
                 || this->board_.getBoard()[6][i].getPiece().getColor() == Black)
@@ -352,7 +352,7 @@ void Game::start()
 vector<Direction> Game::allDirections ()
 {
     vector<Direction> dirs;
-    for (unsigned i = 0; i < 8; i++)
+    for (unsigned int i = 0; i < 8; i++)
     {
         dirs.push_back(Direction());
     }
@@ -403,13 +403,13 @@ vector<Move> Game::getMoves(Position selected)
     Piece piece(this->board_.getPiece(selected).getColor());
     vector<Move> possibleEndingPositions;
     vector<Direction> directions;
-    for (unsigned i  = 0; i < allDirections().size(); i++)
+    for (unsigned int i  = 0; i < allDirections().size(); i++)
     {
         directions.push_back(allDirections()[i]);
     }
     if(getNbMoves(getCurrent()) == 1)
     {
-        for (unsigned i = 0; i < 4; i++)
+        for (unsigned int i = 0; i < 4; i++)
         {
             if (this->board_.isInside(selected.next(selected, directions.at(i))))
             {
@@ -420,9 +420,9 @@ vector<Move> Game::getMoves(Position selected)
     }
     else if(getNbMoves(getCurrent()) == 2)
     {
-        for (unsigned i = 0; i < 4; i++)
+        for (unsigned int i = 0; i < 4; i++)
         {
-            for (unsigned i = 0; i < 4; i++)
+            for (unsigned int i = 0; i < 4; i++)
             {
                 if (this->board_.isInside(selected.next(selected, directions.at(i))))
                 {
@@ -468,7 +468,7 @@ vector<Position> Game::getPossiblePasses(Position selected)
     if (startingPiece.getHasBall())
     {
         vector<Direction> directions;
-        for (unsigned i  = 0; i < allDirections().size(); i++)
+        for (unsigned int i  = 0; i < allDirections().size(); i++)
         {
             directions.push_back(allDirections()[i]);
         }
@@ -477,14 +477,14 @@ vector<Position> Game::getPossiblePasses(Position selected)
         if (canPassBall(selected))
         {
             Position endingPos = selected;
-            for (unsigned i = 0; i < 4; i++)
+            for (unsigned int i = 0; i < 4; i++)
             {
                 if (this->board_.isInside(selected.next(selected, directions.at(i))))
                 {
                     Piece endingPiece(this->board_.getPiece(selected.next(selected, directions.at(i))).getColor());
-                    for (unsigned i = 0; i < this->board_.getBoard().size(); i++)
+                    for (unsigned int i = 0; i < this->board_.getBoard().size(); i++)
                     {
-                        for (unsigned j = 0; i < this->board_.getBoard()[i].size(); j++)
+                        for (unsigned int j = 0; i < this->board_.getBoard()[i].size(); j++)
                         {
                             if (startingPiece.getColor() == endingPiece.getColor())
                             {
@@ -512,15 +512,15 @@ int Game::getNbMoves(Player player)
     int nbMoves = 0;
     Position selected;
     vector<Direction> directions;
-    for (unsigned i  = 0; i < allDirections().size(); i++)
+    for (unsigned int i  = 0; i < allDirections().size(); i++)
     {
         directions.push_back(allDirections()[i]);
     }
-    for (unsigned i = 0; i < this->board_.getBoard().size(); i++)
+    for (unsigned int i = 0; i < this->board_.getBoard().size(); i++)
     {
-        for (unsigned i = 0; i < this->board_.getBoard()[i].size(); i++)
+        for (unsigned int i = 0; i < this->board_.getBoard()[i].size(); i++)
         {
-            for (unsigned i = 0; i < 4; i++)
+            for (unsigned int i = 0; i < 4; i++)
             {
                 if (this->board_.isInside(selected.next(selected, directions.at(i)))
                         && this->board_.isFree(selected.next(selected, directions.at(i)))
@@ -592,7 +592,7 @@ Player Game::getWinner()
     Player winner;
     if (!fairPlay())
     {
-        for (unsigned i = 0; i < this->board_.getBoard().size(); i++)
+        for (unsigned int i = 0; i < this->board_.getBoard().size(); i++)
         {
             if (this->board_.getBoard()[0][i].getPiece().getColor() == White)
             {

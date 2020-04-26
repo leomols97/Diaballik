@@ -29,7 +29,7 @@ Player::Player(Color color) {
     this->nbMoves_ = 2;
     vector<Piece> pieces{7};
     hasPass_=true;
-    for (unsigned i = 0; i < pieces.size(); i++)
+    for (unsigned int i = 0; i < pieces.size(); i++)
     {
         Piece p(color);
         pieces.push_back(p);
@@ -57,7 +57,7 @@ bool Player::isReal(Color color)
 vector<Direction> Player::allDirections ()
 {
     vector<Direction> dirs;
-    for (unsigned i = 0; i < 4; i++)
+    for (unsigned int i = 0; i < 4; i++)
     {
          dirs.push_back(Direction());
     }

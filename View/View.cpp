@@ -64,7 +64,7 @@ void View::displayBoard(Board board)
     cout << board.getBoard().size() << endl;
     cout << "board.size()" << endl;
     cout << board.getBoard()[1].size() << endl;
-    for (unsigned i = 0; i < board.getBoard().size(); i++)
+    for (unsigned int i = 0; i < board.getBoard().size(); i++)
     {
         cout << "row#0" << i << "\t|| " << endl;
         for (Square square : board.getBoard().at(i))
@@ -128,7 +128,7 @@ void View::displayPiece(Square square)
 void View::displayMoves(vector<Move> moves)
 {
     cout << moves.size() << " mouvement(s) possible(s)" << endl;
-    for (unsigned i = 0; i < moves.size(); i++)
+    for (unsigned int i = 0; i < moves.size(); i++)
     {
        cout << i << "la piece sélectionnée peut se déplacer vers la ligne " << moves[i].getEnd().getRow() << "et le colonne " << moves[i].getEnd().getColumn() << endl;
     }
