@@ -1,5 +1,5 @@
-#include "View.h"
-#include "Player.h"
+#include "View/View.h"
+#include "Models/Player.h"
 #include <string>
 #include <sstream>
 
@@ -31,22 +31,22 @@ void View::displayError(string message)
 void View::displayHelpInit()
 {
     cout << "Liste de commandes : " << endl;
-    cout << " * move <ligne> <colonne> : permet de sélectionner la pièce à la position mentionnée et affiche la liste des mouvements possibles avec chacune des pièces" << endl;
-    cout << " * quit : permet de quitter le jeu" << endl;
+    cout << " - move <ligne> <colonne> : permet de sélectionner la pièce à la position mentionnée et affiche la liste des mouvements possibles avec chacune des pièces" << endl;
+    cout << " - quit : permet de quitter le jeu" << endl;
 }
 
 void View::displayHelpMove()
 {
     cout << "Liste de commandes : " << endl;
-    cout << " * apply <numéro du déplacement> : permet de déplacer la pièce sélectionnée" << endl;
-    cout << " * quit : permet de quitter le jeu" << endl;
+    cout << " - apply <numéro du déplacement> : permet de déplacer la pièce sélectionnée" << endl;
+    cout << " - quit : permet de quitter le jeu" << endl;
 }
 
 void View::displayHelpPass()
 {
     cout << "Liste de commandes : " << endl;
-    cout << " * pass <numéro de passes> : permet d'éffectuer une passe avec la pièce sélectionnée" << endl;
-    cout << " * quit : permet de quitter le jeu" << endl;
+    cout << " - pass <numéro de passes> : permet d'éffectuer une passe avec la pièce sélectionnée" << endl;
+    cout << " - quit : permet de quitter le jeu" << endl;
 }
 
 string View::askCommand()
@@ -64,13 +64,13 @@ void View::displayBoard(Board board)
     cout << board.getBoard().size() << endl;
     cout << "board.size()" << endl;
     cout << board.getBoard()[1].size() << endl;
-    for (unsigned i = 0; i < board.getBoard().size(); i++)
+    for (unsigned int i = 0; i < board.getBoard().size(); i++)
     {
         cout << "row#0" << i << "\t|| " << endl;
         for (Square square : board.getBoard().at(i))
         {
             cout << " | " << endl;
-            View().displayPiece(square);
+            displayPiece(square);
             cout << " | " << endl;
         }
     }
@@ -128,7 +128,7 @@ void View::displayPiece(Square square)
 void View::displayMoves(vector<Move> moves)
 {
     cout << moves.size() << " mouvement(s) possible(s)" << endl;
-    for (unsigned i = 0; i < moves.size(); i++)
+    for (unsigned int i = 0; i < moves.size(); i++)
     {
        cout << i << "la piece sélectionnée peut se déplacer vers la ligne " << moves[i].getEnd().getRow() << "et le colonne " << moves[i].getEnd().getColumn() << endl;
     }

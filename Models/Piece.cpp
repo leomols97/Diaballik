@@ -52,7 +52,7 @@ Piece::Piece(Color color)
         Position posG(pos.getRow(), pos.getColumn());
         if(getHasBall())
         {
-            for (unsigned i = 0; i < 7; i++)
+            for (unsigned int i = 0; i < 7; i++)
             {
                 if(board.isInside(posD) && board.isInside(posG) &&
                         board.isInside(posB) && board.isInside(posH) &&

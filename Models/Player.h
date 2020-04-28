@@ -8,7 +8,7 @@
 
 #include "Color.h"
 #include "Piece.h"
-#include "vector"
+#include <vector>
 
 using namespace std;
 using namespace Diaballik;

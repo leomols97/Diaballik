@@ -6,7 +6,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "Model.h"
+//#include "Model.h"
 #include "Player.h"
 #include "Move.h"
 #include "Board.h"
@@ -17,7 +17,7 @@ using namespace Diaballik;
 namespace Diaballik
 {
 
-    class Game: public Model
+    class Game //public Model
     {
 
         private:
@@ -51,6 +51,8 @@ namespace Diaballik
              * @brief Game constructs a game
              */
             Game();
+
+            //~Game();
 
             // ATTENTION IL NE FAUT PAS OUBLIER LES DESTRUCTEURS !!!!!!!!!
 

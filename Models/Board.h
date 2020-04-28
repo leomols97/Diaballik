@@ -1,4 +1,4 @@
-/**
+ /**
  * Project Diaballik
  */
 
@@ -36,9 +36,11 @@ namespace Diaballik
              * @brief Board the contructor that constructs a board belonging a vector of vector
              * @param board_
              */
-            Board(vector<vector<Square>> board_);
+            //Board(vector<vector<Square>> board_);
 
             Board(int length);
+
+            //~Board();
 
             /**
              * @brief getPiece Gets the piece thats stands on a certain position

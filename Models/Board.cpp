@@ -20,11 +20,11 @@ Board::Board()
     cout << "Board default " << endl;
     //board.reserve(7);
     Position pos(0,0);
-    for (unsigned i = 0; i < this->board_.size(); i++)
+    for (unsigned int i = 0; i < this->board_.size(); i++)
     {
         //board[i].reserve(7);
         vector<Square> lign;
-        for (unsigned j = 0; j < this->board_[i].size(); j++)
+        for (unsigned int j = 0; j < this->board_[i].size(); j++)
         {
             Piece p(None);
             Square sq(p);
@@ -39,24 +39,35 @@ Board::Board()
  * @brief Board::Board
  */
 
-Board::Board(vector<vector<Square>> board)
+Board::Board(int length)
 {
-    cout << "Good board " << board.size() << endl;
+    cout << "Good board " << length << endl;
     //board.reserve(7);
-    Position pos(0,0);
-    for (unsigned i = 0; i < board.size(); i++)
+    //Position pos(0,0);
+    //vector<vector<Square>> board;
+    for (unsigned int i = 0; i < length; i++)
     {
         //board[i].reserve(7);
         vector<Square> lign;
-        for (unsigned j = 0; j < board[i].size(); j++)
+        for (unsigned int j = 0; j < length; j++)
         {
             Piece p(None);
             Square sq(p);
             lign.push_back(sq);
         }
-        board.push_back(lign);
+        board_.push_back(lign);
     }
 }
+
+/*Board::~Board()
+{
+    for (unsigned int i = 0; i < board_.size(); i++) {
+        for (unsigned int j {0}; j < board_.size(); j++) {
+            //remove(Position(i, j));
+            delete &getBoard()[i][j];
+        }
+    }
+}*/
 
 /**
  * @param position
@@ -100,9 +111,9 @@ bool Board::isFree(Position position) const
 bool Board::isEmpty()
 {
     bool empty = false;
-    for (unsigned i = 0; i < board_.size(); i++)
+    for (unsigned int i = 0; i < board_.size(); i++)
     {
-        for (unsigned j = 0; j < board_[i].size(); j++)
+        for (unsigned int j = 0; j < board_[i].size(); j++)
         {
             Position pos(i, j);
             if(!isFree(pos))
@@ -141,9 +152,9 @@ vector<Position> Board::getTakenSquares(Player player)
 {
     Position pos(0,0);
     vector<Position> positions;
-    for (unsigned i = 0; i < getBoard().size(); i++)
+    for (unsigned int i = 0; i < getBoard().size(); i++)
     {
-        for (unsigned j = 0; j < getBoard()[i].size(); j++)
+        for (unsigned int j = 0; j < getBoard()[i].size(); j++)
         {
             pos.setRow(i);
             pos.setColumn(j);

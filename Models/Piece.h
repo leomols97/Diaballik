@@ -49,6 +49,8 @@ namespace Diaballik
              */
             Piece(Color color_);
 
+            //~Piece();
+
             /**
              * @brief getColor
              * @return the color of the piece

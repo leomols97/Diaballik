@@ -1,9 +1,6 @@
 #ifndef VIEW_H
 #define VIEW_H
-#include "Game.h"
-
-using namespace std;
-
+#include "Models/Game.h"
 
 namespace Diaballik
 {

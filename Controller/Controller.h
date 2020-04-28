@@ -1,8 +1,8 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-#include "Game.h"
-#include "View.h"
+#include "Models/Game.h"
+#include "View/View.h"
 
 using namespace std;
 using namespace Diaballik;
@@ -36,6 +36,8 @@ namespace Diaballik
              * @param view_ all the text we will display on the terminal
              */
             Controller(Game game_, View view_);
+
+            ~Controller();
 
             /**
              * @brief initialize initializes all that is necessary to launch a game
