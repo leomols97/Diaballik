@@ -33,7 +33,7 @@ namespace Diaballik
             /**
              * @brief Position constructs a position
              */
-            Position();
+            //Position();
 
             /**
              * @param row

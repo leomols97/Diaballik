@@ -7,7 +7,6 @@
 #define GAME_H
 
 //#include "Model.h"
-#include "Player.h"
 #include "Move.h"
 #include "Board.h"
 
@@ -41,8 +40,6 @@ namespace Diaballik
              * @brief selected_ the position selected by the user
              */
             Position selected_;
-
-            unsigned int boardlength_ = 7;
 
 
         public:

@@ -4,19 +4,18 @@
 
 
 #include "Square.h"
-#include <iostream>
 
-using namespace std;
 using namespace Diaballik;
 
-Square::Square() {}
+//Square::Square() {}
 
 /**
  * Square implementation
  */
-Square::Square(Piece piece)
+Square::Square(Piece piece) :
+    piece_(piece)
 {
-    this->piece_ = piece;
+    //this->piece_ = piece;
 }
 
 /**
@@ -24,7 +23,7 @@ Square::Square(Piece piece)
  */
 bool Square::isFree()
 {
-    return Piece().getColor() == None;
+    return piece_.getColor() == None;
 }
 
 /**

@@ -1,22 +1,15 @@
 #include "Controller/Controller.h"
-#include "Models/Game.h"
-#include "View/View.h"
-#include "sstream"
-#include <string>
-#include <sstream>
-#include <algorithm>
-#include <iterator>
-#include <map>
 
-using namespace std;
 using namespace Diaballik;
 
-Controller::Controller() {}
+//Controller::Controller() {}
 
-Controller::Controller(Game game, View view)
+Controller::Controller(Game game, View view) :
+    game_(game),
+    view_(view)
 {
-    this->game_ = game;
-    this->view_ = view;
+    //this->game_ = game;
+    //this->view_ = view;
 }
 
 Controller::~Controller()
@@ -27,13 +20,15 @@ Controller::~Controller()
 void Controller::initialize()
 {
     this->view_.initialize();
-    this->game_.initialize();
+    //this->game_.initialize();
 }
 
 void Controller::startGame()
 {
+    //cout << "QDFAZGEH";
     this->initialize();
     bool endCom = false;
+    //this->game_.initialize();
     this->view_.displayBoard(this->game_.getBoard());
     while (!this->game_.isOver())
     {

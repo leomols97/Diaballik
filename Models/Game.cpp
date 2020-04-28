@@ -4,21 +4,19 @@
 
 
 #include "Game.h"
-#include "Direction.h"
-#include <iostream>
-#include <stdio.h>
-#include <stdexcept>
 
-
-using namespace std;
 using namespace Diaballik;
 
 /**
  * Game implementation
  */
-Game::Game()
+Game::Game() :
+    board_(7),
+    current_(White),
+    opponent_(Black),
+    selected_(0, 0)
 {
-    Board board(7);
+    cout << "Game constructor";
 }
 
 /*Game::~Game()
@@ -38,10 +36,10 @@ void Game::initialize()
     //Board board(b);
     //Board a(7);
     //board_ = b;
+    //Board board(7);
     cout << "AZERT";
     cout << this->board_.getBoard().size();
-    //cout << board.getBoard().size() << "AAAA" << endl;
-    Player current_(White), oponent(Black);
+    //cout << board_.getBoard().size() << "AAAA" << endl;
     Position selected_(int row, int column);
 
     for (unsigned int i = 0; i < this->board_.getBoard().size(); i++)
@@ -52,13 +50,13 @@ void Game::initialize()
             if (i == 0 && j == 3)
             {
                 Piece p(Black);
-                Piece().changeHasBall(true);
+                p.changeHasBall(true);
                 this->board_.getBoard()[i][j].put(p);
             }
             else if (i == 6 && j == 3)
             {
                 Piece p(White);
-                Piece().changeHasBall(true);
+                p.changeHasBall(true);
                 this->board_.getBoard()[i][j].put(p);
             }
             else if (i == 0 && j != 3)
@@ -228,13 +226,13 @@ bool Game::canPassBall(Position pos)
             found = true;
         }
     }
-    return found && Player().getHasPass();
+    return found && current_.getHasPass();
 }
 
 
 bool Game::fairPlay()
 {
-    Position pos;
+    Position pos(0,0);
     bool foulGame = false;
     bool found = false;
     int count = 0;
@@ -517,7 +515,7 @@ vector<Position> Game::getPossiblePasses(Position selected)
 int Game::getNbMoves(Player player)
 {
     int nbMoves = 0;
-    Position selected;
+    Position selected(0, 0);
     vector<Direction> directions;
     for (unsigned int i  = 0; i < allDirections().size(); i++)
     {
@@ -596,7 +594,7 @@ bool Game::hasMoves(Player player)
 Player Game::getWinner()
 {
     //rajouter condition de anti-jeu
-    Player winner;
+    Player winner(None);
     if (!fairPlay())
     {
         for (unsigned int i = 0; i < this->board_.getBoard().size(); i++)

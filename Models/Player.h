@@ -6,7 +6,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "Color.h"
+#include "Direction.h"
 #include "Piece.h"
 #include <vector>
 
@@ -46,7 +46,8 @@ namespace Diaballik
             /**
              * @brief Player constructs an empty player
              */
-            Player();
+            //Player();
+
             /**
              * @param color the color of the player constructed
              * constructs a player characterized by its color

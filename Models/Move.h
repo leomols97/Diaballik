@@ -42,7 +42,7 @@ namespace Diaballik
             /**
              * @brief Move constructs an empty Move
              */
-            Move();
+            //Move();
 
             /**
              * @brief Move constructs a move characterised by a piece and 2 positions

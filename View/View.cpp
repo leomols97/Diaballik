@@ -1,9 +1,5 @@
 #include "View/View.h"
-#include "Models/Player.h"
-#include <string>
-#include <sstream>
 
-using namespace std;
 using namespace Diaballik;
 
 
@@ -61,9 +57,8 @@ void View::displayBoard(Board board)
 {
     cout << " col#\t||  | 00 |  | 01 |  | 02 |  | 03 |  | 04 |  | 05 |  | 06 |" << endl;
     cout << "==================================================================" << endl;
-    cout << board.getBoard().size() << endl;
-    cout << "board.size()" << endl;
-    cout << board.getBoard()[1].size() << endl;
+    cout << "board.size() : " << board.getBoard().size() << endl;
+    cout << board.getBoard().at(0).size() << endl;
     for (unsigned int i = 0; i < board.getBoard().size(); i++)
     {
         cout << "row#0" << i << "\t|| " << endl;

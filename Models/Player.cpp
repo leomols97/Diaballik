@@ -4,11 +4,7 @@
 
 
 #include "Player.h"
-#include "Piece.h"
-#include "Board.h"
-#include <iostream>
 
-using namespace std;
 using namespace Diaballik;
 
 /**
@@ -19,20 +15,24 @@ using namespace Diaballik;
  * Default constructor needed by the constructor of Game
  * @brief Player
  */
-Player::Player() {}
+/*Player::Player() :
+{
+    cout << "va te faire foutre" << endl;
+}*/
 
 /**
  * @param color
  */
-Player::Player(Color color) {
-    this->color_ = color;
-    this->nbMoves_ = 2;
-    vector<Piece> pieces{7};
-    hasPass_=true;
-    for (unsigned int i = 0; i < pieces.size(); i++)
+Player::Player(Color color) :
+    color_(color),
+    pieces_(getPieces()),
+    nbMoves_(2),
+    hasPass_(true)
+{
+    for (unsigned int i = 0; i < pieces_.size(); i++)
     {
         Piece p(color);
-        pieces.push_back(p);
+        pieces_.push_back(p);
     }
 }
 
@@ -59,7 +59,7 @@ vector<Direction> Player::allDirections ()
     vector<Direction> dirs;
     for (unsigned int i = 0; i < 4; i++)
     {
-         dirs.push_back(Direction());
+        dirs.push_back(Direction());
     }
     /*
      * OU (à la place du for, si le for ne fonctionne pas)

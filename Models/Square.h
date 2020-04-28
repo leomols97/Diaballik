@@ -8,8 +8,6 @@
 
 #include "Piece.h"
 
-using namespace std;
-
 namespace Diaballik
 {
 
@@ -29,7 +27,7 @@ namespace Diaballik
             /**
              * @brief Square construts an empty square
              */
-            Square();
+            //Square();
 
             /**
              * @brief Square constructs a square with a piece in it

@@ -4,33 +4,24 @@
 
 #include "Piece.h"
 #include "Player.h"
-#include "Color.h"
-#include "Game.h"
-#include <stdio.h>
-#include <stdexcept>
-#include <iostream>
 
-using namespace std;
 using namespace Diaballik;
 
 /**
  * Piece implementation
  */
-
-Piece::Piece()
-{
-    this->real_ = false;
-}
+//Piece::Piece() {}
 
 /**
  * @param color
  */
-Piece::Piece(Color color)
+Piece::Piece(Color color) :
+    color_(color),
+    hasBall_(false)
 {
-
-    this->color_ = color;
-    this->real_ = true;
-    this->hasBall_ = false;
+        //this->color_ = color;
+        //this->real_ = true;
+        //this->hasBall_ = false;
 }
 
 /**
@@ -155,6 +146,6 @@ void Piece::changeHasBall(bool hasBall)
 
 bool Piece::isReal()
 {
-    Player player;
+    Player player(color_);
     return player.isReal(color_);
 }

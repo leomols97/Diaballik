@@ -3,7 +3,6 @@
 #include "View/View.h"
 #include "Controller/Controller.h"
 
-using namespace std;
 using namespace Diaballik;
 
 int main()

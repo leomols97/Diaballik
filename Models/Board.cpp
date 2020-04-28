@@ -5,19 +5,16 @@
 
 
 #include "Board.h"
-#include "Position.h"
-#include "Piece.h"
-#include <iostream>
 
-using namespace std;
 using namespace Diaballik;
 
 /**
  * Board implementation
  */
-Board::Board()
-{
-    cout << "Board default " << endl;
+//Board::Board()
+//{
+    /*cout << "Board default " << endl;
+    cout << "Board()" << endl;
     //board.reserve(7);
     Position pos(0,0);
     for (unsigned int i = 0; i < this->board_.size(); i++)
@@ -31,32 +28,37 @@ Board::Board()
             lign.push_back(sq);
         }
         this->board_.push_back(lign);
-    }
-}
+    }*/
+//}
 
 /**
  * Default constructor needed by the constructor of Game
  * @brief Board::Board
  */
 
-Board::Board(int length)
+Board::Board(unsigned int boardLength) :
+    board_(boardLength),
+    boardLength_(boardLength)
 {
-    cout << "Good board " << length << endl;
+    //boardLength_ = boardLength;
     //board.reserve(7);
     //Position pos(0,0);
-    //vector<vector<Square>> board;
-    for (unsigned int i = 0; i < length; i++)
+    vector<vector<Square>> board;
+    for (unsigned int i = 0; i < boardLength_; i++)
     {
         //board[i].reserve(7);
         vector<Square> lign;
-        for (unsigned int j = 0; j < length; j++)
+        for (unsigned int j = 0; j < boardLength_; j++)
         {
             Piece p(None);
             Square sq(p);
             lign.push_back(sq);
         }
-        board_.push_back(lign);
+        board.push_back(lign);
     }
+    board_ = board;
+    cout << "Good board " << boardLength_ << endl;
+    cout << "Board(int length)" << endl;
 }
 
 /*Board::~Board()
@@ -177,10 +179,7 @@ Square Board::getSquare(Position position) const
 /**
  * @return vector<vector<Square>>
  */
-vector<vector<Square>> Board::getBoard() const
-{
-    return this->board_;
-}
+
 
 
 /**

@@ -25,20 +25,22 @@ namespace Diaballik
              */
             vector<vector<Square>> board_;
 
+            unsigned int boardLength_;
+
         public:
 
             /**
              * @brief Board the default board to let the classes that need them use it
              */
-            Board();
+            //Board();
+
+            Board(unsigned int boardLength);
 
             /**
              * @brief Board the contructor that constructs a board belonging a vector of vector
              * @param board_
              */
             //Board(vector<vector<Square>> board_);
-
-            Board(int length);
 
             //~Board();
 
@@ -60,7 +62,10 @@ namespace Diaballik
              * @brief getBoard Gets the vector of vector
              * @return the vector of vector board
              */
-            vector<vector<Square>> getBoard() const;
+            inline vector<vector<Square>> getBoard() const
+            {
+                return this->board_;
+            }
 
             /**
              * @brief isInside Verifies if a position is inside the board

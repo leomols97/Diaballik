@@ -4,9 +4,7 @@
 
 
 #include "Position.h"
-#include <iostream>
 
-using namespace std;
 using namespace Diaballik;
 
 /**
@@ -18,16 +16,18 @@ using namespace Diaballik;
  * Default constructor needed by the constructor of Game
  * @brief Position
  */
-Position::Position() {}
+//Position::Position() {}
 
 /**
  * @param row
  * @param column
  */
-Position::Position(int row, int column)
+Position::Position(int row, int column) :
+    row_(row),
+    column_(column)
 {
-    this->row_ = row;
-    this->column_ = column;
+    /*this->row_ = row;
+    this->column_ = column;*/
 }
 
 Position Position::whichEndingPosition(Position position, Direction direction) const

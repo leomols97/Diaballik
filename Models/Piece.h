@@ -5,10 +5,9 @@
 
 #ifndef PIECE_H
 #define PIECE_H
-#include "Color.h"
-#include "Position.h"
 
-using namespace std;
+#include "Color.h"
+
 using namespace Diaballik;
 
 namespace Diaballik
@@ -28,11 +27,6 @@ namespace Diaballik
              * @brief hasBall_ a boolean to know if the piece contains the ball
              */
             bool hasBall_;
-
-            /**
-             * @brief real_ a boolean to know if the square contains a piece
-             */
-            bool real_;
             
         public:
             
@@ -40,7 +34,7 @@ namespace Diaballik
              * @brief Piece
              * constucts an empty piece
              */
-            Piece();
+            //Piece();
 
             /**
              * @brief Piece

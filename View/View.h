@@ -2,6 +2,8 @@
 #define VIEW_H
 #include "Models/Game.h"
 
+using namespace std;
+
 namespace Diaballik
 {
 

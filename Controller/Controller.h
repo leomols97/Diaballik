@@ -1,8 +1,15 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
+
 #include "Models/Game.h"
 #include "View/View.h"
+#include "sstream"
+#include <string>
+#include <sstream>
+#include <algorithm>
+#include <iterator>
+#include <map>
 
 using namespace std;
 using namespace Diaballik;
@@ -28,7 +35,7 @@ namespace Diaballik
             /**
              * @brief Controller constructs an empty controller
              */
-            Controller();
+            //Controller();
 
             /**
              * @brief Controller constructs a controller characterised by a game an a view
