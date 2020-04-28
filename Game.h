@@ -42,6 +42,8 @@ namespace Diaballik
              */
             Position selected_;
 
+            unsigned int boardlength_ = 7;
+
 
         public:
 

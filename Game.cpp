@@ -25,9 +25,10 @@ Game::Game()
  */
 void Game::initialize()
 {
-    vector<vector<Square>> b(8);
+    //boardLength = 7
+    vector<vector<Square>> b(boardlength_);
     Board board(b);
-    cout << board.getBoard().size() << "AAAA" << endl;
+    //cout << board.getBoard().size() << "AAAA" << endl;
     Player current_(White), oponent(Black);
     Position selected_(int row, int column);
 
@@ -247,7 +248,7 @@ bool Game::fairPlay()
     for(unsigned i = 1; i < this->board_.getBoard().size() && found; i++)
     {
         found = false;
-        for(unsigned j = 0; j < this->board_.getBoard().size(); j++)
+        for(unsigned j = 0; j < this->board_.getBoard()[i].size(); j++)
         {
             if(this->board_.getBoard()[(j)][(i)].isMyOwn(opponent_.getColor()))
             {
@@ -413,7 +414,7 @@ vector<Move> Game::getMoves(Position selected)
     }
     else if(getNbMoves(getCurrent()) == 2)
     {
-        for (unsigned i = 0; i < 4; i++)
+        for (unsigned i = 0; i < 4; i++) //Car il y a 4 Moves possibles
         {
             for (unsigned i = 0; i < 4; i++)
             {
