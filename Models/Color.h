@@ -6,13 +6,14 @@
 #ifndef COLOR_H
 #define COLOR_H
 
+
 namespace Diaballik
 {
     enum Color
     {
-        Black,
+        None,
         White,
-        None
+        Black
     };
 }
 

@@ -3,9 +3,11 @@
  * Project Diaballik
  */
 
+
 #include "Direction.h"
 
 using namespace Diaballik;
+
 
 /**
  * Direction implementation

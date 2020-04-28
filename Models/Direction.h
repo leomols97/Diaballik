@@ -9,6 +9,7 @@
 
 using namespace std;
 
+
 namespace Diaballik
 {
     enum class Direction

@@ -12,6 +12,7 @@
 using namespace std;
 using namespace Diaballik;
 
+
 namespace Diaballik
 {
 
@@ -23,24 +24,13 @@ namespace Diaballik
             /**
              * @brief board_ the board is a vector of vector of squares that contains the pieces
              */
-            vector<vector<Square>> board_;
+            vector<vector<Piece>> board_;
 
             unsigned int boardLength_;
 
         public:
 
-            /**
-             * @brief Board the default board to let the classes that need them use it
-             */
-            //Board();
-
             Board(unsigned int boardLength);
-
-            /**
-             * @brief Board the contructor that constructs a board belonging a vector of vector
-             * @param board_
-             */
-            //Board(vector<vector<Square>> board_);
 
             //~Board();
 
@@ -56,7 +46,7 @@ namespace Diaballik
              * @param position the position where to look
              * @return the square found
              */
-            Square getSquare(Position position) const;
+            //Square getSquare(Position position) const;
 
             /**
              * @brief getBoard Gets the vector of vector

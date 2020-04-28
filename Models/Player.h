@@ -13,6 +13,7 @@
 using namespace std;
 using namespace Diaballik;
 
+
 namespace Diaballik
 {
 
@@ -42,11 +43,6 @@ namespace Diaballik
             bool hasPass_;
 
         public:
-
-            /**
-             * @brief Player constructs an empty player
-             */
-            //Player();
 
             /**
              * @param color the color of the player constructed
@@ -116,6 +112,8 @@ namespace Diaballik
              * sets the value of color
              */
             void setColor(Color color);
+
+            void addPieceToPlayer(Piece piece);
     };
 }
 

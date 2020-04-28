@@ -53,21 +53,26 @@ string View::askCommand()
     return command;
 }
 
+void View::displayLine(unsigned int row, Board board)
+{
+    for (unsigned int j = 1; j <= board.getBoard().size(); j++)
+    {
+        Position pos(row, j);
+        cout << " |";
+        displayPiece(board.getSquare(pos));
+        cout << "| ";
+    }
+}
+
 void View::displayBoard(Board board)
 {
-    cout << " col#\t||  | 00 |  | 01 |  | 02 |  | 03 |  | 04 |  | 05 |  | 06 |" << endl;
-    cout << "==================================================================" << endl;
-    cout << "board.size() : " << board.getBoard().size() << endl;
-    cout << board.getBoard().at(0).size() << endl;
+    cout << " col#\t||  | 0 |  | 1 |  | 2 |  | 3 |  | 4 |  | 5 |  | 6 |  | 7 |" << endl; // à mettre dans un for dans une autre fonction
+    cout << "==================================================================" << endl; // à mettre dans le même for
     for (unsigned int i = 0; i < board.getBoard().size(); i++)
     {
-        cout << "row#0" << i << "\t|| " << endl;
-        for (Square square : board.getBoard().at(i))
-        {
-            cout << " | " << endl;
-            displayPiece(square);
-            cout << " | " << endl;
-        }
+        cout << "row#" << i << "\t|| ";
+        displayLine(i, board);
+        cout << endl;
     }
 }
 
@@ -77,28 +82,30 @@ void View::displayPiece(Square square)
     {
         if (square.getPiece().getColor() == White)
         {
-            cout << "_W_" << endl;
+            cout << "_W_";
         }
         else if (square.getPiece().getColor() == Black)
         {
-            cout << "_B_" << endl;
+            cout << "_B_";
         }
-        else if (square.isFree()){
-            cout << "   " << endl;
+        else if (square.isFree())
+        {
+            cout << "   ";
         }
     }
     else
     {
         if (square.getPiece().getColor() == White)
         {
-            cout << " W " << endl;
+            cout << " W ";
         }
         else if (square.getPiece().getColor() == Black)
         {
-            cout << " B " << endl;
+            cout << " B ";
         }
-        else if (square.isFree()){
-            cout << "   " << endl;
+        else if (square.isFree())
+        {
+            cout << "   ";
         }
     }
 }
@@ -125,14 +132,14 @@ void View::displayMoves(vector<Move> moves)
     cout << moves.size() << " mouvement(s) possible(s)" << endl;
     for (unsigned int i = 0; i < moves.size(); i++)
     {
-       cout << i << "la piece sélectionnée peut se déplacer vers la ligne " << moves[i].getEnd().getRow() << "et le colonne " << moves[i].getEnd().getColumn() << endl;
+        cout << i << "la piece sélectionnée peut se déplacer vers la ligne " << moves[i].getEnd().getRow() << "et le colonne " << moves[i].getEnd().getColumn() << endl;
     }
 }
 
 void View::displayCurrentPlayer(Player player)
 {
     if(player.getColor() == White)
-        cout << "Au tour des Blancs" << endl;
+        cout << "\nAu tour des Blancs\n" << endl;
     else if(player.getColor() == Black)
-        cout << "Au tour des Noirs" << endl;
+        cout << "\nAu tour des Noirs\n" << endl;
 }

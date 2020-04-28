@@ -12,6 +12,7 @@
 using namespace std;
 using namespace Diaballik;
 
+
 namespace Diaballik
 {
 
@@ -38,11 +39,6 @@ namespace Diaballik
 
 
         public:
-
-            /**
-             * @brief Move constructs an empty Move
-             */
-            //Move();
 
             /**
              * @brief Move constructs a move characterised by a piece and 2 positions

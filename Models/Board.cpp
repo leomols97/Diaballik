@@ -8,28 +8,6 @@
 
 using namespace Diaballik;
 
-/**
- * Board implementation
- */
-//Board::Board()
-//{
-    /*cout << "Board default " << endl;
-    cout << "Board()" << endl;
-    //board.reserve(7);
-    Position pos(0,0);
-    for (unsigned int i = 0; i < this->board_.size(); i++)
-    {
-        //board[i].reserve(7);
-        vector<Square> lign;
-        for (unsigned int j = 0; j < this->board_[i].size(); j++)
-        {
-            Piece p(None);
-            Square sq(p);
-            lign.push_back(sq);
-        }
-        this->board_.push_back(lign);
-    }*/
-//}
 
 /**
  * Default constructor needed by the constructor of Game
@@ -40,15 +18,12 @@ Board::Board(unsigned int boardLength) :
     board_(boardLength),
     boardLength_(boardLength)
 {
-    //boardLength_ = boardLength;
-    //board.reserve(7);
-    //Position pos(0,0);
     vector<vector<Square>> board;
-    for (unsigned int i = 0; i < boardLength_; i++)
+    for (unsigned int i = 1; i <= boardLength_; i++)
     {
         //board[i].reserve(7);
         vector<Square> lign;
-        for (unsigned int j = 0; j < boardLength_; j++)
+        for (unsigned int j = 1; j <= boardLength_; j++)
         {
             Piece p(None);
             Square sq(p);
@@ -57,8 +32,6 @@ Board::Board(unsigned int boardLength) :
         board.push_back(lign);
     }
     board_ = board;
-    cout << "Good board " << boardLength_ << endl;
-    cout << "Board(int length)" << endl;
 }
 
 /*Board::~Board()
@@ -78,10 +51,10 @@ Board::Board(unsigned int boardLength) :
 
 bool Board::isInside(Position position) const
 {
-    return position.getRow() > 0
-            && position.getRow() < 6
-            && position.getColumn() > 0
-            && position.getColumn() < 6;
+    return position.getRow() >= 0
+            && position.getRow() < boardLength_
+            && position.getColumn() >= 0
+            && position.getColumn() < boardLength_;
 }
 
 /**

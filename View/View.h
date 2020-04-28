@@ -4,6 +4,7 @@
 
 using namespace std;
 
+
 namespace Diaballik
 {
 
@@ -85,6 +86,7 @@ namespace Diaballik
          */
         void displayCurrentPlayer(Player player) ;
 
+        void displayLine(unsigned int row, Board board);
     };
 }
 

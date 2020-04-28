@@ -2,15 +2,12 @@
  * Project Diaballik
  */
 
+
 #include "Piece.h"
 #include "Player.h"
 
 using namespace Diaballik;
 
-/**
- * Piece implementation
- */
-//Piece::Piece() {}
 
 /**
  * @param color

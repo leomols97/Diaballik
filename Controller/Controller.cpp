@@ -2,7 +2,6 @@
 
 using namespace Diaballik;
 
-//Controller::Controller() {}
 
 Controller::Controller(Game game, View view) :
     game_(game),
@@ -20,15 +19,20 @@ Controller::~Controller()
 void Controller::initialize()
 {
     this->view_.initialize();
-    //this->game_.initialize();
+    this->game_.initialize();
 }
 
 void Controller::startGame()
 {
-    //cout << "QDFAZGEH";
     this->initialize();
     bool endCom = false;
-    //this->game_.initialize();
+    cout << "row : " << this->game_.getBoard().getTakenSquares(this->game_.getCurrent()).size();
+    cout << "col : " << this->game_.getBoard().getTakenSquares(this->game_.getCurrent()).at(0).getColumn();
+    /*for (unsigned int i = 0; i < this->game_.getCurrent().getPieces().size(); i++)
+    {
+        cout << "row : " << this->game_.getBoard().getTakenSquares(this->game_.getCurrent()).at(i).getRow();
+        cout << "col : " << this->game_.getBoard().getTakenSquares(this->game_.getCurrent()).at(i).getColumn();
+    }*/
     this->view_.displayBoard(this->game_.getBoard());
     while (!this->game_.isOver())
     {
@@ -49,7 +53,6 @@ void Controller::startGame()
                 game_.swapPlayers();
             }
         }*/
-        cout << "gameNotOver";
         this->view_.displayCurrentPlayer(game_.getCurrent());
         this->view_.displayHelpInit();
         string command = this->view_.askCommand();

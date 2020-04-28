@@ -1,5 +1,6 @@
 /**
  * Project Diaballik
+ * Position implementation
  */
 
 
@@ -7,16 +8,6 @@
 
 using namespace Diaballik;
 
-/**
- * Position implementation
- */
-
-
-/**
- * Default constructor needed by the constructor of Game
- * @brief Position
- */
-//Position::Position() {}
 
 /**
  * @param row
@@ -25,10 +16,7 @@ using namespace Diaballik;
 Position::Position(int row, int column) :
     row_(row),
     column_(column)
-{
-    /*this->row_ = row;
-    this->column_ = column;*/
-}
+{}
 
 Position Position::whichEndingPosition(Position position, Direction direction) const
 {

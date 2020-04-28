@@ -10,6 +10,7 @@
 
 using namespace Diaballik;
 
+
 namespace Diaballik
 {
 
@@ -29,12 +30,6 @@ namespace Diaballik
             bool hasBall_;
             
         public:
-            
-            /**
-             * @brief Piece
-             * constucts an empty piece
-             */
-            //Piece();
 
             /**
              * @brief Piece

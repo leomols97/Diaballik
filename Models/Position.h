@@ -10,9 +10,9 @@
 using namespace std;
 using namespace Diaballik;
 
+
 namespace Diaballik
 {
-
     class Position
     {
 
@@ -29,11 +29,6 @@ namespace Diaballik
 
 
         public:
-            
-            /**
-             * @brief Position constructs a position
-             */
-            //Position();
 
             /**
              * @param row

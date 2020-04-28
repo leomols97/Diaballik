@@ -1,5 +1,6 @@
 /**
  * Project Diaballik
+ * Player implementation
  */
 
 
@@ -7,18 +8,6 @@
 
 using namespace Diaballik;
 
-/**
- * Player implementation
- */
-
-/**
- * Default constructor needed by the constructor of Game
- * @brief Player
- */
-/*Player::Player() :
-{
-    cout << "va te faire foutre" << endl;
-}*/
 
 /**
  * @param color
@@ -31,11 +20,16 @@ Player::Player(Color color) :
 {
     for (unsigned int i = 0; i < pieces_.size(); i++)
     {
+        cout << getPieces().at(i).getColor() << endl;
         Piece p(color);
         pieces_.push_back(p);
     }
 }
 
+void Player::addPieceToPlayer(Piece piece)
+{
+    pieces_.push_back(piece);
+}
 
 /**
  * @brief Piece::isReal

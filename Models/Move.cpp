@@ -7,6 +7,7 @@
 
 using namespace Diaballik;
 
+
 /**
  * Move implementation
  */
@@ -21,8 +22,4 @@ Move::Move(Piece piece, Position start, Position end) :
     piece_(piece),
     start_(start),
     end_(end)
-{
-    /*this->piece_ = piece;
-    this->start_ = start;
-    this->end_ = end;*/
-}
+{}

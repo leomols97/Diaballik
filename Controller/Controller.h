@@ -14,6 +14,7 @@
 using namespace std;
 using namespace Diaballik;
 
+
 namespace Diaballik
 {
 
@@ -31,11 +32,6 @@ namespace Diaballik
         View view_;
 
         public:
-
-            /**
-             * @brief Controller constructs an empty controller
-             */
-            //Controller();
 
             /**
              * @brief Controller constructs a controller characterised by a game an a view

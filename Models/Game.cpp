@@ -7,17 +7,16 @@
 
 using namespace Diaballik;
 
+
 /**
  * Game implementation
  */
 Game::Game() :
-    board_(7),
+    board_(8),
     current_(White),
     opponent_(Black),
     selected_(0, 0)
-{
-    cout << "Game constructor";
-}
+{}
 
 /*Game::~Game()
 {
@@ -31,43 +30,41 @@ Game::Game() :
  */
 void Game::initialize()
 {
-    //boardLength = 7
-    //vector<vector<Square>> b(boardlength_);
-    //Board board(b);
-    //Board a(7);
-    //board_ = b;
-    //Board board(7);
-    cout << "AZERT";
-    cout << this->board_.getBoard().size();
-    //cout << board_.getBoard().size() << "AAAA" << endl;
-    Position selected_(int row, int column);
-
     for (unsigned int i = 0; i < this->board_.getBoard().size(); i++)
     {
-        //board_.getBoard()[i].reserve(7);
-        for (unsigned int j = 0; j < sizeof (this->board_.getBoard()[i].size()); j++)
+        for (unsigned int j = 0; j < this->board_.getBoard()[i].size(); j++)
         {
+            //cout <<this->board_.getBoard().size();
+            //cout << endl;
+            Position pos(i,j);
+            //cout << "row : " << pos.getRow();
+            //cout << "col : " << pos.getColumn() << endl;
             if (i == 0 && j == 3)
             {
                 Piece p(Black);
                 p.changeHasBall(true);
                 this->board_.getBoard()[i][j].put(p);
+                this->opponent_.addPieceToPlayer(p);
+                //cout << p.getColor() << endl;
             }
-            else if (i == 6 && j == 3)
+            else if (i == this->board_.getBoard().size() - 1 && j == 3)
             {
                 Piece p(White);
                 p.changeHasBall(true);
                 this->board_.getBoard()[i][j].put(p);
+                this->current_.addPieceToPlayer(p);
             }
             else if (i == 0 && j != 3)
             {
                 Piece p(Black);
                 this->board_.getBoard()[i][j].put(p);
+                this->opponent_.addPieceToPlayer(p);
             }
-            else if (i == 6 && j != 3)
+            else if (i == this->board_.getBoard().size() - 1 && j != 3)
             {
                 Piece p(White);
                 this->board_.getBoard()[i][j].put(p);
+                this->current_.addPieceToPlayer(p);
             }
             else
             {
@@ -76,41 +73,13 @@ void Game::initialize()
             }
         }
     }
-
-    //board.reserve(7);
-    /*for (unsigned int i = 0; i < this->this->board_.getBoard().size(); i++)
+    /*for (unsigned int i = 0; i < this->current_.getPieces().size(); i++)
     {
-        //board[i].reserve(7);
-        for (unsigned int j = 0; j < this->this->board_.getBoard()[i].size(); j++)
-        {
-            if (i == 0 && j == 3)
-            {
-                Piece p(Black);
-                p.changeHasBall(true);
-                this->this->board_.getBoard()[i][j].put(p);
-            }
-            else if (i == 6 && j == 3)
-            {
-                Piece p(White);
-                p.changeHasBall(true);
-                this->this->board_.getBoard()[i][j].put(p);
-            }
-            else if (i == 0)
-            {
-                Piece p(Black);
-                this->this->board_.getBoard()[i][j].put(p);
-            }
-            else if (i == 6)
-            {
-                Piece p(White);
-                this->this->board_.getBoard()[i][j].put(p);
-            }
-            else
-            {
-                Piece p;
-                this->this->board_.getBoard()[i][j].put(p);
-            }
-        }
+        cout << this->current_.getPieces().at(i).getColor() << endl;
+    }
+    for (unsigned int i = 0; i < this->opponent_.getPieces().size(); i++)
+    {
+        cout << this->opponent_.getPieces().at(i).getColor() <<endl;
     }*/
 }
 
@@ -323,7 +292,7 @@ void Game::select(int row , int column)
     }
     catch (const exception e)
     {
-        cout << "La position que vous essayez de sélectionner n'est pas sur le plateau de jeu";
+        cout << "La position que vous essayez de sélectionnée n'est pas sur le plateau de jeu";
     }
     this->selected_ = Position(row, column);
 }
