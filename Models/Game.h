@@ -52,8 +52,6 @@ namespace Diaballik
 
             //~Game();
 
-            // ATTENTION IL NE FAUT PAS OUBLIER LES DESTRUCTEURS !!!!!!!!!
-
             /**
              * @brief getBoard
              * @return the board on which we play
@@ -191,17 +189,12 @@ namespace Diaballik
              */
             vector<Direction> allDirections ();
 
-            //bool canPassBall(const Position &position) const;
-
-            //bool canPassBall(Piece pieceThatGives, Position pos);
-
             /**
              * @brief canPassBall
              * @param pos the position we want to verify
              * @return true if a pass is possible at this position
              */
             bool canPassBall(Position pos);
-
 
             //void passBall(Position pos);
 

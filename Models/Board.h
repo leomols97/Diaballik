@@ -42,13 +42,6 @@ namespace Diaballik
             Piece getPiece(Position position) const;
 
             /**
-             * @brief getSquare Gets a square at a certain position to find what it contains
-             * @param position the position where to look
-             * @return the square found
-             */
-            //Square getSquare(Position position) const;
-
-            /**
              * @brief getBoard Gets the vector of vector
              * @return the vector of vector board
              */
@@ -104,6 +97,8 @@ namespace Diaballik
              * @return true if it the piece belongs to him and false else
              */
             bool isMyOwn(Position position, Color color) const;
+
+            void initialize();
     };
 }
 

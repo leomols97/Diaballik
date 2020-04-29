@@ -7,6 +7,8 @@
 #define PIECE_H
 
 #include "Color.h"
+#include "Position.h"
+#include "iostream"
 
 using namespace Diaballik;
 
@@ -60,9 +62,9 @@ namespace Diaballik
              * @brief isReal
              * @return true if the piece has the color Black or White. false otherwise
              */
-            //bool isReal();
+            bool isReal();
 
-            //bool canPassBall(Position pos);
+            bool canPassBall(Position pos);
 
             //void passBall(Piece pieceThatGives, Position pos);
 
@@ -72,14 +74,14 @@ namespace Diaballik
              * @brief getHasBall
              * @return true if hasBall is true. false otherwise
              */
-            bool getHasBall();
+            //bool getHasBall();
 
             /**
              * @brief changeHasBall
              * @param hasBall a boolean to know if the piece contains the ball
              * changes the value of hasBall
              */
-            void changeHasBall(bool hasBall);
+            //void changeHasBall(Color color);
 
             /**
              * @brief getReal

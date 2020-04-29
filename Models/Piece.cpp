@@ -13,8 +13,8 @@ using namespace Diaballik;
  * @param color
  */
 Piece::Piece(Color color) :
-    color_(color),
-    hasBall_(false)
+    color_(color)
+    //hasBall_(false)
 {
         //this->color_ = color;
         //this->real_ = true;
@@ -24,9 +24,9 @@ Piece::Piece(Color color) :
 /**
  * @return boolean
  */
-/*bool Piece::canPassBall(Position pos)
+bool Piece::canPassBall(Position pos)
 {
-    Player player(color_);
+    /*Player player(color_);
     bool canPass = false;
     if(player.getHasPass())
     {
@@ -70,8 +70,8 @@ Piece::Piece(Color color) :
             }
         }
     }
-    return canPass;
-}*/
+    return canPass;*/
+}
 
 /*void Piece::passBall(Piece pieceThatGives, Position pos)
 {
@@ -126,20 +126,23 @@ bool Piece::canPassBall(Position pos)
 }
 */
 
-bool Piece::getHasBall()
+/*bool Piece::getHasBall()
 {
     return hasBall_;
-}
+}*/
 
 void Piece::setColor(Color color)
 {
     this->color_ = color;
 }
 
-void Piece::changeHasBall(bool hasBall)
+/*void Piece::changeHasBall(Color color)
 {
-    this->hasBall_ = hasBall;
-}
+    if (color != WhiteWithBall || color != BlackWithBall)
+    {
+
+    }
+}*/
 
 /*bool Piece::isReal()
 {

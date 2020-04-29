@@ -30,40 +30,37 @@ Game::Game() :
  */
 void Game::initialize()
 {
+    this->board_.initialize();
     for (unsigned int i = 0; i < this->board_.getBoard().size(); i++)
     {
         for (unsigned int j = 0; j < this->board_.getBoard()[i].size(); j++)
         {
-            //cout <<this->board_.getBoard()[i].size();
-            //cout << endl;
-            Position pos(i,j);
-            //cout << "row : " << pos.getRow();
-            //cout << "col : " << pos.getColumn() << endl;
+            cout << this->board_.getPiece(pos).getColor() << endl;
             if (i == 0 && j == 3)
             {
                 Piece p(BlackWithBall);
-                p.changeHasBall(true);
-                this->board_.getBoard()[i][j].setColor(BlackWithBall);
+                //p.changeHasBall(true);
+                //this->board_.getPiece(pos).setColor(BlackWithBall);
                 this->opponent_.addPieceToPlayer(p);
                 //cout << p.getColor() << endl;
             }
             else if (i == this->board_.getBoard().size() - 1 && j == 3)
             {
                 Piece p(WhiteWithBall);
-                p.changeHasBall(true);
-                this->board_.getBoard()[i][j].setColor(WhiteWithBall);
+                //p.changeHasBall(true);
+                //this->board_.getPiece(pos).setColor(WhiteWithBall);
                 this->current_.addPieceToPlayer(p);
             }
             else if (i == 0 && j != 3)
             {
                 Piece p(Black);
-                this->board_.getBoard()[i][j].setColor(Black);
+                //this->board_.getPiece(pos).setColor(Black);
                 this->opponent_.addPieceToPlayer(p);
             }
             else if (i == this->board_.getBoard().size() - 1 && j != 3)
             {
                 Piece p(White);
-                this->board_.getBoard()[i][j].setColor(White);
+                //this->board_.getPiece(pos).setColor(White);
                 this->current_.addPieceToPlayer(p);
             }
             else
@@ -447,7 +444,7 @@ vector<Position> Game::getPossiblePasses(Position selected)
 
     Piece startingPiece(this->board_.getPiece(selected).getColor());
     vector<Position> possiblePasses;
-    if (startingPiece.getHasBall())
+    //if (startingPiece.getHasBall())
     {
         vector<Direction> directions;
         for (unsigned int i  = 0; i < allDirections().size(); i++)
@@ -545,8 +542,10 @@ void Game::applyPass(Move move)
     Piece piece(this->board_.getPiece(move.getStart()).getColor());
     if (canPassBall(move.getEnd()))
     {
-        this->board_.getPiece(move.getStart()).changeHasBall(false);
-        this->board_.getPiece(move.getEnd()).changeHasBall(true);
+        // Il faut changer les couleurs vers WhiteWithBall ou BlackWithBall
+
+        //this->board_.getPiece(move.getStart()).changeHasBall(false);
+        //this->board_.getPiece(move.getEnd()).changeHasBall(true);
     }
 }
 

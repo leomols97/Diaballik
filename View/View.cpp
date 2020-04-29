@@ -78,31 +78,25 @@ void View::displayBoard(Board board)
 
 void View::displayPiece(Piece piece)
 {
-    if(piece.getHasBall())
+    if (piece.getColor() == WhiteWithBall)
     {
-        if (piece.getColor() == White)
-        {
-            cout << "_W_";
-        }
-        else if (piece.getColor() == Black)
-        {
-            cout << "_B_";
-        }
+        cout << "_W_";
     }
-    else if (piece.getColor() == None)
+    else if (piece.getColor() == BlackWithBall)
+    {
+        cout << "_B_";
+    }
+    if (piece.getColor() == None)
     {
         cout << "   ";
     }
-    else
+    if (piece.getColor() == White)
     {
-        if (piece.getColor() == White)
-        {
-            cout << " W ";
-        }
-        else if (piece.getColor() == Black)
-        {
-            cout << " B ";
-        }
+        cout << " W ";
+    }
+    else if (piece.getColor() == Black)
+    {
+        cout << " B ";
     }
 }
 

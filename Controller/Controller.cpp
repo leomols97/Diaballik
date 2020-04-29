@@ -91,7 +91,7 @@ void Controller::startGame()
             int row = command[1];
             int col = command[2];
             Position position(row, col);
-            if(game_.getCurrent().getHasPass() && game_.getSelected(row, col).getHasBall())
+            //if(game_.getCurrent().getHasPass() && game_.getSelected(row, col).getHasBall())     // il faut travailler avec les couleurs
             {
                 //affiche la liste de passes possibles
                 view_.displayHelpPass();
@@ -121,7 +121,7 @@ void Controller::startGame()
 
 
             }
-            else if(game_.hasMoves(game_.getCurrent()) && !game_.getSelected(row, col).getHasBall())
+            //else if(game_.hasMoves(game_.getCurrent()) && !game_.getSelected(row, col).getHasBall())     // il faut travailler avec les couleurs
             {
                 vector<Move> moves = this->game_.getMoves(position);
                 view_.displayMoves(moves);

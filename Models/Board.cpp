@@ -34,6 +34,54 @@ Board::Board(unsigned int boardLength) :
     board_ = board;
 }
 
+void Board::initialize()
+{
+    for (unsigned int i = 0; i < this->board_.size(); i++)
+    {
+        for (unsigned int j = 0; j < this->board_[i].size(); j++)
+        {
+            //cout <<this->board_.getBoard()[i].size();
+            //cout << endl;
+            Position pos(i,j);
+            cout << "row : " << pos.getRow();
+            cout << "col : " << pos.getColumn();
+            cout << this->board_[i][j].getColor() << endl;
+            if (i == 0 && j == 3)
+            {
+                Piece p(BlackWithBall);
+                //p.changeHasBall(true);
+                this->board_[i][j].setColor(BlackWithBall);
+                //this->opponent_.addPieceToPlayer(p);
+                //cout << p.getColor() << endl;
+            }
+            else if (i == this->board_.size() - 1 && j == 3)
+            {
+                Piece p(WhiteWithBall);
+                //p.changeHasBall(true);
+                this->board_[i][j].setColor(WhiteWithBall);
+                //this->current_.addPieceToPlayer(p);
+            }
+            else if (i == 0 && j != 3)
+            {
+                Piece p(Black);
+                this->board_[i][j].setColor(Black);
+                //this->opponent_.addPieceToPlayer(p);
+            }
+            else if (i == this->board_.size() - 1 && j != 3)
+            {
+                Piece p(White);
+                this->board_[i][j].setColor(White);
+                //this->current_.addPieceToPlayer(p);
+            }
+            else
+            {
+                Piece p(None);
+                this->board_[i][j].setColor(None);
+            }
+        }
+    }
+}
+
 /*Board::~Board()
 {
     for (unsigned int i = 0; i < board_.size(); i++) {
