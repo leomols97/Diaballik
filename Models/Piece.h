@@ -60,7 +60,7 @@ namespace Diaballik
              * @brief isReal
              * @return true if the piece has the color Black or White. false otherwise
              */
-            bool isReal();
+            //bool isReal();
 
             //bool canPassBall(Position pos);
 

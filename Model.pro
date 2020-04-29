@@ -24,7 +24,6 @@ HEADERS += \
     Models/Piece.h \
     Models/Player.h \
     Models/Position.h \
-    Models/Square.h \
 #    Move.h \
 #    Observable.h \
 #    Observer.h \
@@ -33,7 +32,6 @@ HEADERS += \
 #    Piece.h \
 #    Player.h \
 #    Position.h \
-#    Square.h \
 #    View.h \
     View/View.h
 
@@ -50,12 +48,10 @@ SOURCES += \
         Models/Piece.cpp \
         Models/Player.cpp \
         Models/Position.cpp \
-        Models/Square.cpp \
 #        Move.cpp \
 #        Piece.cpp \
 #        Player.cpp \
 #        Position.cpp \
-#        Square.cpp \
 #        View.cpp \
         View/View.cpp \
         Models/main.cpp

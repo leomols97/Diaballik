@@ -52,7 +52,7 @@ namespace Diaballik
              * @brief getBoard Gets the vector of vector
              * @return the vector of vector board
              */
-            inline vector<vector<Square>> getBoard() const
+            inline vector<vector<Piece>> getBoard() const
             {
                 return this->board_;
             }
@@ -82,7 +82,7 @@ namespace Diaballik
              * @param piece the piece to put
              * @param position the location where to put the piece
              */
-            void put(Piece piece, Position position);
+            void put(Player player, Position position);
 
             /**
              * @brief getTakenSquares Gets all the squares taken by a player

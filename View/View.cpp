@@ -55,11 +55,11 @@ string View::askCommand()
 
 void View::displayLine(unsigned int row, Board board)
 {
-    for (unsigned int j = 1; j <= board.getBoard().size(); j++)
+    for (unsigned int j = 0; j < board.getBoard().size(); j++)
     {
         Position pos(row, j);
         cout << " |";
-        displayPiece(board.getSquare(pos));
+        displayPiece(board.getPiece(pos));
         cout << "| ";
     }
 }
@@ -76,36 +76,32 @@ void View::displayBoard(Board board)
     }
 }
 
-void View::displayPiece(Square square)
+void View::displayPiece(Piece piece)
 {
-    if(square.getPiece().getHasBall())
+    if(piece.getHasBall())
     {
-        if (square.getPiece().getColor() == White)
+        if (piece.getColor() == White)
         {
             cout << "_W_";
         }
-        else if (square.getPiece().getColor() == Black)
+        else if (piece.getColor() == Black)
         {
             cout << "_B_";
         }
-        else if (square.isFree())
-        {
-            cout << "   ";
-        }
+    }
+    else if (piece.getColor() == None)
+    {
+        cout << "   ";
     }
     else
     {
-        if (square.getPiece().getColor() == White)
+        if (piece.getColor() == White)
         {
             cout << " W ";
         }
-        else if (square.getPiece().getColor() == Black)
+        else if (piece.getColor() == Black)
         {
             cout << " B ";
-        }
-        else if (square.isFree())
-        {
-            cout << "   ";
         }
     }
 }

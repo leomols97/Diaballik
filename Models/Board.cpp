@@ -5,6 +5,7 @@
 
 
 #include "Board.h"
+#include "Piece.h"
 
 using namespace Diaballik;
 
@@ -18,16 +19,15 @@ Board::Board(unsigned int boardLength) :
     board_(boardLength),
     boardLength_(boardLength)
 {
-    vector<vector<Square>> board;
+    vector<vector<Piece>> board;
     for (unsigned int i = 1; i <= boardLength_; i++)
     {
         //board[i].reserve(7);
-        vector<Square> lign;
+        vector<Piece> lign;
         for (unsigned int j = 1; j <= boardLength_; j++)
         {
             Piece p(None);
-            Square sq(p);
-            lign.push_back(sq);
+            lign.push_back(p);
         }
         board.push_back(lign);
     }
@@ -51,9 +51,9 @@ Board::Board(unsigned int boardLength) :
 
 bool Board::isInside(Position position) const
 {
-    return position.getRow() >= 0
+    return position.getRow() > -1
             && position.getRow() < boardLength_
-            && position.getColumn() >= 0
+            && position.getColumn() > -1
             && position.getColumn() < boardLength_;
 }
 
@@ -67,7 +67,7 @@ Piece Board::getPiece(Position position) const
     {
         throw invalid_argument("La position n'est pas dans le plateau de jeu !");
     }
-    return getSquare(position).getPiece();
+    return this->board_[position.getRow()][position.getColumn()];
 }
 
 /**
@@ -80,7 +80,7 @@ bool Board::isFree(Position position) const
     {
         throw invalid_argument("La position n'est pas dans le plateau de jeu !");
     }
-    return getPiece(position).isReal();
+    return getPiece(position).getColor() == None;
 }
 
 bool Board::isEmpty()
@@ -109,9 +109,9 @@ bool Board::isEmpty()
  * @param position
  * @return void
  */
-void Board::put(Piece piece, Position position)
+void Board::put(Player player, Position position)
 {
-    getSquare(position).put(piece);
+    this->board_[position.getRow()][position.getColumn()].setColor(player.getColor());
 }
 
 bool Board::isMyOwn(Position position, Color color) const
@@ -144,10 +144,10 @@ vector<Position> Board::getTakenSquares(Player player)
     return positions;
 }
 
-Square Board::getSquare(Position position) const
+/*Square Board::getSquare(Position position) const
 {
     return this->board_[position.getRow()][position.getColumn()];
-}
+}*/
 
 /**
  * @return vector<vector<Square>>
@@ -161,5 +161,5 @@ Square Board::getSquare(Position position) const
  */
 void Board::remove(Position position)
 {
-    getSquare(position).remove();
+    this->board_[position.getRow()][position.getColumn()].setColor(None);
 }

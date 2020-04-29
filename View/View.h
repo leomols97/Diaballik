@@ -64,7 +64,7 @@ namespace Diaballik
          * @brief displayPiece prints the piece
          * @param square the square where you must print the piece
          */
-        void displayPiece(Square square) ;
+        void displayPiece(Piece piece) ;
 
         //void displayOver(vector<Player> winners) ;
 

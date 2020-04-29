@@ -141,8 +141,7 @@ void Piece::changeHasBall(bool hasBall)
     this->hasBall_ = hasBall;
 }
 
-bool Piece::isReal()
+/*bool Piece::isReal()
 {
-    Player player(color_);
-    return player.isReal(color_);
-}
+    return this->
+}*/
