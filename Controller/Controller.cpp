@@ -11,10 +11,10 @@ Controller::Controller(Game game, View view) :
     //this->view_ = view;
 }
 
-Controller::~Controller()
+/*Controller::~Controller()
 {
     delete &game_;
-}
+}*/
 
 void Controller::initialize()
 {
@@ -34,7 +34,7 @@ void Controller::startGame()
         cout << "col : " << this->game_.getBoard().getTakenSquares(this->game_.getCurrent()).at(i).getColumn();
     }*/
     this->view_.displayBoard(this->game_.getBoard());
-    while (!this->game_.isOver())
+    while (!endCom)
     {
         if (this->game_.isOver())
         {
@@ -60,6 +60,8 @@ void Controller::startGame()
         unsigned int i = 0;
         char c;
         string com = "";
+
+        //le while réécrit la commande ==> à corriger
         while (i < command.size())
         {
             c=command[i];
@@ -72,15 +74,17 @@ void Controller::startGame()
             }
             i++;
         }
+        commandStrings.push_back(com);
         //split(com, words);
         //copy(words.begin(), words.end(), ostream_iterator<string>(cout, "\n"));
         //string separate[] = command.toLower().split(" ");
-        if (commandStrings.at(0) == "quit")
+        if (command == "quit")
         {
             endCom = true;
             break;
         }
-        else if(commandStrings.at(0) == "move")
+
+        else if(commandStrings.at(0) == "select ")
         {
             if(!game_.hasMoves(game_.getCurrent()) && !game_.getCurrent().getHasPass())
             {
@@ -88,10 +92,12 @@ void Controller::startGame()
                 game_.swapPlayers();
                 break;
             }
-            int row = command[1];
-            int col = command[2];
+
+            int row = stoi(commandStrings.at(1));
+            int col = stoi(commandStrings.at(2));
             Position position(row, col);
-            //if(game_.getCurrent().getHasPass() && game_.getSelected(row, col).getHasBall())     // il faut travailler avec les couleurs
+            cout << "idysgvaqzh" << endl << endl << endl;
+            if(game_.getCurrent().getHasPass() && (game_.getSelected(row, col).getColor() == BlackWithBall || game_.getSelected(row, col).getColor() == WhiteWithBall))     // il faut travailler avec les couleurs
             {
                 //affiche la liste de passes possibles
                 view_.displayHelpPass();
@@ -115,14 +121,13 @@ void Controller::startGame()
                 }
                 else if (commandStrings.at(0) == "pass")
                 {
-                    //game_.applyPass(game_.getMoves().at(stoi(commandStrings.at(1))));
+                    game_.applyPass(game_.getMoves().at(stoi(commandStrings.at(1))));
                     game_.getCurrent().setHasPass(false);
                 }
-
-
             }
-            //else if(game_.hasMoves(game_.getCurrent()) && !game_.getSelected(row, col).getHasBall())     // il faut travailler avec les couleurs
+            //else if(game_.hasMoves(game_.getCurrent()) && game_.getSelected(row, col).getColor() == game_.getCurrent().getColor())     // il faut travailler avec les couleurs
             {
+                cout << game_.getMoves(position).size();
                 vector<Move> moves = this->game_.getMoves(position);
                 view_.displayMoves(moves);
                 view_.displayHelpMove();
@@ -139,18 +144,16 @@ void Controller::startGame()
                     }
                     i++;
                 }
-
                 if(commandStrings.at(0) == "quit")
                 {
                     endCom = true;
                 }
                 else if(commandStrings.at(0) == "apply")
                 {
-                    //game_.apply(moves.at(stoi(commandStrings.at(1))));
+                    game_.apply(moves.at(stoi(commandStrings.at(1))));
                 }
             }
-            break;
-
+            //break;
         }
         /*string commmmmmm = commandStrings.at(0);
         switch(str2int(commmmmmm))

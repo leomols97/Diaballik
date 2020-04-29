@@ -12,7 +12,7 @@ using namespace Diaballik;
  * Game implementation
  */
 Game::Game() :
-    board_(8),
+    board_(7),
     current_(White),
     opponent_(Black),
     selected_(0, 0)
@@ -35,7 +35,7 @@ void Game::initialize()
     {
         for (unsigned int j = 0; j < this->board_.getBoard()[i].size(); j++)
         {
-            cout << this->board_.getPiece(pos).getColor() << endl;
+            //cout << this->board_.getPiece(pos).getColor() << endl;
             if (i == 0 && j == 3)
             {
                 Piece p(BlackWithBall);
