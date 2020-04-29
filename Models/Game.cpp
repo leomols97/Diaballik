@@ -35,6 +35,11 @@ void Game::initialize()
     {
         for (unsigned int j = 0; j < this->board_.getBoard()[i].size(); j++)
         {
+            //cout <<this->board_.getBoard()[i].size();
+            //cout << endl;
+            Position pos(i,j);
+            cout << "row : " << pos.getRow();
+            cout << "col : " << pos.getColumn();
             cout << this->board_.getPiece(pos).getColor() << endl;
             if (i == 0 && j == 3)
             {

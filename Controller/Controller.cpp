@@ -26,14 +26,6 @@ void Controller::startGame()
 {
     this->initialize();
     bool endCom = false;
-    //cout << "row : " << this->game_.getBoard().getTakenSquares(this->game_.getCurrent()).size();
-    //cout << "col : " << this->game_.getBoard().getTakenSquares(this->game_.getCurrent()).at(0).getColumn();
-    /*for (unsigned int i = 0; i < this->game_.getCurrent().getPieces().size(); i++)
-    {
-        cout << "row : " << this->game_.getBoard().getTakenSquares(this->game_.getCurrent()).at(i).getRow();
-        cout << "col : " << this->game_.getBoard().getTakenSquares(this->game_.getCurrent()).at(i).getColumn();
-    }*/
-    this->view_.displayBoard(this->game_.getBoard());
     while (!this->game_.isOver())
     {
         if (this->game_.isOver())
