@@ -27,7 +27,7 @@ void View::displayError(string message)
 void View::displayHelpInit()
 {
     cout << "Liste de commandes : " << endl;
-    cout << " - move <ligne> <colonne> : permet de sélectionner la pièce à la position mentionnée et affiche la liste des mouvements possibles avec chacune des pièces" << endl;
+    cout << " - select <ligne> <colonne> : permet de sélectionner la pièce à la position mentionnée et affiche la liste des mouvements possibles avec chacune des pièces" << endl;
     cout << " - quit : permet de quitter le jeu" << endl;
 }
 
@@ -66,8 +66,8 @@ void View::displayLine(unsigned int row, Board board)
 
 void View::displayBoard(Board board)
 {
-    cout << " col#\t||  | 0 |  | 1 |  | 2 |  | 3 |  | 4 |  | 5 |  | 6 |  | 7 |" << endl; // à mettre dans un for dans une autre fonction
-    cout << "==================================================================" << endl; // à mettre dans le même for
+    cout << " col#\t||  | 0 |  | 1 |  | 2 |  | 3 |  | 4 |  | 5 |  | 6 |" << endl; // à mettre dans un for dans une autre fonction
+    cout << "===========================================================" << endl; // à mettre dans le même for
     for (unsigned int i = 0; i < board.getBoard().size(); i++)
     {
         cout << "row#" << i << "\t|| ";

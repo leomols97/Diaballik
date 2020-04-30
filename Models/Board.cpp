@@ -43,9 +43,9 @@ void Board::initialize()
             //cout <<this->board_.getBoard()[i].size();
             //cout << endl;
             Position pos(i,j);
-            cout << "row : " << pos.getRow();
-            cout << "col : " << pos.getColumn();
-            cout << this->board_[i][j].getColor() << endl;
+//            cout << "row : " << pos.getRow();
+//            cout << "col : " << pos.getColumn();
+//            cout << this->board_[i][j].getColor() << endl;
             if (i == 0 && j == 3)
             {
                 Piece p(BlackWithBall);

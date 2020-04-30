@@ -38,7 +38,7 @@ void Player::addPieceToPlayer(Piece piece)
  */
 bool Player::isReal(Color color)
 {
-    if (color == Black || color == White)
+    if (color == Black || color == White || color == BlackWithBall || color == WhiteWithBall)
     {
         return true;
     }
@@ -51,7 +51,7 @@ bool Player::isReal(Color color)
 vector<Direction> Player::allDirections ()
 {
     vector<Direction> dirs;
-    for (unsigned int i = 0; i < 4; i++)
+    for (unsigned int i = 0; i < 8; i++)
     {
         dirs.push_back(Direction());
     }
