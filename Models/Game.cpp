@@ -35,16 +35,6 @@ void Game::initialize()
     {
         for (unsigned int j = 0; j < this->board_.getBoard()[i].size(); j++)
         {
-<<<<<<< HEAD
-            //cout <<this->board_.getBoard()[i].size();
-            //cout << endl;
-            Position pos(i,j);
-            cout << "row : " << pos.getRow();
-            cout << "col : " << pos.getColumn();
-            cout << this->board_.getPiece(pos).getColor() << endl;
-=======
-            //cout << this->board_.getPiece(pos).getColor() << endl;
->>>>>>> 1a4c1a1e9a58efec0f48bd5a434e51e95effe18b
             if (i == 0 && j == 3)
             {
                 Piece p(BlackWithBall);
@@ -315,7 +305,7 @@ void Game::select(int row , int column)
  */
 void Game::swapPlayers()
 {
-    if (!hasMoves(current_))
+    //if (!hasMoves(current_))
         /*autre condition à rajouter s'il décide de ne pas utiliser tous ses mouvements*/
         // ->Il "suffit", dans le controleur, de recevoir une commande "tour fini"
     {
@@ -339,17 +329,14 @@ void Game::start()
 vector<Direction> Game::allDirections ()
 {
     vector<Direction> dirs;
-    for (unsigned int i = 0; i < 8; i++)
-    {
-        dirs.push_back(Direction());
-    }
-    /*
-     * OU (à la place du for, si le for ne fonctionne pas)
-     * dirs.push_back(Direction::UP);
-     * dirs.push_back(Direction::DOWN);
-     * dirs.push_back(Direction::RIGHT);
-     * dirs.push_back(Direction::LEFT);
-     */
+    dirs.push_back(Direction::N);
+    dirs.push_back(Direction::S);
+    dirs.push_back(Direction::E);
+    dirs.push_back(Direction::O);
+    dirs.push_back(Direction::NE);
+    dirs.push_back(Direction::SE);
+    dirs.push_back(Direction::NO);
+    dirs.push_back(Direction::SO);
     return dirs;
 }
 
@@ -395,22 +382,23 @@ vector<Move> Game::getMoves(Position selected)
     {
         directions.push_back(allDirections()[i]);
     }
-    if(getNbMoves(getCurrent()) == 1)
+    //if(getNbMoves(selected) == 1)
     {
-        for (unsigned int i = 0; i < 4; i++)
+        for (unsigned int i = 0; i < directions.size(); i++)
         {
-            if (this->board_.isInside(selected.next(selected, directions.at(i))))
+            if (this->board_.isInside(selected.next(selected, directions.at(i)))
+                   && this->board_.isFree(selected.next(selected, directions.at(i))))
             {
                 Move move(this->board_.getPiece(selected), selected, selected.next(selected, directions.at(i)));
                 possibleEndingPositions.push_back(move);
             }
         }
     }
-    else if(getNbMoves(getCurrent()) == 2)
+    /*else if(getNbMoves(getCurrent()) == 2)
     {
-        for (unsigned int i = 0; i < 4; i++)
+        for (unsigned int i = 0; i < 8; i++)
         {
-            for (unsigned int i = 0; i < 4; i++) //Car il y a 4 Moves possibles
+            for (unsigned int i = 0; i < 8; i++) //Car il y a 8 Moves possibles
             {
                 if (this->board_.isInside(selected.next(selected, directions.at(i))))
                 {
@@ -419,7 +407,7 @@ vector<Move> Game::getMoves(Position selected)
                 }
             }
         }
-    }
+    }*/
     return possibleEndingPositions;
 
 }
@@ -465,7 +453,7 @@ vector<Position> Game::getPossiblePasses(Position selected)
         if (canPassBall(selected))
         {
             Position endingPos = selected;
-            for (unsigned int i = 0; i < 4; i++)
+            for (unsigned int i = 0; i < 8; i++)
             {
                 if (this->board_.isInside(selected.next(selected, directions.at(i))))
                 {
@@ -508,21 +496,45 @@ int Game::getNbMoves(Player player)
     {
         for (unsigned int i = 0; i < this->board_.getBoard()[i].size(); i++)
         {
-            for (unsigned int i = 0; i < 4; i++)
+            for (unsigned int i = 0; i < 8; i++)
             {
                 if (this->board_.isInside(selected.next(selected, directions.at(i)))
                         && this->board_.isFree(selected.next(selected, directions.at(i)))
-                        && this->board_.isMyOwn(selected.next(selected, directions.at(i)), player.getColor()))
+                        && this->board_.isMyOwn(selected, player.getColor()))
                 {
                     nbMoves++;
                 }
                 if (this->board_.isInside(selected.next(selected.next(selected, directions.at(i)), directions.at(i)))
                         && this->board_.isFree(selected.next(selected.next(selected, directions.at(i)), directions.at(i)))
-                        && this->board_.isMyOwn(selected.next(selected.next(selected, directions.at(i)), directions.at(i)), player.getColor()))
+                        && this->board_.isMyOwn(selected, player.getColor()))
                 {
                     nbMoves++;
                 }
             }
+        }
+    }
+    return nbMoves;
+}
+
+int Game::getNbMoves(Position selected)
+{
+    int nbMoves = 0;
+    vector<Direction> directions;
+    for (unsigned int i  = 0; i < allDirections().size(); i++)
+    {
+        directions.push_back(allDirections()[i]);
+    }
+    for (unsigned int i = 0; i < 8; i++)
+    {
+        if (this->board_.isInside(selected.next(selected, directions.at(i)))
+                && this->board_.isFree(selected.next(selected, directions.at(i))))
+        {
+            nbMoves++;
+        }
+        if (this->board_.isInside(selected.next(selected.next(selected, directions.at(i)), directions.at(i)))
+                && this->board_.isFree(selected.next(selected.next(selected, directions.at(i)), directions.at(i))))
+        {
+            nbMoves++;
         }
     }
     return nbMoves;
@@ -537,8 +549,9 @@ void Game::apply(Move move)
     Piece piece(this->board_.getPiece(move.getStart()).getColor());
     if (this->board_.isFree(move.getEnd()))
     {
+        this->board_.put(current_, move.getEnd());
         this->board_.remove(move.getStart());
-        this->board_.getBoard()[move.getEnd().getRow()][move.getEnd().getColumn()].setColor(piece.getColor());
+        current_.setNbMoves(current_.getNbMoves()-1);
     }
 }
 
@@ -551,6 +564,16 @@ void Game::applyPass(Move move)
     Piece piece(this->board_.getPiece(move.getStart()).getColor());
     if (canPassBall(move.getEnd()))
     {
+        if(current_.getColor() == White)
+        {
+            this->board_.getPiece(move.getStart()).setColor(White);
+            this->board_.getPiece(move.getEnd()).setColor(WhiteWithBall);
+        }
+        else if(current_.getColor() == Black)
+        {
+            this->board_.getPiece(move.getStart()).setColor(Black);
+            this->board_.getPiece(move.getEnd()).setColor(BlackWithBall);
+        }
         // Il faut changer les couleurs vers WhiteWithBall ou BlackWithBall
 
         //this->board_.getPiece(move.getStart()).changeHasBall(false);
@@ -570,7 +593,7 @@ Piece Game::getSelected(int row, int column)
  */
 bool Game::hasMoves(Player player)
 {
-    return getNbMoves(player) > 0;
+    return player.getNbMoves() > 0;
 }
 
 /**

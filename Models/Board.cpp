@@ -197,11 +197,6 @@ vector<Position> Board::getTakenSquares(Player player)
     return this->board_[position.getRow()][position.getColumn()];
 }*/
 
-/**
- * @return vector<vector<Square>>
- */
-
-
 
 /**
  * @param position

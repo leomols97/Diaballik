@@ -53,20 +53,20 @@ namespace Diaballik
             /**
              * @brief isInside Verifies if a position is inside the board
              * @param position the position to verify
-             * @return true if the position is inside and false else
+             * @return true if the position is inside and false otherwise
              */
             bool isInside(Position position) const;
 
             /**
              * @brief isFree Verifies if a position contains a piece or not
              * @param position the position to verify
-             * @return true if there's a piece on it and false else
+             * @return true if there's no piece on it and false otherwise
              */
             bool isFree(Position position) const;
 
             /**
              * @brief isEmpty Verifies if the board is empty or not (for the initialization of the board)
-             * @return true if the board is empty and false else
+             * @return true if the board is empty and false otherwise
              */
             bool isEmpty();
 
