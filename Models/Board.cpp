@@ -100,9 +100,9 @@ void Board::initialize()
 bool Board::isInside(Position position) const
 {
     return position.getRow() > -1
-            && position.getRow() < boardLength_
+            && position.getRow() < int(boardLength_)
             && position.getColumn() > -1
-            && position.getColumn() < boardLength_;
+            && position.getColumn() < int(boardLength_);
 }
 
 /**
