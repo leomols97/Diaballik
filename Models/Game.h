@@ -165,6 +165,13 @@ namespace Diaballik
             int getNbMoves(Player player);
 
             /**
+             * @brief getNbMoves
+             * @param selected the position we want to verify
+             * @return the number of moves of a player
+             */
+            int getNbMoves(Position selected);
+
+            /**
              * @brief apply applies the move
              * @param move the move we have to apply
              */

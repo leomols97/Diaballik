@@ -23,32 +23,36 @@ Position Position::whichEndingPosition(Position position, Direction direction) c
     switch (direction)
     {
     case Direction::N :
-        position.setRow(position.getRow()-1);
+        position.setRow(-1);
+        position.setColumn(0);
         break;
     case Direction::S :
-        position.setRow(position.getRow()+1);
+        position.setRow(1);
+        position.setColumn(0);
         break;
     case Direction::E :
-        position.setColumn(position.getColumn()-1);
+        position.setRow(0);
+        position.setColumn(-1);
         break;
     case Direction::O :
-        position.setColumn(position.getColumn()+1);
+        position.setRow(0);
+        position.setColumn(1);
         break;
     case Direction::NE :
-        position.setRow(position.getRow()-1);
-        position.setColumn(position.getColumn()-1);
+        position.setRow(-1);
+        position.setColumn(-1);
         break;
     case Direction::NO :
-        position.setRow(position.getRow()-1);
-        position.setColumn(position.getColumn()+1);
+        position.setRow(-1);
+        position.setColumn(1);
         break;
     case Direction::SE :
-        position.setRow(position.getRow()+1);
-        position.setColumn(position.getColumn()-1);
+        position.setRow(1);
+        position.setColumn(-1);
         break;
     case Direction::SO :
-        position.setRow(position.getRow()+1);
-        position.setColumn(position.getColumn()+1);
+        position.setRow(1);
+        position.setColumn(1);
         break;
     /*default :
         cout << "Direction inexistante !";

@@ -81,6 +81,12 @@ namespace Diaballik
         void displayMoves(vector<Move> moves) ;
 
         /**
+         * @brief displayPasses prints the list of passes
+         * @param moves list of possible passes
+         */
+        void displayPasses(vector<Position> passes);
+
+        /**
          * @brief displayCurrentPlayer prints the player that must play
          * @param player the player to print
          */

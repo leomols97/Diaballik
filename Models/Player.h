@@ -60,6 +60,15 @@ namespace Diaballik
             }
 
             /**
+             * @brief getNbMoves
+             * @return nbMoves
+             */
+            inline int getNbMoves()
+            {
+                return nbMoves_;
+            }
+
+            /**
              * @brief setHasPass
              * @param hasPass a boolean to know if the player still has the possibility to do a pass
              * sets the value of hasPass

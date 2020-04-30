@@ -14,8 +14,9 @@ void View::initialize()
 
 void View::displayQuit()
 {
+    cout << endl;
     cout << "Au Revoir" << endl;
-    cout << "" << endl;
+    cout << endl;
 }
 
 void View::displayError(string message)
@@ -28,6 +29,7 @@ void View::displayHelpInit()
 {
     cout << "Liste de commandes : " << endl;
     cout << " - select <ligne> <colonne> : permet de sélectionner la pièce à la position mentionnée et affiche la liste des mouvements possibles avec chacune des pièces" << endl;
+    cout << " - end turn : permet de finir le tour même s'il reste des mouvements à faire" << endl;
     cout << " - quit : permet de quitter le jeu" << endl;
 }
 
@@ -48,7 +50,7 @@ void View::displayHelpPass()
 string View::askCommand()
 {
     string command;
-    cout << "Entrez votre commande : " << endl;
+    cout << "Entrez votre commande : ";
     getline(cin, command);
     return command;
 }
@@ -78,6 +80,10 @@ void View::displayBoard(Board board)
 
 void View::displayPiece(Piece piece)
 {
+
+    // je voudrais afficher la piece séelctionnée de manière différente (par exemple "=W=" au lieu de " W ")
+    // ==> si la piece "piece" est la piece sélectionnée alors...
+
     if (piece.getColor() == WhiteWithBall)
     {
         cout << "_W_";
@@ -94,6 +100,10 @@ void View::displayPiece(Piece piece)
     {
         cout << " W ";
     }
+//    else if (piece.getColor() == White && piece == Game().getSelected(Game().getSelected().getRow(), Game().getSelected().getColumn()))
+//    {
+
+//    }
     else if (piece.getColor() == Black)
     {
         cout << " B ";
@@ -122,7 +132,16 @@ void View::displayMoves(vector<Move> moves)
     cout << moves.size() << " mouvement(s) possible(s)" << endl;
     for (unsigned int i = 0; i < moves.size(); i++)
     {
-        cout << i << "la piece sélectionnée peut se déplacer vers la ligne " << moves[i].getEnd().getRow() << "et le colonne " << moves[i].getEnd().getColumn() << endl;
+        cout << i << " - la piece sélectionnée peut se déplacer vers la ligne " << moves[i].getEnd().getRow() << " et le colonne " << moves[i].getEnd().getColumn() << endl;
+    }
+}
+
+void View::displayPasses(vector<Position> passes)
+{
+    cout << passes.size() << " passe(s) possible(s)" << endl;
+    for (unsigned int i = 0; i < passes.size(); i++)
+    {
+        cout << i << " - la piece sélectionnée peut faire une passe vers la ligne " << passes[i].getRow() << " et le colonne " << passes[i].getColumn() << endl;
     }
 }
 
