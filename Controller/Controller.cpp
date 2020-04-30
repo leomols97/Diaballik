@@ -99,6 +99,9 @@ void Controller::startGame()
                 int row = stoi(commandStrings.at(1));
                 int col = stoi(commandStrings.at(2));
                 Position position(row, col);
+                //this->game_.getBoard().getPiece(position).setSelected(true);
+                //this->game_.getBoard().getBoard()[row][col].setSelected(true);
+this->game_.getCurrent().getPieces().at(col).setSelected(true);
                 if(game_.getCurrent().getHasPass() && (game_.getSelected(row, col).getColor() == BlackWithBall || game_.getSelected(row, col).getColor() == WhiteWithBall))     // il faut travailler avec les couleurs
                 {
                     cout << endl;
@@ -132,6 +135,7 @@ void Controller::startGame()
                         else if (commandStrings.at(0) == "pass ")
                         {
                             game_.applyPass(game_.getMoves().at(stoi(commandStrings.at(1))));
+                            //game_.getSelected(row, col).setSelected(false);
                         }
                     }
                     else
@@ -175,6 +179,7 @@ void Controller::startGame()
                         else if(commandStrings.at(0) == "apply ")
                         {
                             game_.apply(moves.at(stoi(commandStrings.at(1))));
+                            //game_.getSelected(row, col).setSelected(false);
                         }
                     }
                     else

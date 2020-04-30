@@ -70,6 +70,7 @@ void Board::initialize()
             else if (i == this->board_.size() - 1 && j != 3)
             {
                 Piece p(White);
+                p.setSelected(true);
                 this->board_[i][j].setColor(White);
                 //this->current_.addPieceToPlayer(p);
             }

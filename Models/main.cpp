@@ -10,7 +10,7 @@ using namespace Diaballik;
 int main()
 {
     Game game;
-    View view;
+    View view(game);
     Controller controller(game, view);
     controller.startGame();
     return 0;

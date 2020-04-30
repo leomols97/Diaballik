@@ -13,7 +13,8 @@ using namespace Diaballik;
  * @param color
  */
 Piece::Piece(Color color) :
-    color_(color)
+    color_(color),
+    isSelected_(false)
     //hasBall_(false)
 {
         //this->color_ = color;

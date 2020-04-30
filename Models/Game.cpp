@@ -59,6 +59,7 @@ void Game::initialize()
             else if (i == this->board_.getBoard().size() - 1 && j != 3)
             {
                 Piece p(White);
+                //p.setSelected(true);
                 //this->board_.getPiece(pos).setColor(White);
                 this->current_.addPieceToPlayer(p);
             }
