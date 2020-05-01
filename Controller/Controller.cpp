@@ -46,7 +46,7 @@ void Controller::startGame()
                 game_.swapPlayers();
             }
         }*/
-        while(game_.hasMoves(game_.getCurrent()) && game_.getCurrent().getHasPass())
+        while(game_.getCurrent().getHasPass() || game_.hasMoves(game_.getCurrent()))
         {
             this->view_.displayBoard(this->game_.getBoard());
             this->view_.displayCurrentPlayer(game_.getCurrent());
@@ -105,31 +105,13 @@ void Controller::startGame()
                     col = stoi(commandStrings.at(2), nullptr, 16);
                     position.setRow(row);
                     position.setColumn(col);
-
-
-                /*    if (this->game_.getCurrent().getColor() == White)
-                    {*/
-                        try
-                        {
-                         this->game_.select(row, col);
-
-                           /* if (!this->game_.sameColors(this->game_.getBoard().getPiece(position).getColor(), White)
-                                    && !this->game_.sameColors(this->game_.getBoard().getPiece(position).getColor(), WhiteWithBall))
-                            {
-                                cout<<"nooon"<<endl;
-                                throw "Piè";
-                            }*/
-                        }
-                        catch (exception &e)
-                        {
-                        cout << "AAAAAAAA";
-                            cerr << e.what() << endl;
-                        }
-                   // }
-                    if (this->game_.getCurrent().getColor() == Black)
+                    try
                     {
-                        //this->game_.getBoard().getPiece(position).getColor() == Black;
-                        //this->game_.getBoard().getPiece(position).getColor() == BlackWithBall;
+                        this->game_.select(row, col);
+                    }
+                    catch (exception &e)
+                    {
+                        cerr << e.what() << endl;
                     }
                 }
                 catch (const invalid_argument& e)
@@ -141,29 +123,6 @@ void Controller::startGame()
                     //cout << endl << endl;
                     cerr << "Vous n'avez pas sélectionné une de vos pièces. Réessayez ! " << endl;
                 }
-                /*row = stoi(commandStrings.at(1));
-                col = stoi(commandStrings.at(2));
-                position.setRow(row);
-                position.setColumn(col);*/
-                /*if (this->game_.getCurrent().getColor() == White)
-                {
-                    while(this->game_.getBoard().getPiece(position).getColor() != White
-                          && this->game_.getBoard().getPiece(position).getColor() != WhiteWithBall)
-                    {
-                        cout << "pos select color : " << this->game_.getBoard().getPiece(position).getColor();
-                        cout << "Vous n'avez pas sélectionné une de vos pièces. Réessayez ! " << endl;
-                        string command = this->view_.askCommand();
-                    }
-                }
-                else
-                {
-                    while(this->game_.getBoard().getPiece(position).getColor() != Black
-                          && this->game_.getBoard().getPiece(position).getColor() != BlackWithBall)
-                    {
-                        cout << "Vous n'avez pas sélectionné une de vos pièces. Réessayez ! " << endl;
-                        string command = this->view_.askCommand();
-                    }
-                }*/
                 istringstream(commandStrings.at(1)) >> row;
                 istringstream(commandStrings.at(2)) >> col;
                 //row = stoi(commandStrings.at(1));
@@ -171,6 +130,7 @@ void Controller::startGame()
                 if(game_.getCurrent().getHasPass() && (game_.getPieceSelected().getColor() == BlackWithBall || game_.getPieceSelected().getColor() == WhiteWithBall))     // il faut travailler avec les couleurs
                 {
                     cout << endl;
+                    //this->view_.displayBoard(this->game_.getBoard());
                     this->view_.displayPasses(this->game_.getPossiblePasses(position));
                     cout << endl;
                     if(game_.canPassBall(position))
@@ -202,20 +162,6 @@ void Controller::startGame()
                         }
                         else if (commandStrings.at(0) == "pass ")
                         {
-                            /*cout << "start row : " << game_.getMoves().at(stoi(commandStrings.at(1))).getStart().getRow() << endl;
-                            cout << "start col : " << game_.getMoves().at(stoi(commandStrings.at(1))).getStart().getColumn() << endl;
-                            cout << "end row : " << game_.getMoves().at(stoi(commandStrings.at(1))).getEnd().getRow() << endl;
-                            cout << "end col : " << game_.getMoves().at(stoi(commandStrings.at(1))).getEnd().getColumn() << endl;*/
-                            //this->game_.applyPass(game_.getMoves().at(stoi(commandStrings.at(1))));
-                            //this->game_.getPossiblePasses(commandStrings.at(1));
-                            //for (unsigned int i = 0; i < this->game_.getPossiblePasses(position).size(); i++)
-                            {
-                                cout << "color start : " << this->game_.getBoard().getPiece(position).getColor() << endl;
-                                cout << "color end : " << this->game_.getBoard().getPiece(this->game_.getPossiblePasses(position).at(stoi(commandStrings.at(1)))).getColor() << endl;
-                                cout << "start row : " << this->game_.getPossiblePasses(position).at(stoi(commandStrings.at(1))).getRow() << endl;
-                                cout << "start col : " << this->game_.getPossiblePasses(position).at(stoi(commandStrings.at(1))).getColumn() << endl;
-                                cout << this->game_.getBoard().getPiece(this->game_.getPossiblePasses(position).at(stoi(commandStrings.at(1)))).getColor();
-                            }
                             try
                             {
                                 this->game_.applyPass(position, this->game_.getPossiblePasses(position).at(stoi(commandStrings.at(1))));
