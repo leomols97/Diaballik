@@ -99,8 +99,6 @@ namespace Diaballik
             bool isMyOwn(Position position, Color color) const;
 
             void initialize();
-
-            void applyPass(Position positionThatGives, Position positionThatReceives, Color playerColor);
     };
 }
 

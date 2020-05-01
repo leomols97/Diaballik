@@ -99,9 +99,18 @@ void View::displayPiece(Piece piece)
     {
         cout << "   ";
     }
+    else if (piece.getColor() == White && piece.getSelected())
+    {
+        cout << this->game_.getSelected(game_.getSelected().getRow(), game_.getSelected().getColumn()).getSelected();
+        cout << "=B=";
+    }
     else if (piece.getColor() == White)
     {
         cout << " B ";
+    }
+    else if (piece.getColor() == Black && this->game_.getSelected(game_.getSelected().getRow(), game_.getSelected().getColumn()).getSelected())
+    {
+        cout << "=N=";
     }
     else if (piece.getColor() == Black)
     {
