@@ -25,6 +25,8 @@ namespace Diaballik
              * @brief color_ the color of the piece
              */
             Color color_;
+
+            bool hasBall_;
             
         public:
 

@@ -58,6 +58,12 @@ void Board::initialize()
                 this->board_[i][j].setColor(Black);
                 //this->opponent_.addPieceToPlayer(p);
             }
+            else if (i == 6 && j == 3)
+            {
+                Piece p(Black);
+                this->board_[i][j].setColor(Black);
+                //this->opponent_.addPieceToPlayer(p);
+            }
             else if ((i == this->board_.size() - 1 && j != 3) || i == 0 && j == 6)
             {
                 Piece p(White);
@@ -88,12 +94,14 @@ void Board::initialize()
  * @return boolean
  */
 
-bool Board::isInside(Position position) const
+bool Board::isInside(Position pos) const
 {
-    return position.getRow() > -1
+    return ((pos.getColumn() >= 0 && static_cast<unsigned>(pos.getColumn()) < board_.size() )
+                && static_cast<unsigned>(pos.getRow()) < board_[0].size() && pos.getRow() >= 0);
+   /* return position.getRow() > -1
             && position.getRow() < int(boardLength_)
             && position.getColumn() > - 1
-            && position.getColumn() < int(boardLength_);
+            && position.getColumn() < int(boardLength_);*/
 }
 
 /**
@@ -159,7 +167,7 @@ void Board::put(Player player, Position position)
     this->board_[position.getRow()][position.getColumn()].setColor(player.getColor());
 }
 
-bool Board::isMyOwn(Position position, Color color) const
+bool Board::isMyOwn(Position position, Color color) const // gérer les couleurs avec white et whitewithball et black et blackwithball
 {
     return getPiece(position).getColor() == color;
 }

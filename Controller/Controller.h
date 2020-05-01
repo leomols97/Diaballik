@@ -5,7 +5,9 @@
 #include "Models/Game.h"
 #include "View/View.h"
 #include <iostream>
+#include <stdexcept>
 #include <string>
+#include <cstdlib>
 #include <sstream>
 #include <algorithm>
 #include <iterator>

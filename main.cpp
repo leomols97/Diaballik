@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Game.h"
+#include "Models/Game.h"
 #include "View/View.h"
 #include "Controller/Controller.h"
 

@@ -313,14 +313,12 @@ bool Game::isOver()
 void Game::select(int row , int column)
 {
     Position p(row, column);
-    try
-    {
-        this->board_.isInside(p);
+   if(!this->board_.isInside(p)){
+    throw invalid_argument("the square is not inside the board");
     }
-    catch (const exception e)
-    {
-        cout << "La position que vous essayez de sélectionnée n'est pas sur le plateau de jeu";
-    }
+    else if(!isMyPiece(p)){
+       throw logic_error("Cette pièce ne vous appartient pas !");
+      }
     this->selected_ = Position(row, column);
 }
 
@@ -466,39 +464,30 @@ vector<Position> Game::getPossiblePasses(Position selected)
     for (unsigned i = 0; i < allDirections().size(); i++)
     {
         Position posNext = selected;
-        Position posEnd = posNext.next(posNext, allDirections().at(i));
         if (this->board_.getPiece(selected).getColor() == WhiteWithBall)
         {
             do
             {
-                posEnd = posEnd.next(posEnd, allDirections().at(i));
                 if (this->board_.getPiece(posNext).getColor() == White)
                 {
                     passPositions.push_back(posNext);
                 }
-                posNext = selected.next(selected, allDirections().at(i));
-                //cout << "posNext row : " << posNext.getRow();
-                //cout << " ; col : " << posNext.getColumn() << endl;
+                posNext = posNext.next(posNext, allDirections().at(i));
             }
-            while (this->board_.isInside(posEnd));
+            while (this->board_.isInside(posNext) && (this->board_.isMyOwn(posNext, White) || this->board_.isFree(posNext)));
         }
         if (this->board_.getPiece(selected).getColor() == BlackWithBall)
         {
             do
             {
-                posEnd = posEnd.next(posEnd, allDirections().at(i));
                 if (this->board_.getPiece(posNext).getColor() == Black)
                 {
                     passPositions.push_back(posNext);
                 }
-                posNext = selected.next(selected, allDirections().at(i));
+                posNext = posNext.next(posNext, allDirections().at(i));
             }
-            while (this->board_.isInside(posEnd));
+            while (this->board_.isInside(posNext) && (this->board_.isMyOwn(posNext, Black) || this->board_.isFree(posNext)));
         }
-    }
-    for (unsigned int i = 0; i < passPositions.size(); i++)
-    {
-        passPositions.erase(passPositions.begin() + i);
     }
     return passPositions;
 }
@@ -592,9 +581,8 @@ void Game::applyPass(Position positionThatGives, Position positionThatReceives)
 }
 
 
-Piece Game::getSelected(int row, int column)
+Piece Game::getPieceSelected()
 {
-    select(row, column);
     return this->board_.getPiece(selected_);
 }
 
@@ -646,4 +634,19 @@ void Game::changePlayer()
         opponent_ = current_;
         current_ = tmp;
     }
+}
+
+bool Game::sameColors(Color pieceColor, Color color)
+{
+    return pieceColor == color;
+}
+
+
+bool Game::isMyPiece(Position pos){
+    if (sameColors(board_.getPiece(pos).getColor(), White)
+            || sameColors(board_.getPiece(pos).getColor(), WhiteWithBall))
+    {
+       return true;
+    }
+    return false;
 }

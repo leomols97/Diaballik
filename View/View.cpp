@@ -39,14 +39,14 @@ void View::displayHelpMove()
 {
     cout << "Liste de commandes : " << endl;
     cout << " - apply <numéro du déplacement> : permet de déplacer la pièce sélectionnée" << endl;
-    cout << " - quit : permet de quitter le jeu" << endl;
+    cout << " - quit : permet d'arrêter votre tour" << endl;
 }
 
 void View::displayHelpPass()
 {
     cout << "Liste de commandes : " << endl;
     cout << " - pass <numéro de passes> : permet d'éffectuer une passe avec la pièce sélectionnée" << endl;
-    cout << " - quit : permet de quitter le jeu" << endl;
+    cout << " - quit : permet d'arrêter votre tour" << endl;
 }
 
 string View::askCommand()
@@ -78,6 +78,7 @@ void View::displayBoard(Board board)
         displayLine(i, board);
         cout << endl;
     }
+    cout << endl;
 }
 
 void View::displayPiece(Piece piece)

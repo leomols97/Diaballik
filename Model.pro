@@ -54,4 +54,4 @@ SOURCES += \
 #        Position.cpp \
 #        View.cpp \
         View/View.cpp \
-        Models/main.cpp
+        main.cpp

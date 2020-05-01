@@ -64,7 +64,7 @@ namespace Diaballik
              * @brief getSelected
              * @return the position selected by the user
              */
-            inline Position getSelected()
+            inline Position getPositionSelected()
             {
                 return selected_;
             }
@@ -128,7 +128,7 @@ namespace Diaballik
              * @param column the column of the position
              * @return the position selected by the user
              */
-            Piece getSelected(int row, int column);
+            Piece getPieceSelected();
 
             /**
              * @brief isOver
@@ -209,6 +209,11 @@ namespace Diaballik
             void passeList(vector<Position> &list) const;
 
             void changePlayer();
+
+            bool sameColors(Color pieceColor, Color color);
+            bool isMyPiece(Position pos);
+
+
     };
 }
 #endif //_GAME_H
