@@ -22,39 +22,39 @@ Position Position::whichEndingPosition(Position position, Direction direction) c
 {
     switch (direction)
     {
-    case Direction::N :
-        position.setRow(-1);
-        position.setColumn(0);
-        break;
-    case Direction::S :
-        position.setRow(1);
-        position.setColumn(0);
-        break;
-    case Direction::E :
-        position.setRow(0);
-        position.setColumn(-1);
-        break;
-    case Direction::O :
-        position.setRow(0);
-        position.setColumn(1);
-        break;
-    case Direction::NE :
-        position.setRow(-1);
-        position.setColumn(-1);
-        break;
-    case Direction::NO :
-        position.setRow(-1);
-        position.setColumn(1);
-        break;
-    case Direction::SE :
-        position.setRow(1);
-        position.setColumn(-1);
-        break;
-    case Direction::SO :
-        position.setRow(1);
-        position.setColumn(1);
-        break;
-    /*default :
+        case Direction::N :
+            position.setRow(-1);
+            position.setColumn(0);
+            break;
+        case Direction::S :
+            position.setRow(1);
+            position.setColumn(0);
+            break;
+        case Direction::E :
+            position.setRow(0);
+            position.setColumn(-1);
+            break;
+        case Direction::O :
+            position.setRow(0);
+            position.setColumn(1);
+            break;
+        case Direction::NE :
+            position.setRow(-1);
+            position.setColumn(-1);
+            break;
+        case Direction::NO :
+            position.setRow(-1);
+            position.setColumn(1);
+            break;
+        case Direction::SE :
+            position.setRow(1);
+            position.setColumn(-1);
+            break;
+        case Direction::SO :
+            position.setRow(1);
+            position.setColumn(1);
+            break;
+            /*default :
         cout << "Direction inexistante !";
         break;*/
     }
@@ -65,7 +65,7 @@ Position Position::whichEndingPosition(Position position, Direction direction) c
  * @param dir
  * @return Position
  */
-Position Position::next(Position position, Direction direction) const
+Position Position::next(Position position, Direction direction)
 {
     whichEndingPosition(position, direction);
     position.setRow(position.getRow() + whichEndingPosition(position, direction).getRow());

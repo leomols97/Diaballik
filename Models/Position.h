@@ -43,7 +43,7 @@ namespace Diaballik
              * @param direction the direction of the move
              * @return the ending position
              */
-            Position next(Position position, Direction direction) const;
+            Position next(Position position, Direction direction);
 
             /**
              * @brief getRow

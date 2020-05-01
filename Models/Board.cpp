@@ -16,15 +16,14 @@ using namespace Diaballik;
  */
 
 Board::Board(unsigned int boardLength) :
-    board_(boardLength),
+    board_(),
     boardLength_(boardLength)
 {
     vector<vector<Piece>> board;
-    for (unsigned int i = 1; i <= boardLength_; i++)
+    for (unsigned int i = 0; i < boardLength_; i++)
     {
-        //board[i].reserve(7);
         vector<Piece> lign;
-        for (unsigned int j = 1; j <= boardLength_; j++)
+        for (unsigned int j = 0; j < boardLength_; j++)
         {
             Piece p(None);
             lign.push_back(p);
@@ -40,37 +39,28 @@ void Board::initialize()
     {
         for (unsigned int j = 0; j < this->board_[i].size(); j++)
         {
-            //cout <<this->board_.getBoard()[i].size();
-            //cout << endl;
-            Position pos(i,j);
-//            cout << "row : " << pos.getRow();
-//            cout << "col : " << pos.getColumn();
-//            cout << this->board_[i][j].getColor() << endl;
             if (i == 0 && j == 3)
             {
                 Piece p(BlackWithBall);
-                //p.changeHasBall(true);
                 this->board_[i][j].setColor(BlackWithBall);
                 //this->opponent_.addPieceToPlayer(p);
                 //cout << p.getColor() << endl;
             }
-            else if (i == this->board_.size() - 1 && j == 3)
+            else if (i == this->board_.size() - 1 && j == 0)
             {
                 Piece p(WhiteWithBall);
-                //p.changeHasBall(true);
                 this->board_[i][j].setColor(WhiteWithBall);
                 //this->current_.addPieceToPlayer(p);
             }
-            else if (i == 0 && j != 3)
+            else if (i == 0 && j != 3 && j != 6)
             {
                 Piece p(Black);
                 this->board_[i][j].setColor(Black);
                 //this->opponent_.addPieceToPlayer(p);
             }
-            else if (i == this->board_.size() - 1 && j != 3)
+            else if ((i == this->board_.size() - 1 && j != 3) || i == 0 && j == 6)
             {
                 Piece p(White);
-                p.setSelected(true);
                 this->board_[i][j].setColor(White);
                 //this->current_.addPieceToPlayer(p);
             }
@@ -102,7 +92,7 @@ bool Board::isInside(Position position) const
 {
     return position.getRow() > -1
             && position.getRow() < int(boardLength_)
-            && position.getColumn() > -1
+            && position.getColumn() > - 1
             && position.getColumn() < int(boardLength_);
 }
 
@@ -112,6 +102,12 @@ bool Board::isInside(Position position) const
  */
 Piece Board::getPiece(Position position) const
 {
+    //cout << "pos row : " << position.getRow();
+    //cout << " ; col : " << position.getColumn() << endl;
+    if (position.getRow() == 0 && position.getColumn() == 6)
+    {
+        //cout << "AZERTYU";
+    }
     if (!isInside(position))
     {
         throw invalid_argument("La position n'est pas dans le plateau de jeu !");
@@ -127,7 +123,7 @@ bool Board::isFree(Position position) const
 {
     if (!isInside(position))
     {
-        throw invalid_argument("La position n'est pas dans le plateau de jeu !");
+        throw invalid_argument("La position n'est pas dans le plateau de jeu !\n");
     }
     return getPiece(position).getColor() == None;
 }
@@ -193,11 +189,6 @@ vector<Position> Board::getTakenSquares(Player player)
     return positions;
 }
 
-/*Square Board::getSquare(Position position) const
-{
-    return this->board_[position.getRow()][position.getColumn()];
-}*/
-
 
 /**
  * @param position
@@ -206,4 +197,18 @@ vector<Position> Board::getTakenSquares(Player player)
 void Board::remove(Position position)
 {
     this->board_[position.getRow()][position.getColumn()].setColor(None);
+}
+
+void Board::applyPass(Position positionThatGives, Position positionThatReceives, Color playerColor)
+{
+    if(playerColor == White)
+    {
+        this->board_[positionThatGives.getRow()][positionThatGives.getColumn()].setColor(White);
+        this->board_[positionThatReceives.getRow()][positionThatReceives.getColumn()].setColor(WhiteWithBall);
+    }
+    else if(playerColor == Black)
+    {
+        this->board_[positionThatGives.getRow()][positionThatGives.getColumn()].setColor(Black);
+        this->board_[positionThatReceives.getRow()][positionThatReceives.getColumn()].setColor(BlackWithBall);
+    }
 }
