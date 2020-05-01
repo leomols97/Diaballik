@@ -6,7 +6,6 @@
 #ifndef GAME_H
 #define GAME_H
 
-//#include "Model.h"
 #include "Move.h"
 #include "Board.h"
 
@@ -181,7 +180,7 @@ namespace Diaballik
              * @brief applyPass applies the pass
              * @param move the pass we have to apply
              */
-            void applyPass(Move move);
+            void applyPass(Position positionThatGives, Position positionThatReceives);
 
             /**
              * @brief hasMoves
@@ -206,18 +205,14 @@ namespace Diaballik
             //void passBall(Position pos);
 
             void getPasses(vector<Position> list) const;
-<<<<<<< HEAD
 
             void passeList(vector<Position> &list) const;
 
             void changePlayer();
 
             bool sameColors(Color pieceColor, Color color);
+
             bool isMyPiece(Position pos);
-
-
-=======
->>>>>>> 26a22f0b7c66b2fbe636ea3457848efcca3e97f6
     };
 }
 #endif //_GAME_H

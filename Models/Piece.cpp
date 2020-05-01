@@ -14,12 +14,7 @@ using namespace Diaballik;
  */
 Piece::Piece(Color color) :
     color_(color),
-<<<<<<< HEAD
     hasBall_(false)
-=======
-    isSelected_(false)
-    //hasBall_(false)
->>>>>>> 26a22f0b7c66b2fbe636ea3457848efcca3e97f6
 {
         //this->color_ = color;
         //this->real_ = true;
@@ -86,9 +81,9 @@ bool Piece::canPassBall(Position pos)
         Board().getPiece(pos).changeHasBall(true);
         //pieceThatReceive.changeHasBall(true);
     }
-}
+}*/
 
-void Piece::passeList(vector<Position> &list) const
+/*void Piece::passeList(vector<Position> &list) const
 {
     for (int dirInt = 1; dirInt <= 8; dirInt++) {
         bool ok = true;
@@ -112,9 +107,9 @@ void Piece::passeList(vector<Position> &list) const
             }
         }
     }
-}
+}*/
 
-bool Piece::canPassBall(Position pos)
+/*bool Piece::canPassBall(Position pos)
 {
     vector<Position> listOfPositions;
     passeList(listOfPositions);
@@ -128,8 +123,7 @@ bool Piece::canPassBall(Position pos)
         }
     }
     return found && Player().getHasPass();
-}
-*/
+}*/
 
 /*bool Piece::getHasBall()
 {

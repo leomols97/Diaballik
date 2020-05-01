@@ -4,12 +4,9 @@
 
 #include "Models/Game.h"
 #include "View/View.h"
-<<<<<<< HEAD
 #include <iostream>
 #include <stdexcept>
-=======
 #include "sstream"
->>>>>>> 26a22f0b7c66b2fbe636ea3457848efcca3e97f6
 #include <string>
 #include <cstdlib>
 #include <sstream>
