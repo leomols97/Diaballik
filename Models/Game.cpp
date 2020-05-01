@@ -153,7 +153,7 @@ void Game::passBall(Piece pieceThatReceive, Position pos)
     }
 }*/
 
-/*void Game::getPasses(vector<Position> list) const
+void Game::getPasses(vector<Position> list) const
 {
     for (int dirInt = 1; dirInt <= 8; dirInt++)
     {
@@ -178,44 +178,21 @@ void Game::passBall(Piece pieceThatReceive, Position pos)
             }
         }
     }
-}*/
+}
 
 bool Game::canPassBall(Position pos)
 {
     bool found = false;
-    for (unsigned i = 0; i < allDirections().size(); i++)
-        //for (size_t i {0}; i < (passPositions.size()) && !found; i++)
+    vector<Position> passPositions;
+    getPasses(passPositions);
+    for (size_t i {0}; i < (passPositions.size()) && !found; i++)
     {
-        Position posNext = pos;
-        Position posEnd = posNext.next(posNext, allDirections().at(i));
-        if (this->board_.getPiece(pos).getColor() == WhiteWithBall)
+        if (pos.getRow() == passPositions.at(i).getRow()  && pos.getColumn() == passPositions.at(i).getColumn())
         {
-            do
-            {
-                if (this->board_.getPiece(posNext).getColor() == White)
-                {
-                    found = true;
-                }
-                posNext = pos.next(pos, allDirections().at(i));
-                posEnd = posEnd.next(posEnd, allDirections().at(i));
-            }
-            while (this->board_.isInside(posEnd));
-        }
-        if (this->board_.getPiece(pos).getColor() == BlackWithBall)
-        {
-            do
-            {
-                if (this->board_.getPiece(posNext).getColor() == Black)
-                {
-                    found = true;
-                }
-                posNext = pos.next(pos, allDirections().at(i));
-                posEnd = posEnd.next(posEnd, allDirections().at(i));
-            }
-            while (this->board_.isInside(posEnd));
+            found = true;
         }
     }
-    return found; //&& current_.getHasPass();
+    return found && current_.getHasPass();
 }
 
 
@@ -248,19 +225,19 @@ bool Game::fairPlay()
     }
 
     for(unsigned int i = 1; i < this->board_.getBoard().size() && found; i++)
-    {
-        found = false;
-        for(unsigned int j = 0; j < this->board_.getBoard().size(); j++)
-        {
-            pos.setRow(j);
-            pos.setRow(i);
-            if(this->board_.isMyOwn(pos, opponent_.getColor()))
-            {
-                if(pos.getColumn()!=static_cast<int>(i)
-                        && (pos.getRow()==static_cast<int>(j)
-                            || pos.getRow()==static_cast<int>(j)+1
-                            || pos.getRow()==static_cast<int>(j)-1))
-                {
+       {
+           found = false;
+           for(unsigned int j = 0; j < this->board_.getBoard().size(); j++)
+           {
+               pos.setRow(j);
+               pos.setRow(i);
+               if(this->board_.isMyOwn(pos, opponent_.getColor()))
+               {
+                   if(pos.getColumn()!=static_cast<int>(i)
+                           && (pos.getRow()==static_cast<int>(j)
+                               || pos.getRow()==static_cast<int>(j)+1
+                               || pos.getRow()==static_cast<int>(j)-1))
+                   {
 
                     pos = {static_cast<int>(j),static_cast<int>(i)};
                     found = true;
@@ -328,8 +305,8 @@ void Game::select(int row , int column)
 void Game::swapPlayers()
 {
     //if (!hasMoves(current_))
-    /*autre condition à rajouter s'il décide de ne pas utiliser tous ses mouvements*/
-    // ->Il "suffit", dans le controleur, de recevoir une commande "tour fini"
+        /*autre condition à rajouter s'il décide de ne pas utiliser tous ses mouvements*/
+        // ->Il "suffit", dans le controleur, de recevoir une commande "tour fini"
     {
         Player provisoire = current_;
         current_ = opponent_;
@@ -409,7 +386,7 @@ vector<Move> Game::getMoves(Position selected)
         for (unsigned int i = 0; i < directions.size(); i++)
         {
             if (this->board_.isInside(selected.next(selected, directions.at(i)))
-                    && this->board_.isFree(selected.next(selected, directions.at(i))))
+                   && this->board_.isFree(selected.next(selected, directions.at(i))))
             {
                 Move move(this->board_.getPiece(selected), selected, selected.next(selected, directions.at(i)));
                 possibleEndingPositions.push_back(move);
@@ -460,9 +437,12 @@ vector<Position> Game::getPossiblePasses(Position selected)
     {
         cerr << "La pièce que vous avez sélectionnée ne vous appartient pas. Sélectionnez-en une autre :";
     }
-    vector<Position> passPositions;
-    for (unsigned i = 0; i < allDirections().size(); i++)
+
+    Piece startingPiece(this->board_.getPiece(selected).getColor());
+    vector<Position> possiblePasses;
+    //if (startingPiece.getHasBall())
     {
+<<<<<<< HEAD
         Position posNext = selected;
         if (this->board_.getPiece(selected).getColor() == WhiteWithBall)
         {
@@ -475,21 +455,55 @@ vector<Position> Game::getPossiblePasses(Position selected)
                 posNext = posNext.next(posNext, allDirections().at(i));
             }
             while (this->board_.isInside(posNext) && (this->board_.isMyOwn(posNext, White) || this->board_.isFree(posNext)));
-        }
-        if (this->board_.getPiece(selected).getColor() == BlackWithBall)
+=======
+        vector<Direction> directions;
+        for (unsigned int i  = 0; i < allDirections().size(); i++)
         {
-            do
+            directions.push_back(allDirections()[i]);
+>>>>>>> 26a22f0b7c66b2fbe636ea3457848efcca3e97f6
+        }
+        /*if(this->board_.getPiece(selected).canPassBall(selected))
+        {*/
+        if (canPassBall(selected))
+        {
+            Position endingPos = selected;
+            for (unsigned int i = 0; i < 8; i++)
             {
+<<<<<<< HEAD
                 if (this->board_.getPiece(posNext).getColor() == Black)
+=======
+                if (this->board_.isInside(selected.next(selected, directions.at(i))))
+>>>>>>> 26a22f0b7c66b2fbe636ea3457848efcca3e97f6
                 {
-                    passPositions.push_back(posNext);
+                    Piece endingPiece(this->board_.getPiece(selected.next(selected, directions.at(i))).getColor());
+                    for (unsigned int i = 0; i < this->board_.getBoard().size(); i++)
+                    {
+                        for (unsigned int j = 0; i < this->board_.getBoard()[i].size(); j++)
+                        {
+                            if (startingPiece.getColor() == endingPiece.getColor())
+                            {
+                                endingPos = endingPos.next(endingPos, directions.at(i));
+                                if (canPassBall(endingPos))
+                                {
+                                    possiblePasses.push_back(endingPos);
+                                }
+                            }
+                        }
+                    }
                 }
+<<<<<<< HEAD
                 posNext = posNext.next(posNext, allDirections().at(i));
             }
             while (this->board_.isInside(posNext) && (this->board_.isMyOwn(posNext, Black) || this->board_.isFree(posNext)));
         }
     }
     return passPositions;
+=======
+            }
+        }
+    }
+    return possiblePasses;
+>>>>>>> 26a22f0b7c66b2fbe636ea3457848efcca3e97f6
 }
 
 
@@ -572,16 +586,34 @@ void Game::apply(Move move)
  * @param move
  * @return void
  */
-void Game::applyPass(Position positionThatGives, Position positionThatReceives)
+void Game::applyPass(Move move)
 {
-    if (canPassBall(positionThatGives))
+    Piece piece(this->board_.getPiece(move.getStart()).getColor());
+    if (canPassBall(move.getEnd()))
     {
-        this->board_.applyPass(positionThatGives, positionThatReceives, this->getCurrent().getColor());
+        if(current_.getColor() == White)
+        {
+            this->board_.getPiece(move.getStart()).setColor(White);
+            this->board_.getPiece(move.getEnd()).setColor(WhiteWithBall);
+        }
+        else if(current_.getColor() == Black)
+        {
+            this->board_.getPiece(move.getStart()).setColor(Black);
+            this->board_.getPiece(move.getEnd()).setColor(BlackWithBall);
+        }
+        // Il faut changer les couleurs vers WhiteWithBall ou BlackWithBall
+
+        //this->board_.getPiece(move.getStart()).changeHasBall(false);
+        //this->board_.getPiece(move.getEnd()).changeHasBall(true);
     }
 }
 
+<<<<<<< HEAD
 
 Piece Game::getPieceSelected()
+=======
+Piece Game::getSelected(int row, int column)
+>>>>>>> 26a22f0b7c66b2fbe636ea3457848efcca3e97f6
 {
     return this->board_.getPiece(selected_);
 }
@@ -617,6 +649,7 @@ Player Game::getWinner()
     }
     return winner;
 }
+<<<<<<< HEAD
 
 void Game::changePlayer()
 {
@@ -650,3 +683,5 @@ bool Game::isMyPiece(Position pos){
     }
     return false;
 }
+=======
+>>>>>>> 26a22f0b7c66b2fbe636ea3457848efcca3e97f6

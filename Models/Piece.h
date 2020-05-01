@@ -26,7 +26,14 @@ namespace Diaballik
              */
             Color color_;
 
+<<<<<<< HEAD
             bool hasBall_;
+=======
+            /**
+             * @brief hasBall_ a boolean to know if the piece contains the ball
+             */
+            bool isSelected_;
+>>>>>>> 26a22f0b7c66b2fbe636ea3457848efcca3e97f6
             
         public:
 
@@ -85,6 +92,16 @@ namespace Diaballik
              * @return true if real_ is true. false otherwise
              */
             bool getReal();
+
+            inline bool getSelected()
+            {
+                return this->isSelected_;
+            }
+
+            inline void setSelected(bool selected)
+            {
+                isSelected_ = selected;
+            }
     };
 }
 #endif //_PIECE_H
