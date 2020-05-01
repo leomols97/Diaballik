@@ -11,88 +11,90 @@ namespace Diaballik
     class View
     {
 
-    public:
+        Game game_;
 
-        /**
+        public:
+
+            /**
          * @brief View constructor of Class View
          */
-        View();
+            View(Game game);
 
-        /**
+            /**
          * @brief Initialize prints a welcoming sentence
          */
-        void initialize();
+            void initialize();
 
-        /**
+            /**
          * @brief displayQuit prints a goodbye sentence
          */
-        void displayQuit();
+            void displayQuit();
 
-        /**
+            /**
          * @brief displayError prints an error message
          * @param message the message to be printed
          */
-        void displayError(string message);
+            void displayError(string message);
 
-        /**
+            /**
          * @brief displayHelpInit prints the list of commands the player can do initialy
          */
-        void displayHelpInit();
+            void displayHelpInit();
 
-        /**
+            /**
          * @brief displayHelpMove prints the list of commands the player can do when a piece is selected
          */
-        void displayHelpMove();
+            void displayHelpMove();
 
-        /**
+            /**
          * @brief displayHelpPass prints the list of commands the player can do when a piece is selected and this piece has the ball
          */
-        void displayHelpPass();
+            void displayHelpPass();
 
-        /**
+            /**
          * @brief askCommand asks a command to the user
          * @return a string which is the input of the user
          */
-        string askCommand();
+            string askCommand();
 
-        /**
+            /**
          * @brief displayBoard prints the board
          */
-        void displayBoard(Board board);
+            void displayBoard(Board board);
 
-        /**
+            /**
          * @brief displayPiece prints the piece
          * @param square the square where you must print the piece
          */
-        void displayPiece(Piece piece) ;
+            void displayPiece(Piece piece) ;
 
-        //void displayOver(vector<Player> winners) ;
+            //void displayOver(vector<Player> winners) ;
 
-        /*
+            /*
           @brief displaySelected
           @param piece
 
         void displaySelected(Piece piece) ;*/
 
-        /**
+            /**
          * @brief displayMoves prints the list of moves
          * @param moves list of possible moves
          */
-        void displayMoves(vector<Move> moves) ;
+            void displayMoves(vector<Move> moves) ;
 
-        /**
+            /**
          * @brief displayPasses prints the list of passes
          * @param moves list of possible passes
          */
-        void displayPasses(vector<Position> passes);
+            void displayPasses(vector<Position> passes);
 
-        /**
+            /**
          * @brief displayCurrentPlayer prints the player that must play
          * @param player the player to print
          */
-        void displayCurrentPlayer(Player player) ;
+            void displayCurrentPlayer(Player player) ;
 
-        void displayLine(unsigned int row, Board board);
+            void displayLine(unsigned int row, Board board);
     };
 }
 

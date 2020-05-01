@@ -3,7 +3,9 @@
 using namespace Diaballik;
 
 
-View::View(){}
+View::View(Game game) :
+    game_(game)
+{}
 
 void View::initialize()
 {
@@ -84,29 +86,35 @@ void View::displayPiece(Piece piece)
     // je voudrais afficher la piece séelctionnée de manière différente (par exemple "=W=" au lieu de " W ")
     // ==> si la piece "piece" est la piece sélectionnée alors...
 
+    //piece.setSelected(true);
     if (piece.getColor() == WhiteWithBall)
-    {
-        cout << "_W_";
-    }
-    else if (piece.getColor() == BlackWithBall)
     {
         cout << "_B_";
     }
-    if (piece.getColor() == None)
+    else if (piece.getColor() == BlackWithBall)
+    {
+        cout << "_N_";
+    }
+    else if (piece.getColor() == None)
     {
         cout << "   ";
     }
-    if (piece.getColor() == White)
+    else if (piece.getColor() == White && piece.getSelected())
     {
-        cout << " W ";
+        cout << this->game_.getSelected(game_.getSelected().getRow(), game_.getSelected().getColumn()).getSelected();
+        cout << "=B=";
     }
-//    else if (piece.getColor() == White && piece == Game().getSelected(Game().getSelected().getRow(), Game().getSelected().getColumn()))
-//    {
-
-//    }
-    else if (piece.getColor() == Black)
+    else if (piece.getColor() == White)
     {
         cout << " B ";
+    }
+    else if (piece.getColor() == Black && this->game_.getSelected(game_.getSelected().getRow(), game_.getSelected().getColumn()).getSelected())
+    {
+        cout << "=N=";
+    }
+    else if (piece.getColor() == Black)
+    {
+        cout << " N ";
     }
 }
 

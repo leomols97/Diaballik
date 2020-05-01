@@ -35,7 +35,6 @@ void Game::initialize()
     {
         for (unsigned int j = 0; j < this->board_.getBoard()[i].size(); j++)
         {
-            //cout << this->board_.getPiece(pos).getColor() << endl;
             if (i == 0 && j == 3)
             {
                 Piece p(BlackWithBall);
@@ -60,6 +59,7 @@ void Game::initialize()
             else if (i == this->board_.getBoard().size() - 1 && j != 3)
             {
                 Piece p(White);
+                //p.setSelected(true);
                 //this->board_.getPiece(pos).setColor(White);
                 this->current_.addPieceToPlayer(p);
             }

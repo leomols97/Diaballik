@@ -29,7 +29,7 @@ namespace Diaballik
             /**
              * @brief hasBall_ a boolean to know if the piece contains the ball
              */
-            bool hasBall_;
+            bool isSelected_;
             
         public:
 
@@ -88,6 +88,16 @@ namespace Diaballik
              * @return true if real_ is true. false otherwise
              */
             bool getReal();
+
+            inline bool getSelected()
+            {
+                return this->isSelected_;
+            }
+
+            inline void setSelected(bool selected)
+            {
+                isSelected_ = selected;
+            }
     };
 }
 #endif //_PIECE_H
