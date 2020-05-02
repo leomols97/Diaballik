@@ -12,7 +12,7 @@ using namespace Diaballik;
  * Game implementation
  */
 Game::Game() :
-    board_(7),
+    board_(this->board_.getBoardLength()),
     current_(White),
     opponent_(Black),
     selected_(0, 0)
@@ -25,17 +25,57 @@ Game::Game() :
     delete &board_;
 }*/
 
+void Game::getPlayerPieces(Color playerColor, Position piecePosition)
+{
+    if (playerColor == White)
+    {
+        if (this->board_.getBoard()[piecePosition.getRow()][piecePosition.getColumn()].getColor() == White)
+        {
+            Piece p(White);
+            this->current_.addPieceToPlayer(p);
+        }
+        else if (this->board_.getBoard()[piecePosition.getRow()][piecePosition.getColumn()].getColor() == WhiteWithBall)
+        {
+            Piece p(WhiteWithBall);
+            this->current_.addPieceToPlayer(p);
+        }
+    }
+    else if (playerColor == Black)
+    {
+        if (this->board_.getBoard()[piecePosition.getRow()][piecePosition.getColumn()].getColor() == Black)
+        {
+            Piece p(Black);
+            this->current_.addPieceToPlayer(p);
+        }
+        else if (this->board_.getBoard()[piecePosition.getRow()][piecePosition.getColumn()].getColor() == BlackWithBall)
+        {
+            Piece p(BlackWithBall);
+            this->current_.addPieceToPlayer(p);
+        }
+    }
+}
+
 /**
  * This initializes a Game by initializing a board
  */
-void Game::initialize()
+void Game::initialize(int typeOfGame)
 {
-    this->board_.initialize();
+    if (typeOfGame == 1)
+    {
+        this->board_.initializeOriginal();
+    }
+    else if (typeOfGame == 2)
+    {
+        this->board_.initializeVariante();
+    }
     for (unsigned int i = 0; i < this->board_.getBoard().size(); i++)
     {
         for (unsigned int j = 0; j < this->board_.getBoard()[i].size(); j++)
         {
-            if (i == 0 && j == 3)
+            Position position (i, j);
+            getPlayerPieces(this->current_.getColor(), position);
+            getPlayerPieces(this->opponent_.getColor(), position);
+            /*if (i == 0 && j == 3)
             {
                 Piece p(BlackWithBall);
                 //p.changeHasBall(true);
@@ -67,17 +107,9 @@ void Game::initialize()
             {
                 Piece p(None);
                 this->board_.getBoard()[i][j].setColor(None);
-            }
+            }*/
         }
     }
-    /*for (unsigned int i = 0; i < this->current_.getPieces().size(); i++)
-    {
-        cout << this->current_.getPieces().at(i).getColor() << endl;
-    }
-    for (unsigned int i = 0; i < this->opponent_.getPieces().size(); i++)
-    {
-        cout << this->opponent_.getPieces().at(i).getColor() <<endl;
-    }*/
 }
 
 /**
@@ -662,4 +694,21 @@ bool Game::isMyPiece(Position pos)
         }
     }
     return false;
+}
+
+int Diaballik::typeOfGame(View view)
+{
+    string typeOfGame = view.askCommand();
+    cout << "boardLength : " << this->getBoard().getBoardLength();
+    while (true)
+    {
+        if (typeOfGame == "1" || typeOfGame == "2") { break; }
+        else
+        {
+            cout << "Vous n'avez pas correctement sélectionné de type de jeu ! Réessayez :" << endl;
+            typeOfGame = view.askCommand();
+            //break;
+        }
+    }
+    return stoi(typeOfGame.c_str(), nullptr, 16);
 }

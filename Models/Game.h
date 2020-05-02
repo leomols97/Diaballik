@@ -8,6 +8,7 @@
 
 #include "Move.h"
 #include "Board.h"
+#include "View/View.h"
 
 using namespace std;
 using namespace Diaballik;
@@ -113,8 +114,9 @@ namespace Diaballik
 
             /**
              * @brief initialize initializes the board
+             * @param typeOfGame to define which type of game the user would like to play
              */
-            void initialize();
+            void initialize(int typeOfGame);
 
             /**
              * @brief fairPlay
@@ -213,6 +215,10 @@ namespace Diaballik
             bool sameColors(Color pieceColor, Color color);
 
             bool isMyPiece(Position pos);
+
+            void getPlayerPieces(Color playerColor, Position piecePosition);
     };
+
+    int typeOfGame(View view);
 }
 #endif //_GAME_H

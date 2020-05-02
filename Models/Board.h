@@ -32,6 +32,25 @@ namespace Diaballik
 
            Board(unsigned int boardLength);
 
+           /**
+            * @brief getBoard Gets the vector of vector
+            * @return the vector of vector board
+            */
+           inline vector<vector<Piece>> getBoard()
+           {
+               return this->board_;
+           }
+
+           inline unsigned int getBoardLength()
+           {
+               return boardLength_;
+           }
+
+           inline void setBoardLength(unsigned int boardSize)
+           {
+               this->boardLength_ = boardSize;
+           }
+   };
            //~Board();
 
            /**
@@ -39,30 +58,21 @@ namespace Diaballik
             * @param position the position where to find a piece
             * @return the piece found of there's one on it
             */
-           Piece getPiece(Position position) const;
-
-           /**
-            * @brief getBoard Gets the vector of vector
-            * @return the vector of vector board
-            */
-           inline vector<vector<Piece>> getBoard() const
-           {
-               return this->board_;
-           }
+           Piece getPiece(Position position);
 
            /**
             * @brief isInside Verifies if a position is inside the board
             * @param position the position to verify
             * @return true if the position is inside and false otherwise
             */
-           bool isInside(Position position) const;
+           bool isInside(Position position);
 
            /**
             * @brief isFree Verifies if a position contains a piece or not
             * @param position the position to verify
             * @return true if there's no piece on it and false otherwise
             */
-           bool isFree(Position position) const;
+           bool isFree(Position position);
 
            /**
             * @brief isEmpty Verifies if the board is empty or not (for the initialization of the board)
@@ -98,10 +108,12 @@ namespace Diaballik
             */
            bool isMyOwn(Position position, Color color) const;
 
-           void initialize();
+           void initializeOriginal();
+
+           void initializeVariante();
 
            void applyPass(Position positionThatGives, Position positionThatReceives, Color playerColor);
-   };
+
 }
 
 

@@ -16,21 +16,37 @@ Controller::Controller(Game game, View view) :
     delete &game_;
 }*/
 
-void Controller::initialize()
+/*void Controller::initialize(int typeOfGame)
 {
     this->view_.initialize();
-    this->game_.initialize();
-}
+    this->game_.initialize(typeOfGame);
+}*/
 
 void Controller::startGame()
 {
-    this->initialize();
     bool endCom = false;
+    this->view_.initialize();
+    this->view_.askBoardLength();
+    string boardLength = this->view_.askCommand();
+    cout << "boardLength : " << this->game_.getBoard().getBoardLength();
+    while (true)
+    {
+        if (boardLength == "5" || boardLength == "7" || boardLength == "9") { break; }
+        else
+        {
+            cout << "Vous n'avez pas de valeur possible pour la taille du plateau de jeu ! Réessayez :" << endl;
+            boardLength = this->view_.askCommand();
+            //break;
+        }
+    }
+    this->game_.getBoard().setBoardLength(stoi(boardLength, nullptr, 16));
+    cout << "boardLength : " << this->game_.getBoard().getBoardLength();
+    this->game_.initialize(typeOfGame(this->view_));
     while (!endCom)
     {
-        if (!this->game_.isOver())
+        if (this->game_.isOver())
         {
-            cout << "AZERTYUIOP";
+            //cout << "AZERTYUIOP";
             endCom = true;
             this->game_.getWinner();
             this->view_.displayQuit();
@@ -98,13 +114,13 @@ void Controller::startGame()
                 }
                 int row;
                 int col;
-                Position position(row, col); // Lorsque je fais appel à "position" plus tard, il faut utiliser "this->game_.getPositionSelected();"
+                Position positionaaa(row, col); // Lorsque je fais appel à "position" plus tard, il faut utiliser "this->game_.getPositionSelected();"
                 try
                 {
                     row = stoi(commandStrings.at(1), nullptr, 16);
                     col = stoi(commandStrings.at(2), nullptr, 16);
-                    position.setRow(row);
-                    position.setColumn(col);
+                    this->game_.getPositionSelected().setRow(row);
+                    this->game_.getPositionSelected().setColumn(col);
                     try
                     {
                         this->game_.select(row, col);
@@ -113,44 +129,15 @@ void Controller::startGame()
                     {
                         cerr << e.what() << endl;
                     }
-                    if (this->game_.getCurrent().getColor() == Black)
-                    {
-                        //this->game_.getBoard().getPiece(position).getColor() == Black;
-                        //this->game_.getBoard().getPiece(position).getColor() == BlackWithBall;
-                    }
                 }
                 catch (const invalid_argument& e)
                 {
                     cerr << "Vous n'avez pas entré que des nombre pour sélectionner une pièce à une ligne et une colonne. Réessayez : " << endl;
                 }
-                catch (const out_of_range e)
+                catch (const out_of_range& e)
                 {
-                    //cout << endl << endl;
                     cerr << "Vous n'avez pas sélectionné une de vos pièces. Réessayez !" << endl;
                 }
-                /*row = stoi(commandStrings.at(1));
-                col = stoi(commandStrings.at(2));
-                position.setRow(row);
-                position.setColumn(col);*/
-                /*if (this->game_.getCurrent().getColor() == White)
-                {
-                    while(this->game_.getBoard().getPiece(position).getColor() != White
-                          && this->game_.getBoard().getPiece(position).getColor() != WhiteWithBall)
-                    {
-                        cout << "pos select color : " << this->game_.getBoard().getPiece(position).getColor();
-                        cout << "Vous n'avez pas sélectionné une de vos pièces. Réessayez ! " << endl;
-                        string command = this->view_.askCommand();
-                    }
-                }
-                else
-                {
-                    while(this->game_.getBoard().getPiece(position).getColor() != Black
-                          && this->game_.getBoard().getPiece(position).getColor() != BlackWithBall)
-                    {
-                        cout << "Vous n'avez pas sélectionné une de vos pièces. Réessayez ! " << endl;
-                        string command = this->view_.askCommand();
-                    }
-                }*/
                 istringstream(commandStrings.at(1)) >> row;
                 istringstream(commandStrings.at(2)) >> col;
                 //row = stoi(commandStrings.at(1));
@@ -158,9 +145,9 @@ void Controller::startGame()
                 if(game_.getCurrent().getHasPass() && (game_.getPieceSelected().getColor() == BlackWithBall || game_.getPieceSelected().getColor() == WhiteWithBall))     // il faut travailler avec les couleurs
                 {
                     cout << endl;
-                    this->view_.displayPasses(this->game_.getPossiblePasses(position));
+                    this->view_.displayPasses(this->game_.getPossiblePasses(this->game_.getPositionSelected()));
                     cout << endl;
-                    if(game_.canPassBall(position))
+                    if(game_.canPassBall(this->game_.getPositionSelected()))
                     {
                         view_.displayHelpPass();
                         cout << endl << endl;
@@ -197,15 +184,15 @@ void Controller::startGame()
                             //this->game_.getPossiblePasses(commandStrings.at(1));
                             //for (unsigned int i = 0; i < this->game_.getPossiblePasses(position).size(); i++)
                             {
-                                cout << "color start : " << this->game_.getBoard().getPiece(position).getColor() << endl;
-                                cout << "color end : " << this->game_.getBoard().getPiece(this->game_.getPossiblePasses(position).at(stoi(commandStrings.at(1)))).getColor() << endl;
-                                cout << "start row : " << this->game_.getPossiblePasses(position).at(stoi(commandStrings.at(1))).getRow() << endl;
-                                cout << "start col : " << this->game_.getPossiblePasses(position).at(stoi(commandStrings.at(1))).getColumn() << endl;
-                                cout << this->game_.getBoard().getPiece(this->game_.getPossiblePasses(position).at(stoi(commandStrings.at(1)))).getColor();
+                                cout << "color start : " << this->game_.getBoard().getPiece(this->game_.getPositionSelected()).getColor() << endl;
+                                cout << "color end : " << this->game_.getBoard().getPiece(this->game_.getPossiblePasses(this->game_.getPositionSelected()).at(stoi(commandStrings.at(1)))).getColor() << endl;
+                                cout << "start row : " << this->game_.getPossiblePasses(this->game_.getPositionSelected()).at(stoi(commandStrings.at(1))).getRow() << endl;
+                                cout << "start col : " << this->game_.getPossiblePasses(this->game_.getPositionSelected()).at(stoi(commandStrings.at(1))).getColumn() << endl;
+                                cout << this->game_.getBoard().getPiece(this->game_.getPossiblePasses(this->game_.getPositionSelected()).at(stoi(commandStrings.at(1)))).getColor();
                             }
                             try
                             {
-                                this->game_.applyPass(position, this->game_.getPossiblePasses(position).at(stoi(commandStrings.at(1))));
+                                this->game_.applyPass(this->game_.getPositionSelected(), this->game_.getPossiblePasses(this->game_.getPositionSelected()).at(stoi(commandStrings.at(1))));
                             }
                             catch (const exception e)
                             {
@@ -225,7 +212,7 @@ void Controller::startGame()
                 else if(game_.hasMoves(game_.getCurrent()) && game_.getPieceSelected().getColor() == game_.getCurrent().getColor())     // il faut travailler avec les couleurs
                 {
                     cout << endl;
-                    vector<Move> moves = this->game_.getMoves(position);
+                    vector<Move> moves = this->game_.getMoves(this->game_.getPositionSelected());
                     view_.displayMoves(moves);
                     cout << endl;
                     if(game_.getMoves().size() != 0)

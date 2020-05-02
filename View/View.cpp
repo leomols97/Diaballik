@@ -9,22 +9,31 @@ View::View(Game game) :
 
 void View::initialize()
 {
-    cout << "" << endl;
-    cout << "Bonjour et Bienvenue dans le jeu de Diaballik" << endl;
-    cout << "" << endl;
+    cout << endl << "Bonjour et bienvenue dans le jeu de Diaballik" << endl;
+    askWhichGame();
+}
+
+void View::askWhichGame()
+{
+    cout << endl << "Voulez vous jouer au jeu original ou à la variante (uniquement les positions de départ changent) ?" << endl << endl;
+    cout << "1 - Original" << endl;
+    cout << "2 - Variante" << endl << endl;
+}
+
+void View::askBoardLength()
+{
+    cout << endl << "Avec quelle taille de plateau de jeu voulez-vous jouer ?" << endl << endl;
+    cout << "5, 7 ou 9 (25, 49 ou 81 cases) " << endl << endl;
 }
 
 void View::displayQuit()
 {
-    cout << endl;
-    cout << "Au Revoir" << endl;
-    cout << endl;
+    cout << endl << "Au Revoir" << endl << endl;
 }
 
 void View::displayError(string message)
 {
-    cout << message << endl;
-    cout << "" << endl;
+    cout << message << endl << endl;
 }
 
 void View::displayHelpInit()
@@ -68,10 +77,27 @@ void View::displayLine(unsigned int row, Board board)
     }
 }
 
+void displayTopLines(Board board)
+{
+    cout << " col#\t|| ";
+    for (unsigned int i = 0; i < board.getBoard().size(); i++)
+    {
+        cout << " | " << i << " | ";
+    }
+    cout << endl;
+    cout << "===========";
+    for (unsigned int i = 0; i < board.getBoard().size(); i++)
+    {
+        cout << "=======";
+    }
+    cout << endl;
+}
+
 void View::displayBoard(Board board)
 {
-    cout << " col#\t||  | 0 |  | 1 |  | 2 |  | 3 |  | 4 |  | 5 |  | 6 |" << endl; // à mettre dans un for dans une autre fonction
-    cout << "===========================================================" << endl; // à mettre dans le même for
+    //cout << " col#\t||  | 0 |  | 1 |  | 2 |  | 3 |  | 4 |  | 5 |  | 6 |" << endl; // à mettre dans un for dans une autre fonction
+    //cout << "===========================================================" << endl; // à mettre dans le même for
+    displayTopLines(board);
     for (unsigned int i = 0; i < board.getBoard().size(); i++)
     {
         cout << "row#" << i << "\t|| ";
@@ -83,7 +109,6 @@ void View::displayBoard(Board board)
 
 void View::displayPiece(Piece piece)
 {
-
     // je voudrais afficher la piece séelctionnée de manière différente (par exemple "=W=" au lieu de " W ")
     // ==> si la piece "piece" est la piece sélectionnée alors...
 
