@@ -217,8 +217,8 @@ namespace Diaballik
             bool isMyPiece(Position pos);
 
             void getPlayerPieces(Color playerColor, Position piecePosition);
-    };
 
-    int typeOfGame(View view);
+            int typeOfGame(View view);
+    };
 }
 #endif //_GAME_H

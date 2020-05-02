@@ -32,11 +32,20 @@ namespace Diaballik
 
            Board(unsigned int boardLength);
 
+           //~Board();
+
+           /**
+            * @brief getPiece Gets the piece thats stands on a certain position
+            * @param position the position where to find a piece
+            * @return the piece found of there's one on it
+            */
+           Piece getPiece(Position position) const;
+
            /**
             * @brief getBoard Gets the vector of vector
             * @return the vector of vector board
             */
-           inline vector<vector<Piece>> getBoard()
+           inline vector<vector<Piece>> getBoard() const
            {
                return this->board_;
            }
@@ -50,29 +59,20 @@ namespace Diaballik
            {
                this->boardLength_ = boardSize;
            }
-   };
-           //~Board();
-
-           /**
-            * @brief getPiece Gets the piece thats stands on a certain position
-            * @param position the position where to find a piece
-            * @return the piece found of there's one on it
-            */
-           Piece getPiece(Position position);
 
            /**
             * @brief isInside Verifies if a position is inside the board
             * @param position the position to verify
             * @return true if the position is inside and false otherwise
             */
-           bool isInside(Position position);
+           bool isInside(Position position) const;
 
            /**
             * @brief isFree Verifies if a position contains a piece or not
             * @param position the position to verify
             * @return true if there's no piece on it and false otherwise
             */
-           bool isFree(Position position);
+           bool isFree(Position position) const;
 
            /**
             * @brief isEmpty Verifies if the board is empty or not (for the initialization of the board)
@@ -113,7 +113,7 @@ namespace Diaballik
            void initializeVariante();
 
            void applyPass(Position positionThatGives, Position positionThatReceives, Color playerColor);
-
+   };
 }
 
 
