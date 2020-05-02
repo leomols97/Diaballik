@@ -26,6 +26,18 @@ void Controller::startGame()
 {
     bool endCom = false;
     this->view_.initialize();
+    string typeOfGame = this->view_.askCommand();
+    cout << "boardLength : " << this->game_.getBoard().getBoardLength();
+    while (true)
+    {
+        if (typeOfGame == "1" || typeOfGame == "2") { break; }
+        else
+        {
+            cout << "Vous n'avez pas correctement sélectionné de type de jeu ! Réessayez :" << endl;
+            typeOfGame = this->view_.askCommand();
+            //break;
+        }
+    }
     this->view_.askBoardLength();
     string boardLength = this->view_.askCommand();
     cout << "boardLength : " << this->game_.getBoard().getBoardLength();
@@ -41,7 +53,8 @@ void Controller::startGame()
     }
     this->game_.getBoard().setBoardLength(stoi(boardLength, nullptr, 16));
     cout << "boardLength : " << this->game_.getBoard().getBoardLength();
-    this->game_.initialize(typeOfGame(this->view_));
+    //this->game_.initialize(typeOfGame(this->view_));
+    this->game_.initialize(stoi(typeOfGame.c_str(), nullptr, 16));
     while (!endCom)
     {
         if (this->game_.isOver())

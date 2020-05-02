@@ -8,7 +8,7 @@
 
 #include "Move.h"
 #include "Board.h"
-#include "View/View.h"
+//#include "View/View.h"
 
 using namespace std;
 using namespace Diaballik;
@@ -218,7 +218,7 @@ namespace Diaballik
 
             void getPlayerPieces(Color playerColor, Position piecePosition);
 
-            int typeOfGame(View view);
+            //int typeOfGame(View view);
     };
 }
 #endif //_GAME_H

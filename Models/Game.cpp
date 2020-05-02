@@ -12,7 +12,7 @@ using namespace Diaballik;
  * Game implementation
  */
 Game::Game() :
-    board_(this->board_.getBoardLength()),
+    board_(7/*this->board_.getBoardLength()*/),
     current_(White),
     opponent_(Black),
     selected_(0, 0)
@@ -696,7 +696,7 @@ bool Game::isMyPiece(Position pos)
     return false;
 }
 
-int Diaballik::typeOfGame(View view)
+/*int Diaballik::typeOfGame(View view)
 {
     string typeOfGame = view.askCommand();
     cout << "boardLength : " << this->getBoard().getBoardLength();
@@ -711,4 +711,4 @@ int Diaballik::typeOfGame(View view)
         }
     }
     return stoi(typeOfGame.c_str(), nullptr, 16);
-}
+}*/
