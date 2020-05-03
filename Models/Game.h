@@ -8,6 +8,7 @@
 
 #include "Move.h"
 #include "Board.h"
+//#include "View/View.h"
 
 using namespace std;
 using namespace Diaballik;
@@ -64,7 +65,7 @@ namespace Diaballik
              * @brief getSelected
              * @return the position selected by the user
              */
-            inline Position getSelected()
+            inline Position getPositionSelected()
             {
                 return selected_;
             }
@@ -113,8 +114,9 @@ namespace Diaballik
 
             /**
              * @brief initialize initializes the board
+             * @param typeOfGame to define which type of game the user would like to play
              */
-            void initialize();
+            void initialize(int typeOfGame);
 
             /**
              * @brief fairPlay
@@ -128,7 +130,7 @@ namespace Diaballik
              * @param column the column of the position
              * @return the position selected by the user
              */
-            Piece getSelected(int row, int column);
+            Piece getPieceSelected();
 
             /**
              * @brief isOver
@@ -209,6 +211,14 @@ namespace Diaballik
             void passeList(vector<Position> &list) const;
 
             void changePlayer();
+
+            bool sameColors(Color pieceColor, Color color);
+
+            bool isMyPiece(Position pos);
+
+            void getPlayerPieces(Color playerColor, Position piecePosition);
+
+            //int typeOfGame(View view);
     };
 }
 #endif //_GAME_H

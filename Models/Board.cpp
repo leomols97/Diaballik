@@ -16,7 +16,7 @@ using namespace Diaballik;
  */
 
 Board::Board(unsigned int boardLength) :
-    board_(),
+    board_(boardLength),
     boardLength_(boardLength)
 {
     vector<vector<Piece>> board;
@@ -33,32 +33,88 @@ Board::Board(unsigned int boardLength) :
     board_ = board;
 }
 
-void Board::initialize()
+void Board::initializeOriginal()
 {
-    for (unsigned int i = 0; i < this->board_.size(); i++)
+    for (unsigned int i = 0; i < boardLength_; i++)
     {
-        for (unsigned int j = 0; j < this->board_[i].size(); j++)
+        for (unsigned int j = 0; j < boardLength_; j++)
         {
             if (i == 0 && j == 3)
             {
                 Piece p(BlackWithBall);
+                //p.changeHasBall(true);
                 this->board_[i][j].setColor(BlackWithBall);
                 //this->opponent_.addPieceToPlayer(p);
                 //cout << p.getColor() << endl;
             }
-            else if (i == this->board_.size() - 1 && j == 0)
+            else if (i == boardLength_ - 1 && j == 3)
             {
                 Piece p(WhiteWithBall);
+                //p.changeHasBall(true);
                 this->board_[i][j].setColor(WhiteWithBall);
                 //this->current_.addPieceToPlayer(p);
             }
-            else if (i == 0 && j != 3 && j != 6)
+            else if (i == 0 && j != 3)
             {
                 Piece p(Black);
                 this->board_[i][j].setColor(Black);
                 //this->opponent_.addPieceToPlayer(p);
             }
-            else if ((i == this->board_.size() - 1 && j != 3) || (i == 0 && j == 6))
+            else if (i == boardLength_ - 1 && j != 3)
+            {
+                Piece p(White);
+                this->board_[i][j].setColor(White);
+                //this->current_.addPieceToPlayer(p);
+            }
+            else
+            {
+                Piece p(None);
+                this->board_[i][j].setColor(None);
+            }
+        }
+    }
+}
+
+void Board::initializeVariante()
+{
+    for (unsigned int i = 0; i < boardLength_; i++)
+    {
+        for (unsigned int j = 0; j < boardLength_; j++)
+        {
+            if (i == 0 && j == 3)
+            {
+                Piece p(BlackWithBall);
+                //p.changeHasBall(true);
+                this->board_[i][j].setColor(BlackWithBall);
+                //this->opponent_.addPieceToPlayer(p);
+                //cout << p.getColor() << endl;
+            }
+            else if (i == boardLength_ - 1 && j == 3)
+            {
+                Piece p(WhiteWithBall);
+                //p.changeHasBall(true);
+                this->board_[i][j].setColor(WhiteWithBall);
+                //this->current_.addPieceToPlayer(p);
+            }
+            else if ((i == 0 && j == 1) || (i == 0 && j == boardLength_ - 2))
+            {
+                Piece p(White);
+                this->board_[i][j].setColor(White);
+                //this->current_.addPieceToPlayer(p);
+            }
+            else if ((i == boardLength_ - 1 && j == 1) || (i == boardLength_ - 1 && j == boardLength_ - 2))
+            {
+                Piece p(Black);
+                this->board_[i][j].setColor(Black);
+                //this->current_.addPieceToPlayer(p);
+            }
+            else if (i == 0 && j != 3)
+            {
+                Piece p(Black);
+                this->board_[i][j].setColor(Black);
+                //this->opponent_.addPieceToPlayer(p);
+            }
+            else if (i == boardLength_ - 1 && j != 3)
             {
                 Piece p(White);
                 this->board_[i][j].setColor(White);
@@ -88,12 +144,14 @@ void Board::initialize()
  * @return boolean
  */
 
-bool Board::isInside(Position position) const
+bool Board::isInside(Position pos) const
 {
-    return position.getRow() > -1
+    return ((pos.getColumn() >= 0 && static_cast<unsigned>(pos.getColumn()) < board_.size() )
+                && static_cast<unsigned>(pos.getRow()) < board_[0].size() && pos.getRow() >= 0);
+   /* return position.getRow() > -1
             && position.getRow() < int(boardLength_)
             && position.getColumn() > - 1
-            && position.getColumn() < int(boardLength_);
+            && position.getColumn() < int(boardLength_);*/
 }
 
 /**
@@ -159,7 +217,7 @@ void Board::put(Player player, Position position)
     this->board_[position.getRow()][position.getColumn()].setColor(player.getColor());
 }
 
-bool Board::isMyOwn(Position position, Color color) const
+bool Board::isMyOwn(Position position, Color color) const // gérer les couleurs avec white et whitewithball et black et blackwithball
 {
     return getPiece(position).getColor() == color;
 }

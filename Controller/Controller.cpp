@@ -16,21 +16,50 @@ Controller::Controller(Game game, View view) :
     delete &game_;
 }*/
 
-void Controller::initialize()
+/*void Controller::initialize(int typeOfGame)
 {
     this->view_.initialize();
-    this->game_.initialize();
-}
+    this->game_.initialize(typeOfGame);
+}*/
 
 void Controller::startGame()
 {
-    this->initialize();
     bool endCom = false;
-    this->view_.displayBoard(this->game_.getBoard());
+    this->view_.initialize();
+    string typeOfGame = this->view_.askCommand();
+    cout << "boardLength : " << this->game_.getBoard().getBoardLength();
+    while (true)
+    {
+        if (typeOfGame == "1" || typeOfGame == "2") { break; }
+        else
+        {
+            cout << "Vous n'avez pas correctement sélectionné de type de jeu ! Réessayez :" << endl;
+            typeOfGame = this->view_.askCommand();
+            //break;
+        }
+    }
+    this->view_.askBoardLength();
+    string boardLength = this->view_.askCommand();
+    cout << "boardLength : " << this->game_.getBoard().getBoardLength();
+    while (true)
+    {
+        if (boardLength == "5" || boardLength == "7" || boardLength == "9") { break; }
+        else
+        {
+            cout << "Vous n'avez pas de valeur possible pour la taille du plateau de jeu ! Réessayez :" << endl;
+            boardLength = this->view_.askCommand();
+            //break;
+        }
+    }
+    this->game_.getBoard().setBoardLength(stoi(boardLength, nullptr, 16));
+    cout << "boardLength : " << this->game_.getBoard().getBoardLength();
+    //this->game_.initialize(typeOfGame(this->view_));
+    this->game_.initialize(stoi(typeOfGame.c_str(), nullptr, 16));
     while (!endCom)
     {
         if (this->game_.isOver())
         {
+            //cout << "AZERTYUIOP";
             endCom = true;
             this->game_.getWinner();
             this->view_.displayQuit();
@@ -46,8 +75,9 @@ void Controller::startGame()
                 game_.swapPlayers();
             }
         }*/
-        while(game_.getCurrent().getHasPass() || game_.hasMoves(game_.getCurrent()))
+        while(game_.hasMoves(game_.getCurrent()) && game_.getCurrent().getHasPass())
         {
+            this->view_.displayBoard(this->game_.getBoard());
             this->view_.displayCurrentPlayer(game_.getCurrent());
             game_.getOpponent().setNbMoves(2);
             game_.getOpponent().setHasPass(true);
@@ -95,87 +125,42 @@ void Controller::startGame()
                     game_.swapPlayers();
                     break;
                 }
+                int row;
+                int col;
+                Position positionaaa(row, col); // Lorsque je fais appel à "position" plus tard, il faut utiliser "this->game_.getPositionSelected();"
                 try
                 {
-                    istringstream istr1(commandStrings.at(1));
-                    istringstream istr2(commandStrings.at(2));
-                }
-                catch (const exception e)
-                {
-                    cout << "Vous n'avez pas entré que des nombre pour sélectionner une pièce à une ligne et une colonne. Réessayez : ";
-                }
-                int row = stoi(commandStrings.at(1));
-                int col = stoi(commandStrings.at(2));
-                Position position(row, col);
-                if (this->game_.getCurrent().getColor() == White)
-                {
-                    while(this->game_.getBoard().getPiece(position).getColor() != White
-                          && this->game_.getBoard().getPiece(position).getColor() != WhiteWithBall)
+                    row = stoi(commandStrings.at(1), nullptr, 16);
+                    col = stoi(commandStrings.at(2), nullptr, 16);
+                    this->game_.getPositionSelected().setRow(row);
+                    this->game_.getPositionSelected().setColumn(col);
+                    try
                     {
-                        cout << "pos select color : " << this->game_.getBoard().getPiece(position).getColor();
-                        cout << "Vous n'avez pas sélectionné une de vos pièces. Réessayez ! " << endl;
-                        command = this->view_.askCommand();
-                        commandStrings.clear();
-                        com = "";
-                        i = 0;
-                        while (i < command.size())
-                        {
-                            c = command[i];
-                            putchar (tolower(c));
-                            com += c;
-                            if (command[i] == ' ')
-                            {
-                                commandStrings.push_back(com);
-                                com.clear();
-                            }
-                            i++;
-                        }
-                        commandStrings.push_back(com);
-                        cout << endl;
-                        row = stoi(commandStrings.at(1));
-                        col = stoi(commandStrings.at(2));
-                        position.setRow(row);
-                        position.setColumn(col);
+                        this->game_.select(row, col);
+                    }
+                    catch (exception &e)
+                    {
+                        cerr << e.what() << endl;
                     }
                 }
-                else
+                catch (const invalid_argument& e)
                 {
-                    while(this->game_.getBoard().getPiece(position).getColor() != Black
-                          && this->game_.getBoard().getPiece(position).getColor() != BlackWithBall)
-                    {
-                        cout << "Vous n'avez pas sélectionné une de vos pièces. Réessayez ! " << endl;
-                        command = this->view_.askCommand();
-                        commandStrings.clear();
-                        com = "";
-                        i = 0;
-                        while (i < command.size())
-                        {
-                            c = command[i];
-                            putchar (tolower(c));
-                            com += c;
-                            if (command[i] == ' ')
-                            {
-                                commandStrings.push_back(com);
-                                com.clear();
-                            }
-                            i++;
-                        }
-                        commandStrings.push_back(com);
-                        cout << endl;
-                        row = stoi(commandStrings.at(1));
-                        col = stoi(commandStrings.at(2));
-                        position.setRow(row);
-                        position.setColumn(col);
-                    }
+                    cerr << "Vous n'avez pas entré que des nombre pour sélectionner une pièce à une ligne et une colonne. Réessayez : " << endl;
                 }
-                row = stoi(commandStrings.at(1));
-                col = stoi(commandStrings.at(2));
-                if(game_.getCurrent().getHasPass() && (game_.getSelected(row, col).getColor() == BlackWithBall || game_.getSelected(row, col).getColor() == WhiteWithBall))     // il faut travailler avec les couleurs
+                catch (const out_of_range& e)
+                {
+                    cerr << "Vous n'avez pas sélectionné une de vos pièces. Réessayez !" << endl;
+                }
+                istringstream(commandStrings.at(1)) >> row;
+                istringstream(commandStrings.at(2)) >> col;
+                //row = stoi(commandStrings.at(1));
+                //col = stoi(commandStrings.at(2));
+                if(game_.getCurrent().getHasPass() && (game_.getPieceSelected().getColor() == BlackWithBall || game_.getPieceSelected().getColor() == WhiteWithBall))     // il faut travailler avec les couleurs
                 {
                     cout << endl;
-                    this->view_.displayPasses(this->game_.getPossiblePasses(position));
+                    this->view_.displayPasses(this->game_.getPossiblePasses(this->game_.getPositionSelected()));
                     cout << endl;
-                    if(game_.canPassBall(position))
+                    if(game_.canPassBall(this->game_.getPositionSelected()))
                     {
                         view_.displayHelpPass();
                         cout << endl << endl;
@@ -197,7 +182,7 @@ void Controller::startGame()
                         }
                         commandStrings.push_back(com);
                         cout << endl;
-                        //cout << commandStrings.at(0) << endl << endl;
+                        cout << commandStrings.at(0) << endl << endl;
                         if(commandStrings.at(0) == "quit")
                         {
                             endCom = true;
@@ -212,16 +197,24 @@ void Controller::startGame()
                             //this->game_.getPossiblePasses(commandStrings.at(1));
                             //for (unsigned int i = 0; i < this->game_.getPossiblePasses(position).size(); i++)
                             {
-//                                cout << "color start : " << this->game_.getBoard().getPiece(position).getColor() << endl;
-//                                cout << "color end : " << this->game_.getBoard().getPiece(this->game_.getPossiblePasses(position).at(stoi(commandStrings.at(1)))).getColor() << endl;
-//                                cout << "start row : " << this->game_.getPossiblePasses(position).at(stoi(commandStrings.at(1))).getRow() << endl;
-//                                cout << "start col : " << this->game_.getPossiblePasses(position).at(stoi(commandStrings.at(1))).getColumn() << endl;
-//                                cout << this->game_.getBoard().getPiece(this->game_.getPossiblePasses(position).at(stoi(commandStrings.at(1)))).getColor();
+                                cout << "color start : " << this->game_.getBoard().getPiece(this->game_.getPositionSelected()).getColor() << endl;
+                                cout << "color end : " << this->game_.getBoard().getPiece(this->game_.getPossiblePasses(this->game_.getPositionSelected()).at(stoi(commandStrings.at(1)))).getColor() << endl;
+                                cout << "start row : " << this->game_.getPossiblePasses(this->game_.getPositionSelected()).at(stoi(commandStrings.at(1))).getRow() << endl;
+                                cout << "start col : " << this->game_.getPossiblePasses(this->game_.getPositionSelected()).at(stoi(commandStrings.at(1))).getColumn() << endl;
+                                cout << this->game_.getBoard().getPiece(this->game_.getPossiblePasses(this->game_.getPositionSelected()).at(stoi(commandStrings.at(1)))).getColor();
                             }
-                            this->game_.applyPass(position, this->game_.getPossiblePasses(position).at(stoi(commandStrings.at(1))));
+                            try
+                            {
+                                this->game_.applyPass(this->game_.getPositionSelected(), this->game_.getPossiblePasses(this->game_.getPositionSelected()).at(stoi(commandStrings.at(1))));
+                            }
+                            catch (const exception e)
+                            {
+                                cerr << "La passe que vous avez sélectionnée n'est pas valide ! Réessayez";
+                            }
+
                             //this->game_.applyPass(this->game_.getBoard().getPiece(position), this->game_.getPossiblePasses(position).at(stoi(commandStrings.at(1))));
                             //this->game_.applyPass(this->game_.getBoard().getPiece(position), this->game_.getPossiblePasses(position).at(stoi(commandStrings.at(1))));
-                            //this->game_.changePlayer();
+                            this->game_.changePlayer();
                         }
                     }
                     else
@@ -229,10 +222,10 @@ void Controller::startGame()
                         cout << "Veuillez selectionner une autre piece" << endl;
                     }
                 }
-                else if(game_.hasMoves(game_.getCurrent()) && game_.getSelected(row, col).getColor() == game_.getCurrent().getColor())     // il faut travailler avec les couleurs
+                else if(game_.hasMoves(game_.getCurrent()) && game_.getPieceSelected().getColor() == game_.getCurrent().getColor())     // il faut travailler avec les couleurs
                 {
                     cout << endl;
-                    vector<Move> moves = this->game_.getMoves(position);
+                    vector<Move> moves = this->game_.getMoves(this->game_.getPositionSelected());
                     view_.displayMoves(moves);
                     cout << endl;
                     if(game_.getMoves().size() != 0)
@@ -273,91 +266,15 @@ void Controller::startGame()
                     }
                 }
                 cout << endl;
-                view_.displayBoard(this->game_.getBoard());
+                //view_.displayBoard(this->game_.getBoard());
                 //break;
             }
             else
             {
-                cout << "Vous avez mal entré votre commande. Veuillez respecter l'orthographe en l'entrant une fois de plus : " << endl;
+                cout << "Vous avez mal entré votre commande. Veuillez respecter l'orthographe en l'entrant une fois de plus : " << endl << endl;
             }
         }
         game_.swapPlayers();
-        /*string commmmmmm = commandStrings.at(0);
-        switch(str2int(commmmmmm))
-        {
-            case "quit" :
-                endCom = true;
-                break;
-            case "move" :
-                if(!game_.hasMoves(game_.getCurrent()) && !game_.getCurrent().getHasPass())
-                {
-                    view_.displayError("Le joueur n'a plus de mouvement ou de passes possible");
-                    game_.swapPlayers();
-                    break;
-                }
-                int row = command[1];
-                int col = command[2];
-                Position position(row, col);
-                if(game_.getCurrent().getHasPass() && game_.getSelected(row, col).getHasBall())
-                {
-                    //affiche la liste de passes possibles
-                    view_.displayHelpPass();
-                    command = this->view_.askCommand();
-                    switch (command[0]) {
-                        case 'quit' :
-                            endCom = true;
-                            break;
-                        case 'pass':
-                            game_.applyPass(game_.getMoves()[command[1]]);
-                            game_.getCurrent().setHasPass(false);
-                            break;
-                    }
-                }
-                else if(game_.hasMoves(game_.getCurrent()) && !game_.getSelected(row, col).getHasBall())
-                {
-                    vector<Move> moves = this->game_.getMoves(position);
-                    view_.displayMoves(moves);
-                    view_.displayHelpMove();
-                    command = this->view_.askCommand();
-                    switch (command[0]) {
-                        case 'quit' :
-                            endCom = true;
-                            break;
-                        case 'apply' :
-                            game_.apply(moves[command[1]]);
-                            break;
-                    }
-                }
-                break;*/
-
-        /*case '' :
-                Position pos;
-                try
-            {
-                pos = new Position(Integer.parseInt(separate[1]) - 1, Integer.parseInt(separate[2]) - 1);
-                this.game.play(pos);
-                newTurn = true;
-                turn();
-            }
-                catch (NumberFormatException e)
-                {
-                    System.out.println("Les 2 derniers arguments ne sont pas des chiffres !");
-                }
-                catch (ArrayIndexOutOfBoundsException e)
-                {
-                    System.out.println("La commande comporte pas assez ou trop d'arguments !");
-                }
-                catch (Exception e)
-                {
-                    view.displayError(e.getMessage());
-                }
-                break;
-            case 'show' :
-                this.view.displayBoard(this.game.getBoard());
-                break;*/
-        /*default :
-                cout << "zut" << endl;
-                cout <<"La commande n'est pas correctement entrée" << endl;*/
     }
     if (endCom == true)
     {

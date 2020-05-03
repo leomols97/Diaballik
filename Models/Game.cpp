@@ -12,7 +12,7 @@ using namespace Diaballik;
  * Game implementation
  */
 Game::Game() :
-    board_(7),
+    board_(7/*this->board_.getBoardLength()*/),
     current_(White),
     opponent_(Black),
     selected_(0, 0)
@@ -25,17 +25,57 @@ Game::Game() :
     delete &board_;
 }*/
 
+void Game::getPlayerPieces(Color playerColor, Position piecePosition)
+{
+    if (playerColor == White)
+    {
+        if (this->board_.getBoard()[piecePosition.getRow()][piecePosition.getColumn()].getColor() == White)
+        {
+            Piece p(White);
+            this->current_.addPieceToPlayer(p);
+        }
+        else if (this->board_.getBoard()[piecePosition.getRow()][piecePosition.getColumn()].getColor() == WhiteWithBall)
+        {
+            Piece p(WhiteWithBall);
+            this->current_.addPieceToPlayer(p);
+        }
+    }
+    else if (playerColor == Black)
+    {
+        if (this->board_.getBoard()[piecePosition.getRow()][piecePosition.getColumn()].getColor() == Black)
+        {
+            Piece p(Black);
+            this->current_.addPieceToPlayer(p);
+        }
+        else if (this->board_.getBoard()[piecePosition.getRow()][piecePosition.getColumn()].getColor() == BlackWithBall)
+        {
+            Piece p(BlackWithBall);
+            this->current_.addPieceToPlayer(p);
+        }
+    }
+}
+
 /**
  * This initializes a Game by initializing a board
  */
-void Game::initialize()
+void Game::initialize(int typeOfGame)
 {
-    this->board_.initialize();
+    if (typeOfGame == 1)
+    {
+        this->board_.initializeOriginal();
+    }
+    else if (typeOfGame == 2)
+    {
+        this->board_.initializeVariante();
+    }
     for (unsigned int i = 0; i < this->board_.getBoard().size(); i++)
     {
         for (unsigned int j = 0; j < this->board_.getBoard()[i].size(); j++)
         {
-            if (i == 0 && j == 3)
+            Position position (i, j);
+            getPlayerPieces(this->current_.getColor(), position);
+            getPlayerPieces(this->opponent_.getColor(), position);
+            /*if (i == 0 && j == 3)
             {
                 Piece p(BlackWithBall);
                 //p.changeHasBall(true);
@@ -67,17 +107,9 @@ void Game::initialize()
             {
                 Piece p(None);
                 this->board_.getBoard()[i][j].setColor(None);
-            }
+            }*/
         }
     }
-    /*for (unsigned int i = 0; i < this->current_.getPieces().size(); i++)
-    {
-        cout << this->current_.getPieces().at(i).getColor() << endl;
-    }
-    for (unsigned int i = 0; i < this->opponent_.getPieces().size(); i++)
-    {
-        cout << this->opponent_.getPieces().at(i).getColor() <<endl;
-    }*/
 }
 
 /**
@@ -296,8 +328,8 @@ bool Game::isOver()
     {
         Position posW(0, i);
         Position posB(this->board_.getBoard().size() - 1, i);
-        if (this->board_.getPiece(posW).getColor() == WhiteWithBall
-                || this->board_.getPiece(posB).getColor() == BlackWithBall)
+        if (this->board_.getPiece(posW).getColor() == White
+                || this->board_.getPiece(posB).getColor() == Black)
         {
             return true;
         }
@@ -313,13 +345,13 @@ bool Game::isOver()
 void Game::select(int row , int column)
 {
     Position p(row, column);
-    try
+    if(!this->board_.isInside(p))
     {
-        this->board_.isInside(p);
+        throw invalid_argument("the square is not inside the board");
     }
-    catch (const exception e)
+    else if(!isMyPiece(p))
     {
-        cout << "La position que vous essayez de sélectionnée n'est pas sur le plateau de jeu";
+        throw logic_error("Cette pièce ne vous appartient pas ! Réessayez");
     }
     this->selected_ = Position(row, column);
 }
@@ -329,6 +361,9 @@ void Game::select(int row , int column)
  */
 void Game::swapPlayers()
 {
+    //if (!hasMoves(current_))
+    /*autre condition à rajouter s'il décide de ne pas utiliser tous ses mouvements*/
+    // ->Il "suffit", dans le controleur, de recevoir une commande "tour fini"
     {
         Player provisoire = current_;
         current_ = opponent_;
@@ -463,39 +498,30 @@ vector<Position> Game::getPossiblePasses(Position selected)
     for (unsigned i = 0; i < allDirections().size(); i++)
     {
         Position posNext = selected;
-        Position posEnd = posNext.next(posNext, allDirections().at(i));
         if (this->board_.getPiece(selected).getColor() == WhiteWithBall)
         {
             do
             {
-                posEnd = posEnd.next(posEnd, allDirections().at(i));
                 if (this->board_.getPiece(posNext).getColor() == White)
                 {
                     passPositions.push_back(posNext);
                 }
-                posNext = selected.next(selected, allDirections().at(i));
-                //cout << "posNext row : " << posNext.getRow();
-                //cout << " ; col : " << posNext.getColumn() << endl;
+                posNext = posNext.next(posNext, allDirections().at(i));
             }
-            while (this->board_.isInside(posEnd));
+            while (this->board_.isInside(posNext) && (this->board_.isMyOwn(posNext, White) || this->board_.isFree(posNext)));
         }
         if (this->board_.getPiece(selected).getColor() == BlackWithBall)
         {
             do
             {
-                posEnd = posEnd.next(posEnd, allDirections().at(i));
                 if (this->board_.getPiece(posNext).getColor() == Black)
                 {
                     passPositions.push_back(posNext);
                 }
-                posNext = selected.next(selected, allDirections().at(i));
+                posNext = posNext.next(posNext, allDirections().at(i));
             }
-            while (this->board_.isInside(posEnd));
+            while (this->board_.isInside(posNext) && (this->board_.isMyOwn(posNext, Black) || this->board_.isFree(posNext)));
         }
-    }
-    for (unsigned int i = 0; i < passPositions.size(); i++)
-    {
-        passPositions.erase(passPositions.begin() + i);
     }
     return passPositions;
 }
@@ -585,14 +611,12 @@ void Game::applyPass(Position positionThatGives, Position positionThatReceives)
     if (canPassBall(positionThatGives))
     {
         this->board_.applyPass(positionThatGives, positionThatReceives, this->getCurrent().getColor());
-        current_.setHasPass(false);
     }
 }
 
 
-Piece Game::getSelected(int row, int column)
+Piece Game::getPieceSelected()
 {
-    select(row, column);
     return this->board_.getPiece(selected_);
 }
 
@@ -645,3 +669,46 @@ void Game::changePlayer()
         current_ = tmp;
     }
 }
+
+bool Game::sameColors(Color pieceColor, Color color)
+{
+    return pieceColor == color;
+}
+
+bool Game::isMyPiece(Position pos)
+{
+    if (this->getCurrent().getColor() == White)
+    {
+        if (sameColors(board_.getPiece(pos).getColor(), White)
+                || sameColors(board_.getPiece(pos).getColor(), WhiteWithBall))
+        {
+            return true;
+        }
+    }
+    else if (this->getCurrent().getColor() == Black)
+    {
+        if (sameColors(board_.getPiece(pos).getColor(), Black)
+                || sameColors(board_.getPiece(pos).getColor(), BlackWithBall))
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+/*int Diaballik::typeOfGame(View view)
+{
+    string typeOfGame = view.askCommand();
+    cout << "boardLength : " << this->getBoard().getBoardLength();
+    while (true)
+    {
+        if (typeOfGame == "1" || typeOfGame == "2") { break; }
+        else
+        {
+            cout << "Vous n'avez pas correctement sélectionné de type de jeu ! Réessayez :" << endl;
+            typeOfGame = view.askCommand();
+            //break;
+        }
+    }
+    return stoi(typeOfGame.c_str(), nullptr, 16);
+}*/
