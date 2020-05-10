@@ -9,6 +9,7 @@
 #include "Color.h"
 #include "Position.h"
 #include "iostream"
+#include <QtWidgets>
 
 using namespace Diaballik;
 
@@ -27,6 +28,8 @@ namespace Diaballik
             Color color_;
 
             bool hasBall_;
+
+            QGraphicsRectItem m_rect;
 
         public:
 
