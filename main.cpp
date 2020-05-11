@@ -2,16 +2,18 @@
 #include "Models/Game.h"
 #include "View/View.h"
 #include "Controller/Controller.h"
+#include <QApplication>
+#include "menup.h"
+#include "plateau.h"
 
 
-using namespace Diaballik;
-
-
-int main()
+int main(int argc, char *argv[])
 {
-    Game game;
-    View view(game);
-    Controller controller(game, view);
-    controller.startGame();
-    return 0;
+    QApplication app(argc, argv);
+
+    MenuP menu;
+    menu.show();
+
+    return app.exec();
 }
+

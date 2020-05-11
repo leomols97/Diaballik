@@ -1,12 +1,3 @@
-QT -= gui
-
-TEMPLATE = app
-CONFIG += console
-CONFIG -= app_bundle
-CONFIG -= qt
-QMAKE_CXXFLAGS += -pedantic-errors\
--std=c++17
-
 HEADERS += \
 #    Board.h \
 #    Color.h \
@@ -15,6 +6,7 @@ HEADERS += \
 #    Direction.h \
 #    Game.h \
 #    Model.h \
+    Controller/eventpassball.h \
     Models/Board.h \
     Models/Color.h \
     Models/Direction.h \
@@ -33,7 +25,9 @@ HEADERS += \
 #    Position.h \
 #    View.h \
     Observer/Subject.h \
-    View/View.h
+    View/View.h \
+    plateau.h \
+    menup.h \
 
 SOURCES += \
 #        Board.cpp \
@@ -41,6 +35,7 @@ SOURCES += \
         Controller/Controller.cpp \
 #        Direction.cpp \
 #        Game.cpp \
+    Controller/eventpassball.cpp \
         Models/Board.cpp \
         Models/Direction.cpp \
         Models/Game.cpp \
@@ -54,5 +49,10 @@ SOURCES += \
 #        Position.cpp \
 #        View.cpp \
         View/View.cpp \
-        Observer/Subject.cpp
-        main.cpp
+        Observer/Subject.cpp \
+        main.cpp \
+        plateau.cpp \
+        menup.cpp \
+
+
+QT += widgets
