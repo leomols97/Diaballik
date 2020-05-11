@@ -27,12 +27,12 @@ HEADERS += \
 #    Move.h \
 #    Observable.h \
 #    Observer.h \
-    Observer/Observable.h \
     Observer/Observer.h \
 #    Piece.h \
 #    Player.h \
 #    Position.h \
 #    View.h \
+    Observer/Subject.h \
     View/View.h
 
 SOURCES += \
@@ -54,4 +54,5 @@ SOURCES += \
 #        Position.cpp \
 #        View.cpp \
         View/View.cpp \
+        Observer/Subject.cpp
         main.cpp
