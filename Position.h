@@ -6,6 +6,8 @@
 #ifndef POSITION_H
 #define POSITION_H
 #include "Direction.h"
+#include "Observer/Subject.h"
+#include "Observer/Observer.h"
 
 using namespace std;
 using namespace Diaballik;

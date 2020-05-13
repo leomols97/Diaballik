@@ -10,6 +10,8 @@
 #include "Position.h"
 #include "iostream"
 #include <QtWidgets>
+#include "Observer/Subject.h"
+#include "Observer/Observer.h"
 
 using namespace Diaballik;
 
@@ -29,7 +31,7 @@ namespace Diaballik
 
             bool hasBall_;
 
-            QGraphicsRectItem m_rect;
+            //QGraphicsRectItem m_rect;
 
         public:
 

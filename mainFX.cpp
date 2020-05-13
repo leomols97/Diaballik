@@ -1,13 +1,13 @@
 #include <iostream>
-#include "Models/Game.h"
+#include "Game.h"
 #include "View/View.h"
 #include "Controller/Controller.h"
 #include <QApplication>
 #include "menup.h"
-#include "plateau.h"
+#include "Plateau.h"
 
 
-int main(int argc, char *argv[])
+int mainFX(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 

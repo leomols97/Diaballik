@@ -2,6 +2,10 @@
 
 using namespace Diaballik;
 
+void registerObserver()
+{
+
+}
 
 Controller::Controller(Game game, View view) :
     game_(game),
@@ -127,7 +131,7 @@ void Controller::startGame()
                 }
                 int row;
                 int col;
-                Position positionaaa(row, col); // Lorsque je fais appel à "position" plus tard, il faut utiliser "this->game_.getPositionSelected();"
+                //Position position(row, col); // Lorsque je fais appel à "position" plus tard, il faut utiliser "this->game_.getPositionSelected();"
                 try
                 {
                     row = stoi(commandStrings.at(1), nullptr, 16);

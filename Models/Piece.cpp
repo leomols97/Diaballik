@@ -15,6 +15,7 @@ using namespace Diaballik;
 Piece::Piece(Color color) :
     color_(color),
     hasBall_(false)
+    //m_rect()
 {
         //this->color_ = color;
         //this->real_ = true;

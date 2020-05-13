@@ -1,6 +1,6 @@
 #include "menup.h"
-#include "plateau.h"
-#include "Models/Game.h"
+#include "Plateau.h"
+#include "Game.h"
 
 using namespace Diaballik;
 

@@ -6,6 +6,8 @@
 #ifndef COLOR_H
 #define COLOR_H
 
+#include "Observer/Subject.h"
+#include "Observer/Observer.h"
 
 namespace Diaballik
 {

@@ -2,7 +2,7 @@
 #define CONTROLLER_H
 
 
-#include "Models/Game.h"
+#include "Game.h"
 #include "View/View.h"
 #include <iostream>
 #include <stdexcept>
@@ -13,6 +13,7 @@
 #include <algorithm>
 #include <iterator>
 #include <map>
+#include "Observer/Observer.h"
 
 using namespace std;
 using namespace Diaballik;

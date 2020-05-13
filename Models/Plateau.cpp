@@ -1,5 +1,5 @@
-#include "plateau.h"
-#include "Models/Game.h"
+#include "Plateau.h"
+#include "Game.h"
 #include <string>
 
 using namespace std;

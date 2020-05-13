@@ -9,6 +9,8 @@
 #include "Move.h"
 #include "Board.h"
 //#include "View/View.h"
+#include "Observer/Subject.h"
+#include "Observer/Observer.h"
 
 using namespace std;
 using namespace Diaballik;
@@ -17,7 +19,7 @@ using namespace Diaballik;
 namespace Diaballik
 {
 
-    class Game //public Model
+    class Game: public nvs::Subject
     {
 
         private:

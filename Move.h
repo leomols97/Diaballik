@@ -8,6 +8,8 @@
 
 #include "Position.h"
 #include "Piece.h"
+#include "Observer/Subject.h"
+#include "Observer/Observer.h"
 
 using namespace std;
 using namespace Diaballik;
@@ -15,7 +17,6 @@ using namespace Diaballik;
 
 namespace Diaballik
 {
-
 
     class Move
     {

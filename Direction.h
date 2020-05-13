@@ -6,6 +6,8 @@
 #ifndef DIRECTION_H
 #define DIRECTION_H
 #include <iostream>
+#include "Observer/Subject.h"
+#include "Observer/Observer.h"
 
 using namespace std;
 

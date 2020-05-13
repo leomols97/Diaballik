@@ -9,6 +9,8 @@
 #include "Direction.h"
 #include "Piece.h"
 #include <vector>
+#include "Observer/Subject.h"
+#include "Observer/Observer.h"
 
 using namespace std;
 using namespace Diaballik;
