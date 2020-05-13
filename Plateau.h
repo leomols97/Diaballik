@@ -4,7 +4,9 @@
 #include <QObject>
 #include <QWidget>
 #include <QtWidgets>
-#include "Models/Game.h"
+#include "Game.h"
+#include "Observer/Subject.h"
+#include "Observer/Observer.h"
 
 namespace Diaballik {
 

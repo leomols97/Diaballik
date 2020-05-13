@@ -4,9 +4,12 @@
 #include <QObject>
 #include <QWidget>
 #include <QtWidgets>
-#include "plateau.h"
+#include "Plateau.h"
+#include "Observer/Subject.h"
+#include "Observer/Observer.h"
 
-namespace Diaballik {
+namespace Diaballik
+{
 
     class MenuP : public QWidget
     {

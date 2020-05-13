@@ -1,6 +1,6 @@
 #ifndef VIEW_H
 #define VIEW_H
-#include "Models/Game.h"
+#include "Game.h"
 
 using namespace std;
 
@@ -8,7 +8,7 @@ using namespace std;
 namespace Diaballik
 {
 
-    class View
+    class View : public nvs::Subject
     {
 
         Game game_;
