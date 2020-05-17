@@ -16,22 +16,45 @@ namespace Diaballik
     {
         public:
 
-            Plateau(unsigned int windowLength, int typeOfGame, string currentPlayer);
+            Plateau(unsigned int windowLength, int typeOfGame, string m_currentPlayer);
 
             void windowLength (unsigned int windowLength);
 
+            void infosJeu(string m_currentPlayer);
+
+            QLabel * getCurrent()
+            {
+                return m_currentPlayer;
+            }
+
+            void setCurrent(QLabel *playerName)
+            {
+                m_currentPlayer = playerName;
+            }
+
+            QPushButton *boutons(unsigned int i, unsigned int j, QString style, bool clickable);
+
+            void initializeOriginal(unsigned int boardLength);
+
+            void initializeVariante(unsigned int boardLength);
+
+
         private:
-            QGraphicsView *m_view;
-            QGraphicsView *m_view1;
-            QGraphicsScene *m_plateau;
+
+            QGraphicsView *m_plateau;
+            QGraphicsView *m_infosJeu;
+            QGraphicsScene *m_jeu;
             QHBoxLayout *m_layout;
-            QGraphicsRectItem *m_rect;
-            QGraphicsRectItem *m_rect1;
-            QGraphicsScene *m_options;
-            QGraphicsEllipseItem *m_circle;
-            QPushButton *m_bouton1;
-            QLabel *m_text1;
-            QPushButton *m_boutonJeu;
+            //QGraphicsRectItem *m_rect;
+            //QGraphicsRectItem *m_rect1;
+            QGraphicsScene *m_infosScene;
+            //QGraphicsEllipseItem *m_circle;
+            QPushButton *m_finDeTour;
+            QLabel *m_texteTour;
+            QPushButton *m_boutonsJeu;
+            QGraphicsRectItem *m_black;
+            QGraphicsRectItem *m_white;
+            QLabel *m_currentPlayer;
     };
 }
 

@@ -10,8 +10,8 @@ MenuP::MenuP(/*Board board*/) : QWidget()
     //scene = new QGraphicsScene();
     //window = new QGraphicsView(scene);
 
-    player1Name = new QLineEdit("Nom du joueur 1");
-    player2Name = new QLineEdit("Nom du joueur 2");
+    player1Name = new QLineEdit("Nom du joueur Blanc");
+    player2Name = new QLineEdit("Nom du joueur Noir");
     m_layout = new QVBoxLayout(this);
     m_layout->addWidget(player1Name);
     m_layout->addWidget(player2Name);
