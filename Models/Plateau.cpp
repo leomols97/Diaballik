@@ -35,7 +35,7 @@ Plateau::Plateau(unsigned int boardLength/*Board board*/) : QWidget()
     m_bouton1 = new QPushButton("fin de tour", m_view1);
     m_bouton1->move(45, 50);
     m_bouton1->setMinimumWidth(120);
-    m_text1 = new QLabel("au tour de ...", m_view1);
+    m_text1 = new QLabel("au tour de ..."/* Game().getCurrent()*/, m_view1);
     m_text1->move(55, 30);
     QObject::connect(m_bouton1, SIGNAL(clicked()), qApp, SLOT(quit()));
     m_layout->addWidget(m_view, 780);
