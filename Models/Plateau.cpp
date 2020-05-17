@@ -1,11 +1,12 @@
 #include "Plateau.h"
 #include "Game.h"
+#include "menup.h"
 #include <string>
 
 using namespace std;
 using namespace Diaballik;
 
-Plateau::Plateau() : QWidget()
+Plateau::Plateau(unsigned int boardLength/*Board board*/) : QWidget()
 {
     setFixedSize(1000, 780);
     m_plateau = new QGraphicsScene();
@@ -17,9 +18,9 @@ Plateau::Plateau() : QWidget()
     //m_rect1 = m_plateau->addRect(QRectF(0, 0, 720, 720), QPen(Qt::black), QBrush(Qt::gray));
     //vector<vector<QGraphicsRectItem>> boardG;
     //QGraphicsRectItem() rect;
-    for (unsigned int i = 0; i < 7; i++)
+    for (unsigned int i = 0; i < boardLength; i++)
     {
-        for (unsigned int j = 0; j < 7; j++)
+        for (unsigned int j = 0; j < boardLength; j++)
         {
             //nom+=i+=j;
             m_rect = m_plateau->addRect(QRectF(i*100 + 10, j*100 + 10, 100, 100), QPen(Qt::black, 2), QBrush(Qt::gray));

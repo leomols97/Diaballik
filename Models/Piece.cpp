@@ -25,9 +25,9 @@ Piece::Piece(Color color) :
 /**
  * @return boolean
  */
-bool Piece::canPassBall(Position pos)
+/*bool Piece::canPassBall(Position pos)
 {
-    /*Player player(color_);
+    Player player(color_);
     bool canPass = false;
     if(player.getHasPass())
     {
@@ -43,7 +43,7 @@ bool Piece::canPassBall(Position pos)
         {
             for (unsigned int i = 0; i < 7; i++)
             {
-                if(board.isInside(posD) && board.isInside(posG) &&
+                if(this->.isInside(posD) && board.isInside(posG) &&
                         board.isInside(posB) && board.isInside(posH) &&
                         board.isInside(posHD) && board.isInside(posHG) &&
                         board.isInside(posBD) && board.isInside(posBG))
@@ -71,8 +71,8 @@ bool Piece::canPassBall(Position pos)
             }
         }
     }
-    return canPass;*/
-}
+    return canPass;
+}*/
 
 /*void Piece::passBall(Piece pieceThatGives, Position pos)
 {

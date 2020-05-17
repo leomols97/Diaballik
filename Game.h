@@ -50,7 +50,7 @@ namespace Diaballik
             /**
              * @brief Game constructs a game
              */
-            Game();
+            Game(/*Board board*/);
 
             //~Game();
 
@@ -60,7 +60,7 @@ namespace Diaballik
              */
             inline Board getBoard()
             {
-                return board_;
+                return this->board_;
             }
 
             /**
@@ -69,7 +69,7 @@ namespace Diaballik
              */
             inline Position getPositionSelected()
             {
-                return selected_;
+                return this->selected_;
             }
 
             /**
@@ -78,7 +78,7 @@ namespace Diaballik
              */
             inline Player getCurrent()
             {
-                return current_;
+                return this->current_;
             }
 
             /**
@@ -87,7 +87,7 @@ namespace Diaballik
              */
             inline Player getOpponent()
             {
-                return opponent_;
+                return this->opponent_;
             }
 
             /**

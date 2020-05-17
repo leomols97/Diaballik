@@ -5,13 +5,18 @@
 #include <QApplication>
 #include "menup.h"
 #include "Plateau.h"
+#include "mafenetre.h"
 
 
-int mainFX(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    MenuP menu;
+    /*MaFenetre fenetre;
+    fenetre.show();*/
+
+    //Board board(7);
+    MenuP menu/*(board)*/;
     menu.show();
 
     return app.exec();

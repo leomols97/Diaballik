@@ -11,8 +11,8 @@ using namespace Diaballik;
 /**
  * Game implementation
  */
-Game::Game() :
-    board_(7/*this->board_.getBoardLength()*/),
+Game::Game(/*Board board*/) :
+    board_(7/*board.getBoardLength()*/),
     current_(White),
     opponent_(Black),
     selected_(0, 0)

@@ -8,12 +8,15 @@
 #include "Observer/Subject.h"
 #include "Observer/Observer.h"
 
-namespace Diaballik {
+namespace Diaballik
+{
 
-    class Plateau : public QWidget
+    class Plateau :
+            public QWidget
     {
     public:
-        Plateau();
+        Plateau(unsigned int boardLength/*Board board*/);
+
     private:
         QGraphicsView *m_view;
         QGraphicsView *m_view1;

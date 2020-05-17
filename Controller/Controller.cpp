@@ -2,10 +2,6 @@
 
 using namespace Diaballik;
 
-void registerObserver()
-{
-
-}
 
 Controller::Controller(Game game, View view) :
     game_(game),
@@ -13,6 +9,11 @@ Controller::Controller(Game game, View view) :
 {
     //this->game_ = game;
     //this->view_ = view;
+}
+
+void registerObserver()
+{
+
 }
 
 /*Controller::~Controller()
@@ -34,8 +35,8 @@ void Controller::startGame()
     cout << "boardLength : " << this->game_.getBoard().getBoardLength();
     while (true)
     {
-        if (typeOfGame == "1" || typeOfGame == "2") { break; }
-        else
+        //if (typeOfGame == "1" || typeOfGame == "2") { break; }
+        //else
         {
             cout << "Vous n'avez pas correctement sélectionné de type de jeu ! Réessayez :" << endl;
             typeOfGame = this->view_.askCommand();

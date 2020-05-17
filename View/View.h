@@ -11,7 +11,9 @@ namespace Diaballik
     class View : public nvs::Subject
     {
 
-        Game game_;
+        private :
+
+            Game game_;
 
         public:
 
@@ -19,6 +21,8 @@ namespace Diaballik
          * @brief View constructor of Class View
          */
             View(Game game);
+
+            //View(View view(Game game));
 
             /**
          * @brief Initialize prints a welcoming sentence

@@ -13,18 +13,34 @@ namespace Diaballik
 
     class MenuP : public QWidget
     {
-        Q_OBJECT
-    public:
-        MenuP();
+            Q_OBJECT
+        public:
+            MenuP(/*Board board*/);
 
-    public slots:
-        void openGame();
+            inline QComboBox* getChoixTaille()
+            {
+                return choixTaille;
+            }
 
-    private:
-        QVBoxLayout *m_layout;
-        QPushButton *m_bouton1;
-        QPushButton *m_bouton2;
-        //Plateau *game;
+        public slots:
+            void openGame(/*Board board*/);
+
+        private:
+            QGraphicsView *window;
+            QGraphicsScene *scene;
+            QVBoxLayout *m_layout;
+            QPushButton *play;
+            QPushButton *leave;
+            QComboBox *choixTaille;
+            QLabel *taille;
+            QComboBox *gameType;
+            QLabel *type;
+            QString name;
+            QTextEdit *player1Name;
+            QTextEdit *player2Name;
+            //Plateau *game;
+            //QGraphicsSimpleTextItem *player1Name;
+            //QGraphicsSimpleTextItem *player2Name;
     };
 }
 

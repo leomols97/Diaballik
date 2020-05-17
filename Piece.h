@@ -66,7 +66,7 @@ namespace Diaballik
              */
             bool isReal();
 
-            bool canPassBall(Position pos);
+            //bool canPassBall(Position pos);
 
             //void passBall(Piece pieceThatGives, Position pos);
 

@@ -15,6 +15,7 @@
 #include <map>
 #include "Observer/Observer.h"
 
+
 using namespace std;
 using namespace Diaballik;
 
@@ -42,7 +43,7 @@ namespace Diaballik
              * @param game_ a new game to start
              * @param view_ all the text we will display on the terminal
              */
-            Controller(Game game_, View view_);
+            Controller(Game game, View view);
 
             //~Controller();
 
