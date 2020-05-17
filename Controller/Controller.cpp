@@ -16,17 +16,6 @@ void registerObserver()
 
 }
 
-/*Controller::~Controller()
-{
-    delete &game_;
-}*/
-
-/*void Controller::initialize(int typeOfGame)
-{
-    this->view_.initialize();
-    this->game_.initialize(typeOfGame);
-}*/
-
 void Controller::startGame()
 {
     bool endCom = false;

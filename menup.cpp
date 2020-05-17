@@ -1,3 +1,4 @@
+#include "iostream"
 #include "menup.h"
 #include "Plateau.h"
 #include "Game.h"
@@ -6,27 +7,14 @@ using namespace Diaballik;
 
 MenuP::MenuP(/*Board board*/) : QWidget()
 {
-    scene = new QGraphicsScene();
-    window = new QGraphicsView(scene);
-    /*player1Name = new QGraphicsSimpleTextItem();
-    player2Name = new QGraphicsSimpleTextItem();
-    player1Name->setPos(-20, -10);
-    player2Name->setPos(-50, -10);
-    player1Name->setText("Nom du joueur 1");
-    player2Name->setText("Nom du joueur 2");
-    player1Name->setVisible(false);
-    player2Name->setVisible(false);
-    scene->addText(tr("Nom du joueur 1"))->setDefaultTextColor(Qt::gray);
-    scene->addText(tr("Nom du joueur 2"))->setDefaultTextColor(Qt::gray);*/
-    player1Name = new QTextEdit("Nom du joueur 1", window);
-    player2Name = new QTextEdit("Nom du joueur 2", window);
-    scene->addWidget(player1Name);
-    scene->addWidget(player2Name);
-    //player1Name->setFont(QPainter::background()
-    //scene->addItem(player1Name);
-    //m_layout->addWidget(player1Name);
+    //scene = new QGraphicsScene();
+    //window = new QGraphicsView(scene);
+
+    player1Name = new QLineEdit("Nom du joueur 1");
+    player2Name = new QLineEdit("Nom du joueur 2");
     m_layout = new QVBoxLayout(this);
-    m_layout->addWidget(window);
+    m_layout->addWidget(player1Name);
+    m_layout->addWidget(player2Name);
     play = new QPushButton("Nouvelle Partie", this);
     leave = new QPushButton("Quitter", this);
     choixTaille = new QComboBox(this);
@@ -44,7 +32,6 @@ MenuP::MenuP(/*Board board*/) : QWidget()
     gameType->insertItem(2, "Variante");
     m_layout->addWidget(play);
     m_layout->addWidget(leave);
-    //m_layout->addItem(player1Name.);
     QObject::connect(play, SIGNAL(clicked()), this, SLOT(openGame()));
     QObject::connect(play, SIGNAL(clicked()), this, SLOT(close()));
     QObject::connect(leave, SIGNAL(clicked()), qApp, SLOT(quit()));
@@ -52,7 +39,7 @@ MenuP::MenuP(/*Board board*/) : QWidget()
 
 void MenuP::openGame(/*Board board*/)
 {
-    cout << choixTaille->currentIndex() << endl;
-    Plateau *game = new Plateau(this->getChoixTaille()->currentIndex()/*board*/);
-    game->show();
+    // Ici, faire un if avec une condition qui définit s'il faut donner en paramètre le nom du joueur 1 ou celui du joueur 2
+    Plateau *plateau = new Plateau(this->getChoixTaille()->currentText().toInt(), this->getGameType()->currentIndex(), this->getPlayer1Name()->text().toStdString()/*board*/);
+    plateau->show();
 }

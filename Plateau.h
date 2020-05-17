@@ -15,7 +15,10 @@ namespace Diaballik
             public QWidget
     {
         public:
-            Plateau(unsigned int boardLength/*Board board*/);
+
+            Plateau(unsigned int windowLength, int typeOfGame, string currentPlayer);
+
+            void windowLength (unsigned int windowLength);
 
         private:
             QGraphicsView *m_view;

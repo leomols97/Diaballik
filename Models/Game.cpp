@@ -75,39 +75,6 @@ void Game::initialize(int typeOfGame)
             Position position (i, j);
             getPlayerPieces(this->current_.getColor(), position);
             getPlayerPieces(this->opponent_.getColor(), position);
-            /*if (i == 0 && j == 3)
-            {
-                Piece p(BlackWithBall);
-                //p.changeHasBall(true);
-                //this->board_.getPiece(pos).setColor(BlackWithBall);
-                this->opponent_.addPieceToPlayer(p);
-                //cout << p.getColor() << endl;
-            }
-            else if (i == this->board_.getBoard().size() - 1 && j == 3)
-            {
-                Piece p(WhiteWithBall);
-                //p.changeHasBall(true);
-                //this->board_.getPiece(pos).setColor(WhiteWithBall);
-                this->current_.addPieceToPlayer(p);
-            }
-            else if (i == 0 && j != 3)
-            {
-                Piece p(Black);
-                //this->board_.getPiece(pos).setColor(Black);
-                this->opponent_.addPieceToPlayer(p);
-            }
-            else if (i == this->board_.getBoard().size() - 1 && j != 3)
-            {
-                Piece p(White);
-                //p.setSelected(true);
-                //this->board_.getPiece(pos).setColor(White);
-                this->current_.addPieceToPlayer(p);
-            }
-            else
-            {
-                Piece p(None);
-                this->board_.getBoard()[i][j].setColor(None);
-            }*/
         }
     }
 }

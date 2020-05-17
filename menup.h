@@ -22,12 +22,22 @@ namespace Diaballik
                 return choixTaille;
             }
 
+            inline QLineEdit* getPlayer1Name()
+            {
+                return player1Name;
+            }
+
+            inline QComboBox* getGameType()
+            {
+                return gameType;
+            }
+
         public slots:
             void openGame(/*Board board*/);
 
         private:
-            QGraphicsView *window;
-            QGraphicsScene *scene;
+            //QGraphicsView *window;
+            //QGraphicsScene *scene;
             QVBoxLayout *m_layout;
             QPushButton *play;
             QPushButton *leave;
@@ -36,11 +46,9 @@ namespace Diaballik
             QComboBox *gameType;
             QLabel *type;
             QString name;
-            QTextEdit *player1Name;
-            QTextEdit *player2Name;
+            QLineEdit *player1Name;
+            QLineEdit *player2Name;
             //Plateau *game;
-            //QGraphicsSimpleTextItem *player1Name;
-            //QGraphicsSimpleTextItem *player2Name;
     };
 }
 
