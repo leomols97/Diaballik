@@ -15,25 +15,13 @@ using namespace Diaballik;
 Piece::Piece(Color color) :
     color_(color),
     hasBall_(false)
-    //m_rect()
-{
-        //this->color_ = color;
-        //this->real_ = true;
-        //this->hasBall_ = false;
-}
+{}
 
 void Piece::setColor(Color color)
 {
-    cout << "2222" << endl;
-    cout << "color = " << color << endl;
-    cout << "color_ = " << color_ << endl;
     this->color_ = color;
-    cout << "3333" << endl;
 }
 
-/**
- * @return boolean
- */
 /*bool Piece::canPassBall(Position pos)
 {
     Player player(color_);
@@ -138,19 +126,4 @@ void Piece::setColor(Color color)
 /*bool Piece::getHasBall()
 {
     return hasBall_;
-}*/
-
-
-
-/*void Piece::changeHasBall(Color color)
-{
-    if (color != WhiteWithBall || color != BlackWithBall)
-    {
-
-    }
-}*/
-
-/*bool Piece::isReal()
-{
-    return this->
 }*/

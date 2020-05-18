@@ -21,66 +21,66 @@ namespace Diaballik
 
         private:
 
-                        /**
-                         * @brief m_plateau view where we see the board
-                        */
-                       QGraphicsView *m_plateau;
+            /**
+            * @brief m_plateau view where we see the board
+            */
+            QGraphicsView *m_plateau;
 
-                       /**
-                        * @brief m_infosJeu view where we see the info of the player
-                        */
-                       QGraphicsView *m_infosJeu;
+            /**
+            * @brief m_infosJeu view where we see the info of the player
+            */
+            QGraphicsView *m_infosJeu;
 
-                       /**
-                        * @brief m_jeu scene where the baord is
-                        */
-                       QGraphicsScene *m_jeu;
+            /**
+            * @brief m_jeu scene where the baord is
+            */
+            QGraphicsScene *m_jeu;
 
-                       /**
-                        * @brief m_layout layout to horizontally align the items within
-                        */
-                       QHBoxLayout *m_layout;
+            /**
+            * @brief m_layout layout to horizontally align the items within
+            */
+            QHBoxLayout *m_layout;
 
-                       //QGraphicsRectItem *m_rect;
+            //QGraphicsRectItem *m_rect;
 
-                       //QGraphicsRectItem *m_rect1;
+            //QGraphicsRectItem *m_rect1;
 
-                       /**
-                        * @brief m_infosScene scene where we see the info of the player
-                        */
-                       QGraphicsScene *m_infosScene;
+            /**
+            * @brief m_infosScene scene where we see the info of the player
+            */
+            QGraphicsScene *m_infosScene;
 
-                       //QGraphicsEllipseItem *m_circle;
+            //QGraphicsEllipseItem *m_circle;
 
-                       /**
-                        * @brief m_abandon button to abandon and lose the game. opens a pop-up to ask for a new game
-                        */
-                       QPushButton *m_abandon;
+            /**
+            * @brief m_abandon button to abandon and lose the game. opens a pop-up to ask for a new game
+            */
+            QPushButton *m_abandon;
 
-                       /**
-                        * @brief m_texteTour text to know whose turn it is
-                        */
-                       QLabel *m_texteTour;
+            /**
+            * @brief m_texteTour text to know whose turn it is
+            */
+            QLabel *m_texteTour;
 
-                       /**
-                        * @brief m_boutonsJeu buttons of the game (each square)
-                        */
-                       QPushButton *m_boutonsJeu;
+            /**
+            * @brief m_boutonsJeu buttons of the game (each square)
+            */
+            QPushButton *m_boutonsJeu;
 
-                       /**
-                        * @brief m_currentPlayer name of the current player
-                        */
-                       QLabel *m_currentPlayer;
+            /**
+            * @brief m_currentPlayer name of the current player
+            */
+            QLabel *m_currentPlayer;
 
-                       /**
-                        * @brief organiser layout to vertically align the infosJeu
-                        */
-                       QVBoxLayout *organiser;
+            /**
+            * @brief organiser layout to vertically align the infosJeu
+            */
+            QVBoxLayout *organiser;
 
-                       /**
-                        * @brief m_finDeTour button to pass turn
-                        */
-                       QPushButton *m_finDeTour;
+            /**
+            * @brief m_finDeTour button to pass turn
+            */
+            QPushButton *m_finDeTour;
 
             void onMouseEvent(const QString &eventName);
             Diaballik::Plateau *ui;
@@ -131,52 +131,56 @@ namespace Diaballik
 
         public:
 
-                   /**
-                    * @brief Plateau constructs a graphic board
-                    * @param game the game in which we play
-                    * @param player1 the name of player 1
-                    * @param player2 the name of player 2
-                    */
-                   Plateau(Game &game, const string &player1, const string &player2/*unsigned int windowLength, int typeOfGame, string m_currentPlayer*/);
+            /**
+            * @brief Plateau constructs a graphic board
+            * @param game the game in which we play
+            * @param player1 the name of player 1
+            * @param player2 the name of player 2
+            */
+            Plateau(Game &game, const string &player1, const string &player2/*unsigned int windowLength, int typeOfGame, string m_currentPlayer*/);
 
-                   explicit Plateau(QWidget *parent = nullptr);
+            explicit Plateau(QWidget *parent = nullptr);
 
-                   ~Plateau();
+            ~Plateau() override;
 
-                   /**
-                    * @brief getCurrent
-                    * @return the name of the current player
-                    */
-                   QLabel * getCurrent()
-                   {
-                       return m_currentPlayer;
-                   }
+            /**
+            * @brief getCurrent
+            * @return the name of the current player
+            */
+            QLabel * getCurrent()
+            {
+                return m_currentPlayer;
+            }
 
-                   /**
-                    * @brief setCurrent sets the name of the player
-                    * @param playerName the name of the player
-                    */
-                   void setCurrent(QLabel *playerName)
-                   {
-                       m_currentPlayer = playerName;
-                   }
+            /**
+            * @brief setCurrent sets the name of the player
+            * @param playerName the name of the player
+            */
+            void setCurrent(QLabel *playerName)
+            {
+                m_currentPlayer = playerName;
+            }
 
-                   /**
-                    * @brief selectPiece
-                    * @param game the game in which we play
-                    * @param position the position of the piece we select
-                    */
-                   void selectPiece(Game &game, Position &position);
+            /**
+            * @brief selectPiece
+            * @param game the game in which we play
+            * @param position the position of the piece we select
+            */
+            void selectPiece(Game &game, Position &position);
 
         public slots:
 
-                   //void swapPlayer();
+            /**
+             * @brief swapPlayer
+             * Swap of player everytime the button "Fin de tour" is hit
+             */
+            void swapPlayer(Game &game);
 
-                   /**
-                    * @brief showWinner opens a pop-up to know who won and to ask for a new game
-                    * @param game the game in which we play
-                    */
-                   void showWinner(Game &game);
+            /**
+            * @brief showWinner opens a pop-up to know who won and to ask for a new game
+            * @param game the game in which we play
+            */
+            void showWinner(Game &game);
     };
 }
 

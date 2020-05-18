@@ -10,11 +10,6 @@
 using namespace Diaballik;
 
 
-/**
- * Default constructor needed by the constructor of Game
- * @brief Board::Board
- */
-
 Board::Board(unsigned int boardLength) :
     board_(boardLength),
     boardLength_(boardLength)
@@ -35,62 +30,43 @@ Board::Board(unsigned int boardLength) :
 
 void Board::initializeOriginal()
 {
-    vector<vector<Piece>> row;
+    //vector<vector<Piece>> row;
     for (unsigned int i = 0; i < boardLength_; i++)
     {
-        vector<Piece> columns;
+        //vector<Piece> columns;
         for (unsigned int j = 0; j < boardLength_; j++)
         {
             Position position(i, j);
-            try
+            if (i == 0 && j == boardLength_/2)
             {
-                if (i == 0 && j == boardLength_/2)
-                {
-                    Piece p(BlackWithBall);
-                    columns.push_back(p);
-                    //p.changeHasBall(true);
-                    this->board_.at(i).at(j).setColor(BlackWithBall);
-                    //this->opponent_.addPieceToPlayer(p);
-                    //cout << p.getColor() << endl;
-                }
-                else if (i == boardLength_ - 1 && j == boardLength_/2)
-                {
-                    Piece p(WhiteWithBall);
-                    columns.push_back(p);
-                    //p.changeHasBall(true);
-                    this->board_.at(i).at(j).setColor(WhiteWithBall);
-                    //this->current_.addPieceToPlayer(p);
-                }
-                else if (i == 0 && j != boardLength_/2)
-                {
-                    Piece p(Black);
-                    columns.push_back(p);
-                    //this->put(Black, position);
-                    this->board_.at(i).at(j).setColor(Black);
-                    //cout << "this->board_[i][j].getColor : " << this->board_[i][j].getColor() << endl;
-                    //this->board_[i][j].setColor(Black);
-                    //this->opponent_.addPieceToPlayer(p);
-                }
-                else if (i == boardLength_ - 1 && j != boardLength_/2)
-                {
-                    Piece p(White);
-                    columns.push_back(p);
-                    this->board_.at(i).at(j).setColor(White);
-                    //this->board_.at(i).at(j).setColor(White);
-                    //this->current_.addPieceToPlayer(p);
-                }
-                else
-                {
-                    Piece p(None);
-                    columns.push_back(p);
-                    //this->board_.at(i).at(j).setColor(None);
-                }
-                row.push_back(columns);
+                Piece p(BlackWithBall);
+                //columns.push_back(p);
+                this->board_.at(i).at(j).setColor(BlackWithBall);
             }
-            catch (exception e)
+            else if (i == boardLength_ - 1 && j == boardLength_/2)
             {
-                cout << e.what() << " i : " << i << " ; j : " << j <<  endl;
+                Piece p(WhiteWithBall);
+                //columns.push_back(p);
+                this->board_.at(i).at(j).setColor(WhiteWithBall);
             }
+            else if (i == 0 && j != boardLength_/2)
+            {
+                Piece p(Black);
+                //columns.push_back(p);
+                this->board_.at(i).at(j).setColor(Black);
+            }
+            else if (i == boardLength_ - 1 && j != boardLength_/2)
+            {
+                Piece p(White);
+                //columns.push_back(p);
+                this->board_.at(i).at(j).setColor(White);
+            }
+            else
+            {
+                Piece p(None);
+                //columns.push_back(p);
+            }
+            //row.push_back(columns);
         }
     }
 }
@@ -103,46 +79,37 @@ void Board::initializeVariante()
         {
             if (i == 0 && j == boardLength_/2)
             {
-                //Piece p(BlackWithBall);
-                //p.changeHasBall(true);
+                Piece p(BlackWithBall);
                 this->board_[i][j].setColor(BlackWithBall);
-                //this->opponent_.addPieceToPlayer(p);
-                //cout << p.getColor() << endl;
             }
             else if (i == boardLength_ - 1 && j == boardLength_/2)
             {
-                //Piece p(WhiteWithBall);
-                //p.changeHasBall(true);
+                Piece p(WhiteWithBall);
                 this->board_[i][j].setColor(WhiteWithBall);
-                //this->current_.addPieceToPlayer(p);
             }
             else if ((i == 0 && j == 1) || (i == 0 && j == boardLength_ - 2))
             {
-                //Piece p(White);
+                Piece p(White);
                 this->board_[i][j].setColor(White);
-                //this->current_.addPieceToPlayer(p);
             }
             else if ((i == boardLength_ - 1 && j == 1) || (i == boardLength_ - 1 && j == boardLength_ - 2))
             {
-                //Piece p(Black);
+                Piece p(Black);
                 this->board_[i][j].setColor(Black);
-                //this->current_.addPieceToPlayer(p);
             }
             else if (i == 0 && j != boardLength_/2)
             {
-                //Piece p(Black);
+                Piece p(Black);
                 this->board_[i][j].setColor(Black);
-                //this->opponent_.addPieceToPlayer(p);
             }
             else if (i == boardLength_ - 1 && j != boardLength_/2)
             {
-                //Piece p(White);
+                Piece p(White);
                 this->board_[i][j].setColor(White);
-                //this->current_.addPieceToPlayer(p);
             }
             else
             {
-                //Piece p(None);
+                Piece p(None);
                 this->board_[i][j].setColor(None);
             }
         }
@@ -159,48 +126,26 @@ void Board::initializeVariante()
     }
 }*/
 
-/**
- * @param position
- * @return boolean
- */
 bool Board::isInside(const Position &position)
 {
     /*return ((pos.getColumn() >= 0 && static_cast<unsigned>(pos.getColumn()) < board_.size() )
             && static_cast<unsigned>(pos.getRow()) < board_[0].size() && pos.getRow() >= 0);*/
-    cout << "boardLength_ = " << boardLength_ << endl;
     return position.getRow() > -1
             && position.getRow() < boardLength_
             && position.getColumn() > - 1
             && position.getColumn() < boardLength_;
 }
 
-/**
- * @param position
- * @return Piece
- */
 Piece &Board::getPiece(Position position)
 {
-    //cout << "pos row : " << position.getRow();
-    //cout << " ; col : " << position.getColumn() << endl;
-    if (position.getRow() == 0 && position.getColumn() == 6)
-    {
-        //cout << "AZERTYU";
-    }
     if (!isInside(position))
     {
-        cout << " row : " << position.getRow() << " ; column : " << position.getColumn();
         throw invalid_argument("La position n'est pas dans le plateau de jeu !");
     }
-    cout << "position.getRow() = " << position.getRow() << " ; position.getColumn() = " << position.getColumn() << endl;
     Piece p = this->board_[position.getRow()][position.getColumn()];
-    //cout << "this->board_[position.getRow()][position.getColumn()] : " << this->board_.at(position.getRow()).at(position.getColumn()) << endl;
     return p;
 }
 
-/**
- * @param position
- * @return boolean
- */
 bool Board::isFree(Position position)
 {
     if (!isInside(position))
@@ -231,11 +176,6 @@ bool Board::isEmpty()
     return empty;
 }
 
-/**
- * @param piece
- * @param position
- * @return void
- */
 void Board::put(Color &color, Position &position)
 {
     this->board_[position.getRow()][position.getColumn()].setColor(color);
@@ -246,10 +186,6 @@ bool Board::isMyOwn(Position position, Color color) // gérer les couleurs avec 
     return getPiece(position).getColor() == color;
 }
 
-/**
- * @param player
- * @return List<Position>
- */
 vector<Position> Board::getTakenSquares(Player &player)
 {
     Position pos(0,0);
@@ -271,11 +207,6 @@ vector<Position> Board::getTakenSquares(Player &player)
     return positions;
 }
 
-
-/**
- * @param position
- * @return void
- */
 void Board::remove(Position &position)
 {
     this->board_[position.getRow()][position.getColumn()].setColor(None);

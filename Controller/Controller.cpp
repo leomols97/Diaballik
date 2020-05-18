@@ -6,10 +6,7 @@ using namespace Diaballik;
 Controller::Controller(Game &game, View &view) :
     game_(game),
     view_(view)
-{
-    //this->game_ = game;
-    //this->view_ = view;
-}
+{}
 
 void registerObserver()
 {
@@ -21,11 +18,8 @@ void Controller::startGame()
     bool endCom = false;
     this->view_.initialize();
     string typeOfGame = this->view_.askCommand();
-    cout << "boardLength : " << this->game_.getBoard().getBoardLength();
     while (true)
     {
-        //if (typeOfGame == "1" || typeOfGame == "2") { break; }
-        //else
         {
             cout << "Vous n'avez pas correctement sélectionné de type de jeu ! Réessayez :" << endl;
             typeOfGame = this->view_.askCommand();
@@ -34,7 +28,6 @@ void Controller::startGame()
     }
     this->view_.askBoardLength();
     string boardLength = this->view_.askCommand();
-    cout << "boardLength : " << this->game_.getBoard().getBoardLength();
     while (true)
     {
         if (boardLength == "5" || boardLength == "7" || boardLength == "9") { break; }
@@ -46,29 +39,15 @@ void Controller::startGame()
         }
     }
     this->game_.getBoard().setBoardLength(stoi(boardLength, nullptr, 16));
-    cout << "boardLength : " << this->game_.getBoard().getBoardLength();
-    //this->game_.initialize(typeOfGame(this->view_));
     this->game_.initialize(stoi(typeOfGame.c_str(), nullptr, 16));
     while (!endCom)
     {
         if (this->game_.isOver())
         {
-            //cout << "AZERTYUIOP";
             endCom = true;
             this->game_.getWinner();
             this->view_.displayQuit();
         }
-        /*if (newTurn)
-        {
-            Position pos; // position de la piece qui a la balle
-            int row = pos.getRow();
-            int col = pos.getColumn();
-            if (!game_.hasMoves(game_.getCurrent()))
-            {
-                this->view_.displayError("Ce joueur ne peut pas jouer lors de ce tour.");
-                game_.swapPlayers();
-            }
-        }*/
         while(game_.hasMoves(game_.getCurrent()) && game_.getCurrent().getHasPass())
         {
             this->view_.displayBoard(this->game_.getBoard());
@@ -98,9 +77,6 @@ void Controller::startGame()
             }
             cout << endl;
             commandStrings.push_back(com);
-            //split(com, words);
-            //copy(words.begin(), words.end(), ostream_iterator<string>(cout, "\n"));
-            //string separate[] = command.toLower().split(" ");
             if (command == "quit")
             {
                 endCom = true;
@@ -121,7 +97,6 @@ void Controller::startGame()
                 }
                 int row;
                 int col;
-                //Position position(row, col); // Lorsque je fais appel à "position" plus tard, il faut utiliser "this->game_.getPositionSelected();"
                 try
                 {
                     row = stoi(commandStrings.at(1), nullptr, 16);
@@ -147,8 +122,6 @@ void Controller::startGame()
                 }
                 istringstream(commandStrings.at(1)) >> row;
                 istringstream(commandStrings.at(2)) >> col;
-                //row = stoi(commandStrings.at(1));
-                //col = stoi(commandStrings.at(2));
                 if(game_.getCurrent().getHasPass() && (game_.getPieceSelected().getColor() == BlackWithBall || game_.getPieceSelected().getColor() == WhiteWithBall))     // il faut travailler avec les couleurs
                 {
                     cout << endl;
@@ -183,20 +156,6 @@ void Controller::startGame()
                         }
                         else if (commandStrings.at(0) == "pass ")
                         {
-                            /*cout << "start row : " << game_.getMoves().at(stoi(commandStrings.at(1))).getStart().getRow() << endl;
-                            cout << "start col : " << game_.getMoves().at(stoi(commandStrings.at(1))).getStart().getColumn() << endl;
-                            cout << "end row : " << game_.getMoves().at(stoi(commandStrings.at(1))).getEnd().getRow() << endl;
-                            cout << "end col : " << game_.getMoves().at(stoi(commandStrings.at(1))).getEnd().getColumn() << endl;*/
-                            //this->game_.applyPass(game_.getMoves().at(stoi(commandStrings.at(1))));
-                            //this->game_.getPossiblePasses(commandStrings.at(1));
-                            //for (unsigned int i = 0; i < this->game_.getPossiblePasses(position).size(); i++)
-                            {
-                                cout << "color start : " << this->game_.getBoard().getPiece(this->game_.getPositionSelected()).getColor() << endl;
-                                cout << "color end : " << this->game_.getBoard().getPiece(this->game_.getPossiblePasses(this->game_.getPositionSelected()).at(stoi(commandStrings.at(1)))).getColor() << endl;
-                                cout << "start row : " << this->game_.getPossiblePasses(this->game_.getPositionSelected()).at(stoi(commandStrings.at(1))).getRow() << endl;
-                                cout << "start col : " << this->game_.getPossiblePasses(this->game_.getPositionSelected()).at(stoi(commandStrings.at(1))).getColumn() << endl;
-                                cout << this->game_.getBoard().getPiece(this->game_.getPossiblePasses(this->game_.getPositionSelected()).at(stoi(commandStrings.at(1)))).getColor();
-                            }
                             try
                             {
                                 this->game_.applyPass(this->game_.getPositionSelected(), this->game_.getPossiblePasses(this->game_.getPositionSelected()).at(stoi(commandStrings.at(1))));
@@ -260,8 +219,6 @@ void Controller::startGame()
                     }
                 }
                 cout << endl;
-                //view_.displayBoard(this->game_.getBoard());
-                //break;
             }
             else
             {

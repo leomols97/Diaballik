@@ -125,7 +125,7 @@ namespace Diaballik
             * @param row the row of the position
             * @param column the column of the position
             */
-            void select(int row , int column);
+            void select(unsigned int row, unsigned int column);
 
             /**
              * @brief swapPlayers swaps the player at the end of the turn
@@ -229,13 +229,11 @@ namespace Diaballik
              */
             bool canPassBall(Position &pos);
 
-            //void passBall(Position pos);
-
             /**
              * @brief getPasses
              * @param list list of positions where you can do a pass
              */
-            void getPasses(vector<Position> &list) const;
+            void getPasses(vector<Position> list);
 
             /**
              * @brief passeList
@@ -269,8 +267,6 @@ namespace Diaballik
              * @param piecePosition position of the piece
              */
             void getPlayerPieces(Color &playerColor, Position &piecePosition);
-
-            //int typeOfGame(View view);
     };
 }
 #endif //_GAME_H

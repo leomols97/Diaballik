@@ -22,7 +22,6 @@ Plateau::~Plateau()
 
 void Plateau::mouseDoubleClickEvent(QMouseEvent *event)
 {
-    ui->
     QWidget::mouseDoubleClickEvent(event);
 }
 
@@ -33,6 +32,7 @@ void Plateau::mouseMoveEvent(QMouseEvent *event)
 
 void Plateau::mousePressEvent(QMouseEvent *event)
 {
+    emit
     QWidget::mousePressEvent(event);
 }
 
@@ -65,9 +65,6 @@ void Plateau::windowLength(unsigned int boardLength)
 Plateau::Plateau(Game &game, const string &player1, const string &player2/*unsigned int boardLength, int typeOfGame, string currentPlayer*/) : QWidget()
 {
     windowLength(game.getBoard().getBoardLength());
-    m_black = new QGraphicsRectItem();
-    m_white = new QGraphicsRectItem();
-    //cout << "1111 " << endl;
     m_jeu = new QGraphicsScene();
     m_plateau = new QGraphicsView(m_plateau);
     m_layout = new QHBoxLayout(this);
@@ -99,22 +96,23 @@ void Plateau::infosJeu(string currentPlayer/*, QGraphicsRectItem currentPlayerCo
     m_abandon = new QPushButton("Abandonner", m_infosJeu);
     QLabel *playerName = new QLabel(currentPlayer.c_str());
     m_texteTour = new QLabel("Au tour de " + playerName->text() , m_infosJeu);
-    QObject::connect(m_finDeTour, SIGNAL(clicked()), qApp, SLOT(quit()));
+    QObject::connect(m_finDeTour, SIGNAL(clicked()), this, SLOT(swapPlayer()));
     QObject::connect(m_abandon, SIGNAL(clicked()), this, SLOT(showWinner()));//au lieu de quitter, il doit ouvrir un pop-up pour afficher le nom du vainqueur et proposer une nouvelle partie
     m_layout->addWidget(m_plateau, 780);
     m_layout->addWidget(m_infosJeu, 320);
-    organiser->addWidget(m_texteTour, 0, 0);
+    organiser->addWidget(m_texteTour, 0, nullptr);
     organiser->addWidget(m_finDeTour, 120);
     organiser->addWidget(m_abandon, 120);
     organiser->addStretch();
 }
 
-/*void Plateau::swapPlayer()
+void Plateau::swapPlayer(Game &game)
 {
-    Player provisoire = getCurrent();
-    getCurrent() = getOpponent();
-    getOpponent = provisoire;
-}*/
+    cout << "1121212" << endl;
+    Player provisoire = game.getCurrent();
+    game.getCurrent() = game.getOpponent();
+    game.getOpponent() = provisoire;
+}
 
 void Plateau::showWinner(Game &game)
 {
@@ -143,6 +141,7 @@ QPushButton *Plateau::boutons(unsigned int i, unsigned int j, QString style, boo
     m_boutonsJeu->setGeometry(i*100+10, j*100+10, 100, 100);
     if (clickable)
     {
+        QObject::connect(m_boutonsJeu, SIGNAL(clicked()), this, SLOT(swapPlayer(Game)));
         m_boutonsJeu->setCursor(Qt::PointingHandCursor);
     }
     m_boutonsJeu->setStyleSheet(style);
@@ -151,7 +150,6 @@ QPushButton *Plateau::boutons(unsigned int i, unsigned int j, QString style, boo
 
 void Plateau::addLign(unsigned int colonne, unsigned int ligne, vector<QPushButton*> lignes, Game &game)
 {
-    cout << "111" << endl;
     Position pos(ligne, colonne);
     if (game.getBoard().getPiece(pos).getColor() == Black)
     {

@@ -16,16 +16,14 @@ namespace Diaballik
             /**
              * @brief game_ the game in which we play
              */
-            Game &game_;
+            //Game &game_;
 
         public:
 
             /**
          * @brief View constructor of Class View
          */
-            View(Game &game);
-
-            //View(View view(Game game));
+            View(/*Game &game*/);
 
             /**
          * @brief Initialize prints a welcoming sentence
@@ -73,15 +71,7 @@ namespace Diaballik
          * @brief displayPiece prints the piece
          * @param square the square where you must print the piece
          */
-            void displayPiece(Piece &piece) ;
-
-            //void displayOver(vector<Player> winners) ;
-
-            /*
-          @brief displaySelected
-          @param piece
-
-        void displaySelected(Piece piece) ;*/
+            void displayPiece(Piece &piece);
 
             /**
          * @brief displayMoves prints the list of moves

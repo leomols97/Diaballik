@@ -3,8 +3,8 @@
 using namespace Diaballik;
 
 
-View::View(Game &game) :
-    game_(game)
+View::View(/*Game &game*/)
+    //game_(game)
 {}
 
 void View::initialize()
@@ -95,8 +95,6 @@ void displayTopLines(Board &board)
 
 void View::displayBoard(Board &board)
 {
-    //cout << " col#\t||  | 0 |  | 1 |  | 2 |  | 3 |  | 4 |  | 5 |  | 6 |" << endl; // à mettre dans un for dans une autre fonction
-    //cout << "===========================================================" << endl; // à mettre dans le même for
     displayTopLines(board);
     for (unsigned int i = 0; i < board.getBoard().size(); i++)
     {
@@ -112,7 +110,6 @@ void View::displayPiece(Piece &piece)
     // je voudrais afficher la piece séelctionnée de manière différente (par exemple "=W=" au lieu de " W ")
     // ==> si la piece "piece" est la piece sélectionnée alors...
 
-    //piece.setSelected(true);
     if (piece.getColor() == WhiteWithBall)
     {
         cout << "_B_";

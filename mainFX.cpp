@@ -10,12 +10,7 @@
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-
-    /*MaFenetre fenetre;
-    fenetre.show();*/
-
-    //Board board(7);
-    MenuP menu/*(board)*/;
+    MenuP menu;
     menu.show();
 
     return app.exec();

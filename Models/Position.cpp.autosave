@@ -54,9 +54,6 @@ Position Position::whichEndingPosition(Position &position, Direction &direction)
         position.setRow(1);
         position.setColumn(1);
         break;
-    /*default :
-        cout << "Direction inexistante !";
-        break;*/
     }
     return position;
 }

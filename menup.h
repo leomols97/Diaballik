@@ -16,8 +16,6 @@ namespace Diaballik
             Q_OBJECT
 
         private:
-            //QGraphicsView *window;
-            //QGraphicsScene *scene;
         /**
              * @brief m_layout layout that vertically aligns the menu
              */
@@ -62,7 +60,6 @@ namespace Diaballik
              * @brief player2Name input of the name of player 2
              */
             QLineEdit *player2Name;
-            //Plateau *game;
 
 
         public:

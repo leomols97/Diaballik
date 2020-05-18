@@ -23,12 +23,12 @@ namespace Diaballik
             /**
              * @brief row_ the row of the board
              */
-            int row_;
+            unsigned int row_;
 
             /**
              * @brief column_ the column of the board
              */
-            int column_;
+            unsigned int column_;
 
 
         public:
@@ -38,7 +38,7 @@ namespace Diaballik
              * @param column
              * constructs a position with a row and a column
              */
-            Position(int row_, int column_);
+            Position(unsigned int row_, unsigned int column_);
 
             /**
              * @brief next
@@ -52,7 +52,7 @@ namespace Diaballik
              * @brief getRow
              * @return the row of the position
              */
-            inline int getRow() const
+            inline unsigned int getRow() const
             {
                 return this->row_;
             }
@@ -61,7 +61,7 @@ namespace Diaballik
              * @brief getColumn
              * @return the column of the position
              */
-            inline int getColumn() const
+            inline unsigned int getColumn() const
             {
                 return this->column_;
             }
@@ -71,7 +71,7 @@ namespace Diaballik
              * @param row the new row
              * sets the row at a new value
              */
-            inline void setRow(int row)
+            inline void setRow(unsigned int row)
             {
                 this->row_ = row;
             }
@@ -81,7 +81,7 @@ namespace Diaballik
              * @param column the new column
              * sets the column at a new value
              */
-            inline void setColumn(int column)
+            inline void setColumn(unsigned int column)
             {
                 this->column_ = column;
             }

@@ -8,9 +8,6 @@
 using namespace Diaballik;
 
 
-/**
- * Game implementation
- */
 Game::Game(unsigned int size) :
     board_(size),
     current_(White),
@@ -55,9 +52,6 @@ void Game::getPlayerPieces(Color &playerColor, Position &piecePosition)
     }
 }
 
-/**
- * This initializes a Game by initializing a board
- */
 void Game::initialize(int typeOfGame)
 {
     this->setTypeOfGame(typeOfGame);
@@ -111,7 +105,6 @@ bool Game::canPassBall(Position &pos)
 {
     bool found = false;
     for (unsigned i = 0; i < allDirections().size(); i++)
-        //for (size_t i {0}; i < (passPositions.size()) && !found; i++)
     {
         Position posNext = pos;
         Position posEnd = posNext.next(posNext, allDirections().at(i));
@@ -301,7 +294,6 @@ vector<Move> Game::getMoves(Position &selected)
     }
     try
     {
-        //this->board_.getSquare(selected).isMyOwn(getCurrent().getColor());
         this->board_.isMyOwn(selected, this->getCurrent().getColor());
     }
     catch (const exception e)
@@ -495,7 +487,6 @@ void Game::applyPass(Position &positionThatGives, Position &positionThatReceives
 
 Piece Game::getPieceSelected()
 {
-    cout << "getPieceSelected colo : " << this->board_.getPiece(selected_).getColor();
     return this->board_.getPiece(selected_);
 }
 
@@ -513,7 +504,7 @@ bool Game::hasMoves(Player &player)
  */
 Player Game::getWinner()
 {
-    Player winner(None); //Ajoute condition de anti-jeu
+    Player winner(None);
     if (!fairPlay())
     {
         for (unsigned int i = 0; i < this->board_.getBoard().size(); i++)
@@ -574,20 +565,3 @@ bool Game::isMyPiece(Position &pos)
     }
     return false;
 }
-
-/*int Diaballik::typeOfGame(View view)
-{
-    string typeOfGame = view.askCommand();
-    cout << "boardLength : " << this->getBoard().getBoardLength();
-    while (true)
-    {
-        if (typeOfGame == "1" || typeOfGame == "2") { break; }
-        else
-        {
-            cout << "Vous n'avez pas correctement sélectionné de type de jeu ! Réessayez :" << endl;
-            typeOfGame = view.askCommand();
-            //break;
-        }
-    }
-    return stoi(typeOfGame.c_str(), nullptr, 16);
-}*/

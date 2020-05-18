@@ -55,13 +55,6 @@ vector<Direction> Player::allDirections ()
     {
         dirs.push_back(Direction());
     }
-    /*
-     * OU (à la place du for, si le for ne fonctionne pas)
-     * dirs.push_back(Direction::UP);
-     * dirs.push_back(Direction::DOWN);
-     * dirs.push_back(Direction::RIGHT);
-     * dirs.push_back(Direction::LEFT);
-     */
     return dirs;
 }
 

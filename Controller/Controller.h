@@ -48,12 +48,6 @@ namespace Diaballik
             //~Controller();
 
             /**
-             * @brief initialize initializes all that is necessary to launch a game
-             * @param typeOfGame to define which type of game the user would like to play
-             */
-            //void initialize(int typeOfGame);
-
-            /**
              * @brief startGame launches the game
              */
             void startGame();
