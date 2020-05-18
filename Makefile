@@ -67,6 +67,7 @@ SOURCES       = Controller/Controller.cpp \
 		Models/Plateau.cpp \
 		mainFX.cpp \
 		menup.cpp moc_eventpassball.cpp \
+		moc_Plateau.cpp \
 		moc_mafenetre.cpp \
 		moc_menup.cpp
 OBJECTS       = Controller.o \
@@ -85,6 +86,7 @@ OBJECTS       = Controller.o \
 		mainFX.o \
 		menup.o \
 		moc_eventpassball.o \
+		moc_Plateau.o \
 		moc_mafenetre.o \
 		moc_menup.o
 DIST          = /Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/mkspecs/features/spec_pre.prf \
@@ -730,9 +732,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/mkspecs/features/data/dummy.cpp
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -g -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.12 -Wall -W -dM -E -o moc_predefs.h /Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_eventpassball.cpp moc_mafenetre.cpp moc_menup.cpp
+compiler_moc_header_make_all: moc_eventpassball.cpp moc_Plateau.cpp moc_mafenetre.cpp moc_menup.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_eventpassball.cpp moc_mafenetre.cpp moc_menup.cpp
+	-$(DEL_FILE) moc_eventpassball.cpp moc_Plateau.cpp moc_mafenetre.cpp moc_menup.cpp
 moc_eventpassball.cpp: Controller/eventpassball.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
@@ -880,6 +882,154 @@ moc_eventpassball.cpp: Controller/eventpassball.h \
 		moc_predefs.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/bin/moc
 	/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/bin/moc $(DEFINES) --include /Users/leopoldmols/Documents/QTCreator/ESI/2eme/CPP/Projet/Diaballik/moc_predefs.h -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/mkspecs/macx-clang -I/Users/leopoldmols/Documents/QTCreator/ESI/2eme/CPP/Projet/Diaballik -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtGui.framework/Headers -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib Controller/eventpassball.h -o moc_eventpassball.cpp
+
+moc_Plateau.cpp: Plateau.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers/QObject \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QtWidgets \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qabstractbutton.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qabstractitemdelegate.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qabstractitemview.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qabstractscrollarea.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qabstractslider.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qabstractspinbox.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qaccessiblewidget.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qaction.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qactiongroup.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qbuttongroup.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qcalendarwidget.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qcheckbox.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qcolordialog.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qcolormap.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qcolumnview.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qcombobox.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qcommandlinkbutton.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qcommonstyle.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qcompleter.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qdatawidgetmapper.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qdatetimeedit.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qdesktopwidget.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qdial.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qdialogbuttonbox.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qdirmodel.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qdockwidget.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qdrawutil.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qerrormessage.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qfileiconprovider.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qfilesystemmodel.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qfocusframe.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qfontcombobox.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qfontdialog.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qformlayout.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qframe.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qgesture.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qgesturerecognizer.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qgraphicsanchorlayout.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qgraphicseffect.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qgraphicsgridlayout.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qgraphicsitemanimation.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qgraphicslayout.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qgraphicslayoutitem.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qgraphicslinearlayout.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qgraphicsproxywidget.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qgraphicssceneevent.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qgraphicstransform.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qgraphicswidget.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qgridlayout.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qgroupbox.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qheaderview.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qinputdialog.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qitemdelegate.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qitemeditorfactory.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qkeyeventtransition.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qkeysequenceedit.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qlayout.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qlayoutitem.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qlcdnumber.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qlistview.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qmdiarea.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qmdisubwindow.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qmenu.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qmenubar.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qmouseeventtransition.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qopenglwidget.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qplaintextedit.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qprogressbar.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qprogressdialog.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qproxystyle.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qradiobutton.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qrubberband.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qscrollbar.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qscroller.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qscrollerproperties.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qshortcut.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qsizegrip.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qsizepolicy.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qslider.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qspinbox.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qsplashscreen.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qsplitter.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qstackedlayout.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qstackedwidget.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qstatusbar.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qstyle.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qstyleditemdelegate.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qstylefactory.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qstyleoption.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qstylepainter.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qstyleplugin.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qsystemtrayicon.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtabbar.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtableview.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtablewidget.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtabwidget.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtextbrowser.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtoolbar.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtoolbox.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtoolbutton.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtooltip.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtreeview.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtreewidget.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtreewidgetitemiterator.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qundogroup.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qundostack.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qundoview.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwhatsthis.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwidgetaction.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwizard.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsversion.h \
+		Game.h \
+		Move.h \
+		Position.h \
+		Direction.h \
+		Observer/Subject.h \
+		Observer/Observer.h \
+		Piece.h \
+		Color.h \
+		Board.h \
+		Square.h \
+		Player.h \
+		moc_predefs.h \
+		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/bin/moc
+	/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/bin/moc $(DEFINES) --include /Users/leopoldmols/Documents/QTCreator/ESI/2eme/CPP/Projet/Diaballik/moc_predefs.h -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/mkspecs/macx-clang -I/Users/leopoldmols/Documents/QTCreator/ESI/2eme/CPP/Projet/Diaballik -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtGui.framework/Headers -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib Plateau.h -o moc_Plateau.cpp
 
 moc_mafenetre.cpp: mafenetre.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QApplication \
@@ -2951,6 +3101,9 @@ menup.o: menup.cpp menup.h \
 
 moc_eventpassball.o: moc_eventpassball.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_eventpassball.o moc_eventpassball.cpp
+
+moc_Plateau.o: moc_Plateau.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_Plateau.o moc_Plateau.cpp
 
 moc_mafenetre.o: moc_mafenetre.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mafenetre.o moc_mafenetre.cpp

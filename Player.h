@@ -98,7 +98,7 @@ namespace Diaballik
                 return this->pieces_;
             }
 
-           /**
+            /**
             * @param nbMoves
             * sets the value of nbMoves
             */
@@ -125,6 +125,22 @@ namespace Diaballik
             void setColor(Color color);
 
             void addPieceToPlayer(Piece piece);
+
+            string getPlayerColor()
+            {
+                if (color_ == White)
+                {
+                    return "Blanc";
+                }
+                else if (color_ == Black)
+                {
+                    return "Noir";
+                }
+                else
+                {
+                    return "None";
+                }
+            }
     };
 }
 

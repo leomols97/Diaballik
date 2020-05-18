@@ -22,21 +22,78 @@ void Plateau::windowLength(unsigned int boardLength)
     }
 }
 
-Plateau::Plateau(unsigned int boardLength, int typeOfGame, string currentPlayer) : QWidget()
+Plateau::Plateau(Game game, string player1, string player2/*unsigned int boardLength, int typeOfGame, string currentPlayer*/) : QWidget()
 {
-    Game game;
-    game.initialize(typeOfGame);
-    windowLength(boardLength);
+    windowLength(game.getBoard().getBoardLength());
     m_black = new QGraphicsRectItem();
+    cout << "111" << endl;
     m_white = new QGraphicsRectItem();
     m_jeu = new QGraphicsScene();
     m_plateau = new QGraphicsView(m_plateau);
     m_layout = new QHBoxLayout(this);
-    //if (typeOfGame == 1)
+    buttons(game);
+    infosJeu(game.getCurrent().getPlayerColor());
+}
+
+void Plateau::buttons(Game game)
+{
+    vector<vector<QPushButton*>> cases;
+    for (unsigned int i = 0; i < game.getBoard().getBoardLength(); i++)
     {
-        initializeOriginal(boardLength);
+        vector<QPushButton*> lignes;
+        for (unsigned int j = 0; j < game.getBoard().getBoardLength(); j++)
+        {
+            addLign(i, j, lignes, game);
+        }
+        cases.push_back(lignes);
     }
-    infosJeu(currentPlayer);
+}
+
+void Plateau::infosJeu(string currentPlayer/*, QGraphicsRectItem currentPlayerColor*/)
+{
+    m_infosScene = new QGraphicsScene(QRectF(720, 0, 100, 720));
+    m_infosJeu = new QGraphicsView(m_infosScene);
+    // rajouter les boutons nécessaires et le texte dans m_options
+    organiser = new QVBoxLayout(m_infosJeu);
+    m_finDeTour = new QPushButton("Fin de Tour", m_infosJeu);
+    m_abandon = new QPushButton("Abandonner", m_infosJeu);
+    QLabel *playerName = new QLabel(currentPlayer.c_str());
+    m_texteTour = new QLabel("Au tour de " + playerName->text() , m_infosJeu);
+    QObject::connect(m_finDeTour, SIGNAL(clicked()), qApp, SLOT(quit()));
+    QObject::connect(m_abandon, SIGNAL(clicked()), this, SLOT(showWinner()));//au lieu de quitter, il doit ouvrir un pop-up pour afficher le nom du vainqueur et proposer une nouvelle partie
+    m_layout->addWidget(m_plateau, 780);
+    m_layout->addWidget(m_infosJeu, 320);
+    organiser->addWidget(m_texteTour, 0, 0);
+    organiser->addWidget(m_finDeTour, 120);
+    organiser->addWidget(m_abandon, 120);
+    organiser->addStretch();
+}
+
+/*void Plateau::swapPlayer()
+{
+    Player provisoire = getCurrent();
+    getCurrent() = getOpponent();
+    getOpponent = provisoire;
+}*/
+
+void Plateau::showWinner()
+{
+    QMessageBox msgBox;
+    msgBox.setWindowTitle("Recommencer");
+    msgBox.setText("Bravo à gagnant. Voulez-vous recommencer");
+    msgBox.setStandardButtons(QMessageBox::Yes);
+    msgBox.addButton(QMessageBox::No);
+    msgBox.setDefaultButton(QMessageBox::No);
+    if(msgBox.exec() == QMessageBox::Yes)
+    {
+        MenuP *menu = new MenuP;
+        this->close();
+        menu->show();
+    }
+    else
+    {
+        QApplication::quit();
+    }
 }
 
 QPushButton *Plateau::boutons(unsigned int i, unsigned int j, QString style, bool clickable)
@@ -48,172 +105,71 @@ QPushButton *Plateau::boutons(unsigned int i, unsigned int j, QString style, boo
         m_boutonsJeu->setCursor(Qt::PointingHandCursor);
     }
     m_boutonsJeu->setStyleSheet(style);
+    return m_boutonsJeu;
 }
 
-void Plateau::initializeOriginal(unsigned int boardLength)
+void Plateau::addLign(unsigned int colonne, unsigned int ligne, vector<QPushButton*> lignes, Game game)
 {
-    vector<vector<QPushButton*>> cases;
-    for (unsigned int i = 0; i < boardLength/*game.getBoard().getBoardLength()*/; i++)
+    Position pos(ligne, colonne);
+    if (game.getBoard().getPiece(pos).getColor() == Black)
     {
-        vector<QPushButton*> lignes;
-        for (unsigned int j = 0; j < boardLength/*game.getBoard().getBoardLength()*/; j++)
-        {
-            string nom = "m_rect";
-            if (i != boardLength/2 && j == 0)
-            {
-                m_boutonsJeu = boutons(i, j, "background-color:black; border:0.5px solid white;", true);
-                lignes.push_back(m_boutonsJeu);
-            }
-            else if(i == boardLength/2 && j == 0)
-            {
-                m_boutonsJeu = boutons(i, j, "background-color:black; border:0.5px solid white; border-radius: 50px;", true);
-                lignes.push_back(m_boutonsJeu);
-            }
-            else if(i != boardLength/2 && j == boardLength-1)
-            {
-                m_boutonsJeu = boutons(i, j, "background-color:white; border:0.5px solid black;", true);
-                lignes.push_back(m_boutonsJeu);
-            }
-            else if(i == boardLength/2 && j == boardLength-1)
-            {
-                m_boutonsJeu = boutons(i, j, "background-color:white; border:0.5px solid black; border-radius: 50px;", true);
-                lignes.push_back(m_boutonsJeu);
-            }
-            else
-            {
-                m_boutonsJeu = boutons(i, j, "background-color:grey; border:0.5px solid black;", false);
-                lignes.push_back(m_boutonsJeu);
-            }
-        }
-        cases.push_back(lignes);
+        m_boutonsJeu = boutons(colonne, ligne, "background-color:black; border:0.5px solid white;", true);
+        lignes.push_back(m_boutonsJeu);
     }
-}
-
-void Plateau::initializeVariante(unsigned int boardLength)
-{
-    vector<vector<QPushButton*>> cases;
-    for (unsigned int i = 0; i < boardLength/*game.getBoard().getBoardLength()*/; i++)
+    else if(game.getBoard().getPiece(pos).getColor() == BlackWithBall)
     {
-        vector<QPushButton*> lignes;
-        for (unsigned int j = 0; j < boardLength/*game.getBoard().getBoardLength()*/; j++)
-        {
-            /*if (i == 0 && j == 3)
-            {
-                Piece p(BlackWithBall);
-                //p.changeHasBall(true);
-                this->board_[i][j].setColor(BlackWithBall);
-                //this->opponent_.addPieceToPlayer(p);
-                //cout << p.getColor() << endl;
-            }
-            else if (i == boardLength_ - 1 && j == 3)
-            {
-                Piece p(WhiteWithBall);
-                //p.changeHasBall(true);
-                this->board_[i][j].setColor(WhiteWithBall);
-                //this->current_.addPieceToPlayer(p);
-            }
-            else if ((i == 0 && j == 1) || (i == 0 && j == boardLength_ - 2))
-            {
-                Piece p(White);
-                this->board_[i][j].setColor(White);
-                //this->current_.addPieceToPlayer(p);
-            }
-            else if ((i == boardLength_ - 1 && j == 1) || (i == boardLength_ - 1 && j == boardLength_ - 2))
-            {
-                Piece p(Black);
-                this->board_[i][j].setColor(Black);
-                //this->current_.addPieceToPlayer(p);
-            }
-            else if (i == 0 && j != 3)
-            {
-                Piece p(Black);
-                this->board_[i][j].setColor(Black);
-                //this->opponent_.addPieceToPlayer(p);
-            }
-            else if (i == boardLength_ - 1 && j != 3)
-            {
-                Piece p(White);
-                this->board_[i][j].setColor(White);
-                //this->current_.addPieceToPlayer(p);
-            }
-            else
-            {
-                Piece p(None);
-                this->board_[i][j].setColor(None);
-            }*/
-
-            //m_rect = m_plateau->addRect(QRectF(i*100 + 10, j*100 + 10, 100, 100), QPen(Qt::black, 2), QBrush(Qt::gray));
-            string nom = "m_rect";
-            if (i != boardLength/2 && j == 0)
-            {
-                //nom = nom + i + j;
-                //QGraphicsRectItem *nom = new QGraphicsRectItem();
-                m_boutonsJeu = new QPushButton(m_plateau);
-                m_boutonsJeu->setGeometry(i*100 + 10, j*100 + 10, 100, 100);
-                m_boutonsJeu->setCursor(Qt::PointingHandCursor);
-                m_boutonsJeu->setStyleSheet("background-color:black; border:0.5px solid white;");
-                lignes.push_back(m_boutonsJeu);
-                //nom = m_plateau->addRect(QRectF(i*100 + 10, j*100 + 10, 100, 100), QPen(Qt::black), QBrush(Qt::black));
-                //m_circle = m_plateau->addEllipse(QRectF(i*100 + 22.5, j*100 + 22.5, 75, 75),QPen(Qt::white), QBrush(Qt::white));
-            }
-            else if(i == boardLength/2 && j == 0)
-            {
-                //m_rect = m_plateau->addRect(QRectF(i*100 + 10, j*100 + 10, 100, 100), QPen(Qt::black), QBrush(Qt::white));
-
-                m_boutonsJeu = new QPushButton(m_plateau);
-                m_boutonsJeu->setGeometry(i*100+10, j*100+10, 100, 100);
-                //m_circle = m_plateau->addEllipse(QRectF(i*100 + 10, j*100 + 10, 75, 75));
-                //m_boutonJeu->setIcon(QIcon("/Users/simon/Downloads/kindpng_1528880.png"));
-                m_boutonsJeu->setCursor(Qt::PointingHandCursor);
-                m_boutonsJeu->setStyleSheet("background-color:black; border:0.5px solid white; border-radius: 50px;");
-                lignes.push_back(m_boutonsJeu);
-            }
-            else if(i != boardLength/2 && j == boardLength-1)
-            {
-                m_boutonsJeu = new QPushButton(m_plateau);
-                m_boutonsJeu->setGeometry(i*100+10, j*100+10, 100, 100);
-                //m_circle = m_plateau->addEllipse(QRectF(i*100 + 10, j*100 + 10, 75, 75));
-                m_boutonsJeu->setCursor(Qt::PointingHandCursor);
-                m_boutonsJeu->setStyleSheet("background-color:white; border:0.5px solid black;");
-                lignes.push_back(m_boutonsJeu);
-            }
-            else if(i == boardLength/2 && j == boardLength-1)
-            {
-                m_boutonsJeu = new QPushButton(m_plateau);
-                m_boutonsJeu->setGeometry(i*100+10, j*100+10, 100, 100);
-                //m_circle = m_plateau->addEllipse(QRectF(i*100 + 10, j*100 + 10, 75, 75));
-                //m_boutonJeu->setIcon(QIcon("/Users/simon/Downloads/plain-circle-pngrepo-com.png"));
-                m_boutonsJeu->setCursor(Qt::PointingHandCursor);
-                m_boutonsJeu->setStyleSheet("background-color:white; border:0.5px solid black; border-radius: 50px;");
-                lignes.push_back(m_boutonsJeu);
-            }
-            else
-            {
-                m_boutonsJeu = new QPushButton(m_plateau);
-                m_boutonsJeu->setGeometry(i*100+10, j*100+10, 100, 100);
-                //m_circle = m_plateau->addEllipse(QRectF(i*100 + 10, j*100 + 10, 75, 75));
-                //m_boutonJeu->setCursor(Qt::PointingHandCursor);
-                m_boutonsJeu->setStyleSheet("background-color:grey; border:0.5px solid black;");
-                lignes.push_back(m_boutonsJeu);
-            }
-        }
-        cases.push_back(lignes);
+        m_boutonsJeu = boutons(colonne, ligne, "background-color:black; border:0.5px solid white; border-radius: 50px;", true);
+        lignes.push_back(m_boutonsJeu);
     }
-}
-
-void Plateau::infosJeu(string currentPlayer/*, QGraphicsRectItem currentPlayerColor*/)
-{
-    m_infosScene = new QGraphicsScene(QRectF(720, 0, 100, 720));
-    m_infosJeu = new QGraphicsView(m_infosScene);
-    // rajouter les boutons nécessaires et le texte dans m_options
-    m_finDeTour = new QPushButton("Fin de tour", m_infosJeu);
-    m_finDeTour->move(45, 50);
-    m_finDeTour->setMinimumWidth(120);
-    m_finDeTour->setMinimumWidth(120);
-    QLabel *playerName = new QLabel(currentPlayer.c_str());
-    m_texteTour = new QLabel("Au tour de " + playerName->text() , m_infosJeu);
-    m_texteTour->move(55, 30);
-    QObject::connect(m_finDeTour, SIGNAL(clicked()), qApp, SLOT(quit()));
-    m_layout->addWidget(m_plateau, 780);
-    m_layout->addWidget(m_infosJeu, 320);
+    else if(game.getBoard().getPiece(pos).getColor() == White)
+    {
+        m_boutonsJeu = boutons(colonne, ligne, "background-color:white; border:0.5px solid black;", true);
+        lignes.push_back(m_boutonsJeu);
+    }
+    else if(game.getBoard().getPiece(pos).getColor() == WhiteWithBall)
+    {
+        m_boutonsJeu = boutons(colonne, ligne, "background-color:white; border:0.5px solid black; border-radius: 50px;", true);
+        lignes.push_back(m_boutonsJeu);
+    }
+    else if(game.getBoard().getPiece(pos).getColor() == WhiteSelected)
+    {
+        m_boutonsJeu = boutons(colonne, ligne, "background-color:white; border:0.5px solid black; border-radius: 50px;", true);
+        lignes.push_back(m_boutonsJeu);
+    }
+    else if(game.getBoard().getPiece(pos).getColor() == WhiteWithBallSelected)
+    {
+        m_boutonsJeu = boutons(colonne, ligne, "background-color:white; border:0.5px solid black; border-radius: 50px;", true);
+        lignes.push_back(m_boutonsJeu);
+    }
+    else if(game.getBoard().getPiece(pos).getColor() == BlackSelected)
+    {
+        m_boutonsJeu = boutons(colonne, ligne, "background-color:white; border:0.5px solid black; border-radius: 50px;", true);
+        lignes.push_back(m_boutonsJeu);
+    }
+    else if(game.getBoard().getPiece(pos).getColor() == BlackWithBallSelected)
+    {
+        m_boutonsJeu = boutons(colonne, ligne, "background-color:white; border:0.5px solid black; border-radius: 50px;", true);
+        lignes.push_back(m_boutonsJeu);
+    }
+    else if(game.getBoard().getPiece(pos).getColor() == PassBlack)
+    {
+        m_boutonsJeu = boutons(colonne, ligne, "background-color:white; border:0.5px solid black; border-radius: 50px;", true);
+        lignes.push_back(m_boutonsJeu);
+    }
+    else if(game.getBoard().getPiece(pos).getColor() == PassWhite)
+    {
+        m_boutonsJeu = boutons(colonne, ligne, "background-color:white; border:0.5px solid black; border-radius: 50px;", true);
+        lignes.push_back(m_boutonsJeu);
+    }
+    else if(game.getBoard().getPiece(pos).getColor() == Destination)
+    {
+        m_boutonsJeu = boutons(colonne, ligne, "background-color:white; border:0.5px solid black; border-radius: 50px;", true);
+        lignes.push_back(m_boutonsJeu);
+    }
+    else
+    {
+        m_boutonsJeu = boutons(colonne, ligne, "background-color:grey; border:0.5px solid black;", false);
+        lignes.push_back(m_boutonsJeu);
+    }
+    //return lignes;
 }

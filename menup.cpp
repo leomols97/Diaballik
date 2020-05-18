@@ -39,7 +39,16 @@ MenuP::MenuP(/*Board board*/) : QWidget()
 
 void MenuP::openGame(/*Board board*/)
 {
+    Game game;
+    if (typeOfGame(this->getGameType()->currentText().toStdString()) == 1)
+    {
+        game.initialize(1);
+    }
+    else
+    {
+        game.initialize(2);
+    }
     // Ici, faire un if avec une condition qui définit s'il faut donner en paramètre le nom du joueur 1 ou celui du joueur 2
-    Plateau *plateau = new Plateau(this->getChoixTaille()->currentText().toInt(), this->getGameType()->currentIndex(), this->getPlayer1Name()->text().toStdString()/*board*/);
+    Plateau *plateau = new Plateau(game, this->getPlayer1Name()->text().toStdString(), this->getPlayer2Name()->text().toStdString()/*this->getChoixTaille()->currentText().toInt(), this->getGameType()->currentIndex()+1, this->getPlayer1Name()->text().toStdString()*/);
     plateau->show();
 }

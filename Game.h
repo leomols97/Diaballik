@@ -44,6 +44,11 @@ namespace Diaballik
              */
             Position selected_;
 
+            /**
+             * @brief typeOfGame_ The game type
+             */
+            int typeOfGame_;
+
 
         public:
 
@@ -81,6 +86,11 @@ namespace Diaballik
                 return this->current_;
             }
 
+            inline Player getCurrentString()
+            {
+                return this->current_;
+            }
+
             /**
              * @brief getOpponent
              * @return the opponent of current_
@@ -88,6 +98,16 @@ namespace Diaballik
             inline Player getOpponent()
             {
                 return this->opponent_;
+            }
+
+            inline int getTypeOfGame()
+            {
+                return this->typeOfGame_;
+            }
+
+            inline void setTypeOfGame(int gameType)
+            {
+                typeOfGame_ = gameType;
             }
 
             /**

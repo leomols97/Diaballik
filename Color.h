@@ -15,9 +15,16 @@ namespace Diaballik
     {
         None,
         White,
+        WhiteSelected,
         WhiteWithBall,
+        WhiteWithBallSelected,
         Black,
-        BlackWithBall
+        BlackSelected,
+        BlackWithBall,
+        BlackWithBallSelected,
+        Destination,
+        PassWhite,
+        PassBlack
     };
 }
 

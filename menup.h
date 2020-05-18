@@ -14,26 +14,6 @@ namespace Diaballik
     class MenuP : public QWidget
     {
             Q_OBJECT
-        public:
-            MenuP(/*Board board*/);
-
-            inline QComboBox* getChoixTaille()
-            {
-                return choixTaille;
-            }
-
-            inline QLineEdit* getPlayer1Name()
-            {
-                return player1Name;
-            }
-
-            inline QComboBox* getGameType()
-            {
-                return gameType;
-            }
-
-        public slots:
-            void openGame(/*Board board*/);
 
         private:
             //QGraphicsView *window;
@@ -49,6 +29,45 @@ namespace Diaballik
             QLineEdit *player1Name;
             QLineEdit *player2Name;
             //Plateau *game;
+
+
+        public:
+            MenuP(/*Board board*/);
+
+            inline QComboBox* getChoixTaille()
+            {
+                return choixTaille;
+            }
+
+            inline QLineEdit* getPlayer1Name()
+            {
+                return player1Name;
+            }
+
+            inline QLineEdit* getPlayer2Name()
+            {
+                return player2Name;
+            }
+
+            inline QComboBox* getGameType()
+            {
+                return gameType;
+            }
+
+            int typeOfGame(string typeOfGame)
+            {
+                if (typeOfGame == "Normale")
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+
+        public slots:
+            void openGame(/*Board board*/);
     };
 }
 

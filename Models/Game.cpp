@@ -60,6 +60,7 @@ void Game::getPlayerPieces(Color playerColor, Position piecePosition)
  */
 void Game::initialize(int typeOfGame)
 {
+    this->setTypeOfGame(typeOfGame);
     if (typeOfGame == 1)
     {
         this->board_.initializeOriginal();
