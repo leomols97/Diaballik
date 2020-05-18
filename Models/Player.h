@@ -109,7 +109,7 @@ namespace Diaballik
              * @param color_ the color of the player
              * @return true if the color given as argument is Black or White. false otherwise
              */
-            bool isReal(Color color_);
+            bool isReal(Color &color_);
 
             /**
              * @brief allDirections
@@ -124,7 +124,7 @@ namespace Diaballik
              */
             void setColor(Color color);
 
-            void addPieceToPlayer(Piece piece);
+            void addPieceToPlayer(Piece &piece);
 
             string getPlayerColor()
             {

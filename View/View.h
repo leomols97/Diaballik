@@ -13,14 +13,14 @@ namespace Diaballik
 
         private :
 
-            Game game_;
+            Game &game_;
 
         public:
 
             /**
          * @brief View constructor of Class View
          */
-            View(Game game);
+            View(Game &game);
 
             //View(View view(Game game));
 
@@ -64,13 +64,13 @@ namespace Diaballik
             /**
          * @brief displayBoard prints the board
          */
-            void displayBoard(Board board);
+            void displayBoard(Board &board);
 
             /**
          * @brief displayPiece prints the piece
          * @param square the square where you must print the piece
          */
-            void displayPiece(Piece piece) ;
+            void displayPiece(Piece &piece) ;
 
             //void displayOver(vector<Player> winners) ;
 
@@ -96,9 +96,9 @@ namespace Diaballik
          * @brief displayCurrentPlayer prints the player that must play
          * @param player the player to print
          */
-            void displayCurrentPlayer(Player player) ;
+            void displayCurrentPlayer(Player &player) ;
 
-            void displayLine(unsigned int row, Board board);
+            void displayLine(unsigned int row, Board &board);
 
             void askWhichGame();
 

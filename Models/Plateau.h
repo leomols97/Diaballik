@@ -37,11 +37,11 @@ namespace Diaballik
             QVBoxLayout *organiser;
             QPushButton *m_finDeTour;
 
-            void addLign(unsigned int i, unsigned int j, vector<QPushButton*> lignes, Game game);
+            void addLign(unsigned int i, unsigned int j, vector<QPushButton*> lignes, Game &game);
 
             QPushButton *boutons(unsigned int i, unsigned int j, QString style, bool clickable);
 
-            void buttons(Game game);
+            void buttons(Game &game);
 
             void windowLength (unsigned int windowLength);
 
@@ -50,7 +50,7 @@ namespace Diaballik
 
         public:
 
-            Plateau(Game &game, string player1, string player2/*unsigned int windowLength, int typeOfGame, string m_currentPlayer*/);
+            Plateau(Game &game, const string &player1, const string &player2/*unsigned int windowLength, int typeOfGame, string m_currentPlayer*/);
 
             QLabel * getCurrent()
             {
@@ -62,11 +62,13 @@ namespace Diaballik
                 m_currentPlayer = playerName;
             }
 
+            void selectPiece(Game &game, Position &position);
+
         public slots:
 
             //void swapPlayer();
 
-            void showWinner(Game game);
+            void showWinner(Game &game);
     };
 }
 

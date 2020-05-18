@@ -45,13 +45,13 @@ namespace Diaballik
              * @param direction the direction of the move
              * @return the ending position
              */
-            Position next(Position position, Direction direction) const;
+            Position &next(Position position, Direction direction);
 
             /**
              * @brief getRow
              * @return the row of the position
              */
-            inline int getRow()
+            inline int getRow() const
             {
                 return this->row_;
             }
@@ -60,7 +60,7 @@ namespace Diaballik
              * @brief getColumn
              * @return the column of the position
              */
-            inline int getColumn()
+            inline int getColumn() const
             {
                 return this->column_;
             }
@@ -91,7 +91,7 @@ namespace Diaballik
              * @param direction the direction we move
              * @return the ending position
              */
-            Position whichEndingPosition(Position position, Direction direction) const;
+            Position whichEndingPosition(Position &position, Direction &direction);
     };
 }
 

@@ -26,17 +26,17 @@ namespace Diaballik
             /**
              * @brief piece_ the piece we have to move
              */
-            Piece piece_;
+            Piece &piece_;
 
             /**
              * @brief start_ the starting position
              */
-            Position start_;
+            Position &start_;
 
             /**
              * @brief end_ the ending position
              */
-            Position end_;
+            Position &end_;
 
 
         public:
@@ -47,13 +47,13 @@ namespace Diaballik
              * @param start_ the starting position
              * @param end_ the ending position
              */
-            Move(Piece piece_, Position start_, Position end_);
+            Move(Piece &piece_, Position &start_, Position &end_);
 
             /**
              * @brief getPiece
              * @return the piece we have to move
              */
-            inline Piece getPiece() const
+            inline Piece &getPiece() const
             {
                 return this->piece_;
             }
@@ -62,7 +62,7 @@ namespace Diaballik
              * @brief getStart
              * @return the starting position
              */
-            inline Position getStart() const
+            inline Position &getStart() const
             {
                 return this->start_;
             }
@@ -71,7 +71,7 @@ namespace Diaballik
              * @brief getEnd
              * @return the ending position
              */
-            inline Position getEnd() const
+            inline Position &getEnd() const
             {
                 return this->end_;
             }

@@ -1,6 +1,7 @@
 #include "Plateau.h"
 #include "Game.h"
 #include "menup.h"
+#include "Observer/Observer.h"
 #include <string>
 
 using namespace std;
@@ -22,92 +23,20 @@ void Plateau::windowLength(unsigned int boardLength)
     }
 }
 
-Plateau::Plateau(Game &game, string player1, string player2/*unsigned int boardLength, int typeOfGame, string currentPlayer*/) : QWidget()
+Plateau::Plateau(Game &game, const string &player1, const string &player2/*unsigned int boardLength, int typeOfGame, string currentPlayer*/) : QWidget()
 {
     windowLength(game.getBoard().getBoardLength());
     m_black = new QGraphicsRectItem();
     m_white = new QGraphicsRectItem();
+    //cout << "1111 " << endl;
     m_jeu = new QGraphicsScene();
     m_plateau = new QGraphicsView(m_plateau);
     m_layout = new QHBoxLayout(this);
-    //buttons(game);
-    vector<vector<QPushButton*>> cases;
-    for (unsigned int i = 0; i < game.getBoard().getBoardLength(); i++)
-    {
-        vector<QPushButton*> lignes;
-        for (unsigned int j = 0; j < game.getBoard().getBoardLength(); j++)
-        {
-            //addLign(i, j, lignes, game);
-            Position pos(i, j);
-            cout << "1111 " << game.getBoard().getPiece(pos).getColor() << endl;
-            if (game.getBoard().getPiece(pos).getColor() == Black)
-            {
-                m_boutonsJeu = boutons(j, i, "background-color:black; border:0.5px solid white;", true);
-                lignes.push_back(m_boutonsJeu);
-            }
-            else if(game.getBoard().getPiece(pos).getColor() == BlackWithBall)
-            {
-                m_boutonsJeu = boutons(j, i, "background-color:black; border:0.5px solid white; border-radius: 50px;", true);
-                lignes.push_back(m_boutonsJeu);
-            }
-            else if(game.getBoard().getPiece(pos).getColor() == White)
-            {
-                m_boutonsJeu = boutons(j, i, "background-color:white; border:0.5px solid black;", true);
-                lignes.push_back(m_boutonsJeu);
-            }
-            else if(game.getBoard().getPiece(pos).getColor() == WhiteWithBall)
-            {
-                m_boutonsJeu = boutons(j, i, "background-color:white; border:0.5px solid black; border-radius: 50px;", true);
-                lignes.push_back(m_boutonsJeu);
-            }
-            else if(game.getBoard().getPiece(pos).getColor() == WhiteSelected)
-            {
-                m_boutonsJeu = boutons(j, i, "background-color:white; border:0.5px solid black; border-radius: 50px;", true);
-                lignes.push_back(m_boutonsJeu);
-            }
-            else if(game.getBoard().getPiece(pos).getColor() == WhiteWithBallSelected)
-            {
-                m_boutonsJeu = boutons(j, i, "background-color:white; border:0.5px solid black; border-radius: 50px;", true);
-                lignes.push_back(m_boutonsJeu);
-            }
-            else if(game.getBoard().getPiece(pos).getColor() == BlackSelected)
-            {
-                m_boutonsJeu = boutons(j, i, "background-color:white; border:0.5px solid black; border-radius: 50px;", true);
-                lignes.push_back(m_boutonsJeu);
-            }
-            else if(game.getBoard().getPiece(pos).getColor() == BlackWithBallSelected)
-            {
-                m_boutonsJeu = boutons(j, i, "background-color:white; border:0.5px solid black; border-radius: 50px;", true);
-                lignes.push_back(m_boutonsJeu);
-            }
-            else if(game.getBoard().getPiece(pos).getColor() == PassBlack)
-            {
-                m_boutonsJeu = boutons(j, i, "background-color:white; border:0.5px solid black; border-radius: 50px;", true);
-                lignes.push_back(m_boutonsJeu);
-            }
-            else if(game.getBoard().getPiece(pos).getColor() == PassWhite)
-            {
-                m_boutonsJeu = boutons(j, i, "background-color:white; border:0.5px solid black; border-radius: 50px;", true);
-                lignes.push_back(m_boutonsJeu);
-            }
-            else if(game.getBoard().getPiece(pos).getColor() == Destination)
-            {
-                m_boutonsJeu = boutons(j, i, "background-color:white; border:0.5px solid black; border-radius: 50px;", true);
-                lignes.push_back(m_boutonsJeu);
-            }
-            else
-            {
-                m_boutonsJeu = boutons(j, i, "background-color:grey; border:0.5px solid black;", false);
-                lignes.push_back(m_boutonsJeu);
-            }
-            cout << "1111 " << game.getBoard().getPiece(pos).getColor() << endl;
-        }
-        cases.push_back(lignes);
-    }
+    buttons(game);
     infosJeu(game.getCurrent().getPlayerColor());
 }
 
-void Plateau::buttons(Game game)
+void Plateau::buttons(Game &game)
 {
     vector<vector<QPushButton*>> cases;
     for (unsigned int i = 0; i < game.getBoard().getBoardLength(); i++)
@@ -148,7 +77,7 @@ void Plateau::infosJeu(string currentPlayer/*, QGraphicsRectItem currentPlayerCo
     getOpponent = provisoire;
 }*/
 
-void Plateau::showWinner(Game game)
+void Plateau::showWinner(Game &game)
 {
     QMessageBox msgBox;
     msgBox.setWindowTitle("Recommencer");
@@ -181,8 +110,9 @@ QPushButton *Plateau::boutons(unsigned int i, unsigned int j, QString style, boo
     return m_boutonsJeu;
 }
 
-void Plateau::addLign(unsigned int colonne, unsigned int ligne, vector<QPushButton*> lignes, Game game)
+void Plateau::addLign(unsigned int colonne, unsigned int ligne, vector<QPushButton*> lignes, Game &game)
 {
+    cout << "111" << endl;
     Position pos(ligne, colonne);
     if (game.getBoard().getPiece(pos).getColor() == Black)
     {
@@ -245,4 +175,31 @@ void Plateau::addLign(unsigned int colonne, unsigned int ligne, vector<QPushButt
         lignes.push_back(m_boutonsJeu);
     }
     //return lignes;
+}
+
+void Plateau::selectPiece(Game &game, Position &position)
+{
+    game.select(position.getRow(), position.getColumn());
+    if (game.getCurrent().getColor() == White)
+    {
+        if(game.getPieceSelected().getColor() == WhiteWithBall)
+        {
+            game.getPieceSelected().setColor(WhiteWithBallSelected);
+        }
+        else if(game.getPieceSelected().getColor() == White)
+        {
+            game.getPieceSelected().setColor(WhiteSelected);
+        }
+    }
+    else if (game.getCurrent().getColor() == Black)
+    {
+        if(game.getPieceSelected().getColor() == BlackWithBall)
+        {
+            game.getPieceSelected().setColor(BlackWithBallSelected);
+        }
+        else if(game.getPieceSelected().getColor() == Black)
+        {
+            game.getPieceSelected().setColor(BlackSelected);
+        }
+    }
 }

@@ -29,12 +29,12 @@ namespace Diaballik
         /**
          * @brief game_ a new game to start
          */
-        Game game_;
+        Game &game_;
 
         /**
          * @brief view_ all the text we will display on the terminal
          */
-        View view_;
+        View &view_;
 
         public:
 

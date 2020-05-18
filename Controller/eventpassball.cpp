@@ -1,6 +1,6 @@
 #include "eventpassball.h"
 
-EventPassBall::EventPassBall(Game game) : game_(game)
+EventPassBall::EventPassBall(Game &game) : game_(game)
 {
 
 }

@@ -44,7 +44,7 @@ namespace Diaballik
             * @param position the position where to find a piece
             * @return the piece found of there's one on it
             */
-           Piece getPiece(Position &position);
+           Piece &getPiece(Position position);
 
            /**
             * @brief getBoard Gets the vector of vector
@@ -70,14 +70,14 @@ namespace Diaballik
             * @param position the position to verify
             * @return true if the position is inside and false otherwise
             */
-           bool isInside(Position &position) const;
+           bool isInside(const Position &position);
 
            /**
             * @brief isFree Verifies if a position contains a piece or not
             * @param position the position to verify
             * @return true if there's no piece on it and false otherwise
             */
-           bool isFree(Position &position);
+           bool isFree(Position position);
 
            /**
             * @brief isEmpty Verifies if the board is empty or not (for the initialization of the board)
@@ -111,13 +111,13 @@ namespace Diaballik
             * @param color the color of the current player
             * @return true if it the piece belongs to him and false else
             */
-           bool isMyOwn(Position &position, Color &color);
+           bool isMyOwn(Position position, Color color);
 
            void initializeOriginal();
 
            void initializeVariante();
 
-           void applyPass(Position &positionThatGives, Position &positionThatReceives, Color &playerColor);
+           void applyPass(Position &positionThatGives, Position &positionThatReceives, Color playerColor);
    };
 }
 

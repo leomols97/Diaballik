@@ -35,59 +35,52 @@ Board::Board(unsigned int boardLength) :
 
 void Board::initializeOriginal()
 {
-    cout << "AAAA" << endl;
     vector<vector<Piece>> row;
     for (unsigned int i = 0; i < boardLength_; i++)
     {
-        cout << "BBBB" << endl;
         vector<Piece> columns;
         for (unsigned int j = 0; j < boardLength_; j++)
         {
             Position position(i, j);
             try
             {
-                cout << "i : " << i << " ; j : " << j << endl;
-                if (i == 0 && j == 3)
+                if (i == 0 && j == boardLength_/2)
                 {
-                    cout << "DDDD" << endl;
                     Piece p(BlackWithBall);
                     columns.push_back(p);
                     //p.changeHasBall(true);
-                    //this->board_.at(i).at(j).setColor(BlackWithBall);
-
+                    this->board_.at(i).at(j).setColor(BlackWithBall);
                     //this->opponent_.addPieceToPlayer(p);
                     //cout << p.getColor() << endl;
                 }
-                else if (i == boardLength_ - 1 && j == 3)
+                else if (i == boardLength_ - 1 && j == boardLength_/2)
                 {
-                    cout << "EEEE" << endl;
                     Piece p(WhiteWithBall);
                     columns.push_back(p);
                     //p.changeHasBall(true);
-                    //this->board_.at(i).at(j).setColor(WhiteWithBall);
+                    this->board_.at(i).at(j).setColor(WhiteWithBall);
                     //this->current_.addPieceToPlayer(p);
                 }
-                else if (i == 0 && j != 3)
+                else if (i == 0 && j != boardLength_/2)
                 {
                     Piece p(Black);
                     columns.push_back(p);
                     //this->put(Black, position);
+                    this->board_.at(i).at(j).setColor(Black);
                     //cout << "this->board_[i][j].getColor : " << this->board_[i][j].getColor() << endl;
                     //this->board_[i][j].setColor(Black);
-                    cout << "FFFF" << endl;
                     //this->opponent_.addPieceToPlayer(p);
                 }
-                else if (i == boardLength_ - 1 && j != 3)
+                else if (i == boardLength_ - 1 && j != boardLength_/2)
                 {
-                    cout << "GGGG" << endl;
                     Piece p(White);
                     columns.push_back(p);
+                    this->board_.at(i).at(j).setColor(White);
                     //this->board_.at(i).at(j).setColor(White);
                     //this->current_.addPieceToPlayer(p);
                 }
                 else
                 {
-                    cout << "HHHH" << endl;
                     Piece p(None);
                     columns.push_back(p);
                     //this->board_.at(i).at(j).setColor(None);
@@ -108,7 +101,7 @@ void Board::initializeVariante()
     {
         for (unsigned int j = 0; j < boardLength_; j++)
         {
-            if (i == 0 && j == 3)
+            if (i == 0 && j == boardLength_/2)
             {
                 //Piece p(BlackWithBall);
                 //p.changeHasBall(true);
@@ -116,7 +109,7 @@ void Board::initializeVariante()
                 //this->opponent_.addPieceToPlayer(p);
                 //cout << p.getColor() << endl;
             }
-            else if (i == boardLength_ - 1 && j == 3)
+            else if (i == boardLength_ - 1 && j == boardLength_/2)
             {
                 //Piece p(WhiteWithBall);
                 //p.changeHasBall(true);
@@ -135,13 +128,13 @@ void Board::initializeVariante()
                 this->board_[i][j].setColor(Black);
                 //this->current_.addPieceToPlayer(p);
             }
-            else if (i == 0 && j != 3)
+            else if (i == 0 && j != boardLength_/2)
             {
                 //Piece p(Black);
                 this->board_[i][j].setColor(Black);
                 //this->opponent_.addPieceToPlayer(p);
             }
-            else if (i == boardLength_ - 1 && j != 3)
+            else if (i == boardLength_ - 1 && j != boardLength_/2)
             {
                 //Piece p(White);
                 this->board_[i][j].setColor(White);
@@ -170,7 +163,7 @@ void Board::initializeVariante()
  * @param position
  * @return boolean
  */
-bool Board::isInside(Position &position) const
+bool Board::isInside(const Position &position)
 {
     /*return ((pos.getColumn() >= 0 && static_cast<unsigned>(pos.getColumn()) < board_.size() )
             && static_cast<unsigned>(pos.getRow()) < board_[0].size() && pos.getRow() >= 0);*/
@@ -185,7 +178,7 @@ bool Board::isInside(Position &position) const
  * @param position
  * @return Piece
  */
-Piece Board::getPiece(Position &position)
+Piece &Board::getPiece(Position position)
 {
     //cout << "pos row : " << position.getRow();
     //cout << " ; col : " << position.getColumn() << endl;
@@ -208,7 +201,7 @@ Piece Board::getPiece(Position &position)
  * @param position
  * @return boolean
  */
-bool Board::isFree(Position &position)
+bool Board::isFree(Position position)
 {
     if (!isInside(position))
     {
@@ -248,7 +241,7 @@ void Board::put(Color &color, Position &position)
     this->board_[position.getRow()][position.getColumn()].setColor(color);
 }
 
-bool Board::isMyOwn(Position &position, Color &color) // gérer les couleurs avec white et whitewithball et black et blackwithball
+bool Board::isMyOwn(Position position, Color color) // gérer les couleurs avec white et whitewithball et black et blackwithball
 {
     return getPiece(position).getColor() == color;
 }
@@ -288,7 +281,7 @@ void Board::remove(Position &position)
     this->board_[position.getRow()][position.getColumn()].setColor(None);
 }
 
-void Board::applyPass(Position &positionThatGives, Position &positionThatReceives, Color &playerColor)
+void Board::applyPass(Position &positionThatGives, Position &positionThatReceives, Color playerColor)
 {
     if(playerColor == White)
     {

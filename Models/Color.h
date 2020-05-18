@@ -23,6 +23,7 @@ namespace Diaballik
         BlackWithBall,
         BlackWithBallSelected,
         Destination,
+        // Les pièces qui peuvent recevoir la balle lors d'une passe
         PassWhite,
         PassBlack
     };

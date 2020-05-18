@@ -63,7 +63,7 @@ namespace Diaballik
              * @brief getBoard
              * @return the board on which we play
              */
-            inline Board getBoard()
+            inline Board &getBoard()
             {
                 return this->board_;
             }
@@ -72,7 +72,7 @@ namespace Diaballik
              * @brief getSelected
              * @return the position selected by the user
              */
-            inline Position getPositionSelected()
+            inline Position &getPositionSelected()
             {
                 return this->selected_;
             }
@@ -81,12 +81,7 @@ namespace Diaballik
              * @brief getCurrent
              * @return the player currently playing
              */
-            inline Player getCurrent()
-            {
-                return this->current_;
-            }
-
-            inline Player getCurrentString()
+            inline Player &getCurrent()
             {
                 return this->current_;
             }
@@ -95,7 +90,7 @@ namespace Diaballik
              * @brief getOpponent
              * @return the opponent of current_
              */
-            inline Player getOpponent()
+            inline Player &getOpponent()
             {
                 return this->opponent_;
             }
@@ -171,47 +166,47 @@ namespace Diaballik
              * @param selected_ the position selected by the user
              * @return the list of moves available for current_
              */
-            vector<Move> getMoves(Position selected_);
+            vector<Move> getMoves(Position &selected_);
 
             /**
              * @brief getPossiblePasses
              * @param selected_ the position selected by the user
              * @return the list of positions where we can throw the ball
              */
-            vector<Position> getPossiblePasses(Position selected_);
+            vector<Position> getPossiblePasses(Position &selected);
 
             /**
              * @brief getNbMoves
              * @param player the player we want to verify
              * @return the number of moves of a player
              */
-            int getNbMoves(Player player);
+            int getNbMoves(Player &player);
 
             /**
              * @brief getNbMoves
              * @param selected the position we want to verify
              * @return the number of moves of a player
              */
-            int getNbMoves(Position selected);
+            int getNbMoves(Position &selected);
 
             /**
              * @brief apply applies the move
              * @param move the move we have to apply
              */
-            void apply(Move move);
+            void apply(Move &move);
 
             /**
              * @brief applyPass applies the pass
              * @param move the pass we have to apply
              */
-            void applyPass(Position positionThatGives, Position positionThatReceives);
+            void applyPass(Position &positionThatGives, Position &positionThatReceives);
 
             /**
              * @brief hasMoves
              * @param player the player we want to verify
              * @return true if the player still has moves to do
              */
-            bool hasMoves(Player player);
+            bool hasMoves(Player &player);
 
             /**
              * @brief allDirections
@@ -224,21 +219,21 @@ namespace Diaballik
              * @param pos the position we want to verify
              * @return true if a pass is possible at this position
              */
-            bool canPassBall(Position pos);
+            bool canPassBall(Position &pos);
 
             //void passBall(Position pos);
 
-            void getPasses(vector<Position> list) const;
+            void getPasses(vector<Position> &list) const;
 
             void passeList(vector<Position> &list) const;
 
             void changePlayer();
 
-            bool sameColors(Color pieceColor, Color color);
+            bool sameColors(Color &pieceColor, Color color);
 
-            bool isMyPiece(Position pos);
+            bool isMyPiece(Position &pos);
 
-            void getPlayerPieces(Color playerColor, Position piecePosition);
+            void getPlayerPieces(Color &playerColor, Position &piecePosition);
 
             //int typeOfGame(View view);
     };

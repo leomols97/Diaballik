@@ -3,7 +3,7 @@
 using namespace Diaballik;
 
 
-Controller::Controller(Game game, View view) :
+Controller::Controller(Game &game, View &view) :
     game_(game),
     view_(view)
 {

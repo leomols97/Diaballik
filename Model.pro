@@ -26,8 +26,8 @@ HEADERS += \
 #    View.h \
     Observer/Subject.h \
     View/View.h \
-    Models/mafenetre.h \
-    Models/menup.h \
+#    Models/mafenetre.h \
+    menup.h \
 
 #    mafenetre.h \
 
@@ -50,7 +50,7 @@ SOURCES += \
 #        Player.cpp \
 #        Position.cpp \
 #        View.cpp \
-    Models/mafenetre.cpp \
+#        Models/mafenetre.cpp \
         View/View.cpp \
         Observer/Subject.cpp \
 #        Models/main.cpp \
@@ -58,7 +58,7 @@ SOURCES += \
         mainFX.cpp \
         menup.cpp \
 
-        Models/mafenetre.cpp \
+#        Models/mafenetre.cpp \
 
 
 QT += widgets

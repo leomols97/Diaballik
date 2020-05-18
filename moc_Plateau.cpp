@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Diaballik__Plateau_t {
     QByteArrayData data[5];
-    char stringdata0[41];
+    char stringdata0[42];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -34,11 +34,11 @@ static const qt_meta_stringdata_Diaballik__Plateau_t qt_meta_stringdata_Diaballi
 QT_MOC_LITERAL(0, 0, 18), // "Diaballik::Plateau"
 QT_MOC_LITERAL(1, 19, 10), // "showWinner"
 QT_MOC_LITERAL(2, 30, 0), // ""
-QT_MOC_LITERAL(3, 31, 4), // "Game"
-QT_MOC_LITERAL(4, 36, 4) // "game"
+QT_MOC_LITERAL(3, 31, 5), // "Game&"
+QT_MOC_LITERAL(4, 37, 4) // "game"
 
     },
-    "Diaballik::Plateau\0showWinner\0\0Game\0"
+    "Diaballik::Plateau\0showWinner\0\0Game&\0"
     "game"
 };
 #undef QT_MOC_LITERAL

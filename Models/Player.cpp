@@ -26,7 +26,7 @@ Player::Player(Color color) :
     }
 }
 
-void Player::addPieceToPlayer(Piece piece)
+void Player::addPieceToPlayer(Piece &piece)
 {
     pieces_.push_back(piece);
 }
@@ -36,9 +36,9 @@ void Player::addPieceToPlayer(Piece piece)
  * @param color
  * @return
  */
-bool Player::isReal(Color color)
+bool Player::isReal(Color &color_)
 {
-    if (color == Black || color == White || color == BlackWithBall || color == WhiteWithBall)
+    if (color_ == Black || color_ == White || color_ == BlackWithBall || color_ == WhiteWithBall)
     {
         return true;
     }

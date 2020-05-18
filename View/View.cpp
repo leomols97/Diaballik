@@ -3,7 +3,7 @@
 using namespace Diaballik;
 
 
-View::View(Game game) :
+View::View(Game &game) :
     game_(game)
 {}
 
@@ -66,7 +66,7 @@ string View::askCommand()
     return command;
 }
 
-void View::displayLine(unsigned int row, Board board)
+void View::displayLine(unsigned int row, Board &board)
 {
     for (unsigned int j = 0; j < board.getBoard().size(); j++)
     {
@@ -77,7 +77,7 @@ void View::displayLine(unsigned int row, Board board)
     }
 }
 
-void displayTopLines(Board board)
+void displayTopLines(Board &board)
 {
     cout << " col#\t|| ";
     for (unsigned int i = 0; i < board.getBoard().size(); i++)
@@ -93,7 +93,7 @@ void displayTopLines(Board board)
     cout << endl;
 }
 
-void View::displayBoard(Board board)
+void View::displayBoard(Board &board)
 {
     //cout << " col#\t||  | 0 |  | 1 |  | 2 |  | 3 |  | 4 |  | 5 |  | 6 |" << endl; // à mettre dans un for dans une autre fonction
     //cout << "===========================================================" << endl; // à mettre dans le même for
@@ -107,7 +107,7 @@ void View::displayBoard(Board board)
     cout << endl;
 }
 
-void View::displayPiece(Piece piece)
+void View::displayPiece(Piece &piece)
 {
     // je voudrais afficher la piece séelctionnée de manière différente (par exemple "=W=" au lieu de " W ")
     // ==> si la piece "piece" est la piece sélectionnée alors...
@@ -170,7 +170,7 @@ void View::displayPasses(vector<Position> passes)
     }
 }
 
-void View::displayCurrentPlayer(Player player)
+void View::displayCurrentPlayer(Player &player)
 {
     if(player.getColor() == White)
         cout << "\nAu tour des Blancs\n" << endl;

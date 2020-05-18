@@ -25,7 +25,7 @@ Game::Game(unsigned int size) :
     delete &board_;
 }*/
 
-void Game::getPlayerPieces(Color playerColor, Position piecePosition)
+void Game::getPlayerPieces(Color &playerColor, Position &piecePosition)
 {
     if (playerColor == White)
     {
@@ -74,8 +74,8 @@ void Game::initialize(int typeOfGame)
         for (unsigned int j = 0; j < this->board_.getBoard()[i].size(); j++)
         {
             Position position (i, j);
-            getPlayerPieces(this->current_.getColor(), position);
-            getPlayerPieces(this->opponent_.getColor(), position);
+            //getPlayerPieces(this->current_.getColor(), position);
+            //getPlayerPieces(this->opponent_.getColor(), position);
         }
     }
 }
@@ -180,7 +180,7 @@ void Game::passBall(Piece pieceThatReceive, Position pos)
     }
 }*/
 
-bool Game::canPassBall(Position pos)
+bool Game::canPassBall(Position &pos)
 {
     bool found = false;
     for (unsigned i = 0; i < allDirections().size(); i++)
@@ -234,8 +234,8 @@ bool Game::fairPlay()
         {
             pos = {static_cast<int>(i), 0};
             found = true;
-            if(this->board_.isInside({static_cast<int>(i)+1, 0})
-                    && this->board_.isMyOwn({static_cast<int>(i)+1, 0}, current_.getColor()))
+            if(this->board_.isInside(Position(pos.getRow()+1, 0))
+                    && this->board_.isMyOwn(Position(pos.getRow()+1, 0), current_.getColor()))
             {
                 count++;
             }
@@ -371,7 +371,7 @@ vector<Move> Game::getMoves(){
  * @param selected
  * @return List<Move>
  */
-vector<Move> Game::getMoves(Position selected)
+vector<Move> Game::getMoves(Position &selected)
 {
     try
     {
@@ -436,7 +436,7 @@ vector<Move> Game::getMoves(Position selected)
 
 }
 
-vector<Position> Game::getPossiblePasses(Position selected)
+vector<Position> Game::getPossiblePasses(Position &selected)
 {
     try
     {
@@ -498,7 +498,7 @@ vector<Position> Game::getPossiblePasses(Position selected)
 /**
  * @return int
  */
-int Game::getNbMoves(Player player)
+int Game::getNbMoves(Player &player)
 {
     int nbMoves = 0;
     Position selected(0, 0);
@@ -531,7 +531,7 @@ int Game::getNbMoves(Player player)
     return nbMoves;
 }
 
-int Game::getNbMoves(Position selected)
+int Game::getNbMoves(Position &selected)
 {
     int nbMoves = 0;
     vector<Direction> directions;
@@ -559,7 +559,7 @@ int Game::getNbMoves(Position selected)
  * @param move
  * @return void
  */
-void Game::apply(Move move)
+void Game::apply(Move &move)
 {
     Piece piece(this->board_.getPiece(move.getStart()).getColor());
     if (this->board_.isFree(move.getEnd()))
@@ -574,7 +574,7 @@ void Game::apply(Move move)
  * @param move
  * @return void
  */
-void Game::applyPass(Position positionThatGives, Position positionThatReceives)
+void Game::applyPass(Position &positionThatGives, Position &positionThatReceives)
 {
     if (canPassBall(positionThatGives))
     {
@@ -593,7 +593,7 @@ Piece Game::getPieceSelected()
  * @param player
  * @return boolean
  */
-bool Game::hasMoves(Player player)
+bool Game::hasMoves(Player &player)
 {
     return player.getNbMoves() > 0;
 }
@@ -639,12 +639,12 @@ void Game::changePlayer()
     }
 }
 
-bool Game::sameColors(Color pieceColor, Color color)
+bool Game::sameColors(Color &pieceColor, Color color)
 {
     return pieceColor == color;
 }
 
-bool Game::isMyPiece(Position pos)
+bool Game::isMyPiece(Position &pos)
 {
     if (this->getCurrent().getColor() == White)
     {

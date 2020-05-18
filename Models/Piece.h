@@ -35,8 +35,6 @@ namespace Diaballik
 
         public:
 
-            Piece();
-
             /**
              * @brief Piece
              * @param color_ the color of the piece constucted
@@ -50,7 +48,7 @@ namespace Diaballik
              * @brief getColor
              * @return the color of the piece
              */
-            inline Color getColor()
+            inline Color &getColor()
             {
                 return this->color_;
             }
@@ -91,7 +89,7 @@ namespace Diaballik
              * @brief getReal
              * @return true if real_ is true. false otherwise
              */
-            bool getReal();
+            //bool getReal();
     };
 }
 #endif //_PIECE_H
