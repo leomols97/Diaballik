@@ -3,9 +3,48 @@
 #include "menup.h"
 #include "Observer/Observer.h"
 #include <string>
+#include "QMouseEvent"
 
 using namespace std;
 using namespace Diaballik;
+
+Plateau::Plateau(QWidget *parent) :
+    QWidget(parent),
+    ui(new Diaballik::Plateau)
+{
+    //ui->setupUi(this);
+}
+
+Plateau::~Plateau()
+{
+    delete ui;
+}
+
+void Plateau::mouseDoubleClickEvent(QMouseEvent *event)
+{
+    ui->
+    QWidget::mouseDoubleClickEvent(event);
+}
+
+void Plateau::mouseMoveEvent(QMouseEvent *event)
+{
+    QWidget::mouseMoveEvent(event);
+}
+
+void Plateau::mousePressEvent(QMouseEvent *event)
+{
+    QWidget::mousePressEvent(event);
+}
+
+void Plateau::mouseReleaseEvent(QMouseEvent *event)
+{
+    QWidget::mouseReleaseEvent(event);
+}
+
+void onMouseEvent(const QString &eventName)
+{
+
+}
 
 void Plateau::windowLength(unsigned int boardLength)
 {

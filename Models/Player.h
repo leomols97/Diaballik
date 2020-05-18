@@ -124,8 +124,16 @@ namespace Diaballik
              */
             void setColor(Color color);
 
+            /**
+             * @brief addPieceToPlayer
+             * @param piece
+             */
             void addPieceToPlayer(Piece &piece);
 
+            /**
+             * @brief getPlayerColor
+             * @return
+             */
             string getPlayerColor()
             {
                 if (color_ == White)

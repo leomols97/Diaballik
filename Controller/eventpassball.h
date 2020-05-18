@@ -9,9 +9,16 @@ class EventPassBall : public QWidget
 {
     Q_OBJECT
 private:
+    /**
+     * @brief game_ the game in which we play
+     */
     Game game_;
 
 public:
+    /**
+     * @brief EventPassBall constructs an event to pass the ball
+     * @param game_ the game in which we play
+     */
     EventPassBall(Game &game_);
 };
 

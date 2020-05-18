@@ -13,6 +13,9 @@ namespace Diaballik
 
         private :
 
+            /**
+             * @brief game_ the game in which we play
+             */
             Game &game_;
 
         public:
@@ -98,10 +101,21 @@ namespace Diaballik
          */
             void displayCurrentPlayer(Player &player) ;
 
+            /**
+             * @brief displayLine displays a row/lign
+             * @param row the row we are displaying
+             * @param board the board we want to display
+             */
             void displayLine(unsigned int row, Board &board);
 
+            /**
+             * @brief askWhichGame asks if the user wants normal or variant game
+             */
             void askWhichGame();
 
+            /**
+             * @brief askBoardLength asks the user the size of the board
+             */
             void askBoardLength();
     };
 }

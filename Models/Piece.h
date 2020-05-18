@@ -29,6 +29,9 @@ namespace Diaballik
              */
             Color color_;
 
+            /**
+             * @brief hasBall_ boolean to know if the piece has the ball
+             */
             bool hasBall_;
 
             //QGraphicsRectItem m_rect;

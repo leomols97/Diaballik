@@ -24,6 +24,7 @@ namespace Diaballik
              * @brief row_ the row of the board
              */
             int row_;
+
             /**
              * @brief column_ the column of the board
              */

@@ -29,12 +29,22 @@ namespace Diaballik
             */
            vector<vector<Piece>> board_;
 
+           /**
+            * @brief boardLength_ the length of the board
+            */
            unsigned int boardLength_;
 
        public:
 
+           /**
+            * @brief Board default constructor
+            */
            Board();
 
+           /**
+            * @brief Board constructs a board of a certain length
+            * @param boardLength the length of the board
+            */
            Board(unsigned int boardLength);
 
            //~Board();
@@ -55,11 +65,19 @@ namespace Diaballik
                return this->board_;
            }
 
+           /**
+            * @brief getBoardLength
+            * @return the length of the board
+            */
            inline unsigned int getBoardLength()
            {
                return boardLength_;
            }
 
+           /**
+            * @brief setBoardLength
+            * @param boardSize the length of the board
+            */
            inline void setBoardLength(unsigned int boardSize)
            {
                this->boardLength_ = boardSize;
@@ -113,10 +131,22 @@ namespace Diaballik
             */
            bool isMyOwn(Position position, Color color);
 
+           /**
+            * @brief initializeOriginal initializes a board for a normal game mode
+            */
            void initializeOriginal();
 
+           /**
+            * @brief initializeVariante initializes a board for a variant game mode
+            */
            void initializeVariante();
 
+           /**
+            * @brief applyPass
+            * @param positionThatGives position of the piece with the ball
+            * @param positionThatReceives position of the destination of the ball
+            * @param playerColor color of the player
+            */
            void applyPass(Position &positionThatGives, Position &positionThatReceives, Color playerColor);
    };
 }

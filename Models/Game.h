@@ -95,11 +95,19 @@ namespace Diaballik
                 return this->opponent_;
             }
 
+            /**
+             * @brief getTypeOfGame
+             * @return retuen the type of game (normal or variant)
+             */
             inline int getTypeOfGame()
             {
                 return this->typeOfGame_;
             }
 
+            /**
+             * @brief setTypeOfGame
+             * @param gameType type of the game
+             */
             inline void setTypeOfGame(int gameType)
             {
                 typeOfGame_ = gameType;
@@ -223,16 +231,43 @@ namespace Diaballik
 
             //void passBall(Position pos);
 
+            /**
+             * @brief getPasses
+             * @param list list of positions where you can do a pass
+             */
             void getPasses(vector<Position> &list) const;
 
+            /**
+             * @brief passeList
+             * @param list list of positions where you can do a pass
+             */
             void passeList(vector<Position> &list) const;
 
+            /**
+             * @brief changePlayer changes the current player
+             */
             void changePlayer();
 
+            /**
+             * @brief sameColors
+             * @param pieceColor color of the piece
+             * @param color color of the player
+             * @return true if the piece has the same color as the current player. false otherwise
+             */
             bool sameColors(Color &pieceColor, Color color);
 
+            /**
+             * @brief isMyPiece
+             * @param pos the position we analyse
+             * @return true if the position has one of the pieces of the current player
+             */
             bool isMyPiece(Position &pos);
 
+            /**
+             * @brief getPlayerPieces
+             * @param playerColor color of the player
+             * @param piecePosition position of the piece
+             */
             void getPlayerPieces(Color &playerColor, Position &piecePosition);
 
             //int typeOfGame(View view);
