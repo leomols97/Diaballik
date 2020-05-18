@@ -22,6 +22,15 @@ Piece::Piece(Color color) :
         //this->hasBall_ = false;
 }
 
+void Piece::setColor(Color color)
+{
+    cout << "2222" << endl;
+    cout << "color = " << color << endl;
+    cout << "color_ = " << color_ << endl;
+    this->color_ = color;
+    cout << "3333" << endl;
+}
+
 /**
  * @return boolean
  */
@@ -131,10 +140,7 @@ Piece::Piece(Color color) :
     return hasBall_;
 }*/
 
-void Piece::setColor(Color color)
-{
-    this->color_ = color;
-}
+
 
 /*void Piece::changeHasBall(Color color)
 {

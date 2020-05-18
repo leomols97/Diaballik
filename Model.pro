@@ -7,15 +7,15 @@ HEADERS += \
 #    Game.h \
 #    Model.h \
     Controller/eventpassball.h \
-    Board.h \
-    Color.h \
-    Direction.h \
-    Game.h \
-    Move.h \
-    Piece.h \
-    Plateau.h \
-    Player.h \
-    Position.h \
+    Models/Board.h \
+    Models/Color.h \
+    Models/Direction.h \
+    Models/Game.h \
+    Models/Move.h \
+    Models/Piece.h \
+    Models/Plateau.h \
+    Models/Player.h \
+    Models/Position.h \
 #    Move.h \
 #    Observable.h \
 #    Observer.h \
@@ -26,10 +26,10 @@ HEADERS += \
 #    View.h \
     Observer/Subject.h \
     View/View.h \
-    mafenetre.h \
-    menup.h \
+    Models/mafenetre.h \
+    Models/menup.h \
 
-    mafenetre.h \
+#    mafenetre.h \
 
 SOURCES += \
 #        Board.cpp \

@@ -263,20 +263,20 @@ DIST          = /Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/mkspecs/f
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/mkspecs/features/lex.prf \
 		Model.pro Controller/Controller.h \
 		Controller/eventpassball.h \
-		Board.h \
-		Color.h \
-		Direction.h \
-		Game.h \
-		Move.h \
-		Piece.h \
-		Plateau.h \
-		Player.h \
-		Position.h \
+		Models/Board.h \
+		Models/Color.h \
+		Models/Direction.h \
+		Models/Game.h \
+		Models/Move.h \
+		Models/Piece.h \
+		Models/Plateau.h \
+		Models/Player.h \
+		Models/Position.h \
 		Observer/Observer.h \
 		Observer/Subject.h \
 		View/View.h \
-		mafenetre.h \
-		menup.h Controller/Controller.cpp \
+		Models/mafenetre.h \
+		Models/menup.h Controller/Controller.cpp \
 		Controller/eventpassball.cpp \
 		Models/Board.cpp \
 		Models/Direction.cpp \
@@ -696,7 +696,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents Controller/Controller.h Controller/eventpassball.h Board.h Color.h Direction.h Game.h Move.h Piece.h Plateau.h Player.h Position.h Observer/Observer.h Observer/Subject.h View/View.h mafenetre.h menup.h $(DISTDIR)/
+	$(COPY_FILE) --parents Controller/Controller.h Controller/eventpassball.h Models/Board.h Models/Color.h Models/Direction.h Models/Game.h Models/Move.h Models/Piece.h Models/Plateau.h Models/Player.h Models/Position.h Observer/Observer.h Observer/Subject.h View/View.h Models/mafenetre.h Models/menup.h $(DISTDIR)/
 	$(COPY_FILE) --parents Controller/Controller.cpp Controller/eventpassball.cpp Models/Board.cpp Models/Direction.cpp Models/Game.cpp Models/Move.cpp Models/Piece.cpp Models/Player.cpp Models/Position.cpp Models/mafenetre.cpp View/View.cpp Observer/Subject.cpp Models/Plateau.cpp mainFX.cpp menup.cpp $(DISTDIR)/
 
 
@@ -740,14 +740,14 @@ moc_eventpassball.cpp: Controller/eventpassball.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
-		Game.h \
-		Move.h \
-		Position.h \
-		Direction.h \
+		Models/Game.h \
+		Models/Move.h \
+		Models/Position.h \
+		Models/Direction.h \
 		Observer/Subject.h \
 		Observer/Observer.h \
-		Piece.h \
-		Color.h \
+		Models/Piece.h \
+		Models/Color.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QtWidgets \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qabstractbutton.h \
@@ -876,14 +876,14 @@ moc_eventpassball.cpp: Controller/eventpassball.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwidgetaction.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwizard.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsversion.h \
-		Board.h \
-		Square.h \
-		Player.h \
+		Models/Board.h \
+		Models/Square.h \
+		Models/Player.h \
 		moc_predefs.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/bin/moc
 	/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/bin/moc $(DEFINES) --include /Users/leopoldmols/Documents/QTCreator/ESI/2eme/CPP/Projet/Diaballik/moc_predefs.h -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/mkspecs/macx-clang -I/Users/leopoldmols/Documents/QTCreator/ESI/2eme/CPP/Projet/Diaballik -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtGui.framework/Headers -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib Controller/eventpassball.h -o moc_eventpassball.cpp
 
-moc_Plateau.cpp: Plateau.h \
+moc_Plateau.cpp: Models/Plateau.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
@@ -1016,22 +1016,22 @@ moc_Plateau.cpp: Plateau.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwidgetaction.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwizard.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsversion.h \
-		Game.h \
-		Move.h \
-		Position.h \
-		Direction.h \
+		Models/Game.h \
+		Models/Move.h \
+		Models/Position.h \
+		Models/Direction.h \
 		Observer/Subject.h \
 		Observer/Observer.h \
-		Piece.h \
-		Color.h \
-		Board.h \
-		Square.h \
-		Player.h \
+		Models/Piece.h \
+		Models/Color.h \
+		Models/Board.h \
+		Models/Square.h \
+		Models/Player.h \
 		moc_predefs.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/bin/moc
-	/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/bin/moc $(DEFINES) --include /Users/leopoldmols/Documents/QTCreator/ESI/2eme/CPP/Projet/Diaballik/moc_predefs.h -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/mkspecs/macx-clang -I/Users/leopoldmols/Documents/QTCreator/ESI/2eme/CPP/Projet/Diaballik -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtGui.framework/Headers -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib Plateau.h -o moc_Plateau.cpp
+	/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/bin/moc $(DEFINES) --include /Users/leopoldmols/Documents/QTCreator/ESI/2eme/CPP/Projet/Diaballik/moc_predefs.h -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/mkspecs/macx-clang -I/Users/leopoldmols/Documents/QTCreator/ESI/2eme/CPP/Projet/Diaballik -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtGui.framework/Headers -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib Models/Plateau.h -o moc_Plateau.cpp
 
-moc_mafenetre.cpp: mafenetre.h \
+moc_mafenetre.cpp: Models/mafenetre.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
@@ -1179,9 +1179,9 @@ moc_mafenetre.cpp: mafenetre.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsversion.h \
 		moc_predefs.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/bin/moc
-	/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/bin/moc $(DEFINES) --include /Users/leopoldmols/Documents/QTCreator/ESI/2eme/CPP/Projet/Diaballik/moc_predefs.h -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/mkspecs/macx-clang -I/Users/leopoldmols/Documents/QTCreator/ESI/2eme/CPP/Projet/Diaballik -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtGui.framework/Headers -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib mafenetre.h -o moc_mafenetre.cpp
+	/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/bin/moc $(DEFINES) --include /Users/leopoldmols/Documents/QTCreator/ESI/2eme/CPP/Projet/Diaballik/moc_predefs.h -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/mkspecs/macx-clang -I/Users/leopoldmols/Documents/QTCreator/ESI/2eme/CPP/Projet/Diaballik -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtGui.framework/Headers -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib Models/mafenetre.h -o moc_mafenetre.cpp
 
-moc_menup.cpp: menup.h \
+moc_menup.cpp: Models/menup.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
@@ -1314,21 +1314,21 @@ moc_menup.cpp: menup.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwidgetaction.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwizard.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsversion.h \
-		Plateau.h \
-		Game.h \
-		Move.h \
-		Position.h \
-		Direction.h \
+		Models/Plateau.h \
+		Models/Game.h \
+		Models/Move.h \
+		Models/Position.h \
+		Models/Direction.h \
 		Observer/Subject.h \
 		Observer/Observer.h \
-		Piece.h \
-		Color.h \
-		Board.h \
-		Square.h \
-		Player.h \
+		Models/Piece.h \
+		Models/Color.h \
+		Models/Board.h \
+		Models/Square.h \
+		Models/Player.h \
 		moc_predefs.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/bin/moc
-	/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/bin/moc $(DEFINES) --include /Users/leopoldmols/Documents/QTCreator/ESI/2eme/CPP/Projet/Diaballik/moc_predefs.h -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/mkspecs/macx-clang -I/Users/leopoldmols/Documents/QTCreator/ESI/2eme/CPP/Projet/Diaballik -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtGui.framework/Headers -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib menup.h -o moc_menup.cpp
+	/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/bin/moc $(DEFINES) --include /Users/leopoldmols/Documents/QTCreator/ESI/2eme/CPP/Projet/Diaballik/moc_predefs.h -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/mkspecs/macx-clang -I/Users/leopoldmols/Documents/QTCreator/ESI/2eme/CPP/Projet/Diaballik -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtGui.framework/Headers -I/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib Models/menup.h -o moc_menup.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1349,14 +1349,14 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 ####### Compile
 
 Controller.o: Controller/Controller.cpp Controller/Controller.h \
-		Game.h \
-		Move.h \
-		Position.h \
-		Direction.h \
+		Models/Game.h \
+		Models/Move.h \
+		Models/Position.h \
+		Models/Direction.h \
 		Observer/Subject.h \
 		Observer/Observer.h \
-		Piece.h \
-		Color.h \
+		Models/Piece.h \
+		Models/Color.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QtWidgets \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qabstractbutton.h \
@@ -1486,9 +1486,9 @@ Controller.o: Controller/Controller.cpp Controller/Controller.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwidgetaction.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwizard.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsversion.h \
-		Board.h \
-		Square.h \
-		Player.h \
+		Models/Board.h \
+		Models/Square.h \
+		Models/Player.h \
 		View/View.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Controller.o Controller/Controller.cpp
 
@@ -1497,14 +1497,14 @@ eventpassball.o: Controller/eventpassball.cpp Controller/eventpassball.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
-		Game.h \
-		Move.h \
-		Position.h \
-		Direction.h \
+		Models/Game.h \
+		Models/Move.h \
+		Models/Position.h \
+		Models/Direction.h \
 		Observer/Subject.h \
 		Observer/Observer.h \
-		Piece.h \
-		Color.h \
+		Models/Piece.h \
+		Models/Color.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QtWidgets \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qabstractbutton.h \
@@ -1633,20 +1633,20 @@ eventpassball.o: Controller/eventpassball.cpp Controller/eventpassball.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwidgetaction.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwizard.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsversion.h \
-		Board.h \
-		Square.h \
-		Player.h
+		Models/Board.h \
+		Models/Square.h \
+		Models/Player.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o eventpassball.o Controller/eventpassball.cpp
 
-Board.o: Models/Board.cpp Board.h \
-		Position.h \
-		Direction.h \
+Board.o: Models/Board.cpp Models/Board.h \
+		Models/Position.h \
+		Models/Direction.h \
 		Observer/Subject.h \
 		Observer/Observer.h \
-		Square.h \
-		Player.h \
-		Piece.h \
-		Color.h \
+		Models/Square.h \
+		Models/Player.h \
+		Models/Piece.h \
+		Models/Color.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QtWidgets \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qabstractbutton.h \
@@ -1778,19 +1778,19 @@ Board.o: Models/Board.cpp Board.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsversion.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Board.o Models/Board.cpp
 
-Direction.o: Models/Direction.cpp Direction.h \
+Direction.o: Models/Direction.cpp Models/Direction.h \
 		Observer/Subject.h \
 		Observer/Observer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Direction.o Models/Direction.cpp
 
-Game.o: Models/Game.cpp Game.h \
-		Move.h \
-		Position.h \
-		Direction.h \
+Game.o: Models/Game.cpp Models/Game.h \
+		Models/Move.h \
+		Models/Position.h \
+		Models/Direction.h \
 		Observer/Subject.h \
 		Observer/Observer.h \
-		Piece.h \
-		Color.h \
+		Models/Piece.h \
+		Models/Color.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QtWidgets \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qabstractbutton.h \
@@ -1920,18 +1920,18 @@ Game.o: Models/Game.cpp Game.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwidgetaction.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwizard.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsversion.h \
-		Board.h \
-		Square.h \
-		Player.h
+		Models/Board.h \
+		Models/Square.h \
+		Models/Player.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Game.o Models/Game.cpp
 
-Move.o: Models/Move.cpp Move.h \
-		Position.h \
-		Direction.h \
+Move.o: Models/Move.cpp Models/Move.h \
+		Models/Position.h \
+		Models/Direction.h \
 		Observer/Subject.h \
 		Observer/Observer.h \
-		Piece.h \
-		Color.h \
+		Models/Piece.h \
+		Models/Color.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QtWidgets \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qabstractbutton.h \
@@ -2063,12 +2063,12 @@ Move.o: Models/Move.cpp Move.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsversion.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Move.o Models/Move.cpp
 
-Piece.o: Models/Piece.cpp Piece.h \
-		Color.h \
+Piece.o: Models/Piece.cpp Models/Piece.h \
+		Models/Color.h \
 		Observer/Subject.h \
 		Observer/Observer.h \
-		Position.h \
-		Direction.h \
+		Models/Position.h \
+		Models/Direction.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QtWidgets \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qabstractbutton.h \
@@ -2198,16 +2198,16 @@ Piece.o: Models/Piece.cpp Piece.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwidgetaction.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwizard.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsversion.h \
-		Player.h
+		Models/Player.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Piece.o Models/Piece.cpp
 
-Player.o: Models/Player.cpp Player.h \
-		Direction.h \
+Player.o: Models/Player.cpp Models/Player.h \
+		Models/Direction.h \
 		Observer/Subject.h \
 		Observer/Observer.h \
-		Piece.h \
-		Color.h \
-		Position.h \
+		Models/Piece.h \
+		Models/Color.h \
+		Models/Position.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QtWidgets \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qabstractbutton.h \
@@ -2339,13 +2339,13 @@ Player.o: Models/Player.cpp Player.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsversion.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Player.o Models/Player.cpp
 
-Position.o: Models/Position.cpp Position.h \
-		Direction.h \
+Position.o: Models/Position.cpp Models/Position.h \
+		Models/Direction.h \
 		Observer/Subject.h \
 		Observer/Observer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Position.o Models/Position.cpp
 
-mafenetre.o: Models/mafenetre.cpp mafenetre.h \
+mafenetre.o: Models/mafenetre.cpp Models/mafenetre.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
@@ -2494,14 +2494,14 @@ mafenetre.o: Models/mafenetre.cpp mafenetre.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mafenetre.o Models/mafenetre.cpp
 
 View.o: View/View.cpp View/View.h \
-		Game.h \
-		Move.h \
-		Position.h \
-		Direction.h \
+		Models/Game.h \
+		Models/Move.h \
+		Models/Position.h \
+		Models/Direction.h \
 		Observer/Subject.h \
 		Observer/Observer.h \
-		Piece.h \
-		Color.h \
+		Models/Piece.h \
+		Models/Color.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QtWidgets \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qabstractbutton.h \
@@ -2631,16 +2631,16 @@ View.o: View/View.cpp View/View.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwidgetaction.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwizard.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsversion.h \
-		Board.h \
-		Square.h \
-		Player.h
+		Models/Board.h \
+		Models/Square.h \
+		Models/Player.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o View.o View/View.cpp
 
 Subject.o: Observer/Subject.cpp Observer/Subject.h \
 		Observer/Observer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Subject.o Observer/Subject.cpp
 
-Plateau.o: Models/Plateau.cpp Plateau.h \
+Plateau.o: Models/Plateau.cpp Models/Plateau.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
@@ -2773,28 +2773,28 @@ Plateau.o: Models/Plateau.cpp Plateau.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwidgetaction.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwizard.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsversion.h \
-		Game.h \
-		Move.h \
-		Position.h \
-		Direction.h \
+		Models/Game.h \
+		Models/Move.h \
+		Models/Position.h \
+		Models/Direction.h \
 		Observer/Subject.h \
 		Observer/Observer.h \
-		Piece.h \
-		Color.h \
-		Board.h \
-		Square.h \
-		Player.h \
-		menup.h
+		Models/Piece.h \
+		Models/Color.h \
+		Models/Board.h \
+		Models/Square.h \
+		Models/Player.h \
+		Models/menup.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Plateau.o Models/Plateau.cpp
 
-mainFX.o: mainFX.cpp Game.h \
-		Move.h \
-		Position.h \
-		Direction.h \
+mainFX.o: mainFX.cpp Models/Game.h \
+		Models/Move.h \
+		Models/Position.h \
+		Models/Direction.h \
 		Observer/Subject.h \
 		Observer/Observer.h \
-		Piece.h \
-		Color.h \
+		Models/Piece.h \
+		Models/Color.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QtWidgets \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qabstractbutton.h \
@@ -2924,18 +2924,18 @@ mainFX.o: mainFX.cpp Game.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwidgetaction.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwizard.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsversion.h \
-		Board.h \
-		Square.h \
-		Player.h \
+		Models/Board.h \
+		Models/Square.h \
+		Models/Player.h \
 		View/View.h \
 		Controller/Controller.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QApplication \
-		menup.h \
+		Models/menup.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		Plateau.h \
-		mafenetre.h \
+		Models/Plateau.h \
+		Models/mafenetre.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtGui.framework/Headers/qpainter.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QInputDialog \
@@ -2952,7 +2952,7 @@ mainFX.o: mainFX.cpp Game.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtGui.framework/Headers/qpaintengine.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainFX.o mainFX.cpp
 
-menup.o: menup.cpp menup.h \
+menup.o: menup.cpp Models/menup.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
@@ -3085,18 +3085,18 @@ menup.o: menup.cpp menup.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwidgetaction.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qwizard.h \
 		/Users/leopoldmols/Documents/QTCreator/5.12.8/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsversion.h \
-		Plateau.h \
-		Game.h \
-		Move.h \
-		Position.h \
-		Direction.h \
+		Models/Plateau.h \
+		Models/Game.h \
+		Models/Move.h \
+		Models/Position.h \
+		Models/Direction.h \
 		Observer/Subject.h \
 		Observer/Observer.h \
-		Piece.h \
-		Color.h \
-		Board.h \
-		Square.h \
-		Player.h
+		Models/Piece.h \
+		Models/Color.h \
+		Models/Board.h \
+		Models/Square.h \
+		Models/Player.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o menup.o menup.cpp
 
 moc_eventpassball.o: moc_eventpassball.cpp 

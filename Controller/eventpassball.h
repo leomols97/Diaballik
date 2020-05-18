@@ -3,7 +3,7 @@
 
 #include <QObject>
 #include <QWidget>
-#include "Game.h"
+#include "Models/Game.h"
 
 class EventPassBall : public QWidget
 {
@@ -12,7 +12,7 @@ private:
     Game game_;
 
 public:
-    EventPassBall(Game game_);
+    EventPassBall(Game &game_);
 };
 
 #endif // EVENTPASSBALL_H

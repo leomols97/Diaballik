@@ -55,7 +55,7 @@ namespace Diaballik
             /**
              * @brief Game constructs a game
              */
-            Game(/*Board board*/);
+            Game(unsigned int size);
 
             //~Game();
 

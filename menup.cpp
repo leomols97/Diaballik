@@ -1,7 +1,7 @@
 #include "iostream"
-#include "menup.h"
-#include "Plateau.h"
-#include "Game.h"
+#include "Models/menup.h"
+#include "Models/Plateau.h"
+#include "Models/Game.h"
 
 using namespace Diaballik;
 
@@ -39,7 +39,8 @@ MenuP::MenuP(/*Board board*/) : QWidget()
 
 void MenuP::openGame(/*Board board*/)
 {
-    Game game;
+    //Board board(this->getChoixTaille()->currentText().toInt());
+    Game game(this->getChoixTaille()->currentText().toInt());
     if (typeOfGame(this->getGameType()->currentText().toStdString()) == 1)
     {
         game.initialize(1);

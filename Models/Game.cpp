@@ -11,8 +11,8 @@ using namespace Diaballik;
 /**
  * Game implementation
  */
-Game::Game(/*Board board*/) :
-    board_(7/*board.getBoardLength()*/),
+Game::Game(unsigned int size) :
+    board_(size),
     current_(White),
     opponent_(Black),
     selected_(0, 0)
@@ -564,7 +564,7 @@ void Game::apply(Move move)
     Piece piece(this->board_.getPiece(move.getStart()).getColor());
     if (this->board_.isFree(move.getEnd()))
     {
-        this->board_.put(current_, move.getEnd());
+        this->board_.put(piece.getColor(), move.getEnd());
         this->board_.remove(move.getStart());
         current_.setNbMoves(current_.getNbMoves()-1);
     }
@@ -585,6 +585,7 @@ void Game::applyPass(Position positionThatGives, Position positionThatReceives)
 
 Piece Game::getPieceSelected()
 {
+    cout << "getPieceSelected colo : " << this->board_.getPiece(selected_).getColor();
     return this->board_.getPiece(selected_);
 }
 

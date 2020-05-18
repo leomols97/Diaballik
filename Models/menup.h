@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QWidget>
 #include <QtWidgets>
-#include "Plateau.h"
+#include "Models/Plateau.h"
 #include "Observer/Subject.h"
 #include "Observer/Observer.h"
 
@@ -67,7 +67,7 @@ namespace Diaballik
             }
 
         public slots:
-            void openGame(/*Board board*/);
+            void openGame();
     };
 }
 

@@ -1,11 +1,11 @@
 #include <iostream>
-#include "Game.h"
+#include "Models/Game.h"
 #include "View/View.h"
 #include "Controller/Controller.h"
 #include <QApplication>
-#include "menup.h"
-#include "Plateau.h"
-#include "mafenetre.h"
+#include "Models/menup.h"
+#include "Models/Plateau.h"
+#include "Models/mafenetre.h"
 
 
 int main(int argc, char *argv[])

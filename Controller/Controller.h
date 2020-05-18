@@ -2,7 +2,7 @@
 #define CONTROLLER_H
 
 
-#include "Game.h"
+#include "Models/Game.h"
 #include "View/View.h"
 #include <iostream>
 #include <stdexcept>
@@ -43,7 +43,7 @@ namespace Diaballik
              * @param game_ a new game to start
              * @param view_ all the text we will display on the terminal
              */
-            Controller(Game game, View view);
+            Controller(Game &game, View &view);
 
             //~Controller();
 

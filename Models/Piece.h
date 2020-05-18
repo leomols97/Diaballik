@@ -35,6 +35,8 @@ namespace Diaballik
 
         public:
 
+            Piece();
+
             /**
              * @brief Piece
              * @param color_ the color of the piece constucted
@@ -58,7 +60,7 @@ namespace Diaballik
              * @param color_ the color we want to set
              * sets the color at a new value
              */
-            void setColor(Color color_);
+            void setColor(Color color);
 
             /**
              * @brief isReal

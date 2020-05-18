@@ -14,7 +14,7 @@ namespace Diaballik
     class Plateau :
             public QWidget
     {
-            // Afin d'ajouter des slots personnalisés
+            // Ceci transforme cette classe en QObject afin d'ajouter des slots personnalisés
             Q_OBJECT
 
 
@@ -37,14 +37,20 @@ namespace Diaballik
             QVBoxLayout *organiser;
             QPushButton *m_finDeTour;
 
+            void addLign(unsigned int i, unsigned int j, vector<QPushButton*> lignes, Game game);
 
-        public:
+            QPushButton *boutons(unsigned int i, unsigned int j, QString style, bool clickable);
 
-            Plateau(Game game, string player1, string player2/*unsigned int windowLength, int typeOfGame, string m_currentPlayer*/);
+            void buttons(Game game);
 
             void windowLength (unsigned int windowLength);
 
             void infosJeu(string m_currentPlayer);
+
+
+        public:
+
+            Plateau(Game &game, string player1, string player2/*unsigned int windowLength, int typeOfGame, string m_currentPlayer*/);
 
             QLabel * getCurrent()
             {
@@ -56,17 +62,11 @@ namespace Diaballik
                 m_currentPlayer = playerName;
             }
 
-            QPushButton *boutons(unsigned int i, unsigned int j, QString style, bool clickable);
-
-            void addLign(unsigned int i, unsigned int j, vector<QPushButton*> lignes, Game game);
-
-            void buttons(Game game);
-
         public slots:
 
             //void swapPlayer();
 
-            void showWinner();
+            void showWinner(Game game);
     };
 }
 

@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "Plateau.h"
+#include "Models/Plateau.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Diaballik__Plateau_t {
-    QByteArrayData data[3];
-    char stringdata0[31];
+    QByteArrayData data[5];
+    char stringdata0[41];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -33,10 +33,13 @@ static const qt_meta_stringdata_Diaballik__Plateau_t qt_meta_stringdata_Diaballi
     {
 QT_MOC_LITERAL(0, 0, 18), // "Diaballik::Plateau"
 QT_MOC_LITERAL(1, 19, 10), // "showWinner"
-QT_MOC_LITERAL(2, 30, 0) // ""
+QT_MOC_LITERAL(2, 30, 0), // ""
+QT_MOC_LITERAL(3, 31, 4), // "Game"
+QT_MOC_LITERAL(4, 36, 4) // "game"
 
     },
-    "Diaballik::Plateau\0showWinner\0"
+    "Diaballik::Plateau\0showWinner\0\0Game\0"
+    "game"
 };
 #undef QT_MOC_LITERAL
 
@@ -54,10 +57,10 @@ static const uint qt_meta_data_Diaballik__Plateau[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   19,    2, 0x0a /* Public */,
+       1,    1,   19,    2, 0x0a /* Public */,
 
  // slots: parameters
-    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 3,    4,
 
        0        // eod
 };
@@ -68,11 +71,10 @@ void Diaballik::Plateau::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
         auto *_t = static_cast<Plateau *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->showWinner(); break;
+        case 0: _t->showWinner((*reinterpret_cast< Game(*)>(_a[1]))); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject Diaballik::Plateau::staticMetaObject = { {

@@ -1,6 +1,6 @@
 #ifndef VIEW_H
 #define VIEW_H
-#include "Game.h"
+#include "Models/Game.h"
 
 using namespace std;
 
